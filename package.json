@@ -11,7 +11,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "node --test scripts/sitemap-routes.test.mjs scripts/design-tokens.test.mjs scripts/contrast-css.test.mjs scripts/home-chrome.test.mjs scripts/home-polish.test.mjs scripts/round2-goal.test.mjs scripts/about-rebuild.test.mjs scripts/pass4-pages.test.mjs scripts/hero04-pass.test.mjs",
+    "test": "node --test scripts/sitemap-routes.test.mjs scripts/design-tokens.test.mjs scripts/contrast-css.test.mjs scripts/home-chrome.test.mjs scripts/home-polish.test.mjs scripts/round2-goal.test.mjs scripts/about-rebuild.test.mjs scripts/pass4-pages.test.mjs scripts/hero04-pass.test.mjs scripts/custom-home-overview.test.mjs",
     "test:design": "node --test scripts/design-tokens.test.mjs scripts/contrast-css.test.mjs scripts/home-chrome.test.mjs scripts/home-polish.test.mjs",
     "test:http": "node --test scripts/sitemap-routes.test.mjs",
     "test:nav-contrast": "node scripts/home-nav-contrast.mjs",

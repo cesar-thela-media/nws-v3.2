@@ -23,11 +23,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-/** Service detail: split hero + narrow reading column (not PageHero stack) */
+/** Service detail: split hero + Overview band + narrow reading column */
 export default async function ServicePage({ params }: Props) {
   const { slug } = await params;
   const page = getServicePage(slug);
   if (!page) notFound();
+
+  const overviewImageSrc =
+    page.overviewImage || page.image || "/images/kitchen-gallery-1.jpeg";
+  const overviewImageAlt =
+    page.overviewImageAlt || page.imageAlt || page.breadcrumb;
 
   return (
     <>
@@ -100,20 +105,46 @@ export default async function ServicePage({ params }: Props) {
         </div>
       </section>
 
+      {/* Overview: side image prefers overviewImage so it can differ from hero */}
+      <section
+        className="py-12 md:py-16 bg-background border-b border-border"
+        data-service-overview
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+            <div className="lg:col-span-5">
+              <div className="relative rounded-2xl overflow-hidden border border-border min-h-[16rem] lg:min-h-[20rem]">
+                <Image
+                  src={overviewImageSrc}
+                  alt={overviewImageAlt}
+                  fill
+                  className="object-cover"
+                  data-service-overview-image
+                />
+              </div>
+            </div>
+            <div className="lg:col-span-7 flex flex-col gap-4 prose-nws">
+              <p className="text-sm font-semibold text-primary !m-0">Overview</p>
+              <h2 className="text-[26px] md:text-[32px] text-foreground font-bold tracking-tight !m-0">
+                {page.h1}
+              </h2>
+              {page.intro.map((p) => (
+                <p key={p.slice(0, 40)} data-service-overview-intro>
+                  {p}
+                </p>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section
         className="py-14 md:py-20 bg-background"
         data-service-longform
       >
         <div className="max-w-3xl mx-auto px-4 sm:px-6 prose-nws">
-          <h2 className="text-[26px] md:text-[32px] text-foreground font-bold tracking-tight">
-            {page.h1}
-          </h2>
-          {page.intro.map((p) => (
-            <p key={p.slice(0, 40)}>{p}</p>
-          ))}
-
           {page.sections.map((section) => (
-            <div key={section.heading} className="mt-10">
+            <div key={section.heading} className="mt-10 first:mt-0">
               <h3>{section.heading}</h3>
               {section.paragraphs?.map((p) => (
                 <p key={p.slice(0, 40)}>{p}</p>

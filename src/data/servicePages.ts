@@ -11,6 +11,9 @@ export type ServicePage = {
   intro: string[];
   image?: string;
   imageAlt?: string;
+  /** Optional Overview-band photo; when set, hero keeps `image` and Overview uses this. */
+  overviewImage?: string;
+  overviewImageAlt?: string;
   sections: {
     heading: string;
     paragraphs?: string[];
@@ -37,10 +40,13 @@ export const servicePages: ServicePage[] = [
       "At NWS Custom Homes and Remodeling, we work with you from start to finish to ensure your home is everything you've envisioned. Whether you're dreaming of something modern, traditional, or entirely unique, our team is ready to bring your ideas to life with expert craftsmanship and care.",
     h1: "Work With a Professional Custom Home Builder in Richmond, TX, and Fort Bend County",
     intro: [
-      "When it comes to building custom homes, we believe the process should reflect your lifestyle and personality. As a custom home builder serving Richmond, TX, and Fort Bend County, we understand that no two families are the same, and your home shouldn't be either. From the first consultation to the final walk-through, we tailor every step to your needs, making us a top choice among home builders in the area.",
+      "As a custom home builder in Richmond, TX and Fort Bend County, we design and build homes around how you live, from first consult to final walkthrough.",
     ],
     image: "/images/custom-home-richmond-tx.jpg",
     imageAlt: "custom home building plan design on table with tools richmond tx",
+    overviewImage: "/images/custom-homes-3.jpeg",
+    overviewImageAlt:
+      "Custom home exterior built by NWS in the Richmond, TX area",
     sections: [
       {
         heading: "A Space as Unique as You Are",
