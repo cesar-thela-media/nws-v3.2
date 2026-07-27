@@ -56,26 +56,30 @@ test("About: no open on YouTube; story fade/fuller card; cta-08 no map/form", ()
   assert.doesNotMatch(page, /ContactForm|mapSmall/);
 });
 
-test("Services hub+detail: carousel-08, no Overview, faq-07 + cta-08", () => {
+test("Services hub+detail: carousel-08 hub, gallery-03 detail hero, faq-07 + cta-08", () => {
   const hub = read("src", "app", "services", "page.tsx");
   const detail = read("src", "app", "services", "[slug]", "page.tsx");
   const hero = read("src", "components", "ServicesCarouselHero.tsx");
+  const detailHero = read("src", "components", "ServiceDetailHero.tsx");
+  const photos = read("src", "data", "serviceHeroPhotos.ts");
   const carousel = read("src", "components", "shadcn-space", "carousel", "carousel-08.tsx");
   assert.match(hub, /ServicesCarouselHero|carousel-08/);
   assert.match(hub, /faq-07|Faq/);
   assert.match(hub, /cta-08|CTA/);
   assert.match(hub, /data-services-visual-grid/);
-  assert.match(detail, /ServicesCarouselHero|carousel-08/);
+  // Detail uses gallery-03 with per-slug photos — not the hub carousel
+  assert.match(detail, /ServiceDetailHero|gallery-03|Gallery03/);
+  assert.doesNotMatch(detail, /ServicesCarouselHero/);
   assert.match(detail, /data-service-visual-body/);
   assert.doesNotMatch(detail, /data-service-overview/);
-  assert.doesNotMatch(detail, /data-service-split-hero/);
   assert.match(detail, /faq-07|Faq/);
   assert.match(detail, /cta-08|CTA/);
+  assert.match(detailHero, /gallery-03|Gallery03|getServiceHeroPhotos/);
+  assert.match(photos, /kitchen-remodeling/);
+  assert.match(photos, /kitchen-gallery/);
   assert.match(hero, /carousel-08|AppleCardCarousel/);
-  assert.match(hero, /orientation.*landscape|landscape/);
   assert.match(carousel, /data-carousel-08/);
-  assert.match(carousel, /aspect-\[16\/10\]|aspect-\[16\/9\]|landscape/);
-  assert.match(carousel, /bg-primary/);
+  assert.match(carousel, /items-center|text-center/);
 });
 
 test("Gallery: hero-08, gallery-03 then 01, cta-08, not hero-22", () => {

@@ -3,13 +3,11 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
-import { ServicesCarouselHero } from "@/components/ServicesCarouselHero";
+import { ServiceDetailHero } from "@/components/ServiceDetailHero";
 import Faq from "@/components/shadcn-space/blocks/faq-07/faq";
 import CTA from "@/components/shadcn-space/blocks/cta-08/cta";
 import { servicePages, getServicePage } from "@/data/servicePages";
-import { serviceCards } from "@/data/services";
 import { site } from "@/data/site";
-import type { CardItem } from "@/components/shadcn-space/carousel/carousel-08";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -27,38 +25,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-const serviceImages = [
-  "/images/custom-home-richmond-tx.jpg",
-  "/images/home-remodeling-richmond-tx.jpg",
-  "/images/kitchen-remodeling-richmond-tx.jpg",
-  "/images/bathroom-remodeling-richmond-tx.jpg",
-  "/images/whole-home-remodeling-richmond-tx.jpg",
-  "/images/bathroom-gallery-1.jpeg",
-  "/images/14-kitchen-after.jpg",
-  "/images/home-addition-contractors.webp",
-  "/images/Basement-Finishing.webp",
-  "/images/garage-remodel.webp",
-  "/images/open-concept.webp",
-];
-
-/** Service detail: carousel-08 hero, scannable visual body (no Overview), faq-07 + cta-08 */
+/**
+ * Service detail: gallery-03 hero with slug-relevant photos (not hub carousel),
+ * orange visual body, faq-07 (no help band), cta-08.
+ */
 export default async function ServicePage({ params }: Props) {
   const { slug } = await params;
   const page = getServicePage(slug);
   if (!page) notFound();
-
-  const carouselCards: CardItem[] = serviceCards.map((s, i) => {
-    const blurb = (s.front || s.back || "").replace(/\s+/g, " ").trim();
-    return {
-      id: s.slug,
-      category: s.slug === slug ? "This service" : "Service",
-      title: s.title,
-      description:
-        blurb.length > 90 ? blurb.slice(0, 89).trim() + "…" : blurb || undefined,
-      src: serviceImages[i % serviceImages.length],
-      href: s.href,
-    };
-  });
 
   const introShort = page.intro.slice(0, 1).map((p) =>
     p.length > 280 ? p.slice(0, 277).trim() + "..." : p,
@@ -73,15 +47,11 @@ export default async function ServicePage({ params }: Props) {
 
   return (
     <>
-      <ServicesCarouselHero
-        label={page.heroLabel || "Service"}
+      <ServiceDetailHero
+        slug={slug}
+        eyebrow={page.heroLabel || page.breadcrumb || "Service"}
         heading={page.heroTitle || page.h1}
-        description={
-          page.heroText && page.heroText.length > 160
-            ? page.heroText.slice(0, 157).trim() + "..."
-            : page.heroText
-        }
-        cards={carouselCards}
+        description={page.heroText}
       />
 
       <section

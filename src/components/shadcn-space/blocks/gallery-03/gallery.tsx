@@ -27,22 +27,27 @@ const fadeUp = {
 };
 
 type Gallery03Props = {
+  eyebrow?: string;
   heading?: string;
   description?: string;
   items?: Gallery03Item[];
   ctaLabel?: string;
   ctaHref?: string;
+  /** Use h1 when this block is the page hero (service detail). */
+  asHero?: boolean;
 };
 
 /**
  * Featured project grid (gallery-03). Accepts NWS gallery images via props.
  */
 export default function Gallery03({
+  eyebrow = "Project photos",
   heading = "Project photos",
   description = "A closer look at craftsmanship across custom homes and remodels.",
   items = [],
   ctaLabel = "Start a project",
   ctaHref = "/contact/",
+  asHero = false,
 }: Gallery03Props) {
   const cards =
     items.length > 0
@@ -70,6 +75,8 @@ export default function Gallery03({
           },
         ];
 
+  const HeadingTag = asHero ? "h1" : "h2";
+
   return (
     <section className="w-full bg-background" data-gallery-03>
       <div className="max-w-7xl mx-auto px-4 md:px-10 lg:px-16 xl:px-20 py-10 sm:py-14">
@@ -87,13 +94,13 @@ export default function Gallery03({
                 <div className="flex items-center gap-1.5">
                   <span className="m-1.5 size-1.5 rounded-full bg-primary" />
                   <p className="text-base leading-6 text-primary font-medium !m-0">
-                    Project photos
+                    {eyebrow}
                   </p>
                 </div>
                 <div className="flex flex-col gap-2">
-                  <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground !m-0">
+                  <HeadingTag className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground !m-0">
                     {heading}
-                  </h2>
+                  </HeadingTag>
                   <p className="text-base leading-6 text-muted-foreground !m-0 max-w-lg">
                     {description}
                   </p>
@@ -101,7 +108,13 @@ export default function Gallery03({
               </div>
               <Button
                 className="w-fit h-12 px-6 rounded-[4px] text-sm font-semibold !text-white"
-                render={<Link href={ctaHref} />}
+                render={
+                  ctaHref.startsWith("tel:") || ctaHref.startsWith("http") ? (
+                    <a href={ctaHref} />
+                  ) : (
+                    <Link href={ctaHref} />
+                  )
+                }
               >
                 {ctaLabel}
                 <ArrowRight className="size-4 ml-1" />

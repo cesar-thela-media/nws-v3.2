@@ -139,11 +139,11 @@ const AppleCardCarousel = ({
       data-carousel-08
       data-carousel-orientation={orientation}
     >
-      <div className="px-4 sm:px-6 lg:px-8 xl:px-16 max-w-7xl mx-auto mb-8 sm:mb-10 flex flex-col gap-2">
+      <div className="px-4 sm:px-6 lg:px-8 xl:px-16 max-w-7xl mx-auto mb-8 sm:mb-10 flex flex-col items-center gap-2 text-center">
         <p className="text-sm sm:text-base font-semibold text-primary !m-0">
           {label}
         </p>
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground !m-0">
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground !m-0 max-w-4xl">
           {heading}
         </h1>
         {description ? (
@@ -190,8 +190,8 @@ const AppleCardCarousel = ({
                   />
                 </div>
 
-                {/* Orange text panel — matches About feature cards */}
-                <div className="relative z-[1] flex flex-1 flex-col gap-1.5 bg-primary px-4 pb-5 pt-2 sm:px-5 sm:pb-6 min-h-[6.5rem] sm:min-h-[7rem]">
+                {/* Orange text panel — About-style, centered */}
+                <div className="relative z-[1] flex flex-1 flex-col items-center justify-center gap-1.5 bg-primary px-4 pb-5 pt-3 sm:px-5 sm:pb-6 min-h-[6.5rem] sm:min-h-[7.25rem] text-center">
                   {card.category ? (
                     <p className="text-[11px] sm:text-xs font-semibold uppercase tracking-wide text-white/80 !m-0">
                       {card.category}
@@ -201,7 +201,7 @@ const AppleCardCarousel = ({
                     {card.title}
                   </h3>
                   {card.description ? (
-                    <p className="text-sm leading-normal text-white/90 !m-0 line-clamp-2">
+                    <p className="text-sm leading-normal text-white/90 !m-0 line-clamp-2 max-w-[18rem]">
                       {card.description}
                     </p>
                   ) : null}
