@@ -119,6 +119,11 @@ export default function AboutUs() {
         data-about-story-top-fade
         aria-hidden
       />
+      <div
+        className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent"
+        data-about-story-bottom-fade
+        aria-hidden
+      />
 
       <div className="relative z-10 w-full max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-10 xl:px-14">
         {/* Fuller-width story card with collage layout */}
