@@ -23,7 +23,7 @@ test("blocks carousel-08, hero-08, gallery-03, gallery-01 exist", () => {
   );
 });
 
-test("home How We Work gradient + FAQ help image swapped", () => {
+test("home How We Work gradient + FAQ accordion only (no help band)", () => {
   const home = read("src", "app", "page.tsx");
   const how = read("src", "components", "shadcn-space", "blocks", "portfolio-08", "portfolio.tsx");
   const faq = read("src", "components", "shadcn-space", "blocks", "faq-07", "faq.tsx");
@@ -32,12 +32,9 @@ test("home How We Work gradient + FAQ help image swapped", () => {
   assert.match(how, /How we work/i);
   assert.match(how, /data-how-we-work-gradient/);
   assert.match(how, /bg-gradient/);
-  assert.match(faq, /Still have questions/);
-  assert.match(faq, /cta-home-remodeling-foldable-ladder|data-faq-help-image/);
-  assert.doesNotMatch(
-    faq,
-    /Still have questions[\s\S]{0,500}custom-homes-1\.jpeg/,
-  );
+  assert.match(faq, /data-faq-07|Accordion/);
+  assert.doesNotMatch(faq, /Still have questions/);
+  assert.doesNotMatch(faq, /data-faq-help-band|data-faq-help-image/);
 });
 
 test("About: no open on YouTube; story fade/fuller card; cta-08 no map/form", () => {

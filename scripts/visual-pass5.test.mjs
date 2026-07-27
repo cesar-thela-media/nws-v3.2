@@ -29,12 +29,9 @@ test("homepage Room & Home Additions uses cover fit image; FAQ help image swappe
   const faq = read("src", "components", "shadcn-space", "blocks", "faq-07", "faq.tsx");
   assert.match(port, /Room & Home Additions/);
   assert.match(port, /object-cover/);
-  assert.match(faq, /Still have questions/);
-  assert.match(faq, /cta-home-remodeling-foldable-ladder|data-faq-help-image/);
-  assert.doesNotMatch(
-    faq,
-    /Still have questions[\s\S]{0,400}custom-homes-1\.jpeg/,
-  );
+  assert.match(faq, /data-faq-07|Accordion|Common questions/);
+  assert.doesNotMatch(faq, /Still have questions/);
+  assert.doesNotMatch(faq, /data-faq-help-band|data-faq-help-image/);
 });
 
 test("About: no or open on YouTube; story fade/collage layout", () => {

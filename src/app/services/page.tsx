@@ -18,7 +18,7 @@ export default function ServicesPage() {
       <div data-services-visual-grid>
         <Services10 />
       </div>
-      <Faq showHelpBand={false} />
+      <Faq />
       <CTA />
     </>
   );

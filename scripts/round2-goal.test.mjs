@@ -165,7 +165,7 @@ test("deploy prep files exist (Docker, Railway, Nixpacks)", () => {
   assert.match(next, /standalone/);
 });
 
-test("home FAQ still-have-questions image uses object-cover", () => {
+test("home FAQ has accordion only (no still-have-questions help band)", () => {
   const faq = read(
     "src",
     "components",
@@ -174,8 +174,9 @@ test("home FAQ still-have-questions image uses object-cover", () => {
     "faq-07",
     "faq.tsx",
   );
-  assert.match(faq, /object-cover/);
-  assert.match(faq, /object-center/);
+  assert.match(faq, /Accordion|data-faq-07/);
+  assert.doesNotMatch(faq, /Still have questions/);
+  assert.doesNotMatch(faq, /data-faq-help-band|data-faq-help-image/);
 });
 
 test("hero background uses real NWS public image path", () => {

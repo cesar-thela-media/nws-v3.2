@@ -7,9 +7,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { ArrowRight, MinusIcon, PlusIcon } from "lucide-react";
+import { MinusIcon, PlusIcon } from "lucide-react";
 import { nwsFaqs } from "@/data/nws-blocks";
 
 export type FaqItem = {
@@ -21,15 +20,16 @@ export type FaqProps = {
   items?: FaqItem[];
   heading?: string;
   description?: string;
-  /** Home/FAQs keep the help band; service pages hide it. */
-  showHelpBand?: boolean;
 };
 
+/**
+ * FAQ accordion only — no "Still have questions?" help band.
+ * Closing CTA lives in cta-08 / contact elsewhere on the page.
+ */
 export default function Faq({
   items,
   heading = "Common questions",
   description = "Straight answers about services, areas, timelines, and how we work.",
-  showHelpBand = true,
 }: FaqProps) {
   const faqs =
     items && items.length > 0
@@ -81,42 +81,6 @@ export default function Faq({
             ))}
           </Accordion>
         </div>
-
-        {showHelpBand ? (
-          <div
-            className="bg-background border border-border rounded-3xl flex flex-col lg:flex-row lg:justify-between overflow-hidden"
-            data-faq-help-band
-          >
-            <div className="flex flex-col gap-8 p-5 lg:p-8 lg:max-w-xl">
-              <div className="flex flex-col gap-3">
-                <h3 className="text-xl lg:text-2xl font-medium text-foreground">
-                  Still have questions? Our team is ready to help.
-                </h3>
-                <p className="text-sm lg:text-base text-muted-foreground">
-                  Call for a free consult or send a message, we&apos;ll confirm
-                  your address and next steps.
-                </p>
-              </div>
-              <Button
-                variant="outline"
-                className="w-fit h-12 px-6 rounded-[4px] gap-2 cursor-pointer"
-                render={<a href="tel:2812992309" />}
-              >
-                Call (281) 299-2309
-                <ArrowRight className="size-4" />
-              </Button>
-            </div>
-            <div className="relative h-56 sm:h-64 lg:h-auto lg:min-h-full lg:w-96 overflow-hidden rounded-b-3xl lg:rounded-b-none lg:rounded-r-3xl shrink-0">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/images/cta-home-remodeling-foldable-ladder-and-paint-tools-richmond-tx.webp"
-                alt="NWS remodeling team ready to help in Richmond, TX"
-                className="absolute inset-0 w-full h-full object-cover object-center"
-                data-faq-help-image
-              />
-            </div>
-          </div>
-        ) : null}
       </div>
     </section>
   );
