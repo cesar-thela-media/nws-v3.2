@@ -23,7 +23,7 @@ export type FaqProps = {
 };
 
 /**
- * FAQ accordion only — no "Still have questions?" help band.
+ * FAQ accordion only (no secondary help-card under the Q&A list).
  * Closing CTA lives in cta-08 / contact elsewhere on the page.
  */
 export default function Faq({

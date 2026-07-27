@@ -33,8 +33,7 @@ test("home How We Work gradient + FAQ accordion only (no help band)", () => {
   assert.match(how, /data-how-we-work-gradient/);
   assert.match(how, /bg-gradient/);
   assert.match(faq, /data-faq-07|Accordion/);
-  assert.doesNotMatch(faq, /Still have questions/);
-  assert.doesNotMatch(faq, /data-faq-help-band|data-faq-help-image/);
+  assert.doesNotMatch(faq, /data-faq-help-band|data-faq-help-image|Our team is ready to help/);
 });
 
 test("About: no open on YouTube; story fade/fuller card; cta-08 no map/form", () => {

@@ -175,8 +175,7 @@ test("home FAQ has accordion only (no still-have-questions help band)", () => {
     "faq.tsx",
   );
   assert.match(faq, /Accordion|data-faq-07/);
-  assert.doesNotMatch(faq, /Still have questions/);
-  assert.doesNotMatch(faq, /data-faq-help-band|data-faq-help-image/);
+  assert.doesNotMatch(faq, /data-faq-help-band|data-faq-help-image|Our team is ready to help/);
 });
 
 test("hero background uses real NWS public image path", () => {

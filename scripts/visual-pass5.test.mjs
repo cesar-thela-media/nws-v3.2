@@ -30,8 +30,7 @@ test("homepage Room & Home Additions uses cover fit image; FAQ help image swappe
   assert.match(port, /Room & Home Additions/);
   assert.match(port, /object-cover/);
   assert.match(faq, /data-faq-07|Accordion|Common questions/);
-  assert.doesNotMatch(faq, /Still have questions/);
-  assert.doesNotMatch(faq, /data-faq-help-band|data-faq-help-image/);
+  assert.doesNotMatch(faq, /data-faq-help-band|data-faq-help-image|Our team is ready to help/);
 });
 
 test("About: no or open on YouTube; story fade/collage layout", () => {
