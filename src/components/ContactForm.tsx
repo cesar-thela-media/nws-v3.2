@@ -11,7 +11,7 @@ type Props = {
 
 /**
  * n8n webhook-ready contact form.
- * Set NEXT_PUBLIC_N8N_WEBHOOK_URL (or leave empty for local success UI only).
+ * Posts to /api/submit; set WEBHOOK_URL_CONTACT or N8N_WEBHOOK_URL on the server.
  */
 export function ContactForm({
   title = "Tell us about your project",
