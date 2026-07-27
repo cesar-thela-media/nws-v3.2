@@ -145,10 +145,13 @@ test("contact forms are n8n webhook-ready via env", () => {
     "contact-form.tsx",
   );
   for (const f of [form, form2]) {
-    assert.match(f, /NEXT_PUBLIC_N8N_WEBHOOK_URL/);
+    assert.match(f, /\/api\/submit/);
     assert.match(f, /fetch\(/);
     assert.match(f, /POST/);
   }
+  const api = read("src", "app", "api", "submit", "route.ts");
+  assert.match(api, /WEBHOOK_URL_CONTACT|N8N_WEBHOOK_URL|n8n/i);
+  assert.match(api, /export async function POST/);
 });
 
 test("deploy prep files exist (Docker, Railway, Nixpacks)", () => {
