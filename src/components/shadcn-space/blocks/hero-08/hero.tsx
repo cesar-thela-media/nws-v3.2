@@ -24,8 +24,8 @@ export type Hero08Props = {
 };
 
 /**
- * Gallery hero-08: education-style auto-scrolling cards.
- * AutoScroll moves continuously; stopOnMouseEnter pauses on hover.
+ * Gallery hero-08: compact header + landscape auto-scroll cards
+ * (same orange-panel concept as services carousel). Hover pauses marquee.
  */
 export default function HeroSection({
   eyebrow = "Project gallery",
@@ -60,21 +60,22 @@ export default function HeroSection({
   const secondaryHref = secondaryCtaHref || `tel:${site.phone.officeTel}`;
 
   return (
-    <section className="bg-background pt-24 sm:pt-28" data-hero-08>
-      <div className="max-w-7xl mx-auto sm:px-16 px-4">
-        <div className="flex flex-col gap-6 max-w-2xl py-10 sm:py-12">
+    <section className="bg-background pt-20 sm:pt-22" data-hero-08>
+      {/* Tighter header — less empty white above the marquee */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-16">
+        <div className="flex flex-col gap-4 max-w-2xl py-6 sm:py-8">
           <span className="w-fit px-3 py-1 text-sm font-medium text-primary bg-primary/10 rounded-lg">
             {eyebrow}
           </span>
-          <div className="flex flex-col gap-4">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground tracking-tight !m-0">
+          <div className="flex flex-col gap-2.5">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground tracking-tight !m-0">
               {heading}
             </h1>
             <p className="text-base font-normal text-muted-foreground max-w-md !m-0">
               {description}
             </p>
           </div>
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3 pt-1">
             <Button
               className="relative text-sm font-semibold rounded-[4px] h-12 p-1 ps-5 pe-14 group transition-all duration-500 hover:ps-14 hover:pe-5 w-fit overflow-hidden cursor-pointer !text-white"
               render={<Link href={primaryCtaHref} />}
@@ -103,7 +104,8 @@ export default function HeroSection({
         </div>
       </div>
 
-      <div className="py-5 w-full" data-hero-08-marquee>
+      {/* Landscape marquee cards — orange text panel like services carousel */}
+      <div className="pb-6 sm:pb-8 w-full" data-hero-08-marquee>
         <Carousel
           opts={{
             align: "start",
@@ -118,23 +120,32 @@ export default function HeroSection({
           ]}
           className="w-full"
         >
-          <CarouselContent className="-ml-4 sm:-ml-6">
+          <CarouselContent className="-ml-3 sm:-ml-4 px-4 sm:px-6">
             {cards.map((card, index) => (
               <CarouselItem
                 key={`${card.src}-${index}`}
-                className="group pl-4 sm:pl-6 basis-auto flex-none"
+                className="group pl-3 sm:pl-4 basis-auto flex-none"
               >
-                <div className="relative block w-[min(22rem,calc(100vw-3rem))] aspect-[368/420] rounded-3xl overflow-hidden border border-border">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={card.src}
-                    alt={card.title}
-                    className="rounded-3xl w-full h-full object-cover group-hover:scale-110 transition-all duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 px-5 py-5">
-                    <p className="text-white font-semibold !m-0">{card.title}</p>
-                    <span className="text-white/70 text-sm">{card.label}</span>
+                <div className="flex flex-col w-[min(20rem,calc(100vw-2.5rem))] sm:w-[22rem] lg:w-[24rem] rounded-xl overflow-hidden border border-primary/20 bg-primary shadow-sm">
+                  <div className="relative w-full aspect-[16/10] sm:aspect-[16/9] overflow-hidden shrink-0">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={card.src}
+                      alt={card.title}
+                      className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.03]"
+                    />
+                    <div
+                      className="pointer-events-none absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-b from-transparent via-primary/55 to-primary"
+                      aria-hidden
+                    />
+                  </div>
+                  <div className="relative z-[1] flex flex-col items-center justify-center gap-1 bg-primary px-4 py-4 sm:px-5 sm:py-4 text-center min-h-[4.5rem]">
+                    <p className="text-[11px] sm:text-xs font-semibold uppercase tracking-wide text-white/80 !m-0">
+                      {card.label}
+                    </p>
+                    <p className="text-base sm:text-lg font-semibold tracking-tight text-white !m-0 leading-snug">
+                      {card.title}
+                    </p>
                   </div>
                 </div>
               </CarouselItem>
