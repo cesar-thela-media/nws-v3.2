@@ -157,6 +157,7 @@ export default async function ServicePage({ params }: Props) {
       </section>
 
       <Faq
+        showHelpBand={false}
         items={
           page.faqs && page.faqs.length > 0
             ? page.faqs.map((faq) => ({
