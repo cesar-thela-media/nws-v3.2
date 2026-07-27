@@ -22,8 +22,13 @@ export default function AreasWeServePage() {
         badge="Fort Bend & west Houston"
         headline="Areas we serve"
         description="Local builds and remodels across Richmond and nearby communities, prompt, careful, and built to last."
-        imageSrc={site.mapFull}
-        imageAlt="NWS service map across Fort Bend County"
+        backgroundImageSrc={
+          process.env.NEXT_PUBLIC_AREAS_HERO_BG || site.areasHeroBg
+        }
+        imageAlt="NWS service area — Richmond and Fort Bend County, TX"
+        mapEmbedSrc={
+          process.env.NEXT_PUBLIC_MAPS_EMBED_URL || site.mapsEmbedUrl
+        }
         primaryCtaLabel={`Call ${site.phone.office}`}
         primaryCtaHref={`tel:${site.phone.officeTel}`}
         secondaryCtaLabel="View communities"

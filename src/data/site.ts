@@ -30,6 +30,14 @@ export const site = {
   logoOnDark: "/images/nws-logo-on-dark.png",
   mapSmall: "/images/nws-custom-homes-and-remodeling-small-map.webp",
   mapFull: "/images/nws-custom-homes-and-remodeling-full-map.webp",
+  /**
+   * Google Maps embed centered on Richmond / Fort Bend service area.
+   * Keyless public embed (Share → Embed a map). Override via NEXT_PUBLIC_MAPS_EMBED_URL.
+   */
+  mapsEmbedUrl:
+    "https://maps.google.com/maps?q=Richmond,+TX+Fort+Bend+County&z=10&output=embed",
+  /** Areas hero full-bleed photo (not the static map graphic) */
+  areasHeroBg: "/images/hero-home-remodeled-richmond-tx.webp",
 } as const;
 
 export const serviceOptions = [

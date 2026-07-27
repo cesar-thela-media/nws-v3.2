@@ -13,8 +13,12 @@ export type Hero12Props = {
   badge?: string;
   headline?: string;
   description?: string;
+  /** Full-bleed section background (defaults to card image) */
+  backgroundImageSrc?: string;
   imageSrc?: string;
   imageAlt?: string;
+  /** When set, right panel is a live Google Maps embed instead of a photo */
+  mapEmbedSrc?: string;
   primaryCtaLabel?: string;
   primaryCtaHref?: string;
   secondaryCtaLabel?: string;
@@ -30,8 +34,10 @@ export default function HeroSection({
   badge = "Custom homes & remodeling since 2007",
   headline = "Custom homes and full-service remodeling you can trust",
   description = "Our wide range of services means we can build you a custom home from square one or remodel an existing one. Find the right lot, plan your dream home, or convert an existing structure with one accountable team.",
+  backgroundImageSrc,
   imageSrc = "/images/custom-home-richmond-tx.jpg",
   imageAlt = "Custom home project by NWS in Richmond, TX",
+  mapEmbedSrc,
   primaryCtaLabel,
   primaryCtaHref,
   secondaryCtaLabel = "Contact our experts",
@@ -41,6 +47,10 @@ export default function HeroSection({
   const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
   const primaryHref = primaryCtaHref || `tel:${site.phone.officeTel}`;
   const primaryLabel = primaryCtaLabel || `Call ${site.phone.office}`;
+  const bgSrc =
+    backgroundImageSrc ||
+    imageSrc ||
+    "/images/whole-home-remodeling-richmond-tx.jpg";
 
   return (
     <section
@@ -51,7 +61,7 @@ export default function HeroSection({
       <div
         className="absolute inset-0 bg-cover bg-center opacity-45"
         style={{
-          backgroundImage: `url(${imageSrc || "/images/whole-home-remodeling-richmond-tx.jpg"})`,
+          backgroundImage: `url(${bgSrc})`,
         }}
         aria-hidden
       />
@@ -131,16 +141,29 @@ export default function HeroSection({
             </div>
           </div>
 
-          <div className="relative min-h-[16rem] sm:min-h-[22rem] lg:min-h-[28rem] rounded-2xl overflow-hidden border border-white/15 shadow-2xl">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={imageSrc}
-              alt={imageAlt}
-              width={845}
-              height={641}
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+          <div className="relative min-h-[16rem] sm:min-h-[22rem] lg:min-h-[28rem] rounded-2xl overflow-hidden border border-white/15 shadow-2xl bg-black/40">
+            {mapEmbedSrc ? (
+              <iframe
+                title={imageAlt || "Service area map"}
+                src={mapEmbedSrc}
+                className="absolute inset-0 h-full w-full border-0"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              />
+            ) : (
+              <>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={imageSrc}
+                  alt={imageAlt}
+                  width={845}
+                  height={641}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+              </>
+            )}
           </div>
         </div>
       </div>

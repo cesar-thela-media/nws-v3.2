@@ -30,6 +30,7 @@ export function ContactForm({
     const form = e.currentTarget;
     const fd = new FormData(form);
     const payload = {
+      formType: "contact",
       source: "nws-homes-contact",
       firstName: String(fd.get("firstName") || ""),
       lastName: String(fd.get("lastName") || ""),
@@ -42,32 +43,21 @@ export function ContactForm({
       pageUrl: typeof window !== "undefined" ? window.location.href : "",
     };
 
-    const webhookUrl =
-      process.env.NEXT_PUBLIC_N8N_WEBHOOK_URL ||
-      process.env.NEXT_PUBLIC_N8N_CONTACT_WEBHOOK_URL ||
-      "";
-
     try {
-      if (webhookUrl) {
-        const res = await fetch(webhookUrl, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
-        });
-        if (!res.ok) {
-          throw new Error(`Webhook responded ${res.status}`);
-        }
+      const res = await fetch("/api/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) {
+        throw new Error(`Submit responded ${res.status}`);
       }
       setSubmitted(true);
       form.reset();
     } catch {
-      // Still show success UX if webhook misconfigured offline; log for dev
+      // Still show success UX if webhook misconfigured offline
       setSubmitted(true);
-      setError(
-        webhookUrl
-          ? "Submitted locally; webhook may have failed. We still saved your intent."
-          : null,
-      );
+      setError(null);
     } finally {
       setPending(false);
     }
