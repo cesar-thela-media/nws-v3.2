@@ -80,13 +80,14 @@ export default async function ServicePage({ params }: Props) {
       />
 
       <section
-        className="py-12 md:py-16 bg-background"
+        className="py-12 md:py-16 bg-primary text-white"
         data-service-visual-body
+        data-service-orange-section
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
             <div className="lg:col-span-5">
-              <div className="relative rounded-2xl overflow-hidden border border-border min-h-[16rem] lg:min-h-[22rem]">
+              <div className="relative rounded-2xl overflow-hidden border border-white/25 min-h-[16rem] lg:min-h-[22rem] shadow-lg">
                 <Image
                   src={page.image || "/images/kitchen-gallery-1.jpeg"}
                   alt={page.imageAlt || page.breadcrumb}
@@ -96,27 +97,27 @@ export default async function ServicePage({ params }: Props) {
               </div>
             </div>
             <div className="lg:col-span-7 flex flex-col gap-4">
-              <p className="text-sm font-semibold text-primary !m-0">
+              <p className="text-sm font-semibold text-white/90 !m-0">
                 {page.breadcrumb}
               </p>
-              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground !m-0">
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white !m-0">
                 {page.h1}
               </h2>
               {introShort.map((p) => (
-                <p key={p.slice(0, 40)} className="text-muted-foreground !m-0">
+                <p key={p.slice(0, 40)} className="text-white/85 !m-0">
                   {p}
                 </p>
               ))}
               <div className="flex flex-wrap gap-3 pt-2">
                 <Button
-                  className="rounded-[4px] h-11 !text-white"
+                  className="rounded-[4px] h-11 !bg-white !text-primary hover:!bg-white/90"
                   render={<a href={`tel:${site.phone.officeTel}`} />}
                 >
                   Call {site.phone.office}
                 </Button>
                 <Button
                   variant="outline"
-                  className="rounded-[4px] h-11"
+                  className="rounded-[4px] h-11 !border-white/70 !bg-transparent !text-white hover:!bg-white/15 hover:!text-white shadow-none"
                   render={<Link href="/contact/" />}
                 >
                   Request a consult
@@ -129,21 +130,21 @@ export default async function ServicePage({ params }: Props) {
             {sectionHighlights.map((section) => (
               <article
                 key={section.heading}
-                className="rounded-2xl border border-border bg-card p-5 sm:p-6"
+                className="rounded-2xl border border-white/20 bg-white/10 backdrop-blur-sm p-5 sm:p-6"
               >
-                <h3 className="text-lg font-bold text-foreground !m-0 mb-2">
+                <h3 className="text-lg font-bold text-white !m-0 mb-2">
                   {section.heading}
                 </h3>
                 {section.paragraphs?.map((p) => (
                   <p
                     key={p.slice(0, 40)}
-                    className="text-sm text-muted-foreground !m-0 line-clamp-4"
+                    className="text-sm text-white/85 !m-0 line-clamp-4"
                   >
                     {p}
                   </p>
                 ))}
                 {section.bullets && (
-                  <ul className="mt-3 space-y-1.5 list-disc pl-5 text-sm text-muted-foreground">
+                  <ul className="mt-3 space-y-1.5 list-disc pl-5 text-sm text-white/80">
                     {section.bullets.map((b) => (
                       <li key={b}>{b}</li>
                     ))}
