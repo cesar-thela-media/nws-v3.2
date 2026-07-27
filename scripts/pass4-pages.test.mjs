@@ -99,7 +99,7 @@ test("Service detail uses carousel hero + visual body + CTA", () => {
   assert.doesNotMatch(page, /data-service-overview/);
 });
 
-test("Gallery family: hero-08 + gallery-03/01 + home CTA", () => {
+test("Gallery family: hero-08 + single gallery-03 photos + home CTA", () => {
   const gall = read("src", "components", "GalleryPage.tsx");
   const hero = read(
     "src",
@@ -111,8 +111,8 @@ test("Gallery family: hero-08 + gallery-03/01 + home CTA", () => {
   );
   assert.match(gall, /Hero08|hero-08/);
   assert.match(gall, /Gallery03|gallery-03/);
-  assert.match(gall, /Gallery01|gallery-01/);
-  assert.match(gall, /cta-08|CTA/);
+  assert.doesNotMatch(gall, /import Gallery01|from .*gallery-01/);
+  assert.match(gall, /showAll|cta-08|CTA/);
   assert.doesNotMatch(gall, /Hero22|hero-22/);
   assert.match(hero, /data-hero-08/);
   assert.match(hero, /stopOnMouseEnter|AutoScroll/);

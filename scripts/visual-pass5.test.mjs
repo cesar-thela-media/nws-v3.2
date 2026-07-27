@@ -84,7 +84,7 @@ test("Services hub and detail use carousel-08 + cta-08; hub uses Faq", () => {
   assert.match(faq, /data-faq-07/);
 });
 
-test("Gallery template: hero-08, no hero-22, gallery-03 then 01, cta-08", () => {
+test("Gallery template: hero-08, no hero-22, single gallery-03 photos + cta-08", () => {
   const gall = read("src", "components", "GalleryPage.tsx");
   const h08 = read(
     "src",
@@ -97,10 +97,8 @@ test("Gallery template: hero-08, no hero-22, gallery-03 then 01, cta-08", () => 
   assert.match(gall, /hero-08|Hero08/);
   assert.doesNotMatch(gall, /hero-22|Hero22/);
   assert.match(gall, /gallery-03|Gallery03/);
-  assert.match(gall, /gallery-01|Gallery01/);
-  const i3 = gall.indexOf("Gallery03");
-  const i1 = gall.indexOf("Gallery01");
-  assert.ok(i3 > -1 && i1 > i3);
+  assert.doesNotMatch(gall, /import Gallery01|from .*gallery-01/);
+  assert.match(gall, /showAll/);
   assert.match(gall, /cta-08|CTA/);
   assert.match(h08, /data-hero-08/);
   assert.match(h08, /AutoScroll|stopOnMouseEnter/);

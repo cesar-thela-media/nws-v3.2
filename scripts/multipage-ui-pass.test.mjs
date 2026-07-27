@@ -82,23 +82,23 @@ test("Services hub+detail: carousel-08 hub, gallery-03 detail hero, faq-07 + cta
   assert.match(carousel, /items-center|text-center/);
 });
 
-test("Gallery: hero-08, gallery-03 then 01, cta-08, not hero-22", () => {
+test("Gallery: hero-08 + single gallery-03 project photos + cta-08, not hero-22", () => {
   const gall = read("src", "components", "GalleryPage.tsx");
+  const g03 = read("src", "components", "shadcn-space", "blocks", "gallery-03", "gallery.tsx");
   const h08 = read("src", "components", "shadcn-space", "blocks", "hero-08", "hero.tsx");
   const h08i = read("src", "components", "shadcn-space", "blocks", "hero-08", "index.tsx");
   assert.match(gall, /Hero08|hero-08/);
   assert.doesNotMatch(gall, /Hero22|hero-22/);
   assert.match(gall, /Gallery03|gallery-03/);
-  assert.match(gall, /Gallery01|gallery-01/);
-  const i3 = gall.indexOf("Gallery03");
-  const i1 = gall.indexOf("Gallery01");
-  assert.ok(i3 > -1 && i1 > i3, "gallery-03 before gallery-01");
+  // Combined into one project-photos section (no separate gallery-01)
+  assert.doesNotMatch(gall, /from .*gallery-01|import Gallery01/);
+  assert.match(gall, /showAll/);
   assert.match(gall, /cta-08|CTA/);
-  assert.match(gall, /splitGalleryPhotos|remaining/);
+  assert.match(g03, /data-gallery-project-photos|showAll/);
+  assert.match(g03, /aspect-\[16\/10\]|lg:grid-cols-3/);
   assert.match(h08, /data-hero-08/);
   assert.match(h08, /AutoScroll|stopOnMouseEnter/);
   assert.doesNotMatch(h08i, /navbar\.tsx|Navbar/);
-  // All four gallery routes share GalleryPage
   for (const slug of [
     "custom-homes-gallery",
     "remodeling-gallery",

@@ -164,7 +164,7 @@ test("non-home page families use distinct layout markers", () => {
     gallery.includes("Hero08") ||
       gallery.includes("hero-08") ||
       gallery.includes("Gallery03") ||
-      gallery.includes("Gallery01"),
+      gallery.includes("showAll"),
   );
   assert.ok(
     location.includes("hero-12") ||
