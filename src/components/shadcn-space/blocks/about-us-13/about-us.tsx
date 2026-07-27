@@ -127,35 +127,38 @@ export default function AboutUs() {
           data-about-story-card
         >
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch">
+            {/* Editorial collage: large hero + two equal tiles (no floating overlays) */}
             <motion.div
-              className="relative lg:col-span-5 min-h-[18rem] sm:min-h-[22rem] lg:min-h-[28rem]"
+              className="lg:col-span-5 p-4 sm:p-5 lg:p-6 flex flex-col gap-3 sm:gap-3.5 bg-muted/20"
               data-about-story-collage
               initial="hidden"
               whileInView="show"
               viewport={{ once: true, amount: 0.15 }}
               variants={fadeLeft}
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={mosaicImages[0].src}
-                alt={mosaicImages[0].alt}
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-              <div className="absolute bottom-4 left-4 right-4 flex gap-3">
-                <div className="flex-1 overflow-hidden rounded-xl border-2 border-white shadow-lg aspect-[4/3]">
+              <div className="relative overflow-hidden rounded-xl sm:rounded-2xl aspect-[4/3] lg:aspect-auto lg:flex-1 lg:min-h-[16rem] ring-1 ring-border/60 shadow-sm">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={mosaicImages[0].src}
+                  alt={mosaicImages[0].alt}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              </div>
+              <div className="grid grid-cols-2 gap-3 sm:gap-3.5">
+                <div className="relative overflow-hidden rounded-xl aspect-[5/4] ring-1 ring-border/60 shadow-sm">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={mosaicImages[1].src}
                     alt={mosaicImages[1].alt}
-                    className="w-full h-full object-cover"
+                    className="absolute inset-0 w-full h-full object-cover"
                   />
                 </div>
-                <div className="flex-1 overflow-hidden rounded-xl border-2 border-white shadow-lg aspect-[4/3]">
+                <div className="relative overflow-hidden rounded-xl aspect-[5/4] ring-1 ring-border/60 shadow-sm">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={mosaicImages[2].src}
                     alt={mosaicImages[2].alt}
-                    className="w-full h-full object-cover"
+                    className="absolute inset-0 w-full h-full object-cover"
                   />
                 </div>
               </div>
