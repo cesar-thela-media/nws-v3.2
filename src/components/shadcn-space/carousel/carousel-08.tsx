@@ -103,15 +103,20 @@ export const projectGalleryCards: CardItem[] = [
 type AppleCardCarouselProps = {
   label?: string;
   heading?: string;
+  description?: string;
   cards?: CardItem[];
   className?: string;
+  /** Smaller cards for services headers (default: compact) */
+  compact?: boolean;
 };
 
 const AppleCardCarousel = ({
   label = "Areas we serve",
   heading = "Richmond & nearby Fort Bend",
+  description,
   cards = areasServeCards,
   className,
+  compact = true,
 }: AppleCardCarouselProps) => {
   const [api, setApi] = React.useState<CarouselApi>();
   const [canScrollPrev, setCanScrollPrev] = React.useState(false);
@@ -132,15 +137,27 @@ const AppleCardCarousel = ({
     };
   }, [api]);
 
+  const cardSize = compact
+    ? "w-[13rem] h-[18rem] sm:w-[14.5rem] sm:h-[20rem] lg:w-[15.5rem] lg:h-[21.5rem]"
+    : "w-[16.5rem] h-[24rem] sm:w-[18.5rem] sm:h-[27rem] lg:w-[20.5rem] lg:h-[30rem]";
+
   return (
-    <section className={className ?? "w-full py-10 sm:py-14 md:py-16 bg-background"}>
+    <section
+      className={className ?? "w-full py-10 sm:py-14 md:py-16 bg-background"}
+      data-carousel-08
+    >
       <div className="px-4 sm:px-6 lg:px-8 xl:px-16 max-w-7xl mx-auto mb-8 sm:mb-10 flex flex-col gap-2">
         <p className="text-sm sm:text-base font-semibold text-primary !m-0">
           {label}
         </p>
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground !m-0">
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground !m-0">
           {heading}
-        </h2>
+        </h1>
+        {description ? (
+          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl !m-0 mt-1">
+            {description}
+          </p>
+        ) : null}
       </div>
 
       <Carousel
@@ -153,7 +170,7 @@ const AppleCardCarousel = ({
             <CarouselItem key={card.id} className="pl-4 sm:pl-6 basis-auto">
               <a
                 href={card.href}
-                className="group relative block w-[16.5rem] h-[24rem] sm:w-[18.5rem] sm:h-[27rem] lg:w-[20.5rem] lg:h-[30rem] rounded-2xl overflow-hidden border border-border shadow-sm transition-transform duration-300 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                className={`group relative block ${cardSize} rounded-2xl overflow-hidden border border-border shadow-sm transition-transform duration-300 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary`}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img

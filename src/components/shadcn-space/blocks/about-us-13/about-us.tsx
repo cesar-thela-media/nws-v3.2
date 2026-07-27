@@ -99,10 +99,10 @@ const staggerStats = {
 export default function AboutUs() {
   return (
     <section
-      className="relative py-12 md:py-20 overflow-hidden"
+      className="relative py-12 md:py-20 lg:py-24 overflow-hidden"
       data-about-us-13
     >
-      {/* Generated themed section background */}
+      {/* Background photo + primary wash + upper white fade into About hero */}
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
@@ -111,43 +111,38 @@ export default function AboutUs() {
         aria-hidden
       />
       <div
-        className="absolute inset-0 bg-[color-mix(in_oklab,var(--primary)_18%,transparent)]"
+        className="absolute inset-0 bg-[color-mix(in_oklab,var(--primary)_22%,transparent)]"
         aria-hidden
       />
       <div
-        className="absolute inset-0 bg-background/70"
+        className="absolute inset-0 bg-gradient-to-b from-background via-background/70 to-transparent"
+        data-about-story-top-fade
         aria-hidden
-        style={{
-          backgroundImage:
-            "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E\")",
-          opacity: 0.12,
-        }}
       />
 
-      <div className="relative z-10 max-w-7xl xl:px-16 lg:px-8 px-4 mx-auto w-full">
-        {/* One enclosed white card wrapping mosaic + story + stats */}
+      <div className="relative z-10 w-full max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-10 xl:px-14">
+        {/* Fuller-width story card with collage layout */}
         <div
           className="rounded-2xl border border-border bg-white shadow-[var(--shadow-card,0_12px_40px_rgba(0,0,0,0.08))] overflow-hidden"
           data-about-story-card
         >
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-0 items-stretch p-6 sm:p-8 lg:p-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch">
             <motion.div
-              className="flex gap-3 sm:gap-4 h-[320px] sm:h-[400px] lg:h-[480px] lg:pr-8"
+              className="relative lg:col-span-5 min-h-[18rem] sm:min-h-[22rem] lg:min-h-[28rem]"
+              data-about-story-collage
               initial="hidden"
               whileInView="show"
               viewport={{ once: true, amount: 0.15 }}
               variants={fadeLeft}
             >
-              <div className="flex flex-col gap-3 sm:gap-4 flex-1 min-w-0">
-                <div className="flex-1 overflow-hidden rounded-xl">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={mosaicImages[0].src}
-                    alt={mosaicImages[0].alt}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="flex-1 overflow-hidden rounded-xl">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={mosaicImages[0].src}
+                alt={mosaicImages[0].alt}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              <div className="absolute bottom-4 left-4 right-4 flex gap-3">
+                <div className="flex-1 overflow-hidden rounded-xl border-2 border-white shadow-lg aspect-[4/3]">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={mosaicImages[1].src}
@@ -155,18 +150,18 @@ export default function AboutUs() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-              </div>
-              <div className="flex-1 overflow-hidden min-w-0 rounded-xl">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={mosaicImages[2].src}
-                  alt={mosaicImages[2].alt}
-                  className="w-full h-full object-cover"
-                />
+                <div className="flex-1 overflow-hidden rounded-xl border-2 border-white shadow-lg aspect-[4/3]">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={mosaicImages[2].src}
+                    alt={mosaicImages[2].alt}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
               </div>
             </motion.div>
 
-            <div className="flex flex-col gap-8 lg:gap-10 lg:pl-8 lg:border-l border-border mt-8 lg:mt-0">
+            <div className="lg:col-span-7 flex flex-col gap-8 lg:gap-10 p-6 sm:p-8 lg:p-10 xl:p-12">
               <motion.div
                 className="flex flex-col gap-5"
                 initial="hidden"

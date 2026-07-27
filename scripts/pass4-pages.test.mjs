@@ -1,7 +1,5 @@
 /**
- * Pass 4 gates: About video/play + no stats strip, story card/bg, orange bento,
- * services hero-12 + alternating strips, gallery hero-22 + masonry contrast,
- * location/areas themed headers.
+ * Page family gates after multipage UI pass.
  */
 import test from "node:test";
 import assert from "node:assert/strict";
@@ -31,34 +29,23 @@ test("About hero: NWS YouTube play path with API error → watch fallback; no st
   assert.doesNotMatch(hero, /data-about-hero-stats/);
   assert.doesNotMatch(hero, /Serving Fort Bend/);
   assert.doesNotMatch(hero, /label:\s*"Projects"/);
+  assert.doesNotMatch(hero, /or open on YouTube/i);
 });
 
 test("Dark-surface outline CTAs force transparent bg + white label", () => {
-  // LocationPage now uses light hero-04 (no dark outline strip there).
   const files = [
     "src/components/shadcn-space/blocks/hero-12/hero.tsx",
     "src/components/shadcn-space/blocks/hero-22/hero.tsx",
-    "src/components/GalleryPage.tsx",
-    "src/app/services/[slug]/page.tsx",
   ];
   for (const f of files) {
     const src = read(...f.split("/"));
-    assert.match(
-      src,
-      /!bg-transparent/,
-      `${f} must force transparent outline bg on dark`,
-    );
-    assert.match(
-      src,
-      /!text-white/,
-      `${f} must force white outline label on dark`,
-    );
-    assert.match(
-      src,
-      /data-dark-outline-cta/,
-      `${f} must mark dark outline CTAs for probes`,
-    );
+    assert.match(src, /!bg-transparent/, `${f} transparent outline`);
+    assert.match(src, /!text-white/, `${f} white label`);
+    assert.match(src, /data-dark-outline-cta/, `${f} marker`);
   }
+  const loc = read("src", "components", "LocationPage.tsx");
+  assert.match(loc, /!bg-transparent/);
+  assert.match(loc, /!text-white/);
 });
 
 test("Our Story is one white card over generated themed background", () => {
@@ -71,7 +58,7 @@ test("Our Story is one white card over generated themed background", () => {
     "about-us.tsx",
   );
   assert.match(about, /data-about-story-card/);
-  assert.match(about, /about-story-bg/);
+  assert.match(about, /about-story-bg|data-about-story-top-fade/);
   assert.match(about, /bg-white/);
   assert.match(about, /Discover the true meaning of custom homes/i);
   assert.match(about, /full-service construction[\s\S]{0,40}company/i);
@@ -97,64 +84,49 @@ test("Bento three cards: orange face, white text, equal aspect image, fade seam"
   assert.doesNotMatch(cards, /bg-card/);
 });
 
-test("Services hub uses hero-12 + scratch alternating strips over serviceCards", () => {
+test("Services hub uses carousel-08 + visual grid + FAQ/CTA", () => {
   const page = read("src", "app", "services", "page.tsx");
-  const hero = read(
-    "src",
-    "components",
-    "shadcn-space",
-    "blocks",
-    "hero-12",
-    "hero.tsx",
-  );
-  const strips = read("src", "components", "ServiceAlternatingStrips.tsx");
-  assert.match(page, /hero-12/);
-  assert.match(page, /ServiceAlternatingStrips/);
-  assert.match(hero, /data-hero-12/);
-  assert.doesNotMatch(hero, /#1 Agency in New York|SaaS solutions/i);
-  assert.match(hero, /Custom homes|remodeling/i);
-  assert.match(strips, /data-service-alternating-strips/);
-  assert.match(strips, /services\.map|services\.map/);
+  assert.match(page, /ServicesCarouselHero|carousel-08/);
+  assert.match(page, /data-services-visual-grid|Services10/);
+  assert.match(page, /faq-07|Faq/);
+  assert.match(page, /cta-08|CTA/);
 });
 
-test("Service detail keeps split hero + longform markers", () => {
+test("Service detail uses carousel hero + visual body + CTA", () => {
   const page = read("src", "app", "services", "[slug]", "page.tsx");
-  assert.match(page, /data-service-split-hero/);
-  assert.match(page, /data-service-longform|prose-nws/);
-  assert.match(page, /lg:grid-cols-2/);
+  assert.match(page, /ServicesCarouselHero|carousel-08/);
+  assert.match(page, /data-service-visual-body|cta-08|CTA/);
+  assert.doesNotMatch(page, /data-service-overview/);
 });
 
-test("Gallery family: hero-22 + scratch masonry + contrast-safe secondary band", () => {
+test("Gallery family: hero-08 + gallery-03/01 + home CTA", () => {
   const gall = read("src", "components", "GalleryPage.tsx");
   const hero = read(
     "src",
     "components",
     "shadcn-space",
     "blocks",
-    "hero-22",
+    "hero-08",
     "hero.tsx",
   );
-  const masonry = read("src", "components", "GalleryMasonry.tsx");
-  assert.match(gall, /Hero22|hero-22/);
-  assert.match(gall, /GalleryMasonry/);
-  assert.match(gall, /data-gallery-secondary-band/);
-  assert.match(gall, /text-white/);
-  assert.doesNotMatch(gall, /gallery-04/);
-  assert.match(hero, /data-hero-22/);
-  assert.doesNotMatch(hero, /Explore Shadcnspace|Loved by creators/i);
-  assert.match(masonry, /data-gallery-masonry/);
-  assert.match(masonry, /columns-1/);
+  assert.match(gall, /Hero08|hero-08/);
+  assert.match(gall, /Gallery03|gallery-03/);
+  assert.match(gall, /Gallery01|gallery-01/);
+  assert.match(gall, /cta-08|CTA/);
+  assert.doesNotMatch(gall, /Hero22|hero-22/);
+  assert.match(hero, /data-hero-08/);
+  assert.match(hero, /stopOnMouseEnter|AutoScroll/);
 });
 
-test("Locations + Areas use themed hero-04 and keep form tails", () => {
+test("Locations + Areas use themed hero-12 and keep form tails", () => {
   const loc = read("src", "components", "LocationPage.tsx");
   const areas = read("src", "app", "areas-we-serve", "page.tsx");
-  assert.match(loc, /hero-04|Hero04/);
+  assert.match(loc, /hero-12|Hero12/);
   assert.match(loc, /data-location-longform|lg:sticky/);
-  assert.match(areas, /hero-04|Hero04/);
-  assert.match(areas, /data-areas-city-chips|data-areas-communities|AreasGrid/);
-  assert.match(areas, /LogoCloud03|logo-cloud-03/);
-  assert.match(areas, /AreasGrid/);
+  assert.match(areas, /hero-12|Hero12/);
+  assert.match(areas, /data-areas-communities|AreasGrid/);
+  assert.doesNotMatch(areas, /LogoCloud03|logo-cloud-03/);
+  assert.doesNotMatch(areas, /data-areas-city-chips|Jump to a community/);
 });
 
 test("FAQ and Contact page bodies still present (no redesign required)", () => {

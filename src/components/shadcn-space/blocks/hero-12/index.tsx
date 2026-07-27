@@ -1,8 +1,10 @@
-import HeroSection from "@/components/shadcn-space/blocks/hero-12/hero";
+import HeroSection, {
+  type Hero12Props,
+} from "@/components/shadcn-space/blocks/hero-12/hero";
 
-/** Services hub: hero-12 body only (site navbar in root layout). */
-const ServicesHero12 = () => {
-  return <HeroSection />;
-};
+/** Production hero-12: content only (no demo navbar). */
+export default function Hero12Nws(props: Hero12Props) {
+  return <HeroSection {...props} />;
+}
 
-export default ServicesHero12;
+export type { Hero12Props };

@@ -151,17 +151,15 @@ test("contact forms are n8n webhook-ready via env", () => {
   }
 });
 
-test("deploy prep files exist (Docker, Railway, Nixpacks, Bun packageManager)", () => {
+test("deploy prep files exist (Docker, Railway, Nixpacks)", () => {
   assert.ok(exists("Dockerfile"));
   assert.ok(exists("railway.toml"));
   assert.ok(exists("nixpacks.toml"));
   const pkg = JSON.parse(read("package.json"));
-  assert.ok(
-    typeof pkg.packageManager === "string" && pkg.packageManager.includes("bun"),
-    "packageManager bun",
-  );
+  assert.ok(pkg.engines?.node, "engines.node set");
   const next = read("next.config.ts");
-  assert.match(next, /output:\s*["']standalone["']/);
+  // standalone for Docker/Railway; skipped on Vercel via !process.env.VERCEL
+  assert.match(next, /standalone/);
 });
 
 test("home FAQ still-have-questions image uses object-cover", () => {

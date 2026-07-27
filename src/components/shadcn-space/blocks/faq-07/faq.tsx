@@ -12,9 +12,29 @@ import { cn } from "@/lib/utils";
 import { ArrowRight, MinusIcon, PlusIcon } from "lucide-react";
 import { nwsFaqs } from "@/data/nws-blocks";
 
-export default function Faq() {
+export type FaqItem = {
+  question: string;
+  answer: string;
+};
+
+export type FaqProps = {
+  items?: FaqItem[];
+  heading?: string;
+  description?: string;
+};
+
+export default function Faq({
+  items,
+  heading = "Common questions",
+  description = "Straight answers about services, areas, timelines, and how we work.",
+}: FaqProps) {
+  const faqs =
+    items && items.length > 0
+      ? items
+      : nwsFaqs.map((f) => ({ question: f.question, answer: f.answer }));
+
   return (
-    <section className="bg-muted">
+    <section className="bg-muted" data-faq-07>
       <div className="max-w-7xl mx-auto px-4 lg:px-8 xl:px-20 py-10 lg:py-24 flex flex-col gap-8">
         <div className="flex flex-col gap-4 items-center text-center lg:px-16">
           <Badge
@@ -25,16 +45,16 @@ export default function Faq() {
             FAQs
           </Badge>
           <h2 className="text-3xl lg:text-5xl font-bold tracking-tight text-foreground">
-            Common questions
+            {heading}
           </h2>
           <p className="text-base lg:text-lg text-muted-foreground max-w-lg">
-            Straight answers about services, areas, timelines, and how we work.
+            {description}
           </p>
         </div>
 
         <div className="bg-background border border-border rounded-3xl p-5 lg:p-8">
           <Accordion defaultValue={["item-0"]} className="w-full flex flex-col">
-            {nwsFaqs.map((faq, index) => (
+            {faqs.map((faq, index) => (
               <AccordionItem
                 key={`item-${index}`}
                 value={`item-${index}`}
@@ -82,9 +102,10 @@ export default function Faq() {
           <div className="relative h-56 sm:h-64 lg:h-auto lg:min-h-full lg:w-96 overflow-hidden rounded-b-3xl lg:rounded-b-none lg:rounded-r-3xl shrink-0">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/images/custom-homes-1.jpeg"
-              alt="Custom home project by NWS in Fort Bend"
+              src="/images/cta-home-remodeling-foldable-ladder-and-paint-tools-richmond-tx.webp"
+              alt="NWS remodeling team ready to help in Richmond, TX"
               className="absolute inset-0 w-full h-full object-cover object-center"
+              data-faq-help-image
             />
           </div>
         </div>

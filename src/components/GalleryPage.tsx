@@ -1,75 +1,61 @@
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import Hero22 from "@/components/shadcn-space/blocks/hero-22/hero";
-import { GalleryMasonry } from "@/components/GalleryMasonry";
+import Hero08 from "@/components/shadcn-space/blocks/hero-08";
+import Gallery03 from "@/components/shadcn-space/blocks/gallery-03/gallery";
+import Gallery01 from "@/components/shadcn-space/blocks/gallery-01/gallery";
+import CTA from "@/components/shadcn-space/blocks/cta-08/cta";
 import type { Gallery } from "@/data/galleries";
+import { splitGalleryPhotos } from "@/lib/galleryPhotos.mjs";
+
+export { splitGalleryPhotos };
 
 /**
- * Gallery family: Hero 22 carousel + scratch masonry + contrast-safe secondary band.
+ * Gallery family: hero-08 + gallery-03 then gallery-01 + homepage cta-08.
  */
 export function GalleryPage({ gallery }: { gallery: Gallery }) {
+  const shortDesc =
+    gallery.description.length > 120
+      ? gallery.description.slice(0, 117).trim() + "..."
+      : gallery.description;
+
+  const { featured, remaining } = splitGalleryPhotos(gallery.images);
+
+  const g03Items = featured.map((image, i) => ({
+    title: `${gallery.heading} ${i + 1}`,
+    description: shortDesc,
+    image,
+    alt: `${gallery.heading} project photo ${i + 1}`,
+  }));
+
+  const gallery01 = remaining.map((image, i) => ({
+    title: `${gallery.heading} ${i + 5}`,
+    image,
+    alt: `${gallery.heading} project photo ${i + 5}`,
+  }));
+
   return (
     <>
-      <Hero22
+      <Hero08
         eyebrow="Project gallery"
         heading={gallery.heading}
-        description={gallery.description}
-        ctaText="Start a project"
-        ctaHref="/contact/"
-        images={gallery.images.slice(0, 7)}
+        description={shortDesc}
+        primaryCtaLabel="Start a project"
+        primaryCtaHref="/contact/"
+        secondaryCtaLabel="Call us"
+        images={gallery.images}
       />
 
-      <GalleryMasonry images={gallery.images} heading={gallery.heading} />
+      <Gallery03
+        heading="Project photos"
+        description={shortDesc}
+        items={g03Items}
+        ctaLabel="Start a project"
+        ctaHref="/contact/"
+      />
 
-      {/* Secondary showcase band - forced light copy on dark for contrast */}
-      <section
-        className="relative overflow-hidden bg-[#0a0e10] text-white py-16 md:py-20"
-        data-gallery-secondary-band
-      >
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-35"
-          style={{
-            backgroundImage: `url(${gallery.images[1] || gallery.images[0] || "/images/custom-homes-1.jpeg"})`,
-          }}
-          aria-hidden
-        />
-        <div
-          className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-[#0a0e10]"
-          aria-hidden
-        />
-        <div
-          className="absolute inset-0 bg-[color-mix(in_oklab,var(--primary)_14%,transparent)]"
-          aria-hidden
-        />
-        <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-sm font-semibold text-primary !m-0 mb-3">
-            Other project gallery
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white !m-0">
-            Ready to see your home transformed?
-          </h2>
-          <p className="mt-4 text-base sm:text-lg text-white/85 !m-0 max-w-xl mx-auto">
-            Browse more kitchens, baths, and full remodels, or talk with our
-            Richmond team about your next project.
-          </p>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <Button
-              className="rounded-[4px] h-11 !text-white"
-              render={<Link href="/remodeling-gallery/" />}
-            >
-              View remodeling gallery
-            </Button>
-            <Button
-              variant="outline"
-              data-dark-outline-cta
-              className="rounded-[4px] h-11 !border-white/70 !bg-transparent !text-white hover:!bg-white/15 hover:!text-white shadow-none"
-              render={<Link href="/contact/" data-dark-outline-cta="" />}
-            >
-              Book a consult
-            </Button>
-          </div>
-        </div>
-      </section>
+      {gallery01.length > 0 ? (
+        <Gallery01 items={gallery01} heading="More project photos" />
+      ) : null}
+
+      <CTA />
     </>
   );
 }

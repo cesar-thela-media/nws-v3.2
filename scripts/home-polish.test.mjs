@@ -161,28 +161,31 @@ test("non-home page families use distinct layout markers", () => {
       about.includes("bento-grid-02"),
   );
   assert.ok(
-    gallery.includes("Hero22") ||
-      gallery.includes("GalleryMasonry") ||
-      gallery.includes("columns-1") ||
-      gallery.includes("break-inside-avoid"),
+    gallery.includes("Hero08") ||
+      gallery.includes("hero-08") ||
+      gallery.includes("Gallery03") ||
+      gallery.includes("Gallery01"),
   );
   assert.ok(
-    location.includes("hero-04") ||
-      location.includes("Hero04") ||
+    location.includes("hero-12") ||
+      location.includes("Hero12") ||
       location.includes("lg:sticky") ||
-      location.includes("Areas we serve"),
+      location.includes("data-location-longform"),
   );
   assert.ok(
-    (services.includes("hero-12") &&
-      services.includes("ServiceAlternatingStrips")) ||
-      (services.includes("space-y-6") && services.includes("md:col-span-5")),
+    services.includes("ServicesCarouselHero") ||
+      services.includes("carousel-08") ||
+      services.includes("Services10"),
   );
-  assert.ok(serviceDetail.includes("lg:grid-cols-2"));
   assert.ok(
-    areas.includes("hero-04") ||
-      areas.includes("Hero04") ||
-      areas.includes("mapFull") ||
-      areas.includes("Areas we serve") ||
+    serviceDetail.includes("data-service-visual-body") ||
+      serviceDetail.includes("ServicesCarouselHero") ||
+      serviceDetail.includes("lg:grid-cols-12"),
+  );
+  assert.ok(
+    areas.includes("hero-12") ||
+      areas.includes("Hero12") ||
+      areas.includes("AreasGrid") ||
       areas.includes("data-areas"),
   );
 

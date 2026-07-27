@@ -138,8 +138,15 @@ const ProjectCard = ({
 
 const Portfolio = () => {
   return (
-    <section className="w-full relative bg-muted/40">
-      <div className="w-full flex flex-col items-center gap-6 md:gap-8 px-4 py-12 md:py-20 lg:py-24 max-w-7xl mx-auto">
+    <section
+      className="w-full relative bg-gradient-to-b from-muted/30 via-primary/[0.07] to-muted/50"
+      data-how-we-work-gradient
+    >
+      <div
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_color-mix(in_oklab,var(--primary)_14%,transparent),_transparent_55%)]"
+        aria-hidden
+      />
+      <div className="relative w-full flex flex-col items-center gap-6 md:gap-8 px-4 py-12 md:py-20 lg:py-24 max-w-7xl mx-auto">
         <div className="flex flex-col items-center text-center gap-4 md:gap-5 w-full">
           <Badge
             variant="outline"
@@ -158,7 +165,7 @@ const Portfolio = () => {
         </div>
       </div>
 
-      <div className="w-full flex flex-col items-center px-4 md:px-8 lg:px-16 pb-20 md:pb-32 lg:pb-40 gap-8 md:gap-12 max-w-7xl mx-auto relative">
+      <div className="relative w-full flex flex-col items-center px-4 md:px-8 lg:px-16 pb-20 md:pb-32 lg:pb-40 gap-8 md:gap-12 max-w-7xl mx-auto">
         {projects.map((project, index) => (
           <ProjectCard key={project.id} project={project} index={index} />
         ))}

@@ -8,15 +8,39 @@ import { Phone } from "lucide-react";
 import { motion, useInView } from "motion/react";
 import { useRef } from "react";
 
-const HEADLINE = "Custom homes and full-service remodeling you can trust";
+export type Hero12Props = {
+  badgeLead?: string;
+  badge?: string;
+  headline?: string;
+  description?: string;
+  imageSrc?: string;
+  imageAlt?: string;
+  primaryCtaLabel?: string;
+  primaryCtaHref?: string;
+  secondaryCtaLabel?: string;
+  secondaryCtaHref?: string;
+};
 
 /**
- * Services hub hero - hero-12 layout restyled to Glyph / NWS (no SaaS demo copy).
+ * Hero-12 layout restyled to Glyph / NWS (no SaaS demo copy).
  * Site chrome stays in root layout (navbar-02); block navbar not used.
  */
-const HeroSection = () => {
+export default function HeroSection({
+  badgeLead = "Fort Bend",
+  badge = "Custom homes & remodeling since 2007",
+  headline = "Custom homes and full-service remodeling you can trust",
+  description = "Our wide range of services means we can build you a custom home from square one or remodel an existing one. Find the right lot, plan your dream home, or convert an existing structure with one accountable team.",
+  imageSrc = "/images/custom-home-richmond-tx.jpg",
+  imageAlt = "Custom home project by NWS in Richmond, TX",
+  primaryCtaLabel,
+  primaryCtaHref,
+  secondaryCtaLabel = "Contact our experts",
+  secondaryCtaHref = "/contact/",
+}: Hero12Props) {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
+  const primaryHref = primaryCtaHref || `tel:${site.phone.officeTel}`;
+  const primaryLabel = primaryCtaLabel || `Call ${site.phone.office}`;
 
   return (
     <section
@@ -27,8 +51,7 @@ const HeroSection = () => {
       <div
         className="absolute inset-0 bg-cover bg-center opacity-45"
         style={{
-          backgroundImage:
-            "url(/images/whole-home-remodeling-richmond-tx.jpg)",
+          backgroundImage: `url(${imageSrc || "/images/whole-home-remodeling-richmond-tx.jpg"})`,
         }}
         aria-hidden
       />
@@ -40,24 +63,16 @@ const HeroSection = () => {
         className="absolute inset-0 bg-[color-mix(in_oklab,var(--primary)_12%,transparent)]"
         aria-hidden
       />
-      <div
-        className="absolute inset-0 opacity-[0.08] mix-blend-overlay pointer-events-none"
-        style={{
-          backgroundImage:
-            "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E\")",
-        }}
-        aria-hidden
-      />
 
       <div className="relative z-20 max-w-7xl mx-auto xl:px-16 lg:px-8 px-4 py-16 sm:py-24 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-8 items-center">
           <div className="flex flex-col gap-6 pt-8 sm:pt-12">
             <div className="flex w-fit items-center gap-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-md px-2 py-1.5">
               <Badge className="h-6 bg-primary text-xs font-semibold text-white border-0 shadow-sm leading-none hover:bg-primary">
-                Fort Bend
+                {badgeLead}
               </Badge>
               <span className="text-xs font-medium text-white tracking-tight whitespace-nowrap pr-1">
-                Custom homes & remodeling since 2007
+                {badge}
               </span>
             </div>
 
@@ -73,7 +88,7 @@ const HeroSection = () => {
                 },
               }}
             >
-              {HEADLINE.split("").map((char, index) => (
+              {headline.split("").map((char, index) => (
                 <motion.span
                   key={`${char}-${index}`}
                   variants={{
@@ -87,27 +102,31 @@ const HeroSection = () => {
             </motion.h1>
 
             <p className="text-base sm:text-lg text-white/75 max-w-md !m-0">
-              Our wide range of services means we can build you a custom home
-              from square one or remodel an existing one. Find the right lot,
-              plan your dream home, or convert an existing structure with one
-              accountable team.
+              {description}
             </p>
 
             <div className="flex flex-wrap items-center gap-3">
               <Button
                 className="gap-2 !bg-primary !text-white hover:!bg-primary/90 px-6 py-3.5 h-12 rounded-[4px] w-fit"
-                render={<a href={`tel:${site.phone.officeTel}`} />}
+                render={
+                  primaryHref.startsWith("tel:") ||
+                  primaryHref.startsWith("http") ? (
+                    <a href={primaryHref} />
+                  ) : (
+                    <Link href={primaryHref} />
+                  )
+                }
               >
                 <Phone size={16} className="shrink-0" />
-                Call {site.phone.office}
+                {primaryLabel}
               </Button>
               <Button
                 variant="outline"
                 data-dark-outline-cta
                 className="px-6 py-3.5 h-12 rounded-[4px] w-fit !border-white/70 !bg-transparent !text-white hover:!bg-white/15 hover:!text-white shadow-none"
-                render={<Link href="/contact/" data-dark-outline-cta="" />}
+                render={<Link href={secondaryCtaHref} data-dark-outline-cta="" />}
               >
-                Contact our experts
+                {secondaryCtaLabel}
               </Button>
             </div>
           </div>
@@ -115,8 +134,8 @@ const HeroSection = () => {
           <div className="relative min-h-[16rem] sm:min-h-[22rem] lg:min-h-[28rem] rounded-2xl overflow-hidden border border-white/15 shadow-2xl">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/images/custom-home-richmond-tx.jpg"
-              alt="Custom home project by NWS in Richmond, TX"
+              src={imageSrc}
+              alt={imageAlt}
               width={845}
               height={641}
               className="absolute inset-0 w-full h-full object-cover"
@@ -127,6 +146,4 @@ const HeroSection = () => {
       </div>
     </section>
   );
-};
-
-export default HeroSection;
+}

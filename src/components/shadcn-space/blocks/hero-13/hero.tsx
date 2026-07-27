@@ -348,15 +348,6 @@ const HeroSection = () => {
               >
                 <Play className="lg:size-8 size-5 text-white" fill="white" />
               </button>
-              <a
-                href={NWS_ABOUT_YOUTUBE_WATCH}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white/90 text-xs sm:text-sm font-medium underline-offset-2 hover:underline drop-shadow"
-                data-about-video-watch
-              >
-                or open on YouTube
-              </a>
             </div>
           ) : (
             <button
