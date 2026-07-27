@@ -1,9 +1,12 @@
 import type { NextConfig } from "next";
 
+/**
+ * Vercel sets VERCEL=1 and uses its own Next runtime — do not force standalone there.
+ * Docker / Railway still need standalone (server.js in the image).
+ */
 const nextConfig: NextConfig = {
   trailingSlash: true,
-  /** Required for Docker multi-stage / Railway image (server.js standalone) */
-  output: "standalone",
+  ...(!process.env.VERCEL ? { output: "standalone" as const } : {}),
   images: {
     remotePatterns: [
       {
