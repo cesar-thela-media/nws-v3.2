@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { ArrowUpRight, ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Carousel,
@@ -15,6 +15,8 @@ export interface CardItem {
   id: string;
   category: string;
   title: string;
+  /** Short body under title (About-style orange panel) */
+  description?: string;
   src: string;
   href: string;
 }
@@ -35,7 +37,8 @@ const areaImages = [
 export const areasServeCards: CardItem[] = locations.map((loc, i) => ({
   id: loc.slug,
   category: "Service area",
-  title: loc.name,
+  title: loc.name.replace(/,?\s*TX$/i, ""),
+  description: "Local custom homes and remodeling in Fort Bend.",
   src: areaImages[i % areaImages.length],
   href: loc.href === "#" ? "/areas-we-serve/" : loc.href,
 }));
@@ -46,6 +49,7 @@ export const projectGalleryCards: CardItem[] = [
     id: "1",
     category: "Custom homes",
     title: "Built for how you live in Fort Bend.",
+    description: "New construction with lasting craftsmanship.",
     src: "/images/custom-homes-1.jpeg",
     href: "/custom-homes-gallery/",
   },
@@ -53,6 +57,7 @@ export const projectGalleryCards: CardItem[] = [
     id: "2",
     category: "Kitchen",
     title: "Better flow, storage, and finishes.",
+    description: "Kitchens planned around how you cook and gather.",
     src: "/images/kitchen-gallery-1.jpeg",
     href: "/kitchen-remodeling-gallery/",
   },
@@ -60,6 +65,7 @@ export const projectGalleryCards: CardItem[] = [
     id: "3",
     category: "Bathroom",
     title: "Calmer baths with moisture-smart details.",
+    description: "Showers, tubs, and full bath remodels.",
     src: "/images/bathroom-gallery-1.jpeg",
     href: "/bathroom-remodeling-gallery/",
   },
@@ -67,6 +73,7 @@ export const projectGalleryCards: CardItem[] = [
     id: "4",
     category: "Whole home",
     title: "One plan for kitchens, baths, and rooms.",
+    description: "Coordinated multi-room remodeling.",
     src: "/images/custom-homes-3.jpeg",
     href: "/remodeling-gallery/",
   },
@@ -74,29 +81,9 @@ export const projectGalleryCards: CardItem[] = [
     id: "5",
     category: "Additions",
     title: "More space that feels original.",
+    description: "Room and home additions that match the house.",
     src: "/images/home-addition-contractors.webp",
     href: "/services/room-additions-home-additions/",
-  },
-  {
-    id: "6",
-    category: "Kitchen",
-    title: "The room you use most, reworked.",
-    src: "/images/kitchen-gallery-3.jpeg",
-    href: "/kitchen-remodeling-gallery/",
-  },
-  {
-    id: "7",
-    category: "Bathroom",
-    title: "Showers, tubs, and full bath remodels.",
-    src: "/images/bathroom-gallery-3.jpeg",
-    href: "/bathroom-remodeling-gallery/",
-  },
-  {
-    id: "8",
-    category: "Remodeling",
-    title: "Clear communication from start to finish.",
-    src: "/images/remodeling-1.jpeg",
-    href: "/remodeling-gallery/",
   },
 ];
 
@@ -106,8 +93,11 @@ type AppleCardCarouselProps = {
   description?: string;
   cards?: CardItem[];
   className?: string;
-  /** Smaller cards for services headers (default: compact) */
-  compact?: boolean;
+  /**
+   * landscape = wide photo + orange text panel (services)
+   * portrait = taller cards (legacy)
+   */
+  orientation?: "landscape" | "portrait";
 };
 
 const AppleCardCarousel = ({
@@ -116,7 +106,7 @@ const AppleCardCarousel = ({
   description,
   cards = areasServeCards,
   className,
-  compact = true,
+  orientation = "landscape",
 }: AppleCardCarouselProps) => {
   const [api, setApi] = React.useState<CarouselApi>();
   const [canScrollPrev, setCanScrollPrev] = React.useState(false);
@@ -137,14 +127,17 @@ const AppleCardCarousel = ({
     };
   }, [api]);
 
-  const cardSize = compact
-    ? "w-[13rem] h-[18rem] sm:w-[14.5rem] sm:h-[20rem] lg:w-[15.5rem] lg:h-[21.5rem]"
-    : "w-[16.5rem] h-[24rem] sm:w-[18.5rem] sm:h-[27rem] lg:w-[20.5rem] lg:h-[30rem]";
+  const landscape = orientation === "landscape";
+  // Wide enough for natural landscape project photos
+  const cardShell = landscape
+    ? "w-[min(20rem,calc(100vw-2.5rem))] sm:w-[22rem] lg:w-[24rem]"
+    : "w-[13rem] sm:w-[14.5rem] lg:w-[15.5rem]";
 
   return (
     <section
       className={className ?? "w-full py-10 sm:py-14 md:py-16 bg-background"}
       data-carousel-08
+      data-carousel-orientation={orientation}
     >
       <div className="px-4 sm:px-6 lg:px-8 xl:px-16 max-w-7xl mx-auto mb-8 sm:mb-10 flex flex-col gap-2">
         <p className="text-sm sm:text-base font-semibold text-primary !m-0">
@@ -170,34 +163,48 @@ const AppleCardCarousel = ({
             <CarouselItem key={card.id} className="pl-4 sm:pl-6 basis-auto">
               <a
                 href={card.href}
-                className={`group relative block ${cardSize} rounded-2xl overflow-hidden border border-border shadow-sm transition-transform duration-300 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary`}
+                className={`group flex flex-col ${cardShell} rounded-xl overflow-hidden border border-primary/20 bg-primary shadow-sm transition-transform duration-300 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary`}
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={card.src}
-                  alt={card.title}
-                  className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
-                />
+                {/* Landscape photo band — natural horizontal crop */}
                 <div
-                  className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/10"
-                  aria-hidden
-                />
+                  className={`relative w-full overflow-hidden shrink-0 ${
+                    landscape
+                      ? "aspect-[16/10] sm:aspect-[16/9]"
+                      : "aspect-[3/4]"
+                  }`}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={card.src}
+                    alt={card.title}
+                    className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.03]"
+                  />
+                  {/* Soft fade image → orange text panel (About bento style) */}
+                  <div
+                    className="pointer-events-none absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-b from-transparent via-primary/55 to-primary"
+                    aria-hidden
+                  />
+                  <div
+                    className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 backdrop-blur-[2px] bg-gradient-to-b from-transparent to-primary/40"
+                    aria-hidden
+                  />
+                </div>
 
-                <div className="relative z-10 flex h-full flex-col justify-between p-5 sm:p-6">
-                  <div className="flex flex-col gap-2 sm:gap-3 text-white">
-                    <p className="text-xs sm:text-sm font-medium text-white/90 uppercase tracking-wide !m-0">
+                {/* Orange text panel — matches About feature cards */}
+                <div className="relative z-[1] flex flex-1 flex-col gap-1.5 bg-primary px-4 pb-5 pt-2 sm:px-5 sm:pb-6 min-h-[6.5rem] sm:min-h-[7rem]">
+                  {card.category ? (
+                    <p className="text-[11px] sm:text-xs font-semibold uppercase tracking-wide text-white/80 !m-0">
                       {card.category}
                     </p>
-                    <p className="text-xl sm:text-2xl font-bold tracking-tight leading-snug text-white !m-0">
-                      {card.title}
+                  ) : null}
+                  <h3 className="text-base sm:text-lg font-semibold tracking-tight text-white !m-0 leading-snug">
+                    {card.title}
+                  </h3>
+                  {card.description ? (
+                    <p className="text-sm leading-normal text-white/90 !m-0 line-clamp-2">
+                      {card.description}
                     </p>
-                  </div>
-
-                  <div className="flex justify-end">
-                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white text-foreground shadow-md">
-                      <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:rotate-45" />
-                    </span>
-                  </div>
+                  ) : null}
                 </div>
               </a>
             </CarouselItem>

@@ -19,7 +19,13 @@ const serviceImages = [
   "/images/open-concept.webp",
 ];
 
-/** Services hub hero: carousel-08 with compact NWS service cards */
+function shortDesc(text: string, max = 90) {
+  const t = text.replace(/\s+/g, " ").trim();
+  if (t.length <= max) return t;
+  return t.slice(0, max - 1).trim() + "…";
+}
+
+/** Services hub/detail hero: landscape carousel-08 cards (About-style orange text) */
 export function ServicesCarouselHero({
   label = "Our services",
   heading = "Custom homes & remodeling",
@@ -35,6 +41,7 @@ export function ServicesCarouselHero({
     id: s.slug,
     category: "Service",
     title: s.title,
+    description: shortDesc(s.front || s.back || ""),
     src: serviceImages[i % serviceImages.length],
     href: s.href,
   }));
@@ -45,7 +52,7 @@ export function ServicesCarouselHero({
       heading={heading}
       description={description}
       cards={cards || defaultCards}
-      compact
+      orientation="landscape"
       className="w-full pt-28 sm:pt-32 pb-10 sm:pb-14 md:pb-16 bg-background border-b border-border"
     />
   );

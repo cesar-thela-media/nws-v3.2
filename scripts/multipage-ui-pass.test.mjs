@@ -72,9 +72,10 @@ test("Services hub+detail: carousel-08, no Overview, faq-07 + cta-08", () => {
   assert.match(detail, /faq-07|Faq/);
   assert.match(detail, /cta-08|CTA/);
   assert.match(hero, /carousel-08|AppleCardCarousel/);
-  assert.match(hero, /compact/);
+  assert.match(hero, /orientation.*landscape|landscape/);
   assert.match(carousel, /data-carousel-08/);
-  assert.match(carousel, /compact|w-\[13rem\]|w-\[14\.5rem\]/);
+  assert.match(carousel, /aspect-\[16\/10\]|aspect-\[16\/9\]|landscape/);
+  assert.match(carousel, /bg-primary/);
 });
 
 test("Gallery: hero-08, gallery-03 then 01, cta-08, not hero-22", () => {

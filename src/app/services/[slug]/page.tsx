@@ -47,13 +47,18 @@ export default async function ServicePage({ params }: Props) {
   const page = getServicePage(slug);
   if (!page) notFound();
 
-  const carouselCards: CardItem[] = serviceCards.map((s, i) => ({
-    id: s.slug,
-    category: s.slug === slug ? "This service" : "Service",
-    title: s.title,
-    src: serviceImages[i % serviceImages.length],
-    href: s.href,
-  }));
+  const carouselCards: CardItem[] = serviceCards.map((s, i) => {
+    const blurb = (s.front || s.back || "").replace(/\s+/g, " ").trim();
+    return {
+      id: s.slug,
+      category: s.slug === slug ? "This service" : "Service",
+      title: s.title,
+      description:
+        blurb.length > 90 ? blurb.slice(0, 89).trim() + "…" : blurb || undefined,
+      src: serviceImages[i % serviceImages.length],
+      href: s.href,
+    };
+  });
 
   const introShort = page.intro.slice(0, 1).map((p) =>
     p.length > 280 ? p.slice(0, 277).trim() + "..." : p,
