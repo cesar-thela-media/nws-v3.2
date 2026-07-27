@@ -12,6 +12,12 @@ import {
 import AutoScroll from "embla-carousel-auto-scroll";
 import { useMemo } from "react";
 
+export type Hero08Card = {
+  src: string;
+  title: string;
+  label?: string;
+};
+
 export type Hero08Props = {
   eyebrow?: string;
   heading?: string;
@@ -21,6 +27,8 @@ export type Hero08Props = {
   secondaryCtaLabel?: string;
   secondaryCtaHref?: string;
   images?: string[];
+  /** Prefer descriptive cards over numbered titles from images alone */
+  cards?: Hero08Card[];
 };
 
 /**
@@ -36,8 +44,17 @@ export default function HeroSection({
   secondaryCtaLabel = "Call us",
   secondaryCtaHref,
   images = [],
+  cards: cardsProp,
 }: Hero08Props) {
   const cards = useMemo(() => {
+    if (cardsProp && cardsProp.length > 0) {
+      return cardsProp.map((c, i) => ({
+        id: i,
+        src: c.src,
+        title: c.title,
+        label: c.label || "NWS project",
+      }));
+    }
     const srcs =
       images.length > 0
         ? images
@@ -52,10 +69,10 @@ export default function HeroSection({
     return srcs.map((src, i) => ({
       id: i,
       src,
-      title: `${heading} ${i + 1}`,
+      title: heading,
       label: "NWS project",
     }));
-  }, [images, heading]);
+  }, [cardsProp, images, heading]);
 
   const secondaryHref = secondaryCtaHref || `tel:${site.phone.officeTel}`;
 

@@ -2,10 +2,11 @@ import Hero08 from "@/components/shadcn-space/blocks/hero-08";
 import Gallery03 from "@/components/shadcn-space/blocks/gallery-03/gallery";
 import CTA from "@/components/shadcn-space/blocks/cta-08/cta";
 import type { Gallery } from "@/data/galleries";
+import { galleryImagePaths } from "@/data/galleries";
 
 /**
- * Gallery family: hero-08 marquee + one Project photos section (full grid) + cta-08.
- * Single photos band only — no second stacked component.
+ * Gallery family: hero-08 marquee + one Project photos section + cta-08.
+ * Photo titles are descriptive (what the shot shows), not numbered labels.
  */
 export function GalleryPage({ gallery }: { gallery: Gallery }) {
   const shortDesc =
@@ -13,10 +14,16 @@ export function GalleryPage({ gallery }: { gallery: Gallery }) {
       ? gallery.description.slice(0, 117).trim() + "..."
       : gallery.description;
 
-  const photoItems = gallery.images.map((image, i) => ({
-    title: `${gallery.heading} ${i + 1}`,
-    image,
-    alt: `${gallery.heading} project photo ${i + 1}`,
+  const photoItems = gallery.photos.map((photo) => ({
+    title: photo.title,
+    image: photo.src,
+    alt: photo.alt || photo.title,
+  }));
+
+  const marqueeCards = gallery.photos.map((photo) => ({
+    src: photo.src,
+    title: photo.title,
+    label: "NWS project",
   }));
 
   return (
@@ -28,7 +35,8 @@ export function GalleryPage({ gallery }: { gallery: Gallery }) {
         primaryCtaLabel="Start a project"
         primaryCtaHref="/contact/"
         secondaryCtaLabel="Call us"
-        images={gallery.images}
+        images={galleryImagePaths(gallery)}
+        cards={marqueeCards}
       />
 
       <Gallery03
