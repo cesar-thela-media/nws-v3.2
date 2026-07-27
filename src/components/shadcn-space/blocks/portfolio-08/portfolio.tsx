@@ -71,7 +71,8 @@ const ProjectCard = ({
     offset: ["start start", "end start"],
   });
 
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.95]);
+  // Subtle sticky scale - avoids a laggy “waiting” feel on scroll
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.98]);
 
   return (
     <div

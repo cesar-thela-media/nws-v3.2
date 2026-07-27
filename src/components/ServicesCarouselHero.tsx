@@ -53,7 +53,7 @@ export function ServicesCarouselHero({
       description={description}
       cards={cards || defaultCards}
       orientation="landscape"
-      className="w-full pt-28 sm:pt-32 pb-10 sm:pb-14 md:pb-16 bg-background border-b border-border"
+      className="w-full pt-16 sm:pt-20 pb-10 sm:pb-14 md:pb-16 bg-background border-b border-border"
     />
   );
 }

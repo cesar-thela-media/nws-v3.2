@@ -48,7 +48,7 @@ test("Dark-surface outline CTAs force transparent bg + white label", () => {
   assert.match(loc, /!text-white/);
 });
 
-test("Our Story is one white card over generated themed background", () => {
+test("Our Story is white card on orange section with landscape image stack", () => {
   const about = read(
     "src",
     "components",
@@ -58,12 +58,12 @@ test("Our Story is one white card over generated themed background", () => {
     "about-us.tsx",
   );
   assert.match(about, /data-about-story-card/);
-  assert.match(about, /about-story-bg|data-about-story-top-fade/);
+  assert.match(about, /data-about-story-orange|bg-primary/);
+  assert.match(about, /aspect-\[16\/10\]/);
   assert.match(about, /bg-white/);
   assert.match(about, /Discover the true meaning of custom homes/i);
   assert.match(about, /full-service construction[\s\S]{0,40}company/i);
   assert.doesNotMatch(about, /Transforming spaces into experiences/i);
-  assert.ok(exists("public", "images", "about-story-bg.jpg"));
 });
 
 test("Bento three cards: orange face, white text, equal aspect image, fade seam", () => {
@@ -92,10 +92,11 @@ test("Services hub uses carousel-08 + visual grid + FAQ/CTA", () => {
   assert.match(page, /cta-08|CTA/);
 });
 
-test("Service detail uses carousel hero + visual body + CTA", () => {
+test("Service detail uses gallery hero + visual body + CTA", () => {
   const page = read("src", "app", "services", "[slug]", "page.tsx");
-  assert.match(page, /ServicesCarouselHero|carousel-08/);
+  assert.match(page, /ServiceDetailHero|gallery-03|Gallery03/);
   assert.match(page, /data-service-visual-body|cta-08|CTA/);
+  assert.match(page, /data-service-body-card|bg-white/);
   assert.doesNotMatch(page, /data-service-overview/);
 });
 

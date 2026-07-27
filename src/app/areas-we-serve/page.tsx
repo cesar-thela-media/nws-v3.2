@@ -25,7 +25,7 @@ export default function AreasWeServePage() {
         backgroundImageSrc={
           process.env.NEXT_PUBLIC_AREAS_HERO_BG || site.areasHeroBg
         }
-        imageAlt="NWS service area — Richmond and Fort Bend County, TX"
+        imageAlt="NWS service area - Richmond and Fort Bend County, TX"
         mapEmbedSrc={
           process.env.NEXT_PUBLIC_MAPS_EMBED_URL || site.mapsEmbedUrl
         }

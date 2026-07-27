@@ -5,15 +5,10 @@ import type { Gallery } from "@/data/galleries";
 import { galleryImagePaths } from "@/data/galleries";
 
 /**
- * Gallery family: hero-08 marquee + one Project photos section + cta-08.
- * Photo titles are descriptive (what the shot shows), not numbered labels.
+ * Gallery family: hero-08 marquee + orange Project photos grid + lightbox + cta-08.
+ * Full description in hero (no mid-sentence ellipsis).
  */
 export function GalleryPage({ gallery }: { gallery: Gallery }) {
-  const shortDesc =
-    gallery.description.length > 120
-      ? gallery.description.slice(0, 117).trim() + "..."
-      : gallery.description;
-
   const photoItems = gallery.photos.map((photo) => ({
     title: photo.title,
     image: photo.src,
@@ -31,7 +26,7 @@ export function GalleryPage({ gallery }: { gallery: Gallery }) {
       <Hero08
         eyebrow="Project gallery"
         heading={gallery.heading}
-        description={shortDesc}
+        description={gallery.description}
         primaryCtaLabel="Start a project"
         primaryCtaHref="/contact/"
         secondaryCtaLabel="Call us"
@@ -43,7 +38,7 @@ export function GalleryPage({ gallery }: { gallery: Gallery }) {
         showAll
         eyebrow="Project photos"
         heading="Project photos"
-        description={shortDesc}
+        description={gallery.description}
         items={photoItems}
         ctaLabel="Start a project"
         ctaHref="/contact/"

@@ -36,8 +36,11 @@ export const site = {
    */
   mapsEmbedUrl:
     "https://maps.google.com/maps?q=Richmond,+TX+Fort+Bend+County&z=10&output=embed",
-  /** Areas hero full-bleed photo (not the static map graphic) */
-  areasHeroBg: "/images/hero-home-remodeled-richmond-tx.webp",
+  /**
+   * Areas hero full-bleed photo - distinct from homepage hero
+   * (`hero-home-remodeled-richmond-tx.webp`).
+   */
+  areasHeroBg: "/images/whole-home-remodeling-richmond-tx.jpg",
 } as const;
 
 export const serviceOptions = [

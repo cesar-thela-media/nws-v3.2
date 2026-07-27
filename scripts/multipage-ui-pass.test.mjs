@@ -36,16 +36,17 @@ test("home How We Work gradient + FAQ accordion only (no help band)", () => {
   assert.doesNotMatch(faq, /data-faq-help-band|data-faq-help-image|Our team is ready to help/);
 });
 
-test("About: no open on YouTube; story fade/fuller card; cta-08 no map/form", () => {
+test("About: no open on YouTube; orange story + landscape stack; cta-08 no map/form", () => {
   const hero = read("src", "components", "shadcn-space", "blocks", "hero-13", "hero.tsx");
   const story = read("src", "components", "shadcn-space", "blocks", "about-us-13", "about-us.tsx");
   const bento = read("src", "components", "shadcn-space", "blocks", "bento-grid-02", "index.tsx");
   const page = read("src", "app", "about", "page.tsx");
   assert.doesNotMatch(hero, /or open on YouTube|Open on YouTube/i);
   assert.match(hero, /data-about-video-play|nSJ_8lzRTjM/);
-  assert.match(story, /data-about-story-top-fade/);
+  assert.match(story, /data-about-story-orange|bg-primary/);
   assert.match(story, /data-about-story-card/);
   assert.match(story, /data-about-story-collage/);
+  assert.match(story, /aspect-\[16\/10\]/);
   assert.match(story, /max-w-\[90rem\]|max-w-7xl|xl:px-14/);
   assert.match(bento, /data-about-nws-spacing|pb-16|pb-24/);
   assert.match(page, /cta-08|from \"@\/components\/shadcn-space\/blocks\/cta-08|CTA/);
@@ -67,10 +68,12 @@ test("Services hub+detail: carousel-08 hub, gallery-03 detail hero, faq-07 + cta
   assert.match(detail, /ServiceDetailHero|gallery-03|Gallery03/);
   assert.doesNotMatch(detail, /ServicesCarouselHero/);
   assert.match(detail, /data-service-visual-body/);
+  assert.match(detail, /data-service-body-card|bg-white/);
   assert.doesNotMatch(detail, /data-service-overview/);
   assert.match(detail, /faq-07|Faq/);
   assert.match(detail, /cta-08|CTA/);
   assert.match(detailHero, /gallery-03|Gallery03|getServiceHeroPhotos/);
+  assert.match(detailHero, /pt-16|compact/);
   assert.match(photos, /kitchen-remodeling/);
   assert.match(photos, /kitchen-gallery/);
   assert.match(hero, /carousel-08|AppleCardCarousel/);
@@ -91,8 +94,10 @@ test("Gallery: hero-08 + single gallery-03 project photos + cta-08, not hero-22"
   assert.match(gall, /showAll/);
   assert.match(gall, /cta-08|CTA/);
   assert.match(g03, /data-gallery-project-photos|showAll/);
+  assert.match(g03, /data-gallery-photos-orange|data-gallery-lightbox/);
   assert.match(g03, /aspect-\[16\/10\]|lg:grid-cols-3/);
   assert.match(h08, /data-hero-08/);
+  assert.match(h08, /items-center text-center|text-center/);
   assert.match(h08, /AutoScroll|stopOnMouseEnter/);
   assert.doesNotMatch(h08i, /navbar\.tsx|Navbar/);
   for (const slug of [

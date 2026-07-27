@@ -165,7 +165,7 @@ const AppleCardCarousel = ({
                 href={card.href}
                 className={`group flex flex-col ${cardShell} rounded-xl overflow-hidden border border-primary/20 bg-primary shadow-sm transition-transform duration-300 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary`}
               >
-                {/* Landscape photo band — natural horizontal crop */}
+                {/* Landscape photo band - natural horizontal crop */}
                 <div
                   className={`relative w-full overflow-hidden shrink-0 ${
                     landscape
@@ -190,7 +190,7 @@ const AppleCardCarousel = ({
                   />
                 </div>
 
-                {/* Orange text panel — About-style, centered */}
+                {/* Orange text panel - About-style, centered */}
                 <div className="relative z-[1] flex flex-1 flex-col items-center justify-center gap-1.5 bg-primary px-4 pb-5 pt-3 sm:px-5 sm:pb-6 min-h-[6.5rem] sm:min-h-[7.25rem] text-center">
                   {card.category ? (
                     <p className="text-[11px] sm:text-xs font-semibold uppercase tracking-wide text-white/80 !m-0">

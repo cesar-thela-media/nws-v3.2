@@ -76,7 +76,10 @@ function ServiceCard({
   item: (typeof portfolioItems)[0];
 }) {
   return (
-    <Card className="relative gap-0 py-0 rounded-2xl overflow-hidden border border-white/10 bg-[#12181b] shadow-lg shadow-black/30 group hover:shadow-xl hover:border-primary/30 transition-all duration-300 h-full min-h-[28rem] sm:min-h-[30rem] md:min-h-[32rem]">
+    <Card
+      className="relative gap-0 py-0 rounded-2xl overflow-hidden border border-white/15 bg-primary shadow-lg shadow-primary/25 group hover:shadow-xl hover:brightness-[1.03] transition-all duration-300 h-full min-h-[28rem] sm:min-h-[30rem] md:min-h-[32rem]"
+      data-service-card-orange
+    >
       <div className="relative overflow-hidden">
         <a href={item.href} className="block">
           <div className="w-full h-64 sm:h-72 md:h-80">
@@ -91,30 +94,30 @@ function ServiceCard({
           </div>
         </a>
         <div className="absolute top-5 right-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <span className="inline-flex size-11 items-center justify-center rounded-full bg-primary text-white shadow-md">
+          <span className="inline-flex size-11 items-center justify-center rounded-full bg-white text-primary shadow-md">
             <ArrowRight className="size-5" />
           </span>
         </div>
-        <Badge className="absolute top-5 left-5 bg-primary text-white border-0 hover:bg-primary text-sm px-3 py-1">
+        <Badge className="absolute top-5 left-5 bg-white text-primary border-0 hover:bg-white text-sm px-3 py-1 font-semibold">
           {item.badge}
         </Badge>
       </div>
 
-      <div className="p-6 sm:p-7 md:p-8 flex flex-col gap-3.5 flex-1 bg-gradient-to-b from-[#141c20] to-[#0c1114]">
+      <div className="p-6 sm:p-7 md:p-8 flex flex-col gap-3.5 flex-1 bg-primary">
         <a href={item.href}>
-          <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-white !m-0 group-hover:text-primary transition-colors duration-300">
+          <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-white !m-0 transition-colors duration-300">
             {item.title}
           </h3>
         </a>
-        <p className="text-base sm:text-lg text-white/65 leading-relaxed !m-0 flex-1">
+        <p className="text-base sm:text-lg text-white/90 leading-relaxed !m-0 flex-1">
           {item.description}
         </p>
         <a
           href={item.href}
-          className="inline-flex items-center gap-2 text-base font-semibold text-primary hover:text-[var(--color-primary-hover,#e03e00)] mt-1 w-fit"
+          className="inline-flex items-center gap-2 text-base font-semibold text-white hover:text-white/90 mt-1 w-fit"
         >
-          <span className="text-primary">Learn more</span>
-          <ArrowRight className="size-4 text-primary transition-transform duration-300 ease-out group-hover:translate-x-1.5" />
+          <span>Learn more</span>
+          <ArrowRight className="size-4 text-white transition-transform duration-300 ease-out group-hover:translate-x-1.5" />
         </a>
       </div>
     </Card>
@@ -155,15 +158,14 @@ const Portfolio = ({
 
   return (
     <section
-      className="w-full py-12 md:py-20 lg:py-24 space-y-10 md:space-y-12 bg-[#070b0c]"
+      className="w-full py-12 md:py-20 lg:py-24 space-y-10 md:space-y-12 bg-[#0a0e10]"
       style={{
         backgroundImage: [
-          "radial-gradient(ellipse 90% 55% at 50% -5%, rgba(255,69,0,0.22), rgba(255,69,0,0.06) 35%, transparent 65%)",
-          "radial-gradient(ellipse 55% 70% at 0% 40%, rgba(255,69,0,0.1), transparent 55%)",
-          "radial-gradient(ellipse 50% 65% at 100% 55%, rgba(40,70,90,0.18), transparent 55%)",
-          "linear-gradient(165deg, #121a1d 0%, #0c1214 22%, #070b0c 48%, #06090a 72%, #030506 100%)",
+          "radial-gradient(ellipse 90% 55% at 50% -5%, rgba(255,69,0,0.18), transparent 60%)",
+          "linear-gradient(165deg, #141c20 0%, #0c1214 40%, #080c0e 100%)",
         ].join(", "),
       }}
+      data-what-we-do
     >
       <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">

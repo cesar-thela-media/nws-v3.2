@@ -52,8 +52,8 @@ test("About: no or open on YouTube; story fade/collage layout", () => {
   );
   assert.doesNotMatch(hero, /or open on YouTube/i);
   assert.match(hero, /data-about-video-play|nSJ_8lzRTjM/);
-  assert.match(about, /data-about-story-top-fade|data-about-story-card/);
-  assert.match(about, /data-about-story-collage|about-story-bg/);
+  assert.match(about, /data-about-story-orange|data-about-story-card/);
+  assert.match(about, /data-about-story-collage|aspect-\[16\/10\]/);
 });
 
 test("Services hub and detail use carousel-08 + cta-08; hub uses Faq", () => {
@@ -71,8 +71,9 @@ test("Services hub and detail use carousel-08 + cta-08; hub uses Faq", () => {
   assert.match(hub, /cta-08|CTA/);
   assert.match(hub, /faq-07|Faq/);
   assert.match(hub, /data-services-visual-grid/);
-  assert.match(detail, /ServicesCarouselHero|carousel-08/);
+  assert.match(detail, /ServiceDetailHero|gallery-03|Gallery03/);
   assert.match(detail, /cta-08|CTA/);
+  assert.match(detail, /data-service-body-card|bg-white/);
   assert.doesNotMatch(detail, /data-service-split-hero|data-service-overview/);
   assert.match(detail, /<Faq[\s\S]*items=/);
   assert.match(faq, /items\?:/);

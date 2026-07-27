@@ -32,8 +32,7 @@ export type Hero08Props = {
 };
 
 /**
- * Gallery hero-08: compact header + landscape marquee cards.
- * Image-led cards (thin title strip); hover pauses auto-scroll.
+ * Gallery hero-08: centered header + large landscape marquee (full-bleed edges).
  */
 export default function HeroSection({
   eyebrow = "Project gallery",
@@ -77,22 +76,22 @@ export default function HeroSection({
   const secondaryHref = secondaryCtaHref || `tel:${site.phone.officeTel}`;
 
   return (
-    <section className="bg-background pt-16 sm:pt-18" data-hero-08>
-      {/* Compact header — minimal empty space under nav */}
+    <section className="bg-background pt-14 sm:pt-16" data-hero-08>
+      {/* Centered header - full description, no mid-sentence cutoff */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
-        <div className="flex flex-col gap-3 max-w-2xl py-4 sm:py-5">
+        <div className="flex flex-col items-center text-center gap-3 max-w-3xl mx-auto py-5 sm:py-6">
           <span className="w-fit px-3 py-0.5 text-sm font-medium text-primary bg-primary/10 rounded-lg">
             {eyebrow}
           </span>
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2 items-center">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground tracking-tight !m-0">
               {heading}
             </h1>
-            <p className="text-sm sm:text-base font-normal text-muted-foreground max-w-md !m-0">
+            <p className="text-sm sm:text-base font-normal text-muted-foreground max-w-2xl !m-0">
               {description}
             </p>
           </div>
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex flex-wrap items-center justify-center gap-3 pt-1">
             <Button
               className="relative text-sm font-semibold rounded-[4px] h-11 p-1 ps-5 pe-14 group transition-all duration-500 hover:ps-14 hover:pe-5 w-fit overflow-hidden cursor-pointer !text-white"
               render={<Link href={primaryCtaHref} />}
@@ -121,41 +120,44 @@ export default function HeroSection({
         </div>
       </div>
 
-      {/* Image-led landscape cards — thin caption bar, more photo */}
-      <div className="pb-5 sm:pb-6 w-full" data-hero-08-marquee>
+      {/* Full-bleed marquee - large cards, continuous edge-to-edge feed */}
+      <div
+        className="relative pb-6 sm:pb-8 w-full overflow-hidden"
+        data-hero-08-marquee
+      >
         <Carousel
           opts={{
             align: "start",
             loop: true,
+            dragFree: true,
           }}
           plugins={[
             AutoScroll({
-              speed: 1,
+              speed: 1.1,
               stopOnInteraction: false,
               stopOnMouseEnter: true,
             }),
           ]}
           className="w-full"
         >
-          <CarouselContent className="-ml-3 sm:-ml-4 px-4 sm:px-6">
+          <CarouselContent className="-ml-3 sm:-ml-4">
             {cards.map((card, index) => (
               <CarouselItem
                 key={`${card.src}-${index}`}
                 className="group pl-3 sm:pl-4 basis-auto flex-none"
               >
-                <div className="relative w-[min(18rem,calc(100vw-2.5rem))] sm:w-[20rem] lg:w-[22rem] aspect-[16/10] rounded-xl overflow-hidden border border-border shadow-sm">
+                <div className="relative w-[min(22rem,calc(100vw-3rem))] sm:w-[26rem] md:w-[28rem] lg:w-[32rem] aspect-[16/10] rounded-xl overflow-hidden border border-border shadow-md">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={card.src}
                     alt={card.title}
                     className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.03]"
                   />
-                  {/* Soft bottom scrim — keeps type readable without a tall orange block */}
                   <div
                     className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 via-black/35 to-transparent"
                     aria-hidden
                   />
-                  <div className="absolute inset-x-0 bottom-0 z-10 px-3.5 py-3 text-center">
+                  <div className="absolute inset-x-0 bottom-0 z-10 px-4 py-3.5 text-center">
                     <p className="text-sm sm:text-base font-semibold tracking-tight text-white !m-0 leading-snug drop-shadow-sm line-clamp-2">
                       {card.title}
                     </p>

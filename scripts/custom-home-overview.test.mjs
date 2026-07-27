@@ -58,10 +58,11 @@ test("custom-home-builder has hero image and short intro", async () => {
   assert.match(data.introJoined, /Richmond|Fort Bend/i);
 });
 
-test("service detail uses carousel hero and visual body (no Overview band)", () => {
+test("service detail uses gallery hero and visual body (no Overview band)", () => {
   const tpl = read("src", "app", "services", "[slug]", "page.tsx");
-  assert.match(tpl, /ServicesCarouselHero|carousel-08/);
+  assert.match(tpl, /ServiceDetailHero|gallery-03|Gallery03/);
   assert.match(tpl, /data-service-visual-body/);
+  assert.match(tpl, /data-service-body-card|bg-white/);
   assert.doesNotMatch(tpl, /data-service-overview/);
   assert.match(tpl, /Faq|faq-07/);
   assert.match(tpl, /CTA|cta-08/);

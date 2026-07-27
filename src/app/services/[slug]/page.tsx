@@ -105,21 +105,22 @@ export default async function ServicePage({ params }: Props) {
             {sectionHighlights.map((section) => (
               <article
                 key={section.heading}
-                className="rounded-2xl border border-white/20 bg-white/10 backdrop-blur-sm p-5 sm:p-6"
+                className="rounded-2xl border border-border/60 bg-white p-5 sm:p-6 shadow-sm"
+                data-service-body-card
               >
-                <h3 className="text-lg font-bold text-white !m-0 mb-2">
+                <h3 className="text-lg font-bold text-foreground !m-0 mb-2">
                   {section.heading}
                 </h3>
                 {section.paragraphs?.map((p) => (
                   <p
                     key={p.slice(0, 40)}
-                    className="text-sm text-white/85 !m-0 line-clamp-4"
+                    className="text-sm text-muted-foreground !m-0 line-clamp-4"
                   >
                     {p}
                   </p>
                 ))}
                 {section.bullets && (
-                  <ul className="mt-3 space-y-1.5 list-disc pl-5 text-sm text-white/80">
+                  <ul className="mt-3 space-y-1.5 list-disc pl-5 text-sm text-muted-foreground">
                     {section.bullets.map((b) => (
                       <li key={b}>{b}</li>
                     ))}

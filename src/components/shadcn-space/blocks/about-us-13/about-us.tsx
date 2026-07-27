@@ -22,7 +22,7 @@ function CountUp({ value }: { value: string }) {
   useEffect(() => {
     if (!isInView || !isNumeric) return;
     const controls = animate(motionValue, num, {
-      duration: 2,
+      duration: 1.4,
       ease: "easeOut",
       onUpdate: (v) => setDisplay(`${Math.round(v)}${suffix}`),
     });
@@ -44,7 +44,8 @@ const stats = [
   { value: "5%", label: "Off when you mention the website" },
 ];
 
-const mosaicImages = [
+/** Landscape stack - no empty mosaic gap under a tall hero tile */
+const stackImages = [
   {
     src: "/images/whole-home-remodeling-richmond-tx.jpg",
     alt: "Whole home remodeling by NWS in Richmond, TX",
@@ -60,113 +61,77 @@ const mosaicImages = [
 ];
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
+  hidden: { opacity: 0, y: 16 },
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: "easeOut" as const },
+    transition: { duration: 0.4, ease: "easeOut" as const },
   },
 };
 
 const fadeLeft = {
-  hidden: { opacity: 0, x: -40 },
+  hidden: { opacity: 0, x: -24 },
   show: {
     opacity: 1,
     x: 0,
-    transition: { duration: 0.6, ease: "easeOut" as const },
+    transition: { duration: 0.45, ease: "easeOut" as const },
   },
 };
 
 const fadeRight = {
-  hidden: { opacity: 0, x: 30 },
+  hidden: { opacity: 0, x: 20 },
   show: {
     opacity: 1,
     x: 0,
-    transition: { duration: 0.5, ease: "easeOut" as const },
+    transition: { duration: 0.4, ease: "easeOut" as const },
   },
 };
 
 const stagger = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } },
+  show: { transition: { staggerChildren: 0.06, delayChildren: 0.04 } },
 };
 
 const staggerStats = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.1, delayChildren: 0.2 } },
+  show: { transition: { staggerChildren: 0.06, delayChildren: 0.08 } },
 };
 
 export default function AboutUs() {
   return (
     <section
-      className="relative py-12 md:py-20 lg:py-24 overflow-hidden"
+      className="relative py-12 md:py-20 lg:py-24 overflow-hidden bg-primary"
       data-about-us-13
+      data-about-story-orange
     >
-      {/* Background photo + primary wash + upper white fade into About hero */}
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage: "url(/images/about-story-bg.jpg)",
-        }}
-        aria-hidden
-      />
-      <div
-        className="absolute inset-0 bg-[color-mix(in_oklab,var(--primary)_22%,transparent)]"
-        aria-hidden
-      />
-      <div
-        className="absolute inset-0 bg-gradient-to-b from-background via-background/70 to-transparent"
-        data-about-story-top-fade
-        aria-hidden
-      />
-      <div
-        className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent"
-        data-about-story-bottom-fade
-        aria-hidden
-      />
-
       <div className="relative z-10 w-full max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-10 xl:px-14">
-        {/* Fuller-width story card with collage layout */}
         <div
-          className="rounded-2xl border border-border bg-white shadow-[var(--shadow-card,0_12px_40px_rgba(0,0,0,0.08))] overflow-hidden"
+          className="rounded-2xl border border-white/20 bg-white shadow-[0_16px_48px_rgba(0,0,0,0.18)] overflow-hidden"
           data-about-story-card
         >
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch">
-            {/* Editorial collage: large hero + two equal tiles (no floating overlays) */}
+            {/* Stack of landscape photos - fills column, no white gap under image */}
             <motion.div
-              className="lg:col-span-5 p-4 sm:p-5 lg:p-6 flex flex-col gap-3 sm:gap-3.5 bg-muted/20"
+              className="lg:col-span-5 p-3 sm:p-4 lg:p-5 flex flex-col gap-3 bg-muted/30"
               data-about-story-collage
               initial="hidden"
               whileInView="show"
-              viewport={{ once: true, amount: 0.15 }}
+              viewport={{ once: true, amount: 0.12 }}
               variants={fadeLeft}
             >
-              <div className="relative overflow-hidden rounded-xl sm:rounded-2xl aspect-[4/3] lg:aspect-auto lg:flex-1 lg:min-h-[16rem] ring-1 ring-border/60 shadow-sm">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={mosaicImages[0].src}
-                  alt={mosaicImages[0].alt}
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-              </div>
-              <div className="grid grid-cols-2 gap-3 sm:gap-3.5">
-                <div className="relative overflow-hidden rounded-xl aspect-[5/4] ring-1 ring-border/60 shadow-sm">
+              {stackImages.map((img) => (
+                <div
+                  key={img.src}
+                  className="relative overflow-hidden rounded-xl aspect-[16/10] ring-1 ring-border/50 shadow-sm w-full"
+                >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src={mosaicImages[1].src}
-                    alt={mosaicImages[1].alt}
-                    className="absolute inset-0 w-full h-full object-cover"
+                    src={img.src}
+                    alt={img.alt}
+                    className="absolute inset-0 w-full h-full object-cover object-center"
                   />
                 </div>
-                <div className="relative overflow-hidden rounded-xl aspect-[5/4] ring-1 ring-border/60 shadow-sm">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={mosaicImages[2].src}
-                    alt={mosaicImages[2].alt}
-                    className="absolute inset-0 w-full h-full object-cover"
-                  />
-                </div>
-              </div>
+              ))}
             </motion.div>
 
             <div className="lg:col-span-7 flex flex-col gap-8 lg:gap-10 p-6 sm:p-8 lg:p-10 xl:p-12">
@@ -174,7 +139,7 @@ export default function AboutUs() {
                 className="flex flex-col gap-5"
                 initial="hidden"
                 whileInView="show"
-                viewport={{ once: true, amount: 0.2 }}
+                viewport={{ once: true, amount: 0.15 }}
                 variants={stagger}
               >
                 <motion.div variants={fadeRight}>
@@ -235,7 +200,7 @@ export default function AboutUs() {
                 className="grid grid-cols-2 lg:gap-x-6 lg:gap-y-8"
                 initial="hidden"
                 whileInView="show"
-                viewport={{ once: true, amount: 0.2 }}
+                viewport={{ once: true, amount: 0.15 }}
                 variants={staggerStats}
               >
                 {stats.map(({ value, label }, i) => (

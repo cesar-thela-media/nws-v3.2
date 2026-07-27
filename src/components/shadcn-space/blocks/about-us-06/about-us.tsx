@@ -17,27 +17,12 @@ const ease = [0.21, 0.47, 0.32, 0.98] as const;
 
 const containerVariants: Variants = {
   hidden: {},
-  visible: (stagger = 0.028) => ({
+  visible: (stagger = 0.012) => ({
     transition: {
       staggerChildren: stagger,
-      delayChildren: 0.04,
+      delayChildren: 0.02,
     },
   }),
-};
-
-const letterVariants: Variants = {
-  hidden: {
-    opacity: 0,
-    y: "0.45em",
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.45,
-      ease,
-    },
-  },
 };
 
 type AnimatedLettersProps = {
@@ -114,7 +99,7 @@ function AnimatedHeadline({
 }: {
   isInView: boolean;
 }) {
-  const stagger = 0.012; // faster than prior ~0.022
+  const stagger = 0.008;
   const first = "Your remodeling and custom home partner in";
 
   return (
@@ -126,7 +111,7 @@ function AnimatedHeadline({
         text={first}
         isInView={isInView}
         stagger={stagger}
-        delayOffset={0.06}
+        delayOffset={0.02}
         className="inline"
       />{" "}
       <MarkerHighlight
@@ -134,7 +119,7 @@ function AnimatedHeadline({
         markerColor="#ff4500"
         highlightedTextColor="#ffffff"
         baseColor="hsl(var(--foreground))"
-        speed={1.85}
+        speed={2.4}
         className="text-4xl sm:text-5xl md:text-6xl lg:text-[3.5rem] font-bold leading-[1.15] tracking-tight"
       />
     </h2>
@@ -143,13 +128,15 @@ function AnimatedHeadline({
 
 const AboutUs06 = () => {
   const ref = useRef<HTMLElement>(null);
-  const isInView = useInView(ref, { once: true, amount: 0.25 });
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   const body =
     "NWS Custom Homes and Remodeling has served Richmond, TX and surrounding communities since 2007. Whether you're updating a kitchen, reworking a bathroom, expanding your footprint, or building new, you get one accountable team from plan through punch list.";
 
-  // Body starts after faster headline
-  const bodyStartDelay = 0.55;
+  // Snappy entrance - no long staggered waits on body / bullets
+  const bodyStartDelay = 0.18;
+  const bulletBase = bodyStartDelay + 0.12;
+  const ctaDelay = bulletBase + 0.22;
 
   return (
     <section ref={ref}>
@@ -162,135 +149,47 @@ const AboutUs06 = () => {
                   as="p"
                   text="About NWS"
                   isInView={isInView}
-                  stagger={0.022}
+                  stagger={0.012}
                   className="text-base md:text-lg font-semibold text-primary tracking-wide !m-0"
                 />
                 <AnimatedHeadline isInView={isInView} />
               </div>
 
               <div className="flex flex-col items-center justify-center gap-7 md:gap-8 w-full">
-                <p
+                <motion.p
                   className="text-muted-foreground text-lg sm:text-xl md:text-[1.35rem] leading-relaxed max-w-2xl mx-auto text-center !m-0"
-                  aria-label={body}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : undefined}
+                  transition={{ duration: 0.35, delay: bodyStartDelay, ease }}
                 >
-                  {body.split("").map((char, i) =>
-                    char === " " ? (
-                      <motion.span
-                        key={i}
-                        aria-hidden
-                        initial={{ opacity: 0 }}
-                        animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-                        transition={{
-                          duration: 0.15,
-                          delay: bodyStartDelay + i * 0.004,
-                          ease,
-                        }}
-                        className="inline"
-                      >
-                        {" "}
-                      </motion.span>
-                    ) : (
-                      <motion.span
-                        key={i}
-                        aria-hidden
-                        initial={{ opacity: 0, y: "0.35em" }}
-                        animate={
-                          isInView
-                            ? { opacity: 1, y: 0 }
-                            : { opacity: 0, y: "0.35em" }
-                        }
-                        transition={{
-                          duration: 0.22,
-                          delay: bodyStartDelay + i * 0.004,
-                          ease,
-                        }}
-                        className="inline-block"
-                      >
-                        {char}
-                      </motion.span>
-                    ),
-                  )}
-                </p>
+                  {body}
+                </motion.p>
 
                 <ul className="text-base sm:text-lg text-muted-foreground max-w-xl space-y-3 text-left w-full sm:w-auto">
-                  {bullets.map((item, bi) => {
-                    // After body (~200 chars * 0.008) + gap
-                    const bulletBase =
-                      bodyStartDelay + body.length * 0.008 + 0.15 + bi * 0.35;
-                    return (
-                      <li
-                        key={item}
-                        className="flex gap-3"
-                        aria-label={item}
-                      >
-                        <motion.span
-                          className="text-primary font-semibold shrink-0"
-                          initial={{ opacity: 0 }}
-                          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-                          transition={{ delay: bulletBase, duration: 0.3 }}
-                          aria-hidden
-                        >
-                          ·
-                        </motion.span>
-                        <span>
-                          {item.split("").map((char, i) =>
-                            char === " " ? (
-                              <motion.span
-                                key={i}
-                                aria-hidden
-                                initial={{ opacity: 0 }}
-                                animate={
-                                  isInView ? { opacity: 1 } : { opacity: 0 }
-                                }
-                                transition={{
-                                  duration: 0.2,
-                                  delay: bulletBase + i * 0.012,
-                                  ease,
-                                }}
-                                className="inline"
-                              >
-                                {" "}
-                              </motion.span>
-                            ) : (
-                              <motion.span
-                                key={i}
-                                aria-hidden
-                                initial={{ opacity: 0, y: "0.3em" }}
-                                animate={
-                                  isInView
-                                    ? { opacity: 1, y: 0 }
-                                    : { opacity: 0, y: "0.3em" }
-                                }
-                                transition={{
-                                  duration: 0.28,
-                                  delay: bulletBase + i * 0.012,
-                                  ease,
-                                }}
-                                className="inline-block"
-                              >
-                                {char}
-                              </motion.span>
-                            ),
-                          )}
-                        </span>
-                      </li>
-                    );
-                  })}
+                  {bullets.map((item, bi) => (
+                    <motion.li
+                      key={item}
+                      className="flex gap-3"
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={isInView ? { opacity: 1, y: 0 } : undefined}
+                      transition={{
+                        duration: 0.3,
+                        delay: bulletBase + bi * 0.06,
+                        ease,
+                      }}
+                    >
+                      <span className="text-primary font-semibold shrink-0" aria-hidden>
+                        ·
+                      </span>
+                      <span>{item}</span>
+                    </motion.li>
+                  ))}
                 </ul>
 
                 <motion.div
-                  initial={{ opacity: 0, y: 12 }}
+                  initial={{ opacity: 0, y: 10 }}
                   animate={isInView ? { opacity: 1, y: 0 } : undefined}
-                  transition={{
-                    duration: 0.5,
-                    delay:
-                      bodyStartDelay +
-                      body.length * 0.008 +
-                      0.15 +
-                      bullets.length * 0.35 +
-                      0.2,
-                    ease,
-                  }}
+                  transition={{ duration: 0.35, delay: ctaDelay, ease }}
                 >
                   <Button
                     size="lg"

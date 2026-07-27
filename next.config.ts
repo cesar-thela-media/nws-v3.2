@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 import { withSentryConfig } from "@sentry/nextjs";
 
 /**
- * Vercel sets VERCEL=1 and uses its own Next runtime — do not force standalone there.
+ * Vercel sets VERCEL=1 and uses its own Next runtime - do not force standalone there.
  * Docker / Railway still need standalone (server.js in the image).
  */
 const nextConfig: NextConfig = {
@@ -24,7 +24,7 @@ const sentryEnabled = Boolean(
 );
 
 export default withSentryConfig(nextConfig, {
-  // Silent when no org/project — safe without credentials
+  // Silent when no org/project - safe without credentials
   silent: true,
   org: process.env.SENTRY_ORG || undefined,
   project: process.env.SENTRY_PROJECT || undefined,

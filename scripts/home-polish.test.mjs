@@ -93,7 +93,7 @@ test("logo has on-dark light asset and no white plate", () => {
   );
 });
 
-test("What we do cards are not plain white face only", () => {
+test("What we do cards are orange (not plain white face only)", () => {
   const p = read(
     "src",
     "components",
@@ -108,8 +108,8 @@ test("What we do cards are not plain white face only", () => {
     "service Card must not use plain bg-card alone",
   );
   assert.ok(
-    p.includes("#12181b") || p.includes("from-[#141c20]"),
-    "service cards should use dark warm surface tokens",
+    p.includes("data-service-card-orange") || p.includes("bg-primary"),
+    "service cards should use orange primary surface",
   );
 });
 

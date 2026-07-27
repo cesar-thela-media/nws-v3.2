@@ -45,7 +45,7 @@ test("animated-text-08 MarkerHighlight wired in About NWS (home) on Richmond", (
   );
 });
 
-test("What we do Learn more is orange and carousel not infinite loop", () => {
+test("What we do cards are orange with white Learn more; carousel not infinite loop", () => {
   const p = read(
     "src",
     "components",
@@ -54,8 +54,9 @@ test("What we do Learn more is orange and carousel not infinite loop", () => {
     "portfolio-06",
     "portfolio.tsx",
   );
-  assert.match(p, /text-primary/);
+  assert.match(p, /data-service-card-orange|bg-primary/);
   assert.match(p, /Learn more/);
+  assert.match(p, /text-white/);
   assert.match(p, /loop:\s*false/);
 });
 

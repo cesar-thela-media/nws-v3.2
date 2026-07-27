@@ -13,7 +13,7 @@ export type Gallery = {
   photos: GalleryPhoto[];
 };
 
-/** @deprecated prefer gallery.photos — kept for any callers that only need paths */
+/** @deprecated prefer gallery.photos - kept for any callers that only need paths */
 export function galleryImagePaths(gallery: Gallery): string[] {
   return gallery.photos.map((p) => p.src);
 }
