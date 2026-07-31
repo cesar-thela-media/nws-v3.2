@@ -1,6 +1,6 @@
 /**
  * Structural checks for home chrome: over-hero navbar (NWS links), Glyph button,
- * and areas logo-cloud. Reads shipped source files — not reimplemented fixtures.
+ * and areas logo-cloud. Reads shipped source files - not reimplemented fixtures.
  * Runtime: isLightComputedColor unit cases + optional live browser probe.
  * Run: node --test scripts/home-chrome.test.mjs
  *      RUN_BROWSER_TESTS=1 node --test scripts/home-chrome.test.mjs
@@ -164,7 +164,7 @@ test(
       );
     } catch (e) {
       if (!run) {
-        // Server or browser binary unavailable — structural tests still gate
+        // Server or browser binary unavailable - structural tests still gate
         console.log("skip runtime nav contrast:", e.message);
         return;
       }

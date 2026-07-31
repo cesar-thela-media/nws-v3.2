@@ -77,12 +77,12 @@ function ServiceCard({
 }) {
   return (
     <Card
-      className="relative gap-0 py-0 rounded-2xl overflow-hidden border border-white/15 bg-primary shadow-lg shadow-primary/25 group hover:shadow-xl hover:brightness-[1.03] transition-all duration-300 h-full min-h-[28rem] sm:min-h-[30rem] md:min-h-[32rem]"
+      className="relative gap-0 py-0 rounded-2xl overflow-hidden border border-white/15 bg-primary shadow-lg shadow-primary/25 group hover:shadow-xl hover:brightness-[1.03] transition-all duration-300 h-full min-h-[24rem] sm:min-h-[28rem] md:min-h-[32rem] min-w-0"
       data-service-card-orange
     >
       <div className="relative overflow-hidden">
         <a href={item.href} className="block">
-          <div className="w-full h-64 sm:h-72 md:h-80">
+          <div className="w-full h-52 sm:h-64 md:h-80">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={item.image}
@@ -194,20 +194,20 @@ const Portfolio = ({
         </div>
       </div>
 
-      <div className="relative">
+      <div className="relative w-full max-w-full overflow-x-clip">
         <Carousel
           setApi={setApi}
           opts={{
             align: "start",
             loop: false,
           }}
-          className="w-full"
+          className="w-full max-w-full"
         >
           <CarouselContent className="-ml-4 md:-ml-6 px-4 md:px-8 lg:px-16">
             {portfolioItems.map((item) => (
               <CarouselItem
                 key={item.id}
-                className="pl-4 md:pl-6 basis-[90%] sm:basis-[70%] md:basis-1/2 lg:basis-[42%] xl:basis-[38%]"
+                className="pl-4 md:pl-6 basis-[88%] min-[400px]:basis-[85%] sm:basis-[70%] md:basis-1/2 lg:basis-[42%] xl:basis-[38%] min-w-0"
               >
                 <ServiceCard item={item} />
               </CarouselItem>

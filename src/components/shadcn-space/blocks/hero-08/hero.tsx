@@ -76,24 +76,27 @@ export default function HeroSection({
   const secondaryHref = secondaryCtaHref || `tel:${site.phone.officeTel}`;
 
   return (
-    <section className="bg-background pt-14 sm:pt-16" data-hero-08>
+    <section
+      className="bg-background pt-14 sm:pt-16 w-full max-w-full overflow-x-clip"
+      data-hero-08
+    >
       {/* Centered header - full description, no mid-sentence cutoff */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
-        <div className="flex flex-col items-center text-center gap-3 max-w-3xl mx-auto py-5 sm:py-6">
-          <span className="w-fit px-3 py-0.5 text-sm font-medium text-primary bg-primary/10 rounded-lg">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 w-full min-w-0">
+        <div className="flex flex-col items-center text-center gap-3 max-w-3xl mx-auto py-5 sm:py-6 w-full min-w-0">
+          <span className="w-fit max-w-full px-3 py-0.5 text-sm font-medium text-primary bg-primary/10 rounded-lg">
             {eyebrow}
           </span>
-          <div className="flex flex-col gap-2 items-center">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground tracking-tight !m-0">
+          <div className="flex flex-col gap-2 items-center w-full min-w-0">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground tracking-tight !m-0 text-balance max-w-full">
               {heading}
             </h1>
-            <p className="text-sm sm:text-base font-normal text-muted-foreground max-w-2xl !m-0">
+            <p className="text-sm sm:text-base font-normal text-muted-foreground max-w-2xl !m-0 text-pretty">
               {description}
             </p>
           </div>
-          <div className="flex flex-wrap items-center justify-center gap-3 pt-1">
+          <div className="flex flex-wrap items-center justify-center gap-3 pt-1 w-full">
             <Button
-              className="relative text-sm font-semibold rounded-[4px] h-11 p-1 ps-5 pe-14 group transition-all duration-500 hover:ps-14 hover:pe-5 w-fit overflow-hidden cursor-pointer !text-white"
+              className="relative text-sm font-semibold rounded-[4px] h-11 p-1 ps-5 pe-14 group transition-all duration-500 hover:ps-14 hover:pe-5 w-full min-[380px]:w-fit max-w-full overflow-hidden cursor-pointer !text-white"
               render={<Link href={primaryCtaHref} />}
             >
               <span className="relative z-10 transition-all duration-500">

@@ -21,6 +21,11 @@ export const site = {
     instagram: "https://www.instagram.com/nwshomes/?hl=en",
     houzz:
       "https://www.houzz.com/professionals/home-builders/nws-custom-homes-and-remodeling-pfvwus-pf~849721310",
+    /** Official NWS YouTube channel (linked from live site / About video) */
+    youtube: "https://www.youtube.com/channel/UCeJ8l_IhyNplw76bt0yk4NA",
+    /** Google Maps place search for NWS Richmond / Fort Bend */
+    googleMaps:
+      "https://www.google.com/maps/search/?api=1&query=NWS+Custom+Homes+and+Remodeling+Richmond+TX",
   },
   /** Official brand mark (same asset as www.nws-homes.com) */
   logo: "/images/gbp.png",

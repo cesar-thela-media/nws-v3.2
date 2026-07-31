@@ -42,7 +42,7 @@ function hexToRgb(hex) {
 function isWarmOffWhite(hex) {
   const rgb = hexToRgb(hex);
   if (!rgb) return false;
-  // light warm: high RGB, not pure white only if still peach-branded — allow #fafaf9 / #f5f4f0
+  // light warm: high RGB, not pure white only if still peach-branded - allow #fafaf9 / #f5f4f0
   return (
     rgb.r >= 240 &&
     rgb.g >= 240 &&
@@ -60,7 +60,7 @@ function isNearBlack(hex) {
 function isOrangeRed(hex) {
   const rgb = hexToRgb(hex);
   if (!rgb) return false;
-  // orangered family: high R, mid-low G, low B — e.g. #FF4500
+  // orangered family: high R, mid-low G, low B - e.g. #FF4500
   return rgb.r >= 220 && rgb.g <= 120 && rgb.b <= 80 && rgb.r > rgb.g && rgb.g >= rgb.b;
 }
 

@@ -1,6 +1,8 @@
 # NWS Custom Homes and Remodeling
 
-Frontend site for NWS Custom Homes (Richmond, TX) — **Next.js**, **TypeScript**, **Tailwind CSS v4**. Primary deploy target: **Vercel**. Optional Docker / Railway support is included.
+**Version 3.1** - multipage Lighthouse rebuild (responsive + contact polish).
+
+Frontend site for NWS Custom Homes (Richmond, TX) - **Next.js**, **TypeScript**, **Tailwind CSS v4**. Primary deploy target: **Vercel**. Optional Docker / Railway support is included.
 
 ## Stack
 
@@ -59,7 +61,7 @@ Prefer **server-only** webhook URLs (not `NEXT_PUBLIC_*`) so secrets stay off th
 
 ### Health check
 
-- `GET /api/health` — returns 200 when the Node process is up (useful for Railway / uptime monitors).
+- `GET /api/health` - returns 200 when the Node process is up (useful for Railway / uptime monitors).
 
 ### Notes
 

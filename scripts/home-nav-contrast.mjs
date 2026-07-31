@@ -28,7 +28,7 @@ export function isLightComputedColor(color) {
   if (!color || typeof color !== "string") return false;
   const s = color.trim().toLowerCase();
 
-  // oklab(L a b) or oklab(L a b / alpha) — L in 0..1
+  // oklab(L a b) or oklab(L a b / alpha) - L in 0..1
   const oklab = s.match(/oklab\(\s*([0-9.e+-]+)/i);
   if (oklab) {
     const L = parseFloat(oklab[1]);

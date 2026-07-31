@@ -108,7 +108,7 @@ test("navbar Book Now goes to contact (desktop-friendly) and orange hover/open",
     "Book Now should not be tel-only",
   );
   assert.match(nav, /hover:!text-primary|hover:text-primary/);
-  // Base UI open attrs — not Radix data-[state=open]
+  // Base UI open attrs - not Radix data-[state=open]
   assert.match(nav, /data-popup-open:!bg-primary|data-popup-open:bg-primary/);
   assert.match(nav, /data-popup-open:!text-primary|data-popup-open:text-primary/);
   assert.match(nav, /data-open:!bg-primary|data-open:bg-primary/);

@@ -105,7 +105,7 @@ function HeroSection({
             initial={{ opacity: 0, y: 32 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
-            className="text-[1.65rem] leading-[1.15] sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-white !m-0 max-w-5xl w-full px-2 text-center"
+            className="text-[clamp(1.2rem,4.8vw,1.65rem)] sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-[1.15] font-bold tracking-tight text-white !m-0 max-w-5xl w-full min-w-0 px-1 sm:px-2 text-center"
           >
             {locations.length > 1 ? (
               <AnimatedTextRoller
@@ -116,10 +116,11 @@ function HeroSection({
                 forceDefaultColor
               />
             ) : (
-              <span className="block text-balance">
-                {headline}
-                <br />
-                <span className="text-primary">{highlight}</span>
+              <span className="flex flex-col items-center gap-0">
+                <span className="block whitespace-nowrap">{headline}</span>
+                <span className="block text-primary whitespace-nowrap">
+                  {highlight}
+                </span>
               </span>
             )}
           </motion.h1>

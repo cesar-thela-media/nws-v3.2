@@ -69,18 +69,21 @@ const AnimatedTextRoller = ({
   return (
     <span
       className={cn(
+        // Exactly two visual lines: prefix, then rotating location
         "flex w-full max-w-full flex-col items-center gap-0",
         className,
       )}
+      data-hero-two-line
     >
       {prefix ? (
-        <span className="block w-full text-center text-white whitespace-nowrap px-1 leading-[1.15]">
+        <span className="block w-full max-w-full text-center text-white whitespace-nowrap px-1 leading-[1.15]">
           {prefix}
         </span>
       ) : null}
 
       <span
         className="relative mx-auto block w-full max-w-full overflow-hidden text-center isolate"
+        data-hero-location-line
         style={{
           height: `${LINE_EM}em`,
           // Hard clip + paint isolation kills descender/ascender bleed (e.g. G)
@@ -92,7 +95,7 @@ const AnimatedTextRoller = ({
       >
         <span
           className={cn(
-            "flex flex-col items-center will-change-transform",
+            "flex flex-col items-center will-change-transform w-full max-w-full",
             animate && "transition-transform duration-700 ease-in-out",
           )}
           style={{
@@ -103,7 +106,7 @@ const AnimatedTextRoller = ({
             <span
               key={`${item.text}-${i}`}
               className={cn(
-                "flex w-full shrink-0 items-center justify-center whitespace-nowrap px-1 overflow-hidden",
+                "flex w-full max-w-full shrink-0 items-center justify-center px-1 overflow-hidden text-ellipsis whitespace-nowrap",
                 forceDefaultColor
                   ? defaultColor
                   : (item.color ?? defaultColor),

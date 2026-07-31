@@ -74,7 +74,7 @@ export default function Services10({
           <p className="text-sm sm:text-base md:text-lg font-semibold text-primary">
             {label}
           </p>
-          <h2 className="font-bold tracking-tight text-white !m-0 whitespace-nowrap max-w-none text-[clamp(1.05rem,3.8vw,3.75rem)] leading-tight">
+          <h2 className="font-bold tracking-tight text-white !m-0 max-w-full text-balance text-[clamp(1.25rem,4.2vw,3.75rem)] leading-tight">
             {heading}
           </h2>
         </motion.div>

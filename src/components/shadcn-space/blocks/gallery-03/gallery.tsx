@@ -127,6 +127,7 @@ export default function Gallery03({
   const sectionPad = compact
     ? "py-6 sm:py-8"
     : "py-10 sm:py-14";
+  const sectionShell = "w-full max-w-full overflow-x-clip";
 
   const lightbox =
     lightboxIndex !== null ? (
@@ -209,14 +210,14 @@ export default function Gallery03({
     return (
       <>
         <section
-          className="w-full bg-primary text-white"
+          className={cn(sectionShell, "bg-primary text-white")}
           data-gallery-03
           data-gallery-project-photos
           data-gallery-photos-orange
         >
           <div
             className={cn(
-              "max-w-7xl mx-auto px-4 md:px-10 lg:px-16 xl:px-20 flex flex-col gap-8 sm:gap-10",
+              "max-w-7xl mx-auto px-4 md:px-10 lg:px-16 xl:px-20 flex flex-col gap-8 sm:gap-10 min-w-0",
               sectionPad,
             )}
           >
@@ -294,16 +295,16 @@ export default function Gallery03({
   // Compact featured layout (service detail heroes)
   return (
     <>
-      <section className="w-full bg-background" data-gallery-03>
+      <section className={cn(sectionShell, "bg-background")} data-gallery-03>
         <div
           className={cn(
-            "max-w-7xl mx-auto px-4 md:px-10 lg:px-16 xl:px-20",
+            "max-w-7xl mx-auto px-4 md:px-10 lg:px-16 xl:px-20 min-w-0",
             sectionPad,
           )}
         >
           <div className="grid grid-cols-12 gap-5 sm:gap-6">
             <motion.div
-              className="col-span-12 lg:col-span-6 flex flex-col"
+              className="col-span-12 lg:col-span-6 flex flex-col min-w-0"
               variants={fadeUp}
               initial="hidden"
               whileInView="visible"

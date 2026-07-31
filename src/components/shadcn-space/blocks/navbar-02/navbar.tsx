@@ -233,13 +233,13 @@ const Navbar = () => {
         overHero
           ? "bg-transparent border-transparent shadow-none"
           : scrolled
-            ? "bg-background/95 backdrop-blur-md border-border/60 shadow-sm"
-            : "bg-background/90 backdrop-blur-sm border-border/40",
+            ? "bg-background border-border/60 shadow-sm"
+            : "bg-background border-border/40",
       )}
     >
-      <div className="max-w-7xl mx-auto w-full px-4 sm:px-6">
-        <nav className="w-full flex items-center justify-between gap-3 h-16 sm:h-[4.25rem]">
-          <Link href="/" className="shrink-0" aria-label="NWS home">
+      <div className="max-w-7xl mx-auto w-full min-w-0 px-4 sm:px-6">
+        <nav className="w-full min-w-0 flex items-center justify-between gap-2 sm:gap-3 h-16 sm:h-[4.25rem]">
+          <Link href="/" className="shrink-0 min-w-0" aria-label="NWS home">
             <Logo onDark={overHero} />
           </Link>
 

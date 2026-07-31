@@ -1,5 +1,5 @@
 /**
- * Multi-page UI pass contract — drives shipped sources for home, About,
+ * Multi-page UI pass contract - drives shipped sources for home, About,
  * services, galleries, areas/locations. Exit 0 = criteria applied.
  */
 import test from "node:test";
@@ -64,7 +64,7 @@ test("Services hub+detail: carousel-08 hub, gallery-03 detail hero, faq-07 + cta
   assert.match(hub, /faq-07|Faq/);
   assert.match(hub, /cta-08|CTA/);
   assert.match(hub, /data-services-visual-grid/);
-  // Detail uses gallery-03 with per-slug photos — not the hub carousel
+  // Detail uses gallery-03 with per-slug photos - not the hub carousel
   assert.match(detail, /ServiceDetailHero|gallery-03|Gallery03/);
   assert.doesNotMatch(detail, /ServicesCarouselHero/);
   assert.match(detail, /data-service-visual-body/);

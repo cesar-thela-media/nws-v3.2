@@ -17,6 +17,18 @@ const InstagramIcon = () => (
   </svg>
 );
 
+const YouTubeIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+    <path d="M23.5 6.2a3.02 3.02 0 0 0-2.12-2.14C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.38.56A3.02 3.02 0 0 0 .5 6.2 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.8 3.02 3.02 0 0 0 2.12 2.14C4.5 20.5 12 20.5 12 20.5s7.5 0 9.38-.56a3.02 3.02 0 0 0 2.12-2.14A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.8zM9.75 15.5v-7l6.5 3.5-6.5 3.5z" />
+  </svg>
+);
+
+const MapsIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z" />
+  </svg>
+);
+
 type FooterData = {
   title: string;
   links: { title: string; href: string }[];
@@ -52,10 +64,10 @@ const Footer = () => {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="py-10 bg-primary text-white">
-      <div className="max-w-7xl xl:px-16 lg:px-8 px-4 mx-auto">
-        <div className="flex flex-col gap-6 sm:gap-12">
-          <div className="py-12 grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 lg:grid-cols-12 gap-x-8 gap-y-10 px-6 xl:px-0">
+    <footer className="py-10 bg-primary text-white w-full max-w-full overflow-x-clip">
+      <div className="max-w-7xl xl:px-16 lg:px-8 px-4 mx-auto w-full min-w-0">
+        <div className="flex flex-col gap-6 sm:gap-12 min-w-0">
+          <div className="py-10 sm:py-12 grid grid-cols-1 min-[400px]:grid-cols-2 sm:grid-cols-4 md:grid-cols-7 lg:grid-cols-12 gap-x-6 sm:gap-x-8 gap-y-10 px-2 sm:px-6 xl:px-0">
             <div className="col-span-full lg:col-span-4">
               <div className="flex flex-col gap-6">
                 <a href="/" className="w-fit">
@@ -64,7 +76,10 @@ const Footer = () => {
                 <p className="text-base font-normal text-white/85 !m-0">
                   Custom homes & remodeling · Richmond, TX since 2007
                 </p>
-                <div className="flex items-center gap-4">
+                <div
+                  className="flex flex-wrap items-center gap-x-4 gap-y-3"
+                  data-footer-socials
+                >
                   <a
                     href={site.social.facebook}
                     target="_blank"
@@ -90,6 +105,24 @@ const Footer = () => {
                     className="text-sm font-medium text-white/80 hover:text-white transition-colors"
                   >
                     Houzz
+                  </a>
+                  <a
+                    href={site.social.youtube}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white/80 hover:text-white transition-colors"
+                    aria-label="YouTube"
+                  >
+                    <YouTubeIcon />
+                  </a>
+                  <a
+                    href={site.social.googleMaps}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white/80 hover:text-white transition-colors"
+                    aria-label="Google Maps"
+                  >
+                    <MapsIcon />
                   </a>
                 </div>
               </div>

@@ -12,6 +12,9 @@
 
 # testing
 /coverage
+# Generated audit runs (re-create with node scripts/responsive-overflow-audit.mjs)
+scripts/responsive-overflow-audit.last.json
+*.last.json
 
 # next.js
 /.next/

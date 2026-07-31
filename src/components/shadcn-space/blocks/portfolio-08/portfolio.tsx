@@ -77,25 +77,25 @@ const ProjectCard = ({
   return (
     <div
       ref={container}
-      className="sticky w-full top-20 md:top-28 min-h-0 md:h-[22rem] lg:h-[24rem]"
+      className="sticky w-full max-w-full min-w-0 top-20 md:top-28 min-h-0 md:h-[22rem] lg:h-[24rem]"
       style={{
         zIndex: index + 1,
       }}
     >
       <motion.div
         style={{ scale }}
-        className="w-full flex flex-col md:flex-row items-stretch justify-between h-auto md:h-full bg-background border border-border rounded-2xl overflow-hidden gap-0 md:gap-0 origin-top shadow-sm"
+        className="w-full max-w-full min-w-0 flex flex-col md:flex-row items-stretch justify-between h-auto md:h-full bg-background border border-border rounded-2xl overflow-hidden gap-0 md:gap-0 origin-top shadow-sm"
       >
         {/* Content Side */}
         <div className="flex flex-col justify-between gap-5 sm:gap-6 p-5 sm:p-8 md:p-10 flex-1 min-w-0 order-2 md:order-1">
-          <div className="flex flex-col gap-3 sm:gap-4 max-w-xl">
+          <div className="flex flex-col gap-3 sm:gap-4 max-w-xl min-w-0">
             <span className="text-sm font-semibold text-primary tracking-wide">
               Step {project.step}
             </span>
-            <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-foreground tracking-tight !m-0">
+            <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-foreground tracking-tight !m-0 text-balance">
               {project.title}
             </p>
-            <p className="text-muted-foreground text-sm sm:text-base leading-relaxed !m-0">
+            <p className="text-muted-foreground text-sm sm:text-base leading-relaxed !m-0 text-pretty">
               {project.description}
             </p>
             <div className="flex flex-wrap gap-2">
@@ -166,7 +166,7 @@ const Portfolio = () => {
         </div>
       </div>
 
-      <div className="relative w-full flex flex-col items-center px-4 md:px-8 lg:px-16 pb-20 md:pb-32 lg:pb-40 gap-8 md:gap-12 max-w-7xl mx-auto">
+      <div className="relative w-full min-w-0 flex flex-col items-center px-4 md:px-8 lg:px-16 pb-20 md:pb-32 lg:pb-40 gap-8 md:gap-12 max-w-7xl mx-auto">
         {projects.map((project, index) => (
           <ProjectCard key={project.id} project={project} index={index} />
         ))}

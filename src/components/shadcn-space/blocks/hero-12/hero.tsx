@@ -56,7 +56,7 @@ export default function HeroSection({
     <section
       ref={sectionRef}
       data-hero-12
-      className="relative overflow-hidden bg-[#0a0e10] text-white sm:pt-8"
+      className="relative overflow-x-clip bg-[#0a0e10] text-white sm:pt-8 w-full max-w-full"
     >
       <div
         className="absolute inset-0 bg-cover bg-center opacity-45"
@@ -74,20 +74,20 @@ export default function HeroSection({
         aria-hidden
       />
 
-      <div className="relative z-20 max-w-7xl mx-auto xl:px-16 lg:px-8 px-4 py-16 sm:py-24 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-8 items-center">
-          <div className="flex flex-col gap-6 pt-8 sm:pt-12">
-            <div className="flex w-fit items-center gap-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-md px-2 py-1.5">
-              <Badge className="h-6 bg-primary text-xs font-semibold text-white border-0 shadow-sm leading-none hover:bg-primary">
+      <div className="relative z-20 max-w-7xl mx-auto xl:px-16 lg:px-8 px-4 py-14 sm:py-20 lg:py-24 w-full min-w-0">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-8 items-center">
+          <div className="flex flex-col gap-5 sm:gap-6 pt-6 sm:pt-10 min-w-0">
+            <div className="flex max-w-full w-fit flex-wrap items-center gap-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-md px-2 py-1.5">
+              <Badge className="h-6 bg-primary text-xs font-semibold text-white border-0 shadow-sm leading-none hover:bg-primary shrink-0">
                 {badgeLead}
               </Badge>
-              <span className="text-xs font-medium text-white tracking-tight whitespace-nowrap pr-1">
+              <span className="text-xs font-medium text-white tracking-tight pr-1 min-w-0">
                 {badge}
               </span>
             </div>
 
             <motion.h1
-              className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white !m-0"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white !m-0 text-balance max-w-full"
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
               variants={{

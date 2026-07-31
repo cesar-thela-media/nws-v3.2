@@ -60,7 +60,7 @@ export function Footer() {
             </li>
             <li>{site.location}</li>
           </ul>
-          <div className="flex gap-3 mt-5">
+          <div className="flex flex-wrap gap-3 mt-5">
             <a
               href={site.social.facebook}
               target="_blank"
@@ -78,6 +78,33 @@ export function Footer() {
               aria-label="Instagram"
             >
               ig
+            </a>
+            <a
+              href={site.social.houzz}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-[var(--color-primary)] transition-colors text-xs font-semibold"
+              aria-label="Houzz"
+            >
+              Hz
+            </a>
+            <a
+              href={site.social.youtube}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-[var(--color-primary)] transition-colors text-xs font-semibold"
+              aria-label="YouTube"
+            >
+              YT
+            </a>
+            <a
+              href={site.social.googleMaps}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-[var(--color-primary)] transition-colors text-xs font-semibold"
+              aria-label="Google Maps"
+            >
+              Map
             </a>
           </div>
           <a

@@ -75,7 +75,7 @@ const ContactForm = () => {
 
   if (submitted) {
     return (
-      <Card className="ring-0 p-8 border-0 rounded-2xl bg-white shadow-lg">
+      <Card className="ring-0 p-5 sm:p-8 border-0 rounded-2xl bg-white shadow-lg w-full max-w-full">
         <CardContent className="p-0">
           <p className="text-lg font-medium text-foreground !m-0">
             Thanks, we received your message and will get back to you shortly.
@@ -86,28 +86,29 @@ const ContactForm = () => {
   }
 
   return (
-    <div className="w-full">
-      <Card className="ring-0 p-8 gap-6 md:gap-8 border-0 rounded-2xl bg-white shadow-lg animate-in fade-in slide-in-from-right-10 duration-1000 delay-100 ease-in-out fill-mode-both">
-        <CardHeader className="p-0">
-          <CardTitle className="text-2xl font-bold tracking-tight text-foreground">
+    <div className="w-full max-w-full min-w-0">
+      {/* No slide-from-right on mobile - that animation left the card visually offset */}
+      <Card className="ring-0 p-5 sm:p-7 md:p-8 gap-5 sm:gap-6 md:gap-8 border-0 rounded-2xl bg-white shadow-lg w-full max-w-full min-w-0">
+        <CardHeader className="p-0 space-y-1">
+          <CardTitle className="text-xl sm:text-2xl font-bold tracking-tight text-foreground !m-0">
             Tell us about your project
           </CardTitle>
-          <p className="text-sm text-muted-foreground mt-1">
+          <p className="text-sm text-muted-foreground !m-0">
             We typically respond within one business day.
           </p>
         </CardHeader>
         <CardContent className="p-0">
           <form onSubmit={handleSubmit} className="space-y-5">
-            <div className="flex flex-col gap-8">
-              <div className="flex flex-col gap-6">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-4">
+            <div className="flex flex-col gap-5 sm:gap-6">
+              <div className="flex flex-col gap-4 sm:gap-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <Input
                     id="firstName"
                     name="firstName"
                     placeholder="First name"
                     value={formData.firstName}
                     onChange={handleChange}
-                    className="dark:bg-background h-10 shadow-xs"
+                    className="dark:bg-background h-11 sm:h-10 shadow-xs w-full min-w-0"
                     required
                   />
                   <Input
@@ -116,7 +117,7 @@ const ContactForm = () => {
                     placeholder="Last name"
                     value={formData.lastName}
                     onChange={handleChange}
-                    className="dark:bg-background h-10 shadow-xs"
+                    className="dark:bg-background h-11 sm:h-10 shadow-xs w-full min-w-0"
                     required
                   />
                 </div>
@@ -128,11 +129,11 @@ const ContactForm = () => {
                   type="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="dark:bg-background h-10 shadow-xs"
+                  className="dark:bg-background h-11 sm:h-10 shadow-xs w-full min-w-0"
                   required
                 />
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <Input
                     id="phone"
                     name="phone"
@@ -140,7 +141,7 @@ const ContactForm = () => {
                     type="tel"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="dark:bg-background h-10 shadow-xs"
+                    className="dark:bg-background h-11 sm:h-10 shadow-xs w-full min-w-0"
                   />
                   <Input
                     id="zip"
@@ -148,7 +149,7 @@ const ContactForm = () => {
                     placeholder="Zip code"
                     value={formData.zip}
                     onChange={handleChange}
-                    className="dark:bg-background h-10 shadow-xs"
+                    className="dark:bg-background h-11 sm:h-10 shadow-xs w-full min-w-0"
                   />
                 </div>
 
@@ -163,7 +164,7 @@ const ContactForm = () => {
                 >
                   <SelectTrigger
                     id="service"
-                    className="w-full h-10! dark:bg-background shadow-xs"
+                    className="w-full min-w-0 h-11! sm:h-10! dark:bg-background shadow-xs"
                   >
                     <SelectValue placeholder="Service of interest" />
                   </SelectTrigger>
@@ -185,20 +186,21 @@ const ContactForm = () => {
                   placeholder="Tell us about your project"
                   value={formData.message}
                   onChange={handleChange}
-                  className="h-24 resize-none dark:bg-background shadow-xs"
+                  className="h-24 resize-none dark:bg-background shadow-xs w-full min-w-0"
                   required
                 />
 
-                <div className="flex items-center gap-3">
+                <div className="flex items-start gap-3">
                   <Checkbox
                     id="terms"
                     checked={formData.terms}
                     onCheckedChange={handleCheckboxChange}
                     required
+                    className="mt-0.5 shrink-0"
                   />
                   <Label
                     htmlFor="terms"
-                    className="text-sm font-normal text-muted-foreground select-none"
+                    className="text-sm font-normal text-muted-foreground select-none leading-snug"
                   >
                     We use your info only to respond about your project.
                   </Label>
@@ -207,7 +209,7 @@ const ContactForm = () => {
               <Button
                 type="submit"
                 size="lg"
-                className="h-11 w-full sm:w-auto !bg-zinc-950 !text-white hover:!bg-zinc-900"
+                className="h-11 w-full !bg-zinc-950 !text-white hover:!bg-zinc-900"
               >
                 Send message
               </Button>

@@ -26,9 +26,9 @@ const stagger = {
 
 const CTA = () => {
   return (
-    <section className="relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16 py-16 lg:py-20">
-        <div className="relative rounded-2xl overflow-hidden min-h-[360px] sm:min-h-[400px]">
+    <section className="relative overflow-x-clip w-full max-w-full">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16 py-12 sm:py-16 lg:py-20 min-w-0">
+        <div className="relative rounded-2xl overflow-hidden min-h-[320px] sm:min-h-[360px] md:min-h-[400px]">
           {/* Generated cinematic remodel CTA background */}
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105 sm:scale-100"

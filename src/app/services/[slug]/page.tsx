@@ -55,14 +55,14 @@ export default async function ServicePage({ params }: Props) {
       />
 
       <section
-        className="py-12 md:py-16 bg-primary text-white"
+        className="py-12 md:py-16 bg-primary text-white w-full max-w-full overflow-x-clip"
         data-service-visual-body
         data-service-orange-section
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-            <div className="lg:col-span-5">
-              <div className="relative rounded-2xl overflow-hidden border border-white/25 min-h-[16rem] lg:min-h-[22rem] shadow-lg">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full min-w-0">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 items-start">
+            <div className="lg:col-span-5 min-w-0">
+              <div className="relative rounded-2xl overflow-hidden border border-white/25 min-h-[14rem] sm:min-h-[16rem] lg:min-h-[22rem] shadow-lg">
                 <Image
                   src={page.image || "/images/kitchen-gallery-1.jpeg"}
                   alt={page.imageAlt || page.breadcrumb}
@@ -71,11 +71,11 @@ export default async function ServicePage({ params }: Props) {
                 />
               </div>
             </div>
-            <div className="lg:col-span-7 flex flex-col gap-4">
+            <div className="lg:col-span-7 flex flex-col gap-4 min-w-0">
               <p className="text-sm font-semibold text-white/90 !m-0">
                 {page.breadcrumb}
               </p>
-              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white !m-0">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-white !m-0 text-balance">
                 {page.h1}
               </h2>
               {introShort.map((p) => (

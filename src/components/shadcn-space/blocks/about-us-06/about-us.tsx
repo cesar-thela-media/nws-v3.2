@@ -65,7 +65,10 @@ function AnimatedLetters({
         const start = letterIndex;
         letterIndex += word.length;
         return (
-          <span key={`w-${wi}-${start}`} className="inline-block whitespace-nowrap">
+          <span
+            key={`w-${wi}-${start}`}
+            className="inline-block whitespace-nowrap max-w-full"
+          >
             {word.split("").map((char, ci) => (
               <motion.span
                 key={`${start + ci}`}

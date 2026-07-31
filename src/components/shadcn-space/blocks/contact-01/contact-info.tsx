@@ -16,37 +16,37 @@ const fade = {
 /** Copy block for orange contact section; hours + promo animate into view */
 const ContactInfo = () => {
   return (
-    <div className="flex flex-col md:gap-10 gap-8 text-white">
+    <div className="flex flex-col gap-6 sm:gap-8 md:gap-10 text-white min-w-0 w-full">
       <motion.div
-        className="flex flex-col gap-5"
+        className="flex flex-col gap-3 sm:gap-5"
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0.35 }}
+        viewport={{ once: true, amount: 0.25 }}
         variants={fade}
       >
         <div className="flex gap-3 items-center">
-          <div className="w-2 h-2 rounded-full bg-white" />
+          <div className="w-2 h-2 rounded-full bg-white shrink-0" />
           <p className="text-base font-medium text-white/90 !m-0">
             Start your project
           </p>
         </div>
-        <p className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white !m-0">
+        <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white !m-0 text-balance">
           Reach our team
         </p>
-        <p className="text-base sm:text-lg text-white/85 max-w-md !m-0 leading-relaxed">
+        <p className="text-sm sm:text-base md:text-lg text-white/85 max-w-md !m-0 leading-relaxed text-pretty">
           We typically respond within one business day. Call for a free consult
           or tell us about your project below.
         </p>
       </motion.div>
 
       <motion.div
-        className="flex flex-col sm:flex-row sm:flex-wrap gap-6 sm:gap-8"
+        className="grid grid-cols-1 min-[400px]:grid-cols-2 gap-5 sm:gap-6"
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0.35 }}
+        viewport={{ once: true, amount: 0.25 }}
         variants={fade}
       >
-        <div className="flex flex-col gap-1 min-w-[8rem]">
+        <div className="flex flex-col gap-1 min-w-0">
           <p className="text-sm font-medium text-white/70 !m-0">Office</p>
           <a
             href={`tel:${site.phone.officeTel}`}
@@ -55,7 +55,7 @@ const ContactInfo = () => {
             {site.phone.office}
           </a>
         </div>
-        <div className="flex flex-col gap-1 min-w-[8rem]">
+        <div className="flex flex-col gap-1 min-w-0">
           <p className="text-sm font-medium text-white/70 !m-0">Mobile</p>
           <a
             href={`tel:${site.phone.mobileTel}`}
@@ -64,7 +64,7 @@ const ContactInfo = () => {
             {site.phone.mobile}
           </a>
         </div>
-        <div className="flex flex-col gap-1 min-w-[10rem]">
+        <div className="flex flex-col gap-1 min-w-0 min-[400px]:col-span-2">
           <p className="text-sm font-medium text-white/70 !m-0">Email</p>
           <a
             href={`mailto:${site.email}`}

@@ -100,11 +100,11 @@ const staggerStats = {
 export default function AboutUs() {
   return (
     <section
-      className="relative py-12 md:py-20 lg:py-24 overflow-hidden bg-primary"
+      className="relative py-12 md:py-20 lg:py-24 overflow-x-clip bg-primary w-full max-w-full"
       data-about-us-13
       data-about-story-orange
     >
-      <div className="relative z-10 w-full max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-10 xl:px-14">
+      <div className="relative z-10 w-full max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-10 xl:px-14 min-w-0">
         <div
           className="rounded-2xl border border-white/20 bg-white shadow-[0_16px_48px_rgba(0,0,0,0.18)] overflow-hidden"
           data-about-story-card
@@ -112,7 +112,7 @@ export default function AboutUs() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch">
             {/* Stack of landscape photos - fills column, no white gap under image */}
             <motion.div
-              className="lg:col-span-5 p-3 sm:p-4 lg:p-5 flex flex-col gap-3 bg-muted/30"
+              className="lg:col-span-5 p-3 sm:p-4 lg:p-5 flex flex-col gap-3 bg-muted/30 min-w-0"
               data-about-story-collage
               initial="hidden"
               whileInView="show"
@@ -134,7 +134,7 @@ export default function AboutUs() {
               ))}
             </motion.div>
 
-            <div className="lg:col-span-7 flex flex-col gap-8 lg:gap-10 p-6 sm:p-8 lg:p-10 xl:p-12">
+            <div className="lg:col-span-7 flex flex-col gap-8 lg:gap-10 p-5 sm:p-8 lg:p-10 xl:p-12 min-w-0">
               <motion.div
                 className="flex flex-col gap-5"
                 initial="hidden"

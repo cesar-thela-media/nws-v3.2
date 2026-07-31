@@ -1,6 +1,6 @@
 {
   "name": "nws-site",
-  "version": "0.1.0",
+  "version": "3.1.0",
   "private": true,
   "engines": {
     "node": ">=20.9.0"
@@ -10,8 +10,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "node --test scripts/sitemap-routes.test.mjs scripts/design-tokens.test.mjs scripts/contrast-css.test.mjs scripts/home-chrome.test.mjs scripts/home-polish.test.mjs scripts/round2-goal.test.mjs scripts/about-rebuild.test.mjs scripts/pass4-pages.test.mjs scripts/hero04-pass.test.mjs scripts/custom-home-overview.test.mjs scripts/multipage-ui-pass.test.mjs",
+    "test": "node --test scripts/sitemap-routes.test.mjs scripts/design-tokens.test.mjs scripts/contrast-css.test.mjs scripts/home-chrome.test.mjs scripts/home-polish.test.mjs scripts/round2-goal.test.mjs scripts/about-rebuild.test.mjs scripts/pass4-pages.test.mjs scripts/hero04-pass.test.mjs scripts/custom-home-overview.test.mjs scripts/multipage-ui-pass.test.mjs scripts/responsive-overflow-audit.test.mjs",
     "test:design": "node --test scripts/design-tokens.test.mjs scripts/contrast-css.test.mjs scripts/home-chrome.test.mjs scripts/home-polish.test.mjs",
+    "test:responsive": "node scripts/responsive-overflow-audit.mjs",
     "test:http": "node --test scripts/sitemap-routes.test.mjs",
     "test:nav-contrast": "node scripts/home-nav-contrast.mjs",
     "parity": "node scripts/parity-audit.mjs"

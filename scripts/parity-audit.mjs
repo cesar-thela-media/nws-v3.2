@@ -192,7 +192,7 @@ async function main() {
 
     if (!O.h1) gaps.push("local missing H1");
     else if (L.h1 && !containsApprox(O.body + " " + O.h1 + " " + O.h2s.join(" "), L.h1)) {
-      // H1 on live might be breadcrumb page name while main heading is h2 — also check page name from path
+      // H1 on live might be breadcrumb page name while main heading is h2 - also check page name from path
       const pathHint = p.replace(/\//g, " ").replace(/-/g, " ").trim();
       if (!containsApprox(O.body, pathHint) && !containsApprox(O.h1, pathHint)) {
         gaps.push(`H1/hero intent weak liveH1="${L.h1}" localH1="${O.h1}"`);
@@ -255,7 +255,7 @@ async function main() {
       localBodyLen: O.body.length,
     });
     console.log(
-      `${gaps.length === 0 ? "PASS" : "FAIL"} ${p}${gaps.length ? " — " + gaps[0] : ""}`
+      `${gaps.length === 0 ? "PASS" : "FAIL"} ${p}${gaps.length ? " - " + gaps[0] : ""}`
     );
   }
 
