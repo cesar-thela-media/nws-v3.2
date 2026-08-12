@@ -1,4 +1,4 @@
-﻿const fs=require("fs");
+﻿const fs = require("fs"); // eslint-disable-line @typescript-eslint/no-require-imports
 const css=fs.readFileSync("src/app/globals.css","utf8");
 const layout=fs.readFileSync("src/app/layout.tsx","utf8");
 const m=css.match(/:root\s*\{([\s\S]*?)\n\}/);

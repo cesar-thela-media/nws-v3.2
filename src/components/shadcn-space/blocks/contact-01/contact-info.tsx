@@ -27,15 +27,14 @@ const ContactInfo = () => {
         <div className="flex gap-3 items-center">
           <div className="w-2 h-2 rounded-full bg-white shrink-0" />
           <p className="text-base font-medium text-white/90 !m-0">
-            Start your project
+            Start Your Project
           </p>
         </div>
         <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white !m-0 text-balance">
-          Reach our team
+          Reach Out to Our Contractors
         </p>
         <p className="text-sm sm:text-base md:text-lg text-white/85 max-w-md !m-0 leading-relaxed text-pretty">
-          We typically respond within one business day. Call for a free consult
-          or tell us about your project below.
+          Our friendly team is here to help. Questions or queries? Get in touch!
         </p>
       </motion.div>
 
@@ -95,7 +94,7 @@ const ContactInfo = () => {
         viewport={{ once: true, amount: 0.5 }}
         transition={{ duration: 0.5, ease: "easeOut", delay: 0.08 }}
       >
-        <p className="text-sm font-medium text-white/70 !m-0">Business hours</p>
+        <p className="text-sm font-medium text-white/70 !m-0">Hours</p>
         <p className="text-base font-medium text-white !m-0">
           {site.hours.weekdays}
         </p>

@@ -16,7 +16,6 @@ test("default heading color is only in @layer base (utilities can override)", ()
   // Extract unlayered top-level rules before any @layer that set color on h1
   // Simpler: require @layer base has the color, and the unlayered h1 font block has no color
   assert.match(css, /@layer\s+base/);
-  const base = css.match(/@layer\s+base\s*\{([\s\S]*)\}\s*(?=\/\*|@|\.btn|$)/);
   // Fallback: just ensure base block contains heading color
   assert.match(
     css,

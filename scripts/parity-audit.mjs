@@ -9,6 +9,7 @@ import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, "..");
+void root;
 const scratch =
   process.env.SCRATCH ||
   path.join(

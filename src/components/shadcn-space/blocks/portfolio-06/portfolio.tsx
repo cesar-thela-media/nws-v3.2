@@ -20,45 +20,96 @@ const portfolioItems = [
     badge: "Build",
     title: "Custom Home Building",
     description:
-      "From first plan to final walkthrough, built for how you live in Fort Bend County.",
+      "Our team will work with you from start to finish to ensure that your home is what you want, with all the features and finishes that matter to you most.",
     image: "/images/custom-homes-1.jpeg",
     href: "/services/custom-home-builder/",
   },
   {
     id: 2,
+    badge: "Remodel",
+    title: "Remodeling",
+    description:
+      "We're here to help you turn your home into the place you've always dreamed of. Whether you want a kitchen to remodel, a bathroom makeover, or an addition to your home, we can do it all.",
+    image: "/images/remodeling-1.jpeg",
+    href: "/services/remodeling-company/",
+  },
+  {
+    id: 3,
     badge: "Kitchen",
     title: "Kitchen Remodeling",
     description:
-      "Better flow, storage, and finishes for the room you use most.",
+      "Kitchen remodeling is a great way to breathe new life into your home. We've got the expertise and experience you need to pull it off. We'll work with you every step of the way to create the kitchen of your dreams, no matter what that looks like.",
     image: "/images/kitchen-gallery-1.jpeg",
     href: "/services/kitchen-remodeling/",
   },
   {
-    id: 3,
+    id: 4,
     badge: "Bath",
     title: "Bathroom Remodeling",
     description:
-      "A calmer, more durable bath with moisture-smart details for Texas homes.",
+      "Are you ready to take your bathroom to the next level? We've got everything you need to turn that tired, outdated space into a gorgeous, relaxing oasis, and we can do it all with minimal disruption to your busy life.",
     image: "/images/bathroom-gallery-1.jpeg",
     href: "/services/bathroom-remodeling/",
   },
   {
-    id: 4,
+    id: 5,
     badge: "Whole home",
     title: "Whole Home Remodeling",
     description:
-      "Coordinate kitchens, baths, floors, and rooms under one clear plan.",
+      "We specialize in whole home remodeling services, so no matter what part of your house needs work, we can help. We can help with everything from painting and flooring to building new rooms.",
     image: "/images/custom-homes-3.jpeg",
     href: "/services/home-remodel/",
   },
   {
-    id: 5,
+    id: 6,
+    badge: "Shower",
+    title: "Shower Remodel",
+    description:
+      "Ready to upgrade your shower? Transform your space with a custom shower remodel tailored to your needs and style.",
+    image: "/images/14-kitchen-after.jpg",
+    href: "/services/bathroom-shower-remodel/",
+  },
+  {
+    id: 7,
+    badge: "Bath",
+    title: "Bathtub Remodel",
+    description:
+      "Upgrade your bathroom with a stunning bathtub remodel. Our team will help you transform your space into a relaxing, functional retreat.",
+    image: "/images/13-kitchen-after.jpg",
+    href: "/services/bathtub-remodeling/",
+  },
+  {
+    id: 8,
     badge: "Expand",
-    title: "Room & Home Additions",
+    title: "Room Additions & Home Additions",
     description:
       "More space that looks like it was always part of the house.",
     image: "/images/home-addition-contractors.webp",
     href: "/services/room-additions-home-additions/",
+  },
+  {
+    id: 9,
+    badge: "Basement",
+    title: "Basement Remodeling / Finishing",
+    description: "Our Remodeling Services Include: Custom layouts, fixture upgrades, accessibility solutions, tile and flooring installation, and full basement renovations.",
+    image: "/images/Basement-Finishing.webp",
+    href: "/services/basement-remodeling-finishing/",
+  },
+  {
+    id: 10,
+    badge: "Garage",
+    title: "Garage Conversions & Remodeling",
+    description: "Create a new home office, gym, or bedroom with our garage remodel contractors. We handle flooring, insulation, and finishes to give your garage new life.",
+    image: "/images/garage-remodel.webp",
+    href: "/services/garage-remodel-contractors/",
+  },
+  {
+    id: 11,
+    badge: "Open concept",
+    title: "Living Room & Open Concept Remodeling",
+    description: "Brighten your home with open concept remodeling. From wall removal to layout redesign, we create inviting spaces for family living and entertaining.",
+    image: "/images/open-concept.webp",
+    href: "/services/open-concept-remodeling/",
   },
 ];
 
@@ -114,9 +165,9 @@ function ServiceCard({
         </p>
         <a
           href={item.href}
-          className="inline-flex items-center gap-2 text-base font-semibold text-white hover:text-white/90 mt-1 w-fit"
+          className="group/learn inline-flex items-center gap-2 rounded-full bg-white px-4 py-2.5 text-base font-semibold text-primary hover:bg-white mt-1 w-fit transition-colors"
         >
-          <span>Learn more</span>
+          <span className="relative after:absolute after:left-0 after:right-0 after:-bottom-0.5 after:h-0.5 after:origin-left after:scale-x-0 after:bg-primary after:transition-transform after:duration-300 group-hover/learn:after:scale-x-100">Learn more</span>
           <ArrowRight className="size-4 text-white transition-transform duration-300 ease-out group-hover:translate-x-1.5" />
         </a>
       </div>

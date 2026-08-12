@@ -23,8 +23,8 @@ export function LocationPage({ location }: { location: Location }) {
     "/images/hero-custom-home-remodeling-paralax-image.jpg";
 
   const shortName = location.name.replace(/,?\s*TX$/i, "").trim();
-  const bodyShort = location.body.slice(0, 2);
-  const sectionsShort = location.sections?.slice(0, 3);
+  const bodyContent = location.body;
+  const sectionsContent = location.sections;
 
   return (
     <>
@@ -33,11 +33,11 @@ export function LocationPage({ location }: { location: Location }) {
         badge={shortName}
         headline={`${shortName} custom homes & remodels`}
         description={
-          location.body?.[0]?.slice(0, 160) ||
+          location.body?.[0] ||
           `Local craftsmanship for ${shortName} and nearby Fort Bend communities since 2007.`
         }
         imageSrc={heroSrc}
-        imageAlt={`Remodeling services in ${location.name}`}
+        imageAlt={location.heroImageAlt || `NWS remodeling project serving ${location.name}`}
         primaryCtaLabel={location.ctaLabel || "Get in touch"}
         primaryCtaHref={ctaHref}
         secondaryCtaLabel="View services"
@@ -53,6 +53,7 @@ export function LocationPage({ location }: { location: Location }) {
                 alt={`Remodeling services in ${location.name}`}
                 width={800}
                 height={960}
+                sizes="(max-width: 1024px) 100vw, 42vw"
                 className="w-full h-auto object-cover max-h-[28rem] lg:max-h-none"
               />
             </div>
@@ -62,19 +63,22 @@ export function LocationPage({ location }: { location: Location }) {
             <h2 className="text-[22px] md:text-[28px] text-foreground font-bold tracking-tight !mt-0">
               {location.h1}
             </h2>
-            {bodyShort.map((p) => (
+            {bodyContent.map((p) => (
               <p key={p.slice(0, 48)}>{p}</p>
             ))}
 
-            {sectionsShort?.map((section) => (
+            {location.slug === "park-row-tx" ? (
+              <h3 className="mt-10">Complete Renovation Solutions for Your Property</h3>
+            ) : null}
+            {sectionsContent?.map((section) => (
               <div key={section.heading} className="mt-10">
                 <h3>{section.heading}</h3>
-                {section.paragraphs?.slice(0, 1).map((p) => (
+                {section.paragraphs?.map((p) => (
                   <p key={p.slice(0, 40)}>{p}</p>
                 ))}
                 {section.services && (
                   <ul className="mt-4 space-y-3 list-none pl-0">
-                    {section.services.slice(0, 5).map((item) => (
+                    {section.services.map((item) => (
                       <li
                         key={item.href + item.label}
                         className="flex gap-3 rounded-xl border border-border bg-muted/30 p-3"
@@ -97,7 +101,7 @@ export function LocationPage({ location }: { location: Location }) {
                 )}
                 {section.bullets && (
                   <ul className="mt-4">
-                    {section.bullets.slice(0, 4).map((b) => (
+                    {section.bullets.map((b) => (
                       <li key={b.slice(0, 40)}>{b}</li>
                     ))}
                   </ul>

@@ -27,8 +27,6 @@ import {
 import { cn } from "@/lib/utils";
 import {
   ArrowRight,
-  Bath,
-  Building2,
   ChevronDown,
   Hammer,
   Home,
@@ -41,6 +39,10 @@ import {
 import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import {
+  canonicalServiceAreaCatalog,
+  canonicalServiceCatalog,
+} from "@/data/informationArchitecture";
 
 export type NavigationItem = {
   title: string;
@@ -57,44 +59,40 @@ export type NavigationSection = {
   layout?: "list" | "grid";
 };
 
+const serviceNavigationItems: NavigationItem[] = canonicalServiceCatalog.map(
+  (service) => ({
+    title: service.label,
+    description: "NWS Custom Homes and Remodeling",
+    icon: Hammer,
+    href: service.href,
+  }),
+);
+
+const areaNavigationItems: NavigationItem[] = [
+  {
+    title: "Areas We Serve",
+    description: "Richmond & Fort Bend County",
+    icon: MapPin,
+    href: "/areas-we-serve/",
+  },
+  ...canonicalServiceAreaCatalog
+    .filter((area) => area.href)
+    .map((area) => ({
+      title: area.label,
+      description: "Custom homes & remodeling",
+      icon: MapPin,
+      href: area.href as string,
+    })),
+];
+
 const navigationData: NavigationSection[] = [
   { title: "Home", href: "/" },
   { title: "About", href: "/about/" },
   {
     title: "Services",
     layout: "list",
-    items: [
-      {
-        title: "Custom Homes",
-        description: "Full builds from plan to walkthrough",
-        icon: Home,
-        href: "/services/custom-home-builder/",
-      },
-      {
-        title: "Kitchen Remodeling",
-        description: "Flow, storage, and finishes that last",
-        icon: CookingPot,
-        href: "/services/kitchen-remodeling/",
-      },
-      {
-        title: "Bathroom Remodeling",
-        description: "Moisture-smart baths for Texas homes",
-        icon: Bath,
-        href: "/services/bathroom-remodeling/",
-      },
-      {
-        title: "Whole Home Remodel",
-        description: "Multi-room work under one plan",
-        icon: Hammer,
-        href: "/services/home-remodel/",
-      },
-      {
-        title: "All Services",
-        description: "Additions, showers, garages & more",
-        icon: Building2,
-        href: "/services/",
-      },
-    ],
+    items: serviceNavigationItems,
+    href: "/services/",
   },
   {
     title: "Galleries",
@@ -129,32 +127,8 @@ const navigationData: NavigationSection[] = [
   {
     title: "Areas",
     layout: "list",
-    items: [
-      {
-        title: "Areas We Serve",
-        description: "Richmond & Fort Bend County",
-        icon: MapPin,
-        href: "/areas-we-serve/",
-      },
-      {
-        title: "Sugar Land",
-        description: "Custom homes & remodels",
-        icon: MapPin,
-        href: "/sugar-land-tx/",
-      },
-      {
-        title: "Katy",
-        description: "Local remodeling team",
-        icon: MapPin,
-        href: "/katy-tx/",
-      },
-      {
-        title: "Fulshear",
-        description: "Builds & renovations",
-        icon: MapPin,
-        href: "/fulshear-tx/",
-      },
-    ],
+    items: areaNavigationItems,
+    href: "/areas-we-serve/",
   },
   { title: "FAQs", href: "/faqs/" },
 ];
@@ -173,7 +147,7 @@ const BookNowButton = ({
       overHero && "shadow-md shadow-black/20",
       className,
     )}
-    render={<a href="/contact/" />}
+    render={<a href="/contact/" data-book-now-tel="tel:2812992309" />}
   >
     Book Now
   </Button>
@@ -201,10 +175,11 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    handleScroll();
+    const initialScrollSync = window.setTimeout(handleScroll, 0);
     window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", handleResize);
     return () => {
+      window.clearTimeout(initialScrollSync);
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleResize);
     };
@@ -212,7 +187,8 @@ const Navbar = () => {
 
   // Close mobile sheet on route change
   useEffect(() => {
-    setIsOpen(false);
+    const closeOnRouteChange = window.setTimeout(() => setIsOpen(false), 0);
+    return () => window.clearTimeout(closeOnRouteChange);
   }, [pathname]);
 
   // Base UI uses data-popup-open / data-open (not Radix data-[state=open]).
@@ -260,14 +236,14 @@ const Navbar = () => {
                       <NavigationMenuContent
                         className={cn(
                           "p-2 pt-4 rounded-xl",
-                          section.layout === "grid" ? "w-md" : "w-fit",
+                          section.layout === "grid" || section.title === "Services" || section.title === "Areas" ? "w-[min(44rem,calc(100vw-2rem))]" : "w-fit",
                         )}
                       >
                         <div
                           className={cn(
                             "pt-1",
-                            section.layout === "grid"
-                              ? "grid grid-cols-2"
+                            section.layout === "grid" || section.title === "Services" || section.title === "Areas"
+                              ? "grid grid-cols-2 gap-1"
                               : "flex flex-col",
                           )}
                         >
@@ -275,7 +251,7 @@ const Navbar = () => {
                             <NavigationMenuLink
                               key={item.title}
                               href={item.href || "#"}
-                              className="flex items-center gap-3 rounded-lg hover:bg-muted/80 transition-all group mb-0 p-2"
+                              className="flex items-center gap-3 rounded-lg hover:bg-muted/80 transition-all group mb-0 p-2 min-w-0"
                             >
                               <div className="flex items-center justify-center p-3 rounded-lg bg-muted group-hover:bg-background transition-colors min-w-10 h-10">
                                 {item.icon ? <item.icon size={16} /> : null}

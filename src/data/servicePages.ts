@@ -7,6 +7,7 @@ export type ServicePage = {
   heroTitle: string;
   heroText: string;
   heroCta?: string;
+  heroCtaHref?: string;
   h1: string;
   intro: string[];
   image?: string;
@@ -19,8 +20,11 @@ export type ServicePage = {
     paragraphs?: string[];
     bullets?: string[];
     subBlocks?: { title: string; items: string[] }[];
+    /** Presentation only: collapse long educational blocks on dense service pages. */
+    expandable?: boolean;
   }[];
   faqs?: { q: string; a: string }[];
+  faqHeading?: string;
   ctaLabel?: string;
   ctaTitle?: string;
   ctaText?: string;
@@ -32,13 +36,14 @@ export const servicePages: ServicePage[] = [
     slug: "custom-home-builder",
     title: "Custom Home Builder Richmond, TX | Contact Us Today!",
     metaDescription:
-      "Professional custom home builder in Richmond, TX. 35+ years building dream homes. Call (281) 299-2309.",
+      "Experienced custom home builder in Richmond, TX. 35+ years crafting quality, personalized homes. Call our trusted team at (281) 299-2309.",
     breadcrumb: "Custom Home Building",
     heroLabel: "Over 35 Years Of Experience",
     heroTitle: "We Build Your Dream Home",
     heroText:
       "At NWS Custom Homes and Remodeling, we work with you from start to finish to ensure your home is everything you've envisioned. Whether you're dreaming of something modern, traditional, or entirely unique, our team is ready to bring your ideas to life with expert craftsmanship and care.",
     h1: "Work With a Professional Custom Home Builder in Richmond, TX, and Fort Bend County",
+    faqHeading: "Custom Home Building FAQ",
     intro: [
       "As a custom home builder in Richmond, TX and Fort Bend County, we design and build homes around how you live, from first consult to final walkthrough.",
     ],
@@ -56,6 +61,7 @@ export const servicePages: ServicePage[] = [
       },
       {
         heading: "Custom vs. Production Homes: Pros, Cons & Top Texas Design Trends",
+        expandable: true,
         paragraphs: [
           "When it comes to building your dream home, one of the first major decisions you'll face is choosing between a custom home and a production home. Both offer distinct advantages and drawbacks, depending on your lifestyle, timeline, and budget.",
           "At NWS Custom Homes and Remodeling, we've been helping homeowners throughout Richmond, TX, since 2007, turning ideas into beautifully designed spaces.",
@@ -63,6 +69,7 @@ export const servicePages: ServicePage[] = [
       },
       {
         heading: "Custom Homes: Built Around You",
+        expandable: true,
         paragraphs: [
           "A custom home gives you the freedom to design a one-of-a-kind space from the ground up. You choose the floor plan, layout, finishes, and every detail in between.",
         ],
@@ -70,10 +77,10 @@ export const servicePages: ServicePage[] = [
           {
             title: "Pros of Custom Built Homes",
             items: [
-              "Personalization: Every aspect of your home is tailored to your taste.",
-              "Quality and Craftsmanship: High-quality materials and precise workmanship.",
-              "Unique Design: Build on any lot with an architectural style that fits you.",
-              "Energy Efficiency and Modern Systems: Latest technologies and smart-home systems.",
+              "Personalization: Every aspect of your home, from kitchen cabinetry to window placement, is tailored to your taste. This allows you to express your lifestyle and design preferences in ways that production homes can't match.",
+              "Quality and Craftsmanship: A custom home builder uses high-quality materials and precise workmanship. You'll have more say in the brands, finishes, and systems installed in your home, ensuring a long-lasting investment.",
+              "Unique Design: With a custom home, you can build on any lot and choose an architectural style that fits your personality. Whether it's a modern farmhouse or a traditional Southern-style home, the design is entirely yours.",
+              "Energy Efficiency and Modern Systems: New custom homes often incorporate the latest in energy-efficient technologies and smart-home systems, helping reduce monthly utility costs and environmental impact.",
             ],
           },
           {
@@ -88,19 +95,23 @@ export const servicePages: ServicePage[] = [
       },
       {
         heading: "A Step-by-Step Custom Home Building Process",
+        expandable: true,
         bullets: [
           "Initial Consultation: Discuss your vision, budget, and must-have features",
-          "Floor Plan Development: Create a layout tailored to your lifestyle",
-          "Design and Material Selection: Choose finishes, fixtures, and details",
-          "Permitting and Approvals: Handle local permits and compliance",
-          "Construction Phase: Manage framing, systems, and finishing",
-          "Final Walkthrough: Review every detail for quality and satisfaction",
+          "Floor Plan Development: Create a layout tailored to your lifestyle and daily routines",
+          "Design and Material Selection: Choose finishes, fixtures, and architectural details",
+          "Permitting and Approvals: Handle local permits and ensure compliance with Fort Bend County regulations",
+          "Construction Phase: Manage framing, systems installation, and finishing work",
+          "Final Walkthrough: Review every detail to ensure quality and satisfaction",
         ],
       },
       {
         heading: "Finding the Right Lot in Fort Bend County",
+        expandable: true,
         paragraphs: [
           "Building a custom home starts long before construction begins. Selecting the right lot in Fort Bend County plays a major role in your home's design, cost, and long-term value.",
+          "We help guide you through key considerations such as:",
+          "Whether you already own land or are still searching, our team helps you evaluate your options so your custom home is built on a strong foundation from the start.",
         ],
         bullets: [
           "Lot Size and Layout: Ensuring enough space for your home design, driveway, and outdoor features",
@@ -111,6 +122,13 @@ export const servicePages: ServicePage[] = [
       },
       {
         heading: "Top Design Trends for New Construction Homes in Texas",
+        expandable: true,
+        paragraphs: [
+          "The Texas housing market is evolving, and today's homeowners are seeking spaces that balance comfort, functionality, and modern style. Whether you're working with a construction contractor or a home construction company, consider these popular design trends for your new home build:",
+          "5. Natural Finishes and Textures",
+          "Wood accents, stone surfaces, and earthy tones continue to dominate design choices. These elements bring warmth and character, creating a timeless yet modern aesthetic.",
+          "Luxury bathrooms are trending across Texas. Homeowners are opting for walk-in showers, freestanding tubs, and high-end finishes to create a peaceful retreat within their homes.",
+        ],
         bullets: [
           "Open-Concept Living: Kitchen, dining, and living areas together for entertaining",
           "Outdoor Living Spaces: Outdoor kitchens, covered patios, and lounging areas",
@@ -123,8 +141,51 @@ export const servicePages: ServicePage[] = [
       },
       {
         heading: "Production Homes: Convenient and Cost-Effective",
+        expandable: true,
         paragraphs: [
-          "Production homes, often built by larger home builders, are designed for efficiency and affordability with a set number of floor plans and finishes. They offer faster turnaround and more predictable pricing, but limited personalization compared to custom built homes.",
+          "Production homes, often built by larger home builders or a home construction company, are designed for efficiency and affordability. These homes are typically constructed in subdivisions where builders use a set number of floor plans and finishes.",
+          "3. Predictable Process: The build timeline and pricing are generally more consistent, providing peace of mind for homeowners who prefer simplicity.",
+        ],
+        subBlocks: [
+          {
+            title: "Pros of Production Homes",
+            items: [
+              "Faster Turnaround: With pre-designed layouts and bulk materials, production homes can often be completed in a few months, getting you into your new home faster.",
+              "Budget-Friendly: Standardized designs and materials help control costs, making production homes more affordable than fully custom builds.",
+              "Predictable Process: The build timeline and pricing are generally more consistent, providing peace of mind for homeowners who prefer simplicity.",
+            ],
+          },
+          {
+            title: "Cons of Production Homes",
+            items: [
+              "Limited Personalization: You can typically choose from a few floor plans and finishes, but you won't have the creative control that comes with custom homes.",
+              "Lower Material Quality: To maintain efficiency and affordability, some production builders use standard-grade materials that may require maintenance or upgrades sooner.",
+              "Community Restrictions: Because production homes are often part of planned communities, design changes may be limited by neighborhood guidelines.",
+            ],
+          },
+        ],
+      },
+      {
+        heading: "Choosing What's Right for You",
+        expandable: true,
+        paragraphs: [
+          "If you value creative freedom, unique design, and a home that reflects your personality, a custom home builder is your best choice. However, if you're working within a strict budget or timeline, a production home might be a practical option.",
+          "For homeowners in Richmond, TX, and Fort Bend County, partnering with a local construction company like NWS Custom Homes and Remodeling ensures a smoother experience. We combine personalized design, transparent communication, and reliable craftsmanship to make your new construction experience enjoyable and rewarding.",
+        ],
+      },
+      {
+        heading: "Lessons Learned From Supply Chain Challenges During the Pandemic",
+        expandable: true,
+        paragraphs: [
+          "Recent years have shown how important planning and communication are during construction. During pandemic-related supply delays, many homeowners experienced extended timelines and material shortages.",
+          "Our approach has evolved to address these challenges:",
+          "These lessons allow us to deliver a more reliable building experience today.",
+        ],
+        bullets: [
+          "Early Material Selection: Secure key items before construction begins",
+          "Reliable Supplier Network: Work with trusted vendors to reduce delays",
+          "Transparent Communication: Keep you informed about timelines and availability",
+          "Flexible Planning: Adjust schedules when needed without compromising quality",
         ],
       },
       {
@@ -171,7 +232,7 @@ export const servicePages: ServicePage[] = [
     slug: "remodeling-company",
     title: "Remodeling Company Richmond, TX | Contact Us Today!",
     metaDescription:
-      "Trusted remodeling company in Richmond, TX since 2007. Over 35 years of combined experience. Call (281) 299-2309.",
+      "Trusted remodeling company in Richmond, TX. With 35+ years of experience, we deliver quality home renovations. Call (281) 299-2309 today!",
     breadcrumb: "Remodeling",
     heroLabel: "From Painting to Home Additions",
     heroTitle: "Transform Your Home With Expert Remodeling",
@@ -182,6 +243,7 @@ export const servicePages: ServicePage[] = [
     intro: [
       "Choosing the right remodeling company can make or break your project. Poor communication, unclear timelines, and inconsistent workmanship can turn a renovation into a stressful experience.",
       "At NWS Custom Homes and Remodeling, we've been serving Richmond, TX, since 2007, bringing over 35 years of combined construction and remodeling experience. We focus on delivering reliable results through clear communication, structured planning, and consistent craftsmanship.",
+      "Homeowners choose NWS Custom Homes and Remodeling because we focus on consistency and accountability at every step.",
     ],
     image: "/images/home-remodeling-richmond-tx.jpg",
     imageAlt: "remodeling home living room richmond tx",
@@ -223,13 +285,14 @@ export const servicePages: ServicePage[] = [
     slug: "kitchen-remodeling",
     title: "Kitchen Remodeling Richmond, TX | Contact Us Today!",
     metaDescription:
-      "Professional kitchen remodeling in Richmond, TX. 35+ years designing beautiful, functional kitchens. Call (281) 299-2309.",
+      "Professional kitchen remodeling in Richmond, TX. 35+ years of experience designing beautiful, functional spaces. Call (281) 299-2309.",
     breadcrumb: "Kitchen Remodeling",
     heroLabel: "Modern Kitchen Remodeling That Fits Your Lifestyle",
     heroTitle: 'Improve the "Heart" of Your Home',
     heroText:
       "Transform your kitchen into a functional, modern space built around your needs. From layout redesign to premium finishes, every detail is planned for daily comfort, style, and long-term value.",
     h1: "Transform Your Space With Custom Kitchen Remodeling Services in Richmond, TX",
+    faqHeading: "Frequently Asked Questions About Kitchen Remodeling",
     intro: [
       "Outdated kitchens can make daily routines frustrating and limit how you use your home. Poor layouts, worn cabinets, and a lack of storage often lead to cluttered, inefficient spaces that no longer fit your lifestyle.",
       "At NWS Custom Homes and Remodeling, we specialize in kitchen remodeling services in Richmond, TX, and the surrounding areas, helping homeowners reimagine their space with thoughtful design and quality construction.",
@@ -246,7 +309,7 @@ export const servicePages: ServicePage[] = [
           {
             title: "Layout Options for Better Flow",
             items: [
-              "Galley Layout: Ideal for smaller spaces with parallel counters",
+              "Galley Layout: Ideal for smaller spaces, this layout maximizes efficiency with parallel counters and streamlined workflow.",
               "L-Shaped Kitchen: Open feel with flexibility for dining",
               "Island Layout: Prep space, seating, and storage for families",
               "Open Concept Designs: Integrates kitchen with living spaces",
@@ -255,7 +318,7 @@ export const servicePages: ServicePage[] = [
           {
             title: "Countertop Material Options",
             items: [
-              "Quartz Countertops: Durable, low-maintenance, modern",
+              "Quartz Countertops: Durable, low-maintenance surfaces with a modern appearance and consistent patterns.",
               "Granite Countertops: Natural stone with unique veining",
               "Butcher Block Countertops: Warm wood surfaces for prep areas",
             ],
@@ -263,10 +326,12 @@ export const servicePages: ServicePage[] = [
           {
             title: "Cabinet Styles and Storage Solutions",
             items: [
-              "Shaker Cabinets: Clean lines for modern and traditional kitchens",
-              "Flat-Panel Cabinets: Minimalist contemporary style",
+              "Shaker Cabinets: Clean lines that suit both modern and traditional kitchens.",
+              "Flat-Panel Cabinets: Minimalist style perfect for contemporary designs.",
               "Custom Cabinetry: Built to maximize storage",
-              "Soft-Close Features: Reduce wear and improve function",
+              "Soft-Close Features: Reduce wear and improve everyday functionality.",
+              "Backsplash Installation: Adds visual interest and protects walls from moisture and spills.",
+              "Flooring Options: Durable tile, hardwood, or luxury vinyl for long-term performance.",
             ],
           },
         ],
@@ -310,9 +375,9 @@ export const servicePages: ServicePage[] = [
   },
   {
     slug: "bathroom-remodeling",
-    title: "Bathroom Remodeling Richmond, TX",
+    title: "Bathroom Remodeling Richmond, TX | NWS Custom Homes and Remodeling",
     metaDescription:
-      "Top-of-the-line bathroom remodeling services in Richmond, TX. Over 35 years of combined experience. Call (281) 299-2309.",
+      "Top-of-the-line bathroom remodeling services in Richmond, TX. We have over 35 years of combined experience. Call us at (281) 299-2309 today.",
     breadcrumb: "Bathroom Remodeling",
     heroLabel: "Custom Bathroom Remodeling Built for Comfort",
     heroTitle: "Give Your Bathroom a Makeover",
@@ -320,9 +385,11 @@ export const servicePages: ServicePage[] = [
       "Whether you're ready to update outdated tile floors or replace old fixtures with something more modern and luxurious, our bathroom remodeling team is here to help. At NWS Custom Homes and Remodeling, we turn ordinary bathrooms into relaxing, functional spaces tailored to your style and needs.",
     heroCta: "Contact Our Experts",
     h1: "Top-Of-The-Line Bathroom Remodeling Services in Richmond, TX",
+    faqHeading: "Bathroom Remodeling FAQ",
     intro: [
-      "An outdated bathroom can feel cramped, inefficient, and difficult to maintain. Limited storage, worn surfaces, and poor ventilation often lead to daily frustration and even long-term moisture issues.",
-      "At NWS Custom Homes and Remodeling, we provide luxury bathroom remodeling services in Richmond, TX, and the surrounding areas that focus on both design and durability.",
+      "An outdated bathroom can feel cramped, inefficient, and difficult to maintain. Limited storage, worn surfaces, and poor ventilation often lead to daily frustration and even long-term moisture issues. In Texas, humidity can make these problems worse, increasing the risk of mold and material damage.",
+      "At NWS Custom Homes and Remodeling, we provide luxury bathroom remodeling services in Richmond, TX, and the surrounding areas that focus on both design and durability. We evaluate your current space, identify areas for improvement, and create a plan that enhances functionality while addressing moisture control.",
+      "Whether you need a simple upgrade or a full bathroom renovation, our team delivers solutions that improve comfort, increase home value, and create a space you can enjoy every day.",
     ],
     image: "/images/bathroom-remodeling-richmond-tx.jpg",
     imageAlt: "bathroom remodeling sketch to actual bathroom richmond tx",
@@ -330,54 +397,131 @@ export const servicePages: ServicePage[] = [
       {
         heading: "Start-to-Finish Bathroom Renovation",
         paragraphs: [
-          "We offer comprehensive bathroom renovation solutions, including new sinks, bathtubs, toilets, custom tile flooring, and updated countertops. Whether you're interested in a modern tub-to-shower conversion or a total redesign, we've got the expertise to deliver.",
+          "We offer comprehensive bathroom renovation solutions, including new sinks, bathtubs, toilets, custom tile flooring, and updated countertops. Whether you're interested in a modern tub-to-shower conversion or a total redesign, we've got the expertise to deliver. If you're searching for reliable bathroom remodeling contractors who take pride in their work, you've come to the right place.",
         ],
       },
       {
-        heading: "The Latest Bathroom Models: Modern Trends and Innovations",
+        heading: "The Latest Bathroom Models: Modern Trends and Innovations in Remodeling",
+        expandable: true,
+        paragraphs: [
+          "When it comes to bathroom remodeling, the modern homeowner seeks more than functionality, they want a space that blends comfort, luxury, and personal style. From spa-inspired layouts to tech-integrated designs, the latest bathroom remodel trends focus on transforming an ordinary room into a relaxing retreat. Whether you're planning a small bathroom remodeling project or a luxury bathroom remodel, today's innovations offer endless ways to elevate your home's value and comfort.",
+          "Below, we'll explore the newest design features, materials, and technologies shaping the future of bathroom renovation projects across the country.",
+        ],
         subBlocks: [
           {
-            title: "Spa-Like Retreats for Everyday Luxury",
+            title: "1. Spa-Like Retreats for Everyday Luxury",
             items: [
-              "Large walk-in showers with frameless glass",
-              "Rainfall showerheads and built-in seating",
-              "Freestanding soaking tubs",
-              "Heated floors, ambient lighting, and towel warmers",
+              "One of the most popular design directions in modern bathroom remodeling is the spa-inspired look. Homeowners are turning their bathrooms into private sanctuaries that evoke relaxation and tranquility.",
+              "A luxury bathroom remodel often includes large walk-in showers with frameless glass, rainfall showerheads, and built-in seating. Freestanding soaking tubs remain a favorite, especially in spaces designed for balance and serenity.",
+              "To complete the spa aesthetic, many bathroom remodel contractors recommend incorporating natural elements, stone tiles, wood vanities, and soft, neutral color palettes. Adding features like heated floors, ambient lighting, and towel warmers further enhances the at-home spa experience.",
+            ],
+          },
+          {
+            title: "2. Seamless Shower Conversions",
+            items: [
+              "The modern shift toward convenience and accessibility has made shower remodel projects one of the top requests among homeowners. Many are choosing to convert a bathtub to a shower to create a more open, modern layout that's both stylish and practical.",
+              "A shower conversion allows for easier access, less maintenance, and a sleek, contemporary appearance. Popular design features include curbless entry showers, wall-mounted fixtures, and hidden drains for a clean, seamless look. For those interested in sustainability, low-flow showerheads and water-saving systems are smart additions that enhance both comfort and efficiency.",
+              "Whether it's a full-scale bathroom upgrade or a partial shower remodel, these conversions are ideal for families who value function without sacrificing luxury.",
             ],
           },
           {
             title: "Walk-In Shower Conversions",
             items: [
-              "Tub-to-Shower Conversions",
-              "Frameless Glass Enclosures",
-              "Built-In Niches and Seating",
-              "Slip-Resistant Flooring",
+              "Tub-to-Shower Conversions: Replace outdated tubs with accessible walk-in showers.",
+              "Frameless Glass Enclosures: Enhance openness and modern appeal.",
+              "Built-In Niches and Seating: Improve convenience and usability.",
+              "Slip-Resistant Flooring: Adds safety without sacrificing style.",
+            ],
+          },
+          {
+            title: "3. Floating Vanities and Custom Storage",
+            items: [
+              "As homes evolve toward minimalist design, vanity replacement trends have shifted to floating vanities that give the illusion of more space while offering modern elegance. These vanities work well for small bathroom remodeling, providing ample storage without crowding the room.",
+              "Custom cabinetry solutions are another highlight of contemporary bathroom remodeling services. Hidden drawers, integrated outlets, and under-sink organizers are designed for both practicality and style. A bathroom remodeler can tailor these storage elements to suit your daily routines, making it easier to maintain a clutter-free environment.",
+              "When choosing materials, quartz and granite countertops remain top choices for durability and aesthetic appeal, while matte finishes are gaining traction for a modern touch.",
             ],
           },
           {
             title: "Vanity Styles and Storage Solutions",
             items: [
-              "Single Sink Vanities",
-              "Double Sink Vanities",
-              "Floating Vanities",
-              "Custom Storage Solutions",
+              "Single Sink Vanities: Ideal for smaller bathrooms with limited space.",
+              "Double Sink Vanities: Perfect for shared bathrooms, improving functionality during busy mornings.",
+              "Floating Vanities: Create a modern look while making the space feel larger.",
+              "Custom Storage Solutions: Built to maximize organization and reduce clutter.",
+            ],
+          },
+          {
+            title: "4. Smart Technology in Modern Bathrooms",
+            items: [
+              "Technology has made its way into nearly every room of the house, and the bathroom is no exception. Homeowners are embracing smart features as part of their bathroom renovation plans to enhance comfort and convenience.",
+              "Smart mirrors with LED lighting and built-in defoggers are now a staple in luxury bathroom remodel projects. Motion-sensor faucets and voice-activated lighting systems add efficiency and sophistication. Heated flooring systems and programmable thermostats provide added comfort, especially during Texas winters.",
+              "For those seeking wellness-oriented features, chromotherapy lighting and smart showers that remember your preferred temperature settings are becoming increasingly popular in new bathroom remodeling projects.",
+            ],
+          },
+          {
+            title: "5. Bold Tiles and Textured Finishes",
+            items: [
+              "Modern bathroom remodel contractors are experimenting with bold textures and artistic tilework to make a statement. Large-format porcelain tiles create a clean, seamless look that's easy to maintain, while textured tiles add depth and dimension to accent walls or shower enclosures.",
+              "Many homeowners are also embracing geometric patterns, herringbone designs, and marble-inspired surfaces to give their bathroom remodel a touch of personality. Matte black fixtures, brushed brass, and copper tones remain popular for hardware, complementing both minimalist and traditional spaces.",
             ],
           },
           {
             title: "Tile Options for Style and Durability",
             items: [
-              "Ceramic Tile",
-              "Porcelain Tile",
-              "Natural Stone Tile",
-              "Large-Format Tile",
+              "Ceramic Tile: Cost-effective and versatile, available in a wide range of colors and patterns.",
+              "Porcelain Tile: Dense and moisture-resistant, ideal for floors and shower walls in humid environments.",
+              "Natural Stone Tile: Adds a high-end look with unique textures, though it requires sealing for protection.",
+              "Large-Format Tile: Minimizes grout lines, making cleaning easier and creating a modern appearance.",
+            ],
+          },
+          {
+            title: "6. Energy-Efficient and Sustainable Materials",
+            items: [
+              "Eco-friendly design continues to influence bathroom remodeling contractors and homeowners alike. Sustainable materials, such as recycled glass tiles, bamboo vanities, and low-VOC paints, are in high demand.",
+              "Water-saving fixtures - like dual-flush toilets and low-flow faucets, help reduce waste without compromising performance. Many bathroom remodeling company professionals also recommend LED lighting for its longevity and efficiency.",
+              "These energy-efficient features not only help the environment but also lower long-term costs, making them a smart investment for any bathroom remodel.",
+            ],
+          },
+          {
+            title: "7. Personalized Layouts and Customization",
+            items: [
+              "Customization lies at the heart of modern bathroom remodeling services. Instead of one-size-fits-all designs, homeowners are working closely with bathroom remodelers to create layouts tailored to their lifestyles.",
+              "For instance, families may choose dual sinks and expanded storage, while couples might opt for separate vanity areas. Small spaces can benefit from pocket doors and corner sinks, maximizing every inch of available space.",
+              "A well-planned bathroom renovation ensures your layout flows naturally, supports your daily routines, and enhances the overall aesthetic of your home.",
+            ],
+          },
+          {
+            title: "8. Lighting That Transforms the Space",
+            items: [
+              "Proper lighting can make or break your bathroom remodel. The latest trends emphasize layered lighting, combining ambient, task, and accent lighting to enhance both function and mood.",
+              "Recessed ceiling lights offer general illumination, while sconces near mirrors provide focused light for grooming. LED strip lighting beneath vanities or behind mirrors adds a soft glow, making your space feel warm and welcoming.",
+              "This approach not only highlights the room's best features but also makes small bathrooms appear larger and more open.",
+            ],
+          },
+          {
+            title: "9. Mixing Classic and Modern Styles",
+            items: [
+              "Homeowners no longer feel confined to a single design style. The newest bathroom upgrade trends blend timeless elegance with modern minimalism. Think marble-look tiles paired with sleek chrome fixtures or vintage clawfoot tubs combined with floating vanities.",
+              "Bathroom remodeling contractors encourage clients to mix and match finishes, combining wood textures with matte metals or glossy ceramics with stone surfaces. This approach adds depth and personality, ensuring your space feels current but never trendy.",
+            ],
+          },
+          {
+            title: "10. Bringing It All Together",
+            items: [
+              "Whether you're considering a full bathroom remodel or a smaller shower conversion, today's bathroom models are all about comfort, functionality, and individual expression. Working with professional bathroom remodel contractors ensures your project runs smoothly, from initial design to final installation.",
+              "An experienced bathroom remodeling company will help you explore materials, plan your layout, and select finishes that balance aesthetics and durability. The result is a beautiful, personalized retreat you'll enjoy every day.",
+              "If you're ready to begin your bathroom renovation, now is the perfect time to embrace these modern trends. From smart technology to spa-like designs, your dream bathroom is just a remodel away.",
             ],
           },
         ],
       },
       {
         heading: "Built for Texas Humidity and Long-Term Performance",
+        expandable: true,
         paragraphs: [
-          "Bathrooms in Richmond, TX, face constant exposure to moisture and heat. Without proper planning, this can lead to mold growth, warped materials, and costly repairs. By designing with Texas conditions in mind, we create bathrooms that remain durable, safe, and visually appealing for years.",
+          "Bathrooms in Richmond, TX, face constant exposure to moisture and heat. Without proper planning, this can lead to mold growth, warped materials, and costly repairs.",
+          "We address these challenges by:",
+          "By designing with Texas conditions in mind, we create bathrooms that remain durable, safe, and visually appealing for years.",
         ],
         bullets: [
           "Installing proper ventilation systems to control humidity",
@@ -388,20 +532,20 @@ export const servicePages: ServicePage[] = [
       },
       {
         heading: "Smart Technology in Modern Bathrooms",
+        expandable: true,
         paragraphs: [
           "Technology has made its way into nearly every room of the house, and the bathroom is no exception. Homeowners are embracing smart features as part of their bathroom renovation plans to enhance comfort and convenience.",
-        ],
-        bullets: [
-          "Smart mirrors with LED lighting and built-in defoggers",
-          "Motion-sensor faucets and voice-activated lighting systems",
-          "Heated flooring systems and programmable thermostats",
-          "Chromotherapy lighting and smart showers with preferred temperature settings",
+          "Smart mirrors with LED lighting and built-in defoggers are now a staple in luxury bathroom remodel projects. Motion-sensor faucets and voice-activated lighting systems add efficiency and sophistication. Heated flooring systems and programmable thermostats provide added comfort, especially during Texas winters.",
+          "For those seeking wellness-oriented features, chromotherapy lighting and smart showers that remember your preferred temperature settings are becoming increasingly popular in new bathroom remodeling projects.",
         ],
       },
       {
         heading: "Energy-Efficient and Sustainable Materials",
+        expandable: true,
         paragraphs: [
-          "Eco-friendly design continues to influence bathroom remodeling. Sustainable materials such as recycled glass tiles, bamboo vanities, and low-VOC paints are in high demand. Water-saving fixtures, like dual-flush toilets and low-flow faucets, help reduce waste without compromising performance.",
+          "Eco-friendly design continues to influence bathroom remodeling contractors and homeowners alike. Sustainable materials, such as recycled glass tiles, bamboo vanities, and low-VOC paints, are in high demand.",
+          "Water-saving fixtures - like dual-flush toilets and low-flow faucets, help reduce waste without compromising performance. Many bathroom remodeling company professionals also recommend LED lighting for its longevity and efficiency.",
+          "These energy-efficient features not only help the environment but also lower long-term costs, making them a smart investment for any bathroom remodel.",
         ],
       },
       {
@@ -449,7 +593,7 @@ export const servicePages: ServicePage[] = [
     slug: "home-remodel",
     title: "Home Remodel Richmond, TX | Contact Us Today!",
     metaDescription:
-      "Experienced home remodel experts in Richmond, TX. 35+ years delivering quality renovations. Call (281) 299-2309 today!",
+      "Experienced home remodel experts in Richmond, TX. 35+ years delivering quality renovations tailored to your style. Call (281) 299-2309 today!",
     breadcrumb: "Whole Home Remodeling",
     heroLabel: "Work with Experts",
     heroTitle: "Renovate Your Home With Confidence",
@@ -457,12 +601,16 @@ export const servicePages: ServicePage[] = [
       "When you're ready to remodel your home, you deserve a team that can bring your vision to life with precision and care. At NWS Custom Homes and Remodeling, we specialize in creating beautiful, functional spaces through thoughtful design and expert craftsmanship.",
     heroCta: "Contact Our Experts",
     h1: "Improve Your Living Spaces With Professional Home Remodel Services in Richmond, TX",
+    faqHeading: "Frequently Asked Questions About Home Remodeling",
     intro: [
       "At NWS Custom Homes and Remodeling, we believe your home should reflect your lifestyle and taste. That's why we're passionate about providing high-quality home remodel services that enhance both form and function. With years of experience and a proven track record in remodeling houses, we're equipped to manage projects of any size, from small upgrades to complete whole home remodeling.",
     ],
     image: "/images/whole-home-remodeling-richmond-tx.jpg",
     imageAlt: "before and after whole home remodeling richmond tx",
     sections: [
+      {
+        heading: "Reach Out to Our Remodeling Experts",
+      },
       {
         heading: "Let Us Revamp Your Spaces",
         bullets: [
@@ -516,13 +664,14 @@ export const servicePages: ServicePage[] = [
     slug: "bathroom-shower-remodel",
     title: "Bathroom Shower Remodel Richmond, TX | Contact Us Today!",
     metaDescription:
-      "Professional shower remodel services in Richmond, TX. Transform your bathroom with custom designs. Call (281) 299-2309.",
+      "Expert bathroom shower remodel in Richmond, TX. NWS Custom Homes delivers quality, stylish upgrades. Call our trusted team at (281) 299-2309!",
     breadcrumb: "Shower Remodel",
     heroLabel: "Over 35 Years Of Experience",
     heroTitle: "Upgrade Your Bathroom with a Stunning Shower Remodel!",
     heroText:
       "At NWS Custom Homes and Remodeling, we help you create the bathroom of your dreams. Whether it's a full shower bath remodel or a small update, we turn your vision into reality. Let's get started!",
     heroCta: "Connect With Us",
+    heroCtaHref: "/contact/",
     h1: "Revitalize Your Space with Our Bathroom Shower Remodel in Richmond, TX",
     intro: [
       "Are you dealing with an outdated or cramped shower that disrupts your daily routine? Maybe your shower isn't functional, or it's simply not as stylish as you'd like. The frustration of poor water pressure, leaks, or limited space can make a daily task like showering feel like a hassle.",
@@ -560,43 +709,56 @@ export const servicePages: ServicePage[] = [
             title: "Built-In Storage and Comfort Features",
             items: [
               "Shower Benches",
-              "Wall Niches",
+              "Wall Niches: Built-in storage for soaps and toiletries, keeping the space clean and organized.",
               "Corner Shelving",
-              "Rainfall Showerheads",
-              "Handheld Fixtures",
-              "Slip-Resistant Flooring",
+              "Rainfall Showerheads: Enhance relaxation and water coverage.",
+              "Handheld Fixtures: Improve flexibility and convenience.",
+              "Slip-Resistant Flooring: Increases safety without compromising style.",
             ],
           },
         ],
       },
       {
         heading: "Walk-In Shower Conversion Process",
+        paragraphs: [
+          "Converting a traditional tub or outdated shower into a walk-in design is one of the most popular upgrades in Richmond, TX. It improves accessibility, modernizes your space, and increases home value.",
+        ],
         bullets: [
           "Initial Assessment: Evaluate layout, plumbing, and structure",
           "Design Planning: Select layout, tile, glass, and fixtures",
-          "Demolition and Prep: Remove old materials",
+          "Demolition and Prep: Remove old materials and prepare the space for installation.",
           "Waterproofing: Apply sealing systems to prevent leaks",
-          "Installation: Tile, glass, fixtures, and drainage",
-          "Final Inspection: Ensure quality and proper function",
+          "Installation: Install tile, glass, fixtures, and drainage systems with precision.",
+          "Final Inspection: Ensure everything meets quality standards and functions properly.",
+        ],
+      },
+      {
+        heading: "Start Your Shower Remodeling Project Today",
+        paragraphs: [
+          "At NWS Custom Homes and Remodeling, we are dedicated to creating personalized bathroom spaces that work for you. From the initial design phase to the finishing touches, we offer complete shower remodel services tailored to your needs.",
+          "As experienced bathroom shower remodel contractors, we provide detailed consultation and planning, ensuring that every aspect of your new shower works seamlessly for your daily routine. Our team is committed to delivering high-quality results and exceeding expectations.",
+          "We understand how important it is to have a bathroom that fits your lifestyle. That’s why we offer shower remodeling services that are not only stylish but also highly functional. Whether you need extra storage, better water pressure, or a design upgrade, we’ll work closely with you to craft the perfect shower space.",
+          "Our bath shower remodel professionals use the best materials and innovative solutions to ensure that your remodel lasts for years. Don’t settle for anything less than the best when it comes to your bathroom. If you’re in Richmond, TX, and looking for a team you can trust, NWS Custom Homes and Remodeling is here to make your vision come to life.",
         ],
       },
     ],
     ctaTitle: "Claim Your Stunning Shower Remodel Today!",
     ctaText:
-      "Transform your bathroom with NWS Custom Homes and Remodeling. Our shower remodel services elevate your space and add value to your home.",
+      "Transform your bathroom with NWS Custom Homes and Remodeling. Our shower remodel services elevate your space and add value to your home. Contact us today to bring your vision to life!",
     ctaButton: "Let's Talk",
   },
   {
     slug: "bathtub-remodeling",
     title: "Bathtub Remodeling Richmond, TX | Contact Us Today!",
     metaDescription:
-      "Professional bathtub remodeling in Richmond, TX. Quality upgrades and stunning designs. Call (281) 299-2309.",
+      "Expert bathtub remodeling in Richmond, TX. NWS Custom Homes delivers quality, stylish upgrades. Call our trusted team at (281) 299-2309!",
     breadcrumb: "Bathtub Remodel",
     heroLabel: "Over 35 Years Of Experience",
     heroTitle: "Revamp Your Bathroom with a Stunning Bathtub Remodel",
     heroText:
       "At NWS Custom Homes and Remodeling, we offer high-quality bathtub remodeling services. Whether you're looking to update your current tub or completely redesign your bathroom, our team of skilled professionals can turn your vision into a reality.",
     heroCta: "Get Involved",
+    heroCtaHref: "/contact/",
     h1: "Give Your Bathroom a Fresh Look with Our Bathtub Remodeling in Richmond, TX",
     intro: [
       "Dealing with an outdated or uncomfortable bathtub can quickly become frustrating. A cracked tub, peeling tiles, or simply a style that doesn't match your taste can impact the overall feel of your bathroom.",
@@ -625,8 +787,8 @@ export const servicePages: ServicePage[] = [
           {
             title: "Soaking Tubs for Relaxation",
             items: [
-              "Deep Soaking Tubs: Full-body immersion",
-              "Ergonomic Shapes: Contoured back support",
+              "Deep Soaking Tubs: Designed for full-body immersion, offering a spa-like experience at home.",
+              "Ergonomic Shapes: Built for comfort with contoured back support.",
               "Heat-Retaining Materials: Longer temperature hold",
             ],
           },
@@ -634,38 +796,51 @@ export const servicePages: ServicePage[] = [
             title: "Built-In Tub Options",
             items: [
               "Alcove Tubs: Space-saving for standard layouts",
-              "Drop-In Tubs: Custom deck with design flexibility",
+              "Drop-In Tubs: Installed within a custom deck, allowing for added storage and design flexibility.",
             ],
           },
         ],
       },
       {
         heading: "Tub-to-Shower Conversion Process",
+        paragraphs: [
+          "Our Conversion Process Includes:",
+          "This process transforms your bathroom into a more open, accessible, and modern space.",
+        ],
         bullets: [
-          "Initial Consultation: Evaluate space, plumbing, and goals",
+          "Initial Consultation: Evaluate your space, plumbing, and goals for the remodel.",
           "Design Planning: Select shower layout, tile, fixtures, and glass",
-          "Demolition: Remove existing bathtub and prepare space",
+          "Demolition: Remove the existing bathtub and prepare the space.",
           "Waterproofing and Prep: Moisture barriers and drainage",
-          "Installation: Tile, fixtures, glass, and finishing details",
-          "Final Walkthrough: Confirm quality and function",
+          "Installation: Add tile, fixtures, glass, and finishing details with precision.",
+          "Final Walkthrough: Confirm everything meets quality standards and functions properly.",
+        ],
+      },
+      {
+        heading: "Transform Your Bathtub With Style and Function",
+        paragraphs: [
+          "A successful bathtub remodel combines thoughtful design, quality materials, and practical features. We help you choose the right style, layout, and finishes for your bathroom.",
+          "From a relaxing soaking tub to a functional tub-to-shower conversion, our team focuses on beauty and everyday usability. Careful planning and craftsmanship ensure durable results that complement your home.",
+          "As a trusted remodeling team, we provide personalized service and attention to detail throughout the project, helping you create a bathroom you will enjoy for years to come.",
         ],
       },
     ],
     ctaTitle: "Upgrade Your Bathroom Today and Save Big",
     ctaText:
-      "Don't wait to transform your bathroom. Schedule your bathtub remodel today for a refreshed, modern look you'll love!",
+      "Don't wait to transform your bathroom. Schedule your bathtub remodel today for a refreshed, modern look you'll love! Reach out now for your consultation.",
     ctaButton: "Talk to Us",
   },
   {
     slug: "room-additions-home-additions",
     title: "Home Addition Contractors Richmond, TX | Contact Us Today!",
     metaDescription:
-      "Trusted home addition contractors in Richmond, TX and Fort Bend County. Master suites, second stories, and more. Call (281) 299-2309.",
+      "Trusted home addition contractors in Richmond, TX. Create custom spaces with lasting comfort and value. Call (281) 299-2309 today!",
     breadcrumb: "Room Additions & Home Additions",
     heroTitle: "Seamlessly Add Space and Value to Your Home",
     heroText:
       "NWS Custom Homes and Remodeling designs and builds stunning room additions tailored to your lifestyle. From master suites to second stories, we manage every detail so your home feels complete.",
     heroCta: "Book Now",
+    heroCtaHref: "tel:2812992309",
     h1: "Expand Your Living Areas With Trusted Home Addition Contractors in Richmond, TX, and Fort Bend County",
     intro: [
       "Feeling like your home is running out of space can be overwhelming. Whether your family is growing, you're welcoming in-laws, or you simply want more room to enjoy life, a lack of space creates stress. Cluttered living areas, limited storage, and a lack of privacy make daily routines more challenging than they should be. Without the right home addition contractors, even starting the process can feel intimidating.",
@@ -678,6 +853,7 @@ export const servicePages: ServicePage[] = [
       {
         heading: "Expanding Homes With Custom Solutions",
         paragraphs: [
+          "Many homeowners searching for room addition contractors worry about mismatched styles or disruptive construction. We minimize those concerns with thoughtful planning and careful execution. Whether you're considering a spacious new master suite, a second-story expansion, or simply an extra bedroom, we have the tools and experience to get it done right.",
           "When you need more space, not just any contractor will do. Choosing skilled room addition contractors ensures that your project is handled with precision and care. At NWS Custom Homes and Remodeling, we understand that each family has unique needs, and that's why we offer tailored solutions for every project.",
           "From custom room additions that expand living areas to mother-in-law suite additions that provide privacy and comfort for loved ones, we create spaces designed to fit your lifestyle. Our team of home addition experts knows how to integrate new builds seamlessly with your existing structure, so the finished product feels natural and cohesive.",
         ],
@@ -754,19 +930,20 @@ export const servicePages: ServicePage[] = [
     ],
     ctaTitle: "Start Your Home Addition Project Today",
     ctaText:
-      "Add space, comfort, and value to your home with a custom addition. Contact us today to begin your project.",
+      "Add space, comfort, and value to your home with a custom addition. Contact us today to begin your project and enjoy a more functional home this year.",
     ctaButton: "Talk to an Expert",
   },
   {
     slug: "basement-remodeling-finishing",
     title: "Basement Remodeling Services Richmond, TX | Contact Us Today!",
     metaDescription:
-      "Basement remodeling and finishing in Richmond, TX. Transform unused space into living areas. Call (281) 299-2309.",
+      "Expert basement remodeling services in Richmond, TX. Upgrade your home’s value with our professional team. Call (281) 299-2309 today!",
     breadcrumb: "Basement Remodeling / Finishing",
     heroTitle: "Maximize Your Home with Basement Remodel",
     heroText:
       "At NWS Custom Homes and Remodeling, we make your vision a reality with basement remodeling and finishing that expands your living space. From planning to permits, our team delivers seamless results designed around your family's needs.",
     heroCta: "Check our Services",
+    heroCtaHref: "/contact/",
     h1: "Get Top Basement Remodeling Services in Richmond, TX",
     intro: [
       "Unfinished basements often end up as wasted space, used for storage instead of adding value to your home. Homeowners dealing with outdated layouts, poor lighting, or a lack of functionality often find themselves frustrated.",
@@ -792,19 +969,20 @@ export const servicePages: ServicePage[] = [
     ],
     ctaTitle: "Start Your Basement Remodel Now",
     ctaText:
-      "Create the perfect basement space for your family, schedule your remodeling project today and bring your vision to life without delay.",
+      "Create the perfect basement space for your family-schedule your remodeling project today and bring your vision to life without delay.",
     ctaButton: "Dial Now",
   },
   {
     slug: "garage-remodel-contractors",
     title: "Garage Remodel Contractors Richmond, TX | Contact Us Today!",
     metaDescription:
-      "Garage remodel contractors in Richmond, TX. Convert unused garages into offices, gyms, or bedrooms. Call (281) 299-2309.",
+      "Trusted garage remodel contractors in Richmond, TX. Enhance your garage with quality upgrades and lasting results. Call (281) 299-2309 today!",
     breadcrumb: "Garage Conversions & Remodeling",
     heroTitle: "Turn Your Garage Into a Functional Living Space",
     heroText:
       "At NWS Custom Homes and Remodeling, we transform unused garages into inviting living spaces. From insulation and flooring to finishing touches, we handle it all and show you how your garage can become the most useful room in your home.",
     heroCta: "Talk to Us",
+    heroCtaHref: "/contact/",
     h1: "Transform Your Space with Garage Remodel Contractors in Richmond, TX Area",
     intro: [
       "Many homeowners in Richmond, TX feel frustrated with garages that become cluttered, cold, and underused. Instead of being a functional extension of the house, they turn into storage areas filled with old boxes and forgotten items.",
@@ -815,6 +993,10 @@ export const servicePages: ServicePage[] = [
     sections: [
       {
         heading: "Why Homeowners Choose Our Garage Remodels",
+        paragraphs: [
+          "Here are just a few reasons families decide on garage conversions:",
+          "Professional garage remodelers make sure the new space blends seamlessly with the rest of your home.",
+        ],
         bullets: [
           "A garage remodel into living space can serve as a guest suite, private office, or gym",
           "Insulation, flooring, and lighting make the room comfortable year-round",
@@ -839,12 +1021,13 @@ export const servicePages: ServicePage[] = [
     slug: "open-concept-remodeling",
     title: "Open Concept Remodeling Richmond, TX | Contact Us Today!",
     metaDescription:
-      "Open concept remodeling in Richmond, TX. Wall removal, layout redesign, and inviting living spaces. Call (281) 299-2309.",
+      "Open concept remodeling in Richmond, TX. Create flowing, comfortable spaces for your family. Call (281) 299-2309 today for expert service!",
     breadcrumb: "Living Room & Open Concept Remodeling",
     heroTitle: "Create a Bright, Welcoming Open Concept Living Space",
     heroText:
       "At NWS Custom Homes and Remodeling, we bring modern style to your home with open concept remodeling. From wall removal to updated finishes, we create inviting living spaces made for today's lifestyle.",
     heroCta: "Let's Talk",
+    heroCtaHref: "/contact/",
     h1: "Transform Your Space with Modern Open Concept Remodeling in Richmond, TX",
     intro: [
       "Many homeowners in Richmond, TX feel stuck with outdated, closed-off floor plans that make their homes feel dark and cramped. Narrow hallways and boxy rooms limit natural light and create frustration during family gatherings.",
@@ -855,6 +1038,9 @@ export const servicePages: ServicePage[] = [
     sections: [
       {
         heading: "Why Families Choose Open Concept Remodeling",
+        paragraphs: [
+          "Here are some of the biggest benefits:",
+        ],
         bullets: [
           "Improved flow between kitchen, dining, and living areas",
           "More natural light throughout the home",

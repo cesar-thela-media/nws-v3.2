@@ -7,7 +7,7 @@ import CTA from "@/components/shadcn-space/blocks/cta-08/cta";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "We're a full-service construction company specializing in remodeling and custom homes. We've been building our reputation for excellence since 2007.",
+    "Learn more about our dependable remodeling company in Richmond, TX. We have over 35 years of combined experience. Call at (281) 299-2309.",
 };
 
 /** About: hero-13 + about-us-13 + bento-grid-02 + homepage cta-08 (no map/form) */

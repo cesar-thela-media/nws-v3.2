@@ -9,11 +9,13 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import { MinusIcon, PlusIcon } from "lucide-react";
-import { nwsFaqs } from "@/data/nws-blocks";
+import { faqs as canonicalFaqs } from "@/data/faqs";
+import type { ReactNode } from "react";
 
 export type FaqItem = {
   question: string;
   answer: string;
+  links?: { text: string; href: string }[];
 };
 
 export type FaqProps = {
@@ -22,19 +24,53 @@ export type FaqProps = {
   description?: string;
 };
 
-/**
- * FAQ accordion only (no secondary help-card under the Q&A list).
- * Closing CTA lives in cta-08 / contact elsewhere on the page.
- */
-export default function Faq({
+/** Render an FAQ answer with configured phrases as inline links. */
+function linkedAnswer(faq: FaqItem): ReactNode {
+  if (!faq.links?.length) return faq.answer;
+  let parts: ReactNode[] = [faq.answer];
+  for (const link of faq.links) {
+    const next: ReactNode[] = [];
+    for (const part of parts) {
+      if (typeof part !== "string") {
+        next.push(part);
+        continue;
+      }
+      const index = part.toLowerCase().indexOf(link.text.toLowerCase());
+      if (index < 0) {
+        next.push(part);
+        continue;
+      }
+      next.push(
+        part.slice(0, index),
+        <a
+          key={`${link.href}-${link.text}`}
+          href={link.href}
+          style={{ textDecorationLine: "underline", textUnderlineOffset: "2px" }}
+          className="font-semibold text-primary hover:text-primary/80"
+        >
+          {part.slice(index, index + link.text.length)}
+        </a>,
+        part.slice(index + link.text.length),
+      );
+    }
+    parts = next;
+  }
+  return <>{parts}</>;
+}
+
+function Faq({
   items,
-  heading = "Common questions",
-  description = "Straight answers about services, areas, timelines, and how we work.",
+  heading = "FREQUENTLY ASKED QUESTIONS",
+  description = "",
 }: FaqProps) {
   const faqs =
     items && items.length > 0
       ? items
-      : nwsFaqs.map((f) => ({ question: f.question, answer: f.answer }));
+      : canonicalFaqs.map((faq) => ({
+          question: faq.question,
+          answer: faq.answer,
+          links: faq.links,
+        }));
 
   return (
     <section className="bg-muted" data-faq-07>
@@ -50,11 +86,12 @@ export default function Faq({
           <h2 className="text-3xl lg:text-5xl font-bold tracking-tight text-foreground">
             {heading}
           </h2>
-          <p className="text-base lg:text-lg text-muted-foreground max-w-lg">
-            {description}
-          </p>
+          {description ? (
+            <p className="text-base lg:text-lg text-muted-foreground max-w-lg">
+              {description}
+            </p>
+          ) : null}
         </div>
-
         <div className="bg-background border border-border rounded-3xl p-5 lg:p-8">
           <Accordion defaultValue={["item-0"]} className="w-full flex flex-col">
             {faqs.map((faq, index) => (
@@ -75,7 +112,7 @@ export default function Faq({
                   </span>
                 </AccordionTrigger>
                 <AccordionContent className="p-0 pl-12 text-muted-foreground text-lg">
-                  {faq.answer}
+                  <p className="!m-0">{linkedAnswer(faq)}</p>
                 </AccordionContent>
               </AccordionItem>
             ))}
@@ -85,3 +122,5 @@ export default function Faq({
     </section>
   );
 }
+
+export default Faq;

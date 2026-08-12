@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import { ServiceDetailHero } from "@/components/ServiceDetailHero";
+import { ServiceDetailSections } from "@/components/ServiceDetailSections";
 import Faq from "@/components/shadcn-space/blocks/faq-07/faq";
 import CTA from "@/components/shadcn-space/blocks/cta-08/cta";
 import { servicePages, getServicePage } from "@/data/servicePages";
@@ -34,16 +35,8 @@ export default async function ServicePage({ params }: Props) {
   const page = getServicePage(slug);
   if (!page) notFound();
 
-  const introShort = page.intro.slice(0, 1).map((p) =>
-    p.length > 280 ? p.slice(0, 277).trim() + "..." : p,
-  );
-  const sectionHighlights = page.sections.slice(0, 4).map((section) => ({
-    ...section,
-    paragraphs: section.paragraphs
-      ?.slice(0, 1)
-      .map((p) => (p.length > 220 ? p.slice(0, 217).trim() + "..." : p)),
-    bullets: section.bullets?.slice(0, 4),
-  }));
+  const introParagraphs = page.intro;
+  const sectionHighlights = page.sections;
 
   return (
     <>
@@ -52,6 +45,8 @@ export default async function ServicePage({ params }: Props) {
         eyebrow={page.heroLabel || page.breadcrumb || "Service"}
         heading={page.heroTitle || page.h1}
         description={page.heroText}
+        ctaLabel={page.heroCta}
+        ctaHref={page.heroCtaHref}
       />
 
       <section
@@ -66,6 +61,7 @@ export default async function ServicePage({ params }: Props) {
                 <Image
                   src={page.image || "/images/kitchen-gallery-1.jpeg"}
                   alt={page.imageAlt || page.breadcrumb}
+                  sizes="(max-width: 1024px) 100vw, 42vw"
                   fill
                   className="object-cover"
                 />
@@ -78,7 +74,7 @@ export default async function ServicePage({ params }: Props) {
               <h2 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-white !m-0 text-balance">
                 {page.h1}
               </h2>
-              {introShort.map((p) => (
+              {introParagraphs.map((p) => (
                 <p key={p.slice(0, 40)} className="text-white/85 !m-0">
                   {p}
                 </p>
@@ -101,49 +97,26 @@ export default async function ServicePage({ params }: Props) {
             </div>
           </div>
 
-          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-5">
-            {sectionHighlights.map((section) => (
-              <article
-                key={section.heading}
-                className="rounded-2xl border border-border/60 bg-white p-5 sm:p-6 shadow-sm"
-                data-service-body-card
-              >
-                <h3 className="text-lg font-bold text-foreground !m-0 mb-2">
-                  {section.heading}
-                </h3>
-                {section.paragraphs?.map((p) => (
-                  <p
-                    key={p.slice(0, 40)}
-                    className="text-sm text-muted-foreground !m-0 line-clamp-4"
-                  >
-                    {p}
-                  </p>
-                ))}
-                {section.bullets && (
-                  <ul className="mt-3 space-y-1.5 list-disc pl-5 text-sm text-muted-foreground">
-                    {section.bullets.map((b) => (
-                      <li key={b}>{b}</li>
-                    ))}
-                  </ul>
-                )}
-              </article>
-            ))}
-          </div>
+          <ServiceDetailSections sections={sectionHighlights} />
         </div>
       </section>
 
-      <Faq
-        items={
-          page.faqs && page.faqs.length > 0
-            ? page.faqs.map((faq) => ({
-                question: faq.q,
-                answer: faq.a,
-              }))
-            : undefined
-        }
-      />
+      {page.faqs && page.faqs.length > 0 ? (
+        <Faq
+          heading={page.faqHeading || "FREQUENTLY ASKED QUESTIONS"}
+          items={page.faqs.map((faq) => ({
+            question: faq.q,
+            answer: faq.a,
+          }))}
+        />
+      ) : null}
 
-      <CTA />
+      <CTA
+        eyebrow={page.ctaLabel}
+        title={page.ctaTitle}
+        text={page.ctaText}
+        buttonLabel={page.ctaButton}
+      />
     </>
   );
 }

@@ -23,6 +23,7 @@ export type Location = {
   formTitle: string;
   formIntro?: string;
   heroImage?: string;
+  heroImageAlt?: string;
 };
 
 export const locations: Location[] = [
@@ -57,44 +58,39 @@ export const locations: Location[] = [
     formTitle: "Quality Services Tailored to Your Needs",
     formIntro:
       "Choose NWS Custom Homes and Remodeling as your trusted remodeling company in Sugar Land, TX. Contact us today to discuss your remodeling project and let us help you bring your home improvement dreams to life.",
+    heroImage: "/images/hero-custom-home-remodeling-paralax-image.jpg",
+    heroImageAlt: "NWS remodeling project serving Sugar Land, TX",
     sections: [
       {
         heading: "Services We Provide",
         services: [
           {
-            label: "Custom home building",
-            detail: "from lot selection and design to full construction",
+            label: "Custom home building , from lot selection and design to full construction",
             href: "/services/custom-home-builder/",
           },
           {
-            label: "Whole home remodeling",
-            detail: "for top-to-bottom transformations",
-            href: "/services/remodeling-company/",
+            label: "Whole home remodeling for top-to-bottom transformations",
+            href: "/services/home-remodel/",
           },
           {
-            label: "Kitchen remodeling",
-            detail: "to improve layout, functionality, and style",
+            label: "Kitchen remodeling to improve layout, functionality, and style",
             href: "/services/kitchen-remodeling/",
           },
           {
-            label: "Bathroom remodeling",
-            detail: "with upgraded features and finishes",
+            label: "Bathroom remodeling with upgraded features and finishes",
             href: "/services/bathroom-remodeling/",
           },
           {
-            label: "Shower remodels",
-            detail: "that blend comfort, aesthetics, and performance",
+            label: "Shower remodels that blend comfort, aesthetics, and performance",
             href: "/services/bathroom-shower-remodel/",
           },
           {
-            label: "Bathtub remodels",
-            detail: "for a more relaxing and modern bathing space",
+            label: "Bathtub remodels for a more relaxing and modern bathing space",
             href: "/services/bathtub-remodeling/",
           },
           {
-            label: "General remodeling",
-            detail: "solutions for any room in your home",
-            href: "/services/home-remodel/",
+            label: "General remodeling solutions for any room in your home",
+            href: "/services/remodeling-company/",
           },
         ],
       },
@@ -117,6 +113,8 @@ export const locations: Location[] = [
     formTitle: "Comprehensive Remodeling Services",
     formIntro:
       "Contact us today to discuss your custom home building or remodeling project in Katy, TX. Let us bring your vision to life and create a home that exceeds your expectations.",
+    heroImage: "/images/custom-homes-3.jpeg",
+    heroImageAlt: "NWS remodeling project serving Katy, TX",
     sections: [
       {
         heading: "Our Services",
@@ -141,7 +139,7 @@ export const locations: Location[] = [
     href: "/fulshear-tx/",
     title: "Remodeling Company Fulshear, TX | Call Us Today!",
     description:
-      "NWS Custom Homes and Remodeling stands out as the leading custom home builder and provider of residential remodeling services in Fulshear, TX.",
+      "Enhance your home with our trusted remodeling company in Fulshear, TX. Call (281) 299-2309 for stunning renovations you'll love.",
     h1: "Your First Choice for Residential Remodeling Services in Fulshear, TX",
     body: [
       "Embarking on the journey of constructing your ideal dwelling or transforming your current home requires a dedicated ally who shares your aspirations. NWS Custom Homes and Remodeling stands out as the leading custom home builder and provider of residential remodeling services in Fulshear, TX, with a steadfast dedication to actualizing your dream home. Reach out to us today!",
@@ -150,6 +148,8 @@ export const locations: Location[] = [
     formTitle: "Team Up With Us!",
     formIntro:
       "Reach out to us for an in-depth conversation about your refurbishment plans in Fulshear, TX. Entrust us with the responsibility of translating your visions into reality.",
+    heroImage: "/images/home-addition-contractors.webp",
+    heroImageAlt: "NWS remodeling project serving Fulshear, TX",
     sections: [
       {
         heading: "Discover Top-Notch Remodeling Solutions",
@@ -210,7 +210,7 @@ export const locations: Location[] = [
     href: "/west-side-of-houston-tx/",
     title: "Remodeling Company West Side of Houston, TX | Start Your Project!",
     description:
-      "Trusted remodeling company serving the West Side of Houston, TX. Call (281) 299-2309.",
+      "Looking for a remodeling company on West Side of Houston, TX? Call NWS Custom Homes and Remodeling at (281) 299-2309 today for renovations.",
     h1: "Your Trusted Residential Remodeling Services in the West Side of Houston, TX",
     body: [
       "Hiring the right remodeling company can feel like a gamble. Missed deadlines, unclear communication, and unexpected costs can turn a home upgrade into a stressful experience. Many homeowners are left chasing contractors or dealing with unfinished work that doesn't reflect their vision.",
@@ -222,6 +222,8 @@ export const locations: Location[] = [
     formTitle: "Get in Touch for Remodeling Services Near You",
     formIntro:
       "Ready to start your remodel in the West Side of Houston, TX? Fill out the form below to connect with NWS Custom Homes and Remodeling for local, reliable renovation services.",
+    heroImage: "/images/remodeling-1.jpeg",
+    heroImageAlt: "NWS remodeling project serving the West Side of Houston, TX",
     sections: [
       {
         heading: "Let's Build Something Great, Schedule Your Remodel Today!",
@@ -300,6 +302,8 @@ export const locations: Location[] = [
       "At NWS Custom Homes and Remodeling in Cinco Ranch, TX, we take pride in turning your ideas into reality. Our dedication to craftsmanship and personalized service has made us a go-to resource for homeowners for quality residential remodeling services. Whether it's a modern kitchen makeover, a spa-like bathroom remodel, or a full home renovation, we bring creativity and reliability to every project.",
       "Let our experienced team manage the details, ensuring your remodel is completed on time and meets the highest standards. Your dream home is just a call away.",
     ],
+    heroImage: "/images/custom-homes-4.jpeg",
+    heroImageAlt: "NWS remodeling project serving Cinco Ranch, TX",
     ctaLabel: "Discuss Your Remodeling Project Now",
     ctaHref: "/contact/",
     formTitle: "Plan Your Remodeling Service Today",
@@ -360,6 +364,7 @@ export const locations: Location[] = [
         heading: "Achieving Success in Your Remodel",
         paragraphs: [
           "Starting a remodeling project can feel like a big step, but the right knowledge can simplify the process. Staying informed about remodeling trends in Cinco Ranch, TX, helps you make decisions that add value and suit your preferences.",
+          "Here's how to make your remodel a success:",
         ],
         bullets: [
           "Set Clear Goals: Define the must-haves and priorities for your project to guide your decisions.",
@@ -388,6 +393,8 @@ export const locations: Location[] = [
     formTitle: "Ready to Upgrade Your Home?",
     formIntro:
       "Transform your living space with our remodeling services. Reach out to NWS Custom Homes and Remodeling and start your journey toward a beautiful, functional home today.",
+    heroImage: "/images/remodeling-3.jpeg",
+    heroImageAlt: "NWS remodeling project serving Rosenberg, TX",
     sections: [
       {
         heading: "Discover Our Remodeling Services",
@@ -443,6 +450,7 @@ export const locations: Location[] = [
         heading: "Your Roadmap to a Successful Remodeling Project",
         paragraphs: [
           "Planning a remodeling project in Rosenberg, TX, can feel overwhelming, but with the right tips and knowledge, you can handle it confidently. Our guide is designed to help you plan effectively and achieve the best results.",
+          "These tips will help you start your project with confidence. We love sharing our knowledge to help homeowners. Whether you're doing it yourself or seeking professional help, these tips are just the beginning.",
         ],
         bullets: [
           "Budget Wisely: Determine your budget and stick to it. This prevents unexpected costs and keeps your project on track.",
@@ -471,6 +479,8 @@ export const locations: Location[] = [
     formTitle: "Schedule Your Local Remodeling Service",
     formIntro:
       "Get in touch with us in Weston Lakes, TX, for custom home and remodeling solutions. Fill out our form for more details and personalized service recommendations.",
+    heroImage: "/images/remodeling-2.jpeg",
+    heroImageAlt: "NWS remodeling project serving Weston Lakes, TX",
     sections: [
       {
         heading: "Explore Our Services and Revitalize Your Space",
@@ -526,6 +536,7 @@ export const locations: Location[] = [
         heading: "Achieve Your Remodeling Goals With Our Tips",
         paragraphs: [
           "Remodeling can seem like a daunting field, but with the right information, you can approach your project confidently. Understanding current remodeling trends in Weston Lakes, TX, can help you make choices that add value and enjoyment to your home.",
+          "With these tips, you're ready to make informed decisions for your remodel. At NWS Custom Homes and Remodeling, we're passionate about sharing our expertise and supporting homeowners at every step. Whether you're pursuing a DIY project or seeking professional help, our team is here to help you succeed.",
         ],
         bullets: [
           "Define Your Priorities: Start by identifying what matters most to you, whether it's functionality, aesthetics, or specific features.",
@@ -542,7 +553,7 @@ export const locations: Location[] = [
     href: "/park-row-tx/",
     title: "Home Remodeling Park Row | TX",
     description:
-      "Professional home remodeling services in Park Row, TX. Call (281) 299-2309 for free consultation.",
+      "Quality home remodeling in Park Row, TX since 2007. Kitchen, bathroom, custom builds, and additions. Call (281) 299-2309 for your consultation.",
     h1: "Professional Home Remodeling Services in Park Row, TX",
     body: [
       "Complete Renovation Solutions for Your Property",
@@ -557,13 +568,14 @@ export const locations: Location[] = [
     formTitle: "Transform Your Park Row Home Today",
     formIntro:
       "Call us to discuss your project. Our team will help you create the functional, beautiful space your family deserves.",
+    heroImage: "/images/Professional-Home-Remodeling-Services-in-Park-Row-TX.webp",
+    heroImageAlt: "Professional home remodeling services in Park Row, TX",
     sections: [],
-    heroImage:
-      "/images/Professional-Home-Remodeling-Services-in-Park-Row-TX.webp",
   },
 ];
 
 /** @deprecated use per-location services; kept for Areas chips compatibility */
+/** @deprecated use canonicalServiceAreaCatalog and per-location services. */
 export const serviceLinksForLocations = [
   {
     label: "Custom home building",

@@ -32,7 +32,7 @@ for (const f of walk(root)) {
   const t = fs.readFileSync(f, "utf8");
   if (!t.includes("\u2013")) continue;
   const lines = t.split("\n");
-  const outLines = lines.map((line, li) => {
+  const outLines = lines.map((line) => {
     let s = line;
     let idx = 0;
     while ((idx = s.indexOf("\u2013", idx)) !== -1) {

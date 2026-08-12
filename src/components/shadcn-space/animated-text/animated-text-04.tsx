@@ -76,7 +76,7 @@ const AnimatedTextRoller = ({
       data-hero-two-line
     >
       {prefix ? (
-        <span className="block w-full max-w-full text-center text-white whitespace-nowrap px-1 leading-[1.15]">
+        <span className="block w-full max-w-5xl text-center text-white whitespace-normal text-balance break-words px-1 leading-[1.08]">
           {prefix}
         </span>
       ) : null}

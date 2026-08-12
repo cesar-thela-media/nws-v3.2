@@ -24,7 +24,7 @@ export const galleries: Gallery[] = [
     title: "Custom Homes Gallery",
     heading: "Custom Homes",
     description:
-      "We're dedicated to building the homes you've always dreamed of, and we want to make sure that every step of the process is as smooth and stress-free as possible.",
+      "We’re dedicated to building the homes you’ve always dreamed of, and we want to make sure that every step of the process is as smooth and stress-free as possible.",
     photos: [
       {
         src: "/images/custom-homes-1.jpeg",
@@ -76,9 +76,9 @@ export const galleries: Gallery[] = [
   {
     slug: "remodeling-gallery",
     title: "Remodeling Gallery",
-    heading: "Remodeling",
+    heading: "Remodeling Gallery",
     description:
-      "See the results of our remodeling company in Richmond, TX. We have over 35 years of combined experience.",
+      "We are proud of our record of success and the relationships we’ve built with our clients over time, and we’re excited about what’s in store for us as we continue to grow!",
     photos: [
       {
         src: "/images/remodeling-1.jpeg",
@@ -120,9 +120,9 @@ export const galleries: Gallery[] = [
   {
     slug: "kitchen-remodeling-gallery",
     title: "Kitchen Remodeling Gallery",
-    heading: "Kitchen Remodeling",
+    heading: "Kitchen Remodeling Gallery",
     description:
-      "See the results of our kitchen remodeling work in Richmond, TX. We have over 35 years of combined experience.",
+      "We are proud of our record of success and the relationships we’ve built with our clients over time, and we’re excited about what’s in store for us as we continue to grow!",
     photos: [
       {
         src: "/images/kitchen-gallery-1.jpeg",
@@ -174,9 +174,9 @@ export const galleries: Gallery[] = [
   {
     slug: "bathroom-remodeling-gallery",
     title: "Bathroom Remodeling Gallery",
-    heading: "Bathroom Remodeling",
+    heading: "Bathroom Remodeling Gallery",
     description:
-      "See the results of our bathroom remodeling work in Richmond, TX. We have over 35 years of combined experience.",
+      "We are proud of our record of success and the relationships we’ve built with our clients over time, and we’re excited about what’s in store for us as we continue to grow!",
     photos: [
       {
         src: "/images/bathroom-gallery-1.jpeg",

@@ -1,0 +1,335 @@
+{
+  "capturedAt": "2026-08-11T18:24:38.964Z",
+  "source": "https://www.nws-homes.com/",
+  "expected": {
+    "total": 29,
+    "pages": 18,
+    "services": 11
+  },
+  "counts": {
+    "captured": 29,
+    "pages": 18,
+    "services": 11
+  },
+  "routes": [
+    {
+      "url": "https://www.nws-homes.com/",
+      "file": "home.json",
+      "httpStatus": 200,
+      "title": "Residential Remodeling Services Richmond, TX | Contact Us Today! | NWS Custom Homes and Remodeling",
+      "capturedAt": "2026-08-11T18:24:38.965Z",
+      "paragraphs": 75,
+      "headings": 36,
+      "links": 107,
+      "images": 23
+    },
+    {
+      "url": "https://www.nws-homes.com/contact/",
+      "file": "contact.json",
+      "httpStatus": 200,
+      "title": "Contact",
+      "capturedAt": "2026-08-11T18:24:39.908Z",
+      "paragraphs": 11,
+      "headings": 7,
+      "links": 73,
+      "images": 8
+    },
+    {
+      "url": "https://www.nws-homes.com/areas-we-serve/",
+      "file": "areas-we-serve.json",
+      "httpStatus": 200,
+      "title": "Areas We Serve",
+      "capturedAt": "2026-08-11T18:24:39.997Z",
+      "paragraphs": 20,
+      "headings": 8,
+      "links": 80,
+      "images": 8
+    },
+    {
+      "url": "https://www.nws-homes.com/custom-homes-gallery/",
+      "file": "custom-homes-gallery.json",
+      "httpStatus": 200,
+      "title": "Custom Homes Gallery",
+      "capturedAt": "2026-08-11T18:24:40.083Z",
+      "paragraphs": 5,
+      "headings": 1,
+      "links": 68,
+      "images": 6
+    },
+    {
+      "url": "https://www.nws-homes.com/remodeling-gallery/",
+      "file": "remodeling-gallery.json",
+      "httpStatus": 200,
+      "title": "Remodeling Gallery",
+      "capturedAt": "2026-08-11T18:24:40.165Z",
+      "paragraphs": 5,
+      "headings": 1,
+      "links": 68,
+      "images": 6
+    },
+    {
+      "url": "https://www.nws-homes.com/about/",
+      "file": "about.json",
+      "httpStatus": 200,
+      "title": "About",
+      "capturedAt": "2026-08-11T18:24:40.248Z",
+      "paragraphs": 8,
+      "headings": 2,
+      "links": 72,
+      "images": 9
+    },
+    {
+      "url": "https://www.nws-homes.com/kitchen-remodeling-gallery/",
+      "file": "kitchen-remodeling-gallery.json",
+      "httpStatus": 200,
+      "title": "Kitchen Remodeling Gallery",
+      "capturedAt": "2026-08-11T18:24:40.339Z",
+      "paragraphs": 5,
+      "headings": 1,
+      "links": 68,
+      "images": 6
+    },
+    {
+      "url": "https://www.nws-homes.com/faqs/",
+      "file": "faqs.json",
+      "httpStatus": 200,
+      "title": "FAQs",
+      "capturedAt": "2026-08-11T18:24:40.425Z",
+      "paragraphs": 35,
+      "headings": 1,
+      "links": 86,
+      "images": 6
+    },
+    {
+      "url": "https://www.nws-homes.com/west-side-of-houston-tx/",
+      "file": "west-side-of-houston-tx.json",
+      "httpStatus": 200,
+      "title": "Remodeling Company West Side of Houston, TX | Start Your Project!",
+      "capturedAt": "2026-08-11T18:24:40.521Z",
+      "paragraphs": 18,
+      "headings": 4,
+      "links": 79,
+      "images": 9
+    },
+    {
+      "url": "https://www.nws-homes.com/services/",
+      "file": "services.json",
+      "httpStatus": 200,
+      "title": "Services",
+      "capturedAt": "2026-08-11T18:24:40.616Z",
+      "paragraphs": 24,
+      "headings": 19,
+      "links": 78,
+      "images": 15
+    },
+    {
+      "url": "https://www.nws-homes.com/bathroom-remodeling-gallery/",
+      "file": "bathroom-remodeling-gallery.json",
+      "httpStatus": 200,
+      "title": "Bathroom Remodeling Richmond, TX | Contact Us Today! | NWS Custom Homes and Remodeling",
+      "capturedAt": "2026-08-11T18:24:40.719Z",
+      "paragraphs": 5,
+      "headings": 1,
+      "links": 68,
+      "images": 6
+    },
+    {
+      "url": "https://www.nws-homes.com/katy-tx/",
+      "file": "katy-tx.json",
+      "httpStatus": 200,
+      "title": "Remodeling Company Katy, TX | Call Us Today!",
+      "capturedAt": "2026-08-11T18:24:40.802Z",
+      "paragraphs": 11,
+      "headings": 2,
+      "links": 81,
+      "images": 9
+    },
+    {
+      "url": "https://www.nws-homes.com/fulshear-tx/",
+      "file": "fulshear-tx.json",
+      "httpStatus": 200,
+      "title": "Remodeling Company Fulshear, TX | Call Us Today!",
+      "capturedAt": "2026-08-11T18:24:40.888Z",
+      "paragraphs": 12,
+      "headings": 3,
+      "links": 79,
+      "images": 9
+    },
+    {
+      "url": "https://www.nws-homes.com/cinco-ranch-tx/",
+      "file": "cinco-ranch-tx.json",
+      "httpStatus": 200,
+      "title": "Remodeling Company Cinco Ranch, TX | NWS Custom Homes and Remodeling",
+      "capturedAt": "2026-08-11T18:24:40.968Z",
+      "paragraphs": 16,
+      "headings": 4,
+      "links": 80,
+      "images": 9
+    },
+    {
+      "url": "https://www.nws-homes.com/rosenberg-tx/",
+      "file": "rosenberg-tx.json",
+      "httpStatus": 200,
+      "title": "Remodeling Company Rosenberg, TX | NWS Custom Homes and Remodeling",
+      "capturedAt": "2026-08-11T18:24:41.052Z",
+      "paragraphs": 16,
+      "headings": 4,
+      "links": 79,
+      "images": 9
+    },
+    {
+      "url": "https://www.nws-homes.com/weston-lakes-tx/",
+      "file": "weston-lakes-tx.json",
+      "httpStatus": 200,
+      "title": "emodeling Company Weston Lakes, TX | NWS Custom Homes and Remodeling",
+      "capturedAt": "2026-08-11T18:24:41.147Z",
+      "paragraphs": 16,
+      "headings": 4,
+      "links": 80,
+      "images": 9
+    },
+    {
+      "url": "https://www.nws-homes.com/sugar-land-tx/",
+      "file": "sugar-land-tx.json",
+      "httpStatus": 200,
+      "title": "Remodeling Company Sugar Land, TX | Call Us Today!",
+      "capturedAt": "2026-08-11T18:24:41.229Z",
+      "paragraphs": 10,
+      "headings": 2,
+      "links": 79,
+      "images": 9
+    },
+    {
+      "url": "https://www.nws-homes.com/park-row-tx/",
+      "file": "park-row-tx.json",
+      "httpStatus": 200,
+      "title": "Home Remodeling Park Row | TX",
+      "capturedAt": "2026-08-11T18:24:41.303Z",
+      "paragraphs": 13,
+      "headings": 2,
+      "links": 72,
+      "images": 9
+    },
+    {
+      "url": "https://www.nws-homes.com/services/basement-remodeling-finishing/",
+      "file": "services--basement-remodeling-finishing.json",
+      "httpStatus": 200,
+      "title": "Basement Remodeling Services Richmond, TX | Contact Us Today! | NWS Custom Homes and Remodeling",
+      "capturedAt": "2026-08-11T18:24:41.379Z",
+      "paragraphs": 20,
+      "headings": 7,
+      "links": 94,
+      "images": 8
+    },
+    {
+      "url": "https://www.nws-homes.com/services/garage-remodel-contractors/",
+      "file": "services--garage-remodel-contractors.json",
+      "httpStatus": 200,
+      "title": "Garage Remodel Contractors Richmond, TX | Contact Us Today! | NWS Custom Homes and Remodeling",
+      "capturedAt": "2026-08-11T18:24:41.465Z",
+      "paragraphs": 18,
+      "headings": 7,
+      "links": 94,
+      "images": 8
+    },
+    {
+      "url": "https://www.nws-homes.com/services/open-concept-remodeling/",
+      "file": "services--open-concept-remodeling.json",
+      "httpStatus": 200,
+      "title": "Open Concept Remodeling Richmond, TX | Contact Us Today! | NWS Custom Homes and Remodeling",
+      "capturedAt": "2026-08-11T18:24:41.565Z",
+      "paragraphs": 18,
+      "headings": 7,
+      "links": 94,
+      "images": 8
+    },
+    {
+      "url": "https://www.nws-homes.com/services/bathroom-shower-remodel/",
+      "file": "services--bathroom-shower-remodel.json",
+      "httpStatus": 200,
+      "title": "Bathroom Shower Remodel Richmond, TX | Contact Us Today! | NWS Custom Homes and Remodeling",
+      "capturedAt": "2026-08-11T18:24:41.668Z",
+      "paragraphs": 25,
+      "headings": 10,
+      "links": 96,
+      "images": 8
+    },
+    {
+      "url": "https://www.nws-homes.com/services/bathtub-remodeling/",
+      "file": "services--bathtub-remodeling.json",
+      "httpStatus": 200,
+      "title": "Bathtub Remodeling Richmond, TX | Contact Us Today! | NWS Custom Homes and Remodeling",
+      "capturedAt": "2026-08-11T18:24:41.751Z",
+      "paragraphs": 24,
+      "headings": 10,
+      "links": 97,
+      "images": 8
+    },
+    {
+      "url": "https://www.nws-homes.com/services/room-additions-home-additions/",
+      "file": "services--room-additions-home-additions.json",
+      "httpStatus": 200,
+      "title": "Home Addition Contractors Richmond, TX | Contact Us Today! | NWS Custom Homes and Remodeling",
+      "capturedAt": "2026-08-11T18:24:41.918Z",
+      "paragraphs": 30,
+      "headings": 10,
+      "links": 94,
+      "images": 8
+    },
+    {
+      "url": "https://www.nws-homes.com/services/home-remodel/",
+      "file": "services--home-remodel.json",
+      "httpStatus": 200,
+      "title": "Home Remodel Richmond, TX | Contact Us Today! | NWS Custom Homes and Remodeling",
+      "capturedAt": "2026-08-11T18:24:42.318Z",
+      "paragraphs": 24,
+      "headings": 11,
+      "links": 99,
+      "images": 8
+    },
+    {
+      "url": "https://www.nws-homes.com/services/remodeling-company/",
+      "file": "services--remodeling-company.json",
+      "httpStatus": 200,
+      "title": "Remodeling Company Richmond, TX | Contact Us Today! | NWS Custom Homes and Remodeling",
+      "capturedAt": "2026-08-11T18:24:43.494Z",
+      "paragraphs": 15,
+      "headings": 10,
+      "links": 96,
+      "images": 8
+    },
+    {
+      "url": "https://www.nws-homes.com/services/kitchen-remodeling/",
+      "file": "services--kitchen-remodeling.json",
+      "httpStatus": 200,
+      "title": "Kitchen Remodeling Richmond, TX | Contact Us Today! | NWS Custom Homes and Remodeling",
+      "capturedAt": "2026-08-11T18:24:43.642Z",
+      "paragraphs": 31,
+      "headings": 11,
+      "links": 94,
+      "images": 8
+    },
+    {
+      "url": "https://www.nws-homes.com/services/custom-home-builder/",
+      "file": "services--custom-home-builder.json",
+      "httpStatus": 200,
+      "title": "Custom Home Builder Richmond, TX | Contact Us Today! | NWS Custom Homes and Remodeling",
+      "capturedAt": "2026-08-11T18:24:43.727Z",
+      "paragraphs": 71,
+      "headings": 18,
+      "links": 94,
+      "images": 8
+    },
+    {
+      "url": "https://www.nws-homes.com/services/bathroom-remodeling/",
+      "file": "services--bathroom-remodeling.json",
+      "httpStatus": 200,
+      "title": "Bathroom Remodeling Richmond, TX | NWS Custom Homes and Remodeling",
+      "capturedAt": "2026-08-11T18:24:43.842Z",
+      "paragraphs": 60,
+      "headings": 13,
+      "links": 96,
+      "images": 8
+    }
+  ]
+}

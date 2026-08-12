@@ -7,23 +7,12 @@ import { Card } from "@/components/ui/card";
 import { Marquee } from "@/components/shadcn-space/animations/marquee";
 import { locations } from "@/data/locations";
 
-const areaImages = [
-  "/images/custom-homes-1.jpeg",
-  "/images/hero-home-remodeled-richmond-tx.webp",
-  "/images/kitchen-gallery-1.jpeg",
-  "/images/custom-homes-3.jpeg",
-  "/images/whole-home-remodeling-richmond-tx.jpg",
-  "/images/bathroom-gallery-1.jpeg",
-  "/images/remodeling-1.jpeg",
-  "/images/home-addition-contractors.webp",
-  "/images/custom-homes-2.jpeg",
-];
-
-const areas = locations.map((loc, i) => ({
+const areas = locations.map((loc) => ({
   id: loc.slug,
   name: loc.name,
   href: loc.href === "#" ? "/areas-we-serve/" : loc.href,
-  image: areaImages[i % areaImages.length],
+  image:
+    loc.heroImage || "/images/hero-custom-home-remodeling-paralax-image.jpg",
   blurb: "Custom homes & remodeling",
 }));
 
@@ -46,7 +35,8 @@ function AreaCard({
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={image}
-              alt={name}
+              alt={`${name} remodeling and custom homes`}
+              sizes="(max-width: 768px) 80vw, (max-width: 1280px) 40vw, 24rem"
               className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
             />
           </div>
@@ -91,14 +81,13 @@ export function AreasServeMarquee() {
     <section className="w-full py-12 sm:py-16 md:py-20 bg-background overflow-hidden">
       <div className="px-4 sm:px-6 lg:px-8 xl:px-16 max-w-7xl mx-auto mb-8 sm:mb-10 flex flex-col gap-2">
         <p className="text-sm sm:text-base font-semibold text-primary !m-0">
-          Areas we serve
+          Areas We Serve
         </p>
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground !m-0">
-          Richmond & nearby Fort Bend
+          Areas We Serve
         </h2>
         <p className="text-muted-foreground text-base sm:text-lg max-w-2xl !m-0 mt-1">
-          Local builds and remodels across Richmond, Sugar Land, Katy, Fulshear,
-          and surrounding communities.
+          We complete every project promptly, effectively, and with the utmost attention to detail.
         </p>
       </div>
 

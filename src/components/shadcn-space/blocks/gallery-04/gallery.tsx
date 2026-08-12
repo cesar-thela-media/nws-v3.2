@@ -8,7 +8,7 @@ import {
   useTransform,
   type MotionValue,
 } from "motion/react";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 
 const carouselImages = [
   { src: "/images/custom-homes-1.jpeg", alt: "Custom home project" },
@@ -118,11 +118,8 @@ function GalleryCarousel({ isInView }: { isInView: boolean }) {
 const Gallery04 = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
-  // Client-only mount avoids SSR/client float transform hydration mismatches
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  // Render the deterministic gallery transforms during SSR and hydration.
+  const mounted = true;
 
   return (
     <section className="py-10 md:py-16">

@@ -29,7 +29,7 @@ export function ReviewCarousel() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={r.avatar}
-                alt=""
+                alt="NWS client testimonial"
                 width={48}
                 height={48}
                 className="w-12 h-12 rounded-full object-cover ring-2 ring-background shadow-sm"
@@ -43,7 +43,7 @@ export function ReviewCarousel() {
             </div>
             <div className="stars mb-3">★★★★★</div>
             <p className="text-sm text-muted-foreground flex-1 leading-relaxed">
-              {r.text.length > 180 ? `${r.text.slice(0, 180)}...` : r.text}
+              {r.text}
             </p>
             <div className="mt-4 text-xs font-bold tracking-wider text-muted-foreground uppercase">
               {r.source}

@@ -1,3 +1,5 @@
+import { canonicalServiceCatalog } from "./informationArchitecture";
+
 export type ServiceCard = {
   slug: string;
   title: string;
@@ -144,43 +146,36 @@ export const serviceCards: ServiceCard[] = [
 
 export const homeServiceList = [
   {
-    label: "Custom home building",
-    detail: "from lot selection and design to full construction",
+    label: "Custom home building , from lot selection and design to full construction",
     href: "/services/custom-home-builder/",
   },
   {
-    label: "Whole home remodeling",
-    detail: "for top-to-bottom transformations",
-    href: "/services/remodeling-company/",
+    label: "Whole home remodeling for top-to-bottom transformations",
+    href: "/services/home-remodel/",
   },
   {
-    label: "Kitchen remodeling",
-    detail: "to improve layout, functionality, and style",
+    label: "Kitchen remodeling to improve layout, functionality, and style",
     href: "/services/kitchen-remodeling/",
   },
   {
-    label: "Bathroom remodeling",
-    detail: "with upgraded features and finishes",
+    label: "Bathroom remodeling with upgraded features and finishes",
     href: "/services/bathroom-remodeling/",
   },
   {
-    label: "Shower remodels",
-    detail: "that blend comfort, aesthetics, and performance",
+    label: "Shower remodels that blend comfort, aesthetics, and performance",
     href: "/services/bathroom-shower-remodel/",
   },
   {
-    label: "Bathtub remodels",
-    detail: "for a more relaxing and modern bathing space",
+    label: "Bathtub remodels for a more relaxing and modern bathing space",
     href: "/services/bathtub-remodeling/",
   },
   {
-    label: "General remodeling",
-    detail: "solutions for any room in your home",
-    href: "/services/home-remodel/",
+    label: "General remodeling solutions for any room in your home",
+    href: "/services/remodeling-company/",
   },
 ];
 
-export const navServices = serviceCards.map((s) => ({
-  label: s.title,
-  href: s.href,
+export const navServices = canonicalServiceCatalog.map((service) => ({
+  label: service.label,
+  href: service.href,
 }));

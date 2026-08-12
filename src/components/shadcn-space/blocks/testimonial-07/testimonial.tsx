@@ -51,7 +51,7 @@ const ReviewCard = ({
   source,
 }: TestimonialCard) => {
   return (
-    <Card className="p-0 border ring-0 shadow-none max-w-sm overflow-hidden">
+    <Card className="p-0 border border-white/20 ring-0 shadow-none max-w-sm overflow-hidden bg-white text-foreground">
       <CardContent className="p-0 flex flex-col">
         <div className="relative h-28 w-full overflow-hidden bg-muted">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -124,7 +124,7 @@ export default function Testimonial() {
   };
 
   return (
-    <section ref={sectionRef} className="py-10 md:py-16">
+    <section ref={sectionRef} className="py-10 md:py-16 bg-primary text-white">
       <div className="max-w-7xl xl:px-16 lg:px-8 px-4 mx-auto w-full">
         <motion.div
           variants={containerVariants}
@@ -136,7 +136,7 @@ export default function Testimonial() {
             <motion.div variants={itemVariants}>
               <Badge
                 variant="outline"
-                className="h-7 px-3 py-1 text-sm font-normal"
+                className="h-7 px-3 py-1 text-sm font-normal border-white/40 text-white bg-white/10"
               >
                 Client feedback
               </Badge>
@@ -144,13 +144,13 @@ export default function Testimonial() {
             <div className="flex flex-col gap-3 items-center">
               <motion.h2
                 variants={itemVariants}
-                className="text-center font-bold text-3xl sm:text-4xl lg:text-5xl tracking-tight !m-0"
+                className="text-center font-bold text-3xl sm:text-4xl lg:text-5xl tracking-tight !m-0 text-white"
               >
                 What homeowners say about NWS
               </motion.h2>
               <motion.p
                 variants={itemVariants}
-                className="text-center text-base sm:text-lg text-muted-foreground max-w-lg !m-0"
+                className="text-center text-base sm:text-lg text-white/80 max-w-lg !m-0"
               >
                 Real Google &amp; Angi reviews, names, dates, and quotes as
                 published on nws-homes.com.
@@ -194,8 +194,8 @@ export default function Testimonial() {
                 ))}
               </Marquee>
             </div>
-            <div className="from-background pointer-events-none absolute inset-x-0 top-0 h-1/4 bg-gradient-to-b" />
-            <div className="from-background pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t" />
+            <div className="from-primary pointer-events-none absolute inset-x-0 top-0 h-1/4 bg-gradient-to-b" />
+            <div className="from-primary pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t" />
           </motion.div>
         </motion.div>
       </div>

@@ -1,5 +1,5 @@
-const fs = require("fs");
-const path = require("path");
+const fs = require("fs"); // eslint-disable-line @typescript-eslint/no-require-imports
+const path = require("path"); // eslint-disable-line @typescript-eslint/no-require-imports
 
 const dir = path.join(__dirname, "..", "scraped");
 const files = fs.readdirSync(dir).filter((f) => f.endsWith(".html"));

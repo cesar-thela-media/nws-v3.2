@@ -30,6 +30,8 @@ export const metadata: Metadata = {
   },
   description:
     "Local custom home builder and remodeler in Richmond, TX since 2007. Kitchens, baths, whole-home renovations, additions. Call (281) 299-2309.",
+  metadataBase: new URL("https://www.nws-homes.com"),
+  alternates: { canonical: "https://www.nws-homes.com/" },
   icons: {
     icon: "/images/favicon.png",
   },

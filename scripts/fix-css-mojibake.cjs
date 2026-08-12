@@ -1,4 +1,4 @@
-const fs = require("fs");
+const fs = require("fs"); // eslint-disable-line @typescript-eslint/no-require-imports
 const path = "src/app/globals.css";
 let text = fs.readFileSync(path, "utf8");
 

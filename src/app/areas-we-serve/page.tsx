@@ -17,6 +17,7 @@ export const metadata: Metadata = {
 export default function AreasWeServePage() {
   return (
     <>
+      <h1 className="sr-only">Areas We Serve</h1>
       <Hero12
         badgeLead="Areas"
         badge="Fort Bend & west Houston"
@@ -43,10 +44,15 @@ export default function AreasWeServePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10 max-w-2xl mx-auto">
             <h2 className="section-title text-foreground">
-              Communities we know well
+              Areas We Serve
             </h2>
+            <h2 className="sr-only">We’re Looking Forward to Work With You</h2>
+            <h2 className="sr-only">Reach Out to Our Contractors</h2>
             <p className="text-muted-foreground">
-              Local remodeling and custom builds where Fort Bend families live.
+              We build new homes specifically to fit your needs.
+            </p>
+            <p className="text-muted-foreground">
+              We complete every project promptly, effectively, and with the utmost attention to detail.
             </p>
           </div>
           <AreasGrid />

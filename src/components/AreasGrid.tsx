@@ -2,18 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { locations } from "@/data/locations";
 
-const communityImages = [
-  "/images/custom-homes-1.jpeg",
-  "/images/hero-home-remodeled-richmond-tx.webp",
-  "/images/kitchen-gallery-1.jpeg",
-  "/images/custom-homes-3.jpeg",
-  "/images/whole-home-remodeling-richmond-tx.jpg",
-  "/images/bathroom-gallery-1.jpeg",
-  "/images/remodeling-1.jpeg",
-  "/images/home-addition-contractors.webp",
-  "/images/custom-homes-2.jpeg",
-];
-
 /** Image cards linking to each location route (no plain chip list). */
 export function AreasGrid({ className = "" }: { className?: string }) {
   return (
@@ -21,10 +9,11 @@ export function AreasGrid({ className = "" }: { className?: string }) {
       className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 ${className}`}
       data-areas-image-cards
     >
-      {locations.map((loc, i) => {
+      {locations.map((loc) => {
         const href = loc.href === "#" ? "/areas-we-serve/" : loc.href;
         const label = loc.name.replace(/,?\s*TX$/i, "");
-        const src = communityImages[i % communityImages.length];
+        const src =
+          loc.heroImage || "/images/hero-custom-home-remodeling-paralax-image.jpg";
         const isAnchor = loc.href === "#";
 
         const card = (
@@ -32,6 +21,7 @@ export function AreasGrid({ className = "" }: { className?: string }) {
             <Image
               src={src}
               alt={`${label} remodeling and custom homes`}
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               fill
               className="object-cover transition-transform duration-500 group-hover:scale-105"
             />

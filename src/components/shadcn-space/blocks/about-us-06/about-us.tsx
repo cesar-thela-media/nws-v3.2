@@ -47,7 +47,6 @@ function AnimatedLetters({
 }: AnimatedLettersProps & { delayOffset?: number }) {
   const Tag = motion[as];
   const words = text.split(/(\s+)/);
-  let letterIndex = 0;
 
   return (
     <Tag
@@ -62,8 +61,10 @@ function AnimatedLetters({
         if (/^\s+$/.test(word)) {
           return <span key={`sp-${wi}`}>{" "}</span>;
         }
-        const start = letterIndex;
-        letterIndex += word.length;
+        const start = words
+          .slice(0, wi)
+          .filter((part) => !/^\s+$/.test(part))
+          .reduce((total, part) => total + part.length, 0);
         return (
           <span
             key={`w-${wi}-${start}`}
@@ -103,12 +104,12 @@ function AnimatedHeadline({
   isInView: boolean;
 }) {
   const stagger = 0.008;
-  const first = "Your remodeling and custom home partner in";
+  const first = "Bring Your Dream Home to Life";
 
   return (
     <h2
       className="font-bold text-foreground text-4xl sm:text-5xl md:text-6xl lg:text-[3.5rem] leading-[1.15] max-w-4xl mx-auto text-center tracking-tight !m-0"
-      aria-label="Your remodeling and custom home partner in Richmond"
+      aria-label="Bring Your Dream Home to Life"
     >
       <AnimatedLetters
         text={first}
@@ -134,7 +135,7 @@ const AboutUs06 = () => {
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   const body =
-    "NWS Custom Homes and Remodeling has served Richmond, TX and surrounding communities since 2007. Whether you're updating a kitchen, reworking a bathroom, expanding your footprint, or building new, you get one accountable team from plan through punch list.";
+    "Whether you need a full home remodel, an updated kitchen layout, or an expanded living space, our team of seasoned professionals is ready to help. We bring years of experience as both house renovation contractors and home addition contractors, ensuring every project, from simple upgrades to complex remodels, is completed with care, precision, and efficiency.";
 
   // Snappy entrance - no long staggered waits on body / bullets
   const bodyStartDelay = 0.18;
@@ -150,7 +151,7 @@ const AboutUs06 = () => {
               <div className="flex flex-col gap-4 md:gap-5 items-center">
                 <AnimatedLetters
                   as="p"
-                  text="About NWS"
+                  text="Let’s Build Your Dreams"
                   isInView={isInView}
                   stagger={0.012}
                   className="text-base md:text-lg font-semibold text-primary tracking-wide !m-0"

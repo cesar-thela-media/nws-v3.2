@@ -11,11 +11,15 @@ export function ServiceDetailHero({
   eyebrow,
   heading,
   description,
+  ctaLabel,
+  ctaHref,
 }: {
   slug: string;
   eyebrow?: string;
   heading: string;
   description?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
 }) {
   const photos = getServiceHeroPhotos(slug);
   const shortDesc =
@@ -36,8 +40,8 @@ export function ServiceDetailHero({
         heading={heading}
         description={shortDesc}
         items={photos.items}
-        ctaLabel={`Call ${site.phone.office}`}
-        ctaHref={`tel:${site.phone.officeTel}`}
+        ctaLabel={ctaLabel || `Call ${site.phone.office}`}
+        ctaHref={ctaHref || `tel:${site.phone.officeTel}`}
       />
     </div>
   );

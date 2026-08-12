@@ -1,0 +1,74 @@
+{
+  "source": {
+    "url": "https://www.nws-homes.com/faqs/",
+    "capturedAt": "2026-08-11T18:25:41.899Z",
+    "method": "Playwright browser evaluate",
+    "submittedForms": false
+  },
+  "title": "FAQs",
+  "faqQuestions": [
+    "What services do you offer as a remodeling company?",
+    "How can I find a reliable custom home builder near me?",
+    "What sets your kitchen remodeling apart from other companies?",
+    "Why should I choose your bathroom remodeling services?",
+    "What are the benefits of whole home remodeling?",
+    "How can I compare different remodeling companies?",
+    "What's the process for starting a home remodel with you?",
+    "What do I need to know about working with home builders?",
+    "Can I see examples of your kitchen remodel projects?",
+    "What's the typical timeline for bathroom remodels?",
+    "Do you offer financing options for whole home remodeling?",
+    "Are there energy-efficient options for custom home building?",
+    "What materials do you use in your remodeling projects?",
+    "How do I request a quote for a house remodeling project?",
+    "Do you have testimonials from satisfied clients?"
+  ],
+  "faqAnswers": [
+    "We specialize in custom home building, remodeling, kitchen remodeling, bathroom remodeling, and whole home remodeling.",
+    "Trust our experienced team for top-notch custom home building services tailored to your needs.",
+    "Our kitchen remodels combine functionality and aesthetics, enhancing your living space.",
+    "Transform your bathroom into a spa-like retreat with our expert bathroom remodeling solutions.",
+    "Our whole home remodeling services improve your entire living environment, from design to completion.",
+    "Evaluate our track record and client reviews to see why we’re a top choice among remodeling companies.",
+    "Begin your house remodeling journey with a consultation and tailored plan by our experts.",
+    "Discover essential insights on collaborating with our seasoned home builders for your project.",
+    "Explore our gallery showcasing stunning kitchen remodels for inspiration.",
+    "Get an idea of our bathroom remodeling project durations for efficient planning.",
+    "Learn about our flexible financing solutions to make your remodeling dreams a reality.",
+    "Find out how we incorporate eco-friendly features in our custom home building projects.",
+    "Discover the quality materials we source for lasting and beautiful results.",
+    "Get a free quote tailored to your specific remodeling needs.",
+    "Read real client testimonials to see the outcomes of our remodeling and home building services."
+  ],
+  "headerNavigation": [
+    {"text":"Home","href":"https://www.nws-homes.com/"},
+    {"text":"About","href":"https://www.nws-homes.com/about/"},
+    {"text":"Services","href":"https://www.nws-homes.com/faqs/#"},
+    {"text":"More","href":"https://www.nws-homes.com/faqs/#"},
+    {"text":"Contact","href":"https://www.nws-homes.com/contact/"},
+    {"text":"Book Now","href":"tel:2812992309"}
+  ],
+  "serviceNavigation": [
+    {"text":"Custom Home Building","href":"https://www.nws-homes.com/services/custom-home-builder/"},
+    {"text":"Remodeling","href":"https://www.nws-homes.com/services/remodeling-company/"},
+    {"text":"Kitchen Remodeling","href":"https://www.nws-homes.com/services/kitchen-remodeling/"},
+    {"text":"Bathroom Remodeling","href":"https://www.nws-homes.com/services/bathroom-remodeling/"},
+    {"text":"Whole Home Remodeling","href":"https://www.nws-homes.com/services/home-remodel/"},
+    {"text":"Shower Remodel","href":"https://www.nws-homes.com/services/bathroom-shower-remodel/"},
+    {"text":"Bathtub Remodel","href":"https://www.nws-homes.com/services/bathtub-remodeling/"},
+    {"text":"Room Additions & Home Additions","href":"https://www.nws-homes.com/services/room-additions-home-additions/"},
+    {"text":"Basement Remodeling / Finishing","href":"https://www.nws-homes.com/services/basement-remodeling-finishing/"},
+    {"text":"Garage Conversions & Remodeling","href":"https://www.nws-homes.com/services/garage-remodel-contractors/"},
+    {"text":"Living Room & Open Concept Remodeling","href":"https://www.nws-homes.com/services/open-concept-remodeling/"}
+  ],
+  "serviceAreasVisibleInHeader": [
+    {"text":"Sugar Land, TX","href":"https://www.nws-homes.com/sugar-land-tx/"},
+    {"text":"Katy, TX","href":"https://www.nws-homes.com/katy-tx/"},
+    {"text":"Fulshear, TX","href":"https://www.nws-homes.com/fulshear-tx/"},
+    {"text":"Rosenberg, TX","href":"https://www.nws-homes.com/rosenberg-tx/"},
+    {"text":"Weston Lakes, TX","href":"https://www.nws-homes.com/weston-lakes-tx/"},
+    {"text":"Cinco Ranch, TX","href":"https://www.nws-homes.com/cinco-ranch-tx/"},
+    {"text":"West Side of Houston, TX","href":"https://www.nws-homes.com/west-side-of-houston-tx/"},
+    {"text":"Park Row, TX","href":"https://www.nws-homes.com/park-row-tx/"}
+  ]
+}

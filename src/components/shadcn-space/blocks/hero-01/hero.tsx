@@ -8,6 +8,7 @@ import { ArrowUpRight, Star } from "lucide-react";
 
 export type AvatarList = {
   image: string;
+  alt?: string;
 };
 
 export type LocationRoll = {
@@ -105,7 +106,7 @@ function HeroSection({
             initial={{ opacity: 0, y: 32 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
-            className="text-[clamp(1.2rem,4.8vw,1.65rem)] sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-[1.15] font-bold tracking-tight text-white !m-0 max-w-5xl w-full min-w-0 px-1 sm:px-2 text-center"
+            className="text-[clamp(1.2rem,4.8vw,1.65rem)] sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-[1.08] font-bold tracking-tight text-white !m-0 max-w-5xl w-full min-w-0 px-1 sm:px-2 text-center break-words"
           >
             {locations.length > 1 ? (
               <AnimatedTextRoller
@@ -176,7 +177,7 @@ function HeroSection({
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={avatar.image}
-                    alt=""
+                    alt={avatar.alt || "NWS client testimonial"}
                     width={36}
                     height={36}
                     className="rounded-full object-cover size-8 sm:size-9"

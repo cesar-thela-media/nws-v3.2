@@ -7,8 +7,8 @@ const gallery = galleries.find(
 )!;
 
 export const metadata: Metadata = {
-  title: gallery.title,
-  description: gallery.description,
+  title: "Bathroom Remodeling Richmond, TX | Contact Us Today! | NWS Custom Homes and Remodeling",
+  description: "Expert bathroom remodeling in Richmond, TX. With 35+ years of experience, we create stylish, functional bathrooms. Call (281) 299-2309 today!",
 };
 
 export default function Page() {

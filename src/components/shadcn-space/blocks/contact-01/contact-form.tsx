@@ -39,6 +39,8 @@ const ContactForm = () => {
     terms: false,
   });
   const [submitted, setSubmitted] = useState(false);
+  const [pending, setPending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -53,6 +55,8 @@ const ContactForm = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError(null);
+    setPending(true);
     const payload = {
       formType: "contact",
       source: "nws-homes-contact",
@@ -62,15 +66,19 @@ const ContactForm = () => {
     };
     try {
       // Server route proxies to n8n (WEBHOOK_URL_CONTACT / N8N_* env)
-      await fetch("/api/submit", {
+      const response = await fetch("/api/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
+      const result = (await response.json().catch(() => ({}))) as { ok?: boolean; delivered?: boolean };
+      if (!response.ok || !result.ok) throw new Error("submission_failed");
+      setSubmitted(true);
     } catch {
-      /* still show success; webhook optional in preview */
+      setError("We couldn’t send your message. Please try again or call (281) 299-2309.");
+    } finally {
+      setPending(false);
     }
-    setSubmitted(true);
   };
 
   if (submitted) {
@@ -98,10 +106,12 @@ const ContactForm = () => {
           </p>
         </CardHeader>
         <CardContent className="p-0">
-          <form onSubmit={handleSubmit} className="space-y-5">
+          <form onSubmit={handleSubmit} className="space-y-5" noValidate={false}>
+            <div role="status" aria-live="polite" className="min-h-5 text-sm text-red-700">{error}</div>
             <div className="flex flex-col gap-5 sm:gap-6">
               <div className="flex flex-col gap-4 sm:gap-5">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <Label htmlFor="firstName" className="sr-only">First Name</Label>
                   <Input
                     id="firstName"
                     name="firstName"
@@ -111,6 +121,7 @@ const ContactForm = () => {
                     className="dark:bg-background h-11 sm:h-10 shadow-xs w-full min-w-0"
                     required
                   />
+                  <Label htmlFor="lastName" className="sr-only">Last Name</Label>
                   <Input
                     id="lastName"
                     name="lastName"
@@ -122,6 +133,7 @@ const ContactForm = () => {
                   />
                 </div>
 
+                <Label htmlFor="email" className="sr-only">Email</Label>
                 <Input
                   id="email"
                   name="email"
@@ -134,6 +146,7 @@ const ContactForm = () => {
                 />
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <Label htmlFor="phone" className="sr-only">Phone Number</Label>
                   <Input
                     id="phone"
                     name="phone"
@@ -143,6 +156,7 @@ const ContactForm = () => {
                     onChange={handleChange}
                     className="dark:bg-background h-11 sm:h-10 shadow-xs w-full min-w-0"
                   />
+                  <Label htmlFor="zip" className="sr-only">Zip Code</Label>
                   <Input
                     id="zip"
                     name="zip"
@@ -153,6 +167,7 @@ const ContactForm = () => {
                   />
                 </div>
 
+                <Label htmlFor="service" className="sr-only">Service of Interest</Label>
                 <Select
                   value={formData.service}
                   onValueChange={(value) =>
@@ -180,6 +195,7 @@ const ContactForm = () => {
                   </SelectContent>
                 </Select>
 
+                <Label htmlFor="message" className="sr-only">Message</Label>
                 <Textarea
                   id="message"
                   name="message"
@@ -206,10 +222,12 @@ const ContactForm = () => {
                   </Label>
                 </div>
               </div>
+              {pending ? <p className="text-sm text-muted-foreground" role="status">Sending…</p> : null}
               <Button
                 type="submit"
                 size="lg"
                 className="h-11 w-full !bg-zinc-950 !text-white hover:!bg-zinc-900"
+                disabled={pending}
               >
                 Send message
               </Button>

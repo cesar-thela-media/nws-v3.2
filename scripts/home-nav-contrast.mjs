@@ -13,7 +13,6 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const baseUrl = process.env.BASE_URL || "http://localhost:3000";
 const scratch =
   process.env.SCRATCH ||

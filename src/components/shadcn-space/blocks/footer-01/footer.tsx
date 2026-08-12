@@ -1,6 +1,8 @@
+import Link from "next/link";
 import Logo from "@/assets/logo/logo";
 import { Separator } from "@/components/ui/separator";
 import { site } from "@/data/site";
+import { canonicalServiceCatalog } from "@/data/informationArchitecture";
 
 const FacebookIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
@@ -38,12 +40,11 @@ const footerSections: FooterData[] = [
   {
     title: "Services",
     links: [
-      { title: "Custom Home Building", href: "/services/custom-home-builder/" },
-      { title: "Kitchen Remodeling", href: "/services/kitchen-remodeling/" },
-      { title: "Bathroom Remodeling", href: "/services/bathroom-remodeling/" },
-      { title: "Whole Home Remodel", href: "/services/home-remodel/" },
-      { title: "Room Additions", href: "/services/room-additions-home-additions/" },
-      { title: "All Services", href: "/services/" },
+      ...canonicalServiceCatalog.map((service) => ({
+        title: service.label,
+        href: service.href,
+      })),
+      { title: "View All Our Services", href: "/services/" },
     ],
   },
   {
@@ -67,12 +68,12 @@ const Footer = () => {
     <footer className="py-10 bg-primary text-white w-full max-w-full overflow-x-clip">
       <div className="max-w-7xl xl:px-16 lg:px-8 px-4 mx-auto w-full min-w-0">
         <div className="flex flex-col gap-6 sm:gap-12 min-w-0">
-          <div className="py-10 sm:py-12 grid grid-cols-1 min-[400px]:grid-cols-2 sm:grid-cols-4 md:grid-cols-7 lg:grid-cols-12 gap-x-6 sm:gap-x-8 gap-y-10 px-2 sm:px-6 xl:px-0">
-            <div className="col-span-full lg:col-span-4">
+          <div className="py-10 sm:py-12 grid grid-cols-1 min-[400px]:grid-cols-2 sm:grid-cols-4 lg:grid-cols-12 gap-x-6 sm:gap-x-8 gap-y-10 px-2 sm:px-6 xl:px-0">
+            <div className="col-span-1 min-w-0 sm:col-span-2 lg:col-span-4">
               <div className="flex flex-col gap-6">
-                <a href="/" className="w-fit">
+                <Link href="/" className="w-fit">
                   <Logo onDark />
-                </a>
+                </Link>
                 <p className="text-base font-normal text-white/85 !m-0">
                   Custom homes & remodeling · Richmond, TX since 2007
                 </p>
@@ -124,14 +125,22 @@ const Footer = () => {
                   >
                     <MapsIcon />
                   </a>
+                  <a
+                    href={site.social.googleReview}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm font-medium text-white/80 hover:text-white transition-colors"
+                  >
+                    Leave Us a Review!
+                  </a>
                 </div>
               </div>
             </div>
 
-            <div className="col-span-1 lg:block hidden" />
+            <div className="hidden lg:block lg:col-span-1" aria-hidden="true" />
 
             {footerSections.map(({ title, links }, index) => (
-              <div key={index} className="col-span-2">
+              <div key={index} className="col-span-1 sm:col-span-2 lg:col-span-2">
                 <div className="flex flex-col gap-4">
                   <p className="text-base font-semibold text-white !m-0">
                     {title}
@@ -139,12 +148,12 @@ const Footer = () => {
                   <ul className="flex flex-col gap-3">
                     {links.map(({ title: linkTitle, href }) => (
                       <li key={linkTitle}>
-                        <a
+                            <Link
                           href={href}
                           className="text-base font-normal text-white/80 hover:text-white transition-colors"
                         >
                           {linkTitle}
-                        </a>
+                        </Link>
                       </li>
                     ))}
                   </ul>
@@ -152,7 +161,7 @@ const Footer = () => {
               </div>
             ))}
 
-            <div className="col-span-3">
+            <div className="col-span-full sm:col-span-2 lg:col-span-3">
               <div className="flex flex-col gap-4">
                 <p className="text-base font-semibold text-white !m-0">
                   Contact

@@ -24,7 +24,14 @@ const stagger = {
   show: { transition: { staggerChildren: 0.1, delayChildren: 0.05 } },
 };
 
-const CTA = () => {
+type CTAProps = {
+  eyebrow?: string;
+  title?: string;
+  text?: string;
+  buttonLabel?: string;
+};
+
+const CTA = ({ eyebrow, title, text, buttonLabel }: CTAProps) => {
   return (
     <section className="relative overflow-x-clip w-full max-w-full">
       <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16 py-12 sm:py-16 lg:py-20 min-w-0">
@@ -63,13 +70,13 @@ const CTA = () => {
                 variants={fadeUp}
                 className="text-sm font-medium text-white/90"
               >
-                Free consultation
+                {eyebrow || "Free consultation"}
               </motion.p>
               <motion.h2
                 variants={fadeUp}
                 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight tracking-tight max-w-2xl !m-0"
               >
-                Ready to start your project?
+                {title || "Ready to start your project?"}
               </motion.h2>
               <motion.div
                 variants={fadeUp}
@@ -93,9 +100,8 @@ const CTA = () => {
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
             >
-              <p className="text-2xl lg:text-3xl font-medium text-foreground tracking-tight leading-snug max-w-md !m-0">
-                Get a clear next step, no hard sell. Mention this website for 5%
-                off.
+              <p className="text-base sm:text-lg lg:text-xl font-medium text-foreground tracking-tight leading-relaxed max-w-lg !m-0">
+                {text || "Get a clear next step, no hard sell. Mention this website for 5% off."}
               </p>
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0">
                 <Button
@@ -109,7 +115,7 @@ const CTA = () => {
                   className="rounded-[4px] h-12 px-6 !bg-primary !text-white hover:!bg-primary/90 hover:!text-white"
                   render={<a href="tel:2812992309" />}
                 >
-                  Call (281) 299-2309
+                  {buttonLabel || "Call (281) 299-2309"}
                 </Button>
               </div>
             </motion.div>

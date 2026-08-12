@@ -228,7 +228,7 @@ const AnimatedPath = ({ d, id }: { d: string; id: string }) => {
           duration: 4,
           repeat: Infinity,
           ease: "linear",
-          delay: Math.random() * 2,
+          delay: 0,
         }}
       />
       <defs>

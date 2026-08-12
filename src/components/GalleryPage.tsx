@@ -9,6 +9,8 @@ import { galleryImagePaths } from "@/data/galleries";
  * Full description in hero (no mid-sentence ellipsis).
  */
 export function GalleryPage({ gallery }: { gallery: Gallery }) {
+  const sourceCtaLabel = "Contact Us";
+
   const photoItems = gallery.photos.map((photo) => ({
     title: photo.title,
     image: photo.src,
@@ -27,9 +29,9 @@ export function GalleryPage({ gallery }: { gallery: Gallery }) {
         eyebrow="Project gallery"
         heading={gallery.heading}
         description={gallery.description}
-        primaryCtaLabel="Start a project"
+        primaryCtaLabel="Contact Us"
         primaryCtaHref="/contact/"
-        secondaryCtaLabel="Call us"
+        secondaryCtaLabel="Call Now"
         images={galleryImagePaths(gallery)}
         cards={marqueeCards}
       />
@@ -40,7 +42,7 @@ export function GalleryPage({ gallery }: { gallery: Gallery }) {
         heading="Project photos"
         description={gallery.description}
         items={photoItems}
-        ctaLabel="Start a project"
+        ctaLabel={sourceCtaLabel}
         ctaHref="/contact/"
       />
 

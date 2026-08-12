@@ -86,13 +86,8 @@ export default function Gallery03({
   ];
 
   const raw = items.length > 0 ? items : defaults;
-  let cards = showAll ? raw : raw.slice(0, 4);
-  if (showAll && cards.length > 3) {
-    const rem = cards.length % 3;
-    if (rem === 1) {
-      cards = cards.slice(0, -1);
-    }
-  }
+  const cards = raw;
+  // Keep every supplied gallery item; source/local asset reconciliation is handled by the data model.
 
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 

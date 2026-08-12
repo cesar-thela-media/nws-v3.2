@@ -1,0 +1,30 @@
+{
+  "verifiedAt": "2026-08-12T00:00:00.000Z",
+  "expectedRoutes": 29,
+  "capturedRoutes": 29,
+  "routeRecords": 29,
+  "perRouteJsonFiles": 29,
+  "httpFailures": 0,
+  "invalidRouteRecords": 0,
+  "missingRouteFiles": 0,
+  "allRoutesHaveSourceUrl": true,
+  "allRoutesHaveCaptureTimestamp": true,
+  "allRoutesHttp200": true,
+  "renderedFaqCapture": {
+    "file": "rendered-faqs.json",
+    "questions": 15,
+    "answers": 15,
+    "formsSubmitted": false,
+    "browserCapture": true
+  },
+  "applicationCodeModified": false,
+  "sourceFailuresFile": "source-failures.json",
+  "sourceFailures": 0,
+  "parityClaimed": false,
+  "notes": [
+    "The 29 route captures were collected by HTTP fetch and normalized parsing.",
+    "The rendered FAQ and navigation capture was collected with Playwright.",
+    "This corpus does not establish content parity; it is the source evidence for Stage 2.",
+    "No client forms were submitted."
+  ]
+}

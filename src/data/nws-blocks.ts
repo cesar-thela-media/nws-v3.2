@@ -1,4 +1,6 @@
-/** Data for Shadcn Space blocks, from content/COPY.md */
+import { faqs as canonicalFaqs } from "./faqs";
+
+/** Data for Shadcn Space blocks, from the approved v3.2 content model. */
 
 export const nwsServices10 = [
   {
@@ -46,35 +48,7 @@ export const nwsServices10 = [
 /** Re-export real Google/Angi reviews (see src/data/reviews.ts) */
 export { nwsTestimonials } from "./reviews";
 
-export const nwsFaqs = [
-  {
-    question: "What services do you offer?",
-    answer:
-      "Custom home building, general remodeling, kitchen and bathroom remodels, whole-home renovations, showers and tubs, additions, and related interior work. We’ll help you pick the right scope.",
-  },
-  {
-    question: "Do you work near me?",
-    answer:
-      "We’re based in Richmond, TX and regularly serve Sugar Land, Katy, Fulshear, Rosenberg, Cinco Ranch, Weston Lakes, Park Row, and nearby west Houston areas. Call to confirm your address.",
-  },
-  {
-    question: "How does a project start?",
-    answer:
-      "A consult to understand goals and budget, then a clear plan and estimate. When you’re ready, we schedule, pull permits if needed, and keep you updated through construction and final walkthrough.",
-  },
-  {
-    question: "How long does a remodel take?",
-    answer:
-      "It depends on scope. A focused bath or shower is often weeks; full kitchens and multi-room jobs take longer. Custom homes are measured in months. We give a realistic range up front.",
-  },
-  {
-    question: "Can we live at home during the work?",
-    answer:
-      "Often yes for partial remodels, with a temporary kitchen or bath plan. Large whole-home jobs may be easier if you relocate for part of the timeline, we’ll advise based on scope.",
-  },
-  {
-    question: "What’s the 5% website offer?",
-    answer:
-      "Mention this website when you book to receive a free consultation and 5% off your next project. Ask us for current terms when you call.",
-  },
-];
+export const nwsFaqs = canonicalFaqs.map((faq) => ({
+  question: faq.question,
+  answer: faq.answer,
+}));
