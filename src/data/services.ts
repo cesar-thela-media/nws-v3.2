@@ -146,7 +146,7 @@ export const serviceCards: ServiceCard[] = [
 
 export const homeServiceList = [
   {
-    label: "Custom home building , from lot selection and design to full construction",
+    label: "Custom home building, from lot selection and design to full construction",
     href: "/services/custom-home-builder/",
   },
   {

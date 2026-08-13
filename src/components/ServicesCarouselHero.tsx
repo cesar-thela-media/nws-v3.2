@@ -27,9 +27,9 @@ function shortDesc(text: string, max = 90) {
 
 /** Services hub/detail hero: landscape carousel-08 cards (About-style orange text) */
 export function ServicesCarouselHero({
-  label = "Our services",
-  heading = "Custom homes & remodeling",
-  description = "From kitchens and baths to whole-home work and new builds across Fort Bend County.",
+  label = "Services",
+  heading = "Services",
+  description = "Our wide range of services means we can build you a custom home from square one or remodel an existing one.",
   cards,
 }: {
   label?: string;

@@ -21,6 +21,7 @@ const portfolioItems = [
     title: "Custom Home Building",
     description:
       "Our team will work with you from start to finish to ensure that your home is what you want, with all the features and finishes that matter to you most.",
+    back: "We specialize in custom construction and have decades of experience building homes that fit your needs. Whether you want a large home with plenty of space for entertaining or a smaller home that's easy to maintain, we do it right.",
     image: "/images/custom-homes-1.jpeg",
     href: "/services/custom-home-builder/",
   },
@@ -30,6 +31,7 @@ const portfolioItems = [
     title: "Remodeling",
     description:
       "We're here to help you turn your home into the place you've always dreamed of. Whether you want a kitchen to remodel, a bathroom makeover, or an addition to your home, we can do it all.",
+    back: "We have the skills and the knowledge of what it takes to make your home look the best. We'll handle all the details from start to finish, so you can sit back and relax as we do all the work for you!",
     image: "/images/remodeling-1.jpeg",
     href: "/services/remodeling-company/",
   },
@@ -39,6 +41,7 @@ const portfolioItems = [
     title: "Kitchen Remodeling",
     description:
       "Kitchen remodeling is a great way to breathe new life into your home. We've got the expertise and experience you need to pull it off. We'll work with you every step of the way to create the kitchen of your dreams, no matter what that looks like.",
+    back: "Our team will help you choose the right materials for your space and budget, as well as offer tips for making sure everything works together seamlessly. We work hard at keeping our costs fair while still providing high-quality service.",
     image: "/images/kitchen-gallery-1.jpeg",
     href: "/services/kitchen-remodeling/",
   },
@@ -48,6 +51,7 @@ const portfolioItems = [
     title: "Bathroom Remodeling",
     description:
       "Are you ready to take your bathroom to the next level? We've got everything you need to turn that tired, outdated space into a gorgeous, relaxing oasis, and we can do it all with minimal disruption to your busy life.",
+    back: "We can help you add the perfect finishing touches to your bathroom remodel that will make it feel like home and help make your remodel experience as enjoyable as possible.",
     image: "/images/bathroom-gallery-1.jpeg",
     href: "/services/bathroom-remodeling/",
   },
@@ -57,6 +61,7 @@ const portfolioItems = [
     title: "Whole Home Remodeling",
     description:
       "We specialize in whole home remodeling services, so no matter what part of your house needs work, we can help. We can help with everything from painting and flooring to building new rooms.",
+    back: "Our top priority is always customer satisfaction, so you can be sure that when you choose us as your contractor, you'll get high-quality work at an affordable price. Your dream home is just one call away.",
     image: "/images/custom-homes-3.jpeg",
     href: "/services/home-remodel/",
   },
@@ -66,6 +71,7 @@ const portfolioItems = [
     title: "Shower Remodel",
     description:
       "Ready to upgrade your shower? Transform your space with a custom shower remodel tailored to your needs and style.",
+    back: "Enjoy a modern, functional, and stylish shower. Our professional team handles every detail to create your ideal bathroom retreat.",
     image: "/images/14-kitchen-after.jpg",
     href: "/services/bathroom-shower-remodel/",
   },
@@ -75,6 +81,7 @@ const portfolioItems = [
     title: "Bathtub Remodel",
     description:
       "Upgrade your bathroom with a stunning bathtub remodel. Our team will help you transform your space into a relaxing, functional retreat.",
+    back: "Ready to revamp your bathroom? We offer top-quality bathtub remodeling services to fit your style and needs. Whether it's a simple upgrade or a full remodel, we can help!",
     image: "/images/13-kitchen-after.jpg",
     href: "/services/bathtub-remodeling/",
   },
@@ -83,7 +90,15 @@ const portfolioItems = [
     badge: "Expand",
     title: "Room Additions & Home Additions",
     description:
-      "More space that looks like it was always part of the house.",
+      "Work with trusted home addition contractors who create seamless, stylish, and functional spaces. Expand your home with quality additions that fit your lifestyle perfectly.",
+    back: "Our Home Addition Services Include:",
+    features: [
+      "Master suite additions",
+      "Extra bedroom builds",
+      "Second-story expansions",
+      "Mother-in-law suites",
+      "Custom room designs",
+    ],
     image: "/images/home-addition-contractors.webp",
     href: "/services/room-additions-home-additions/",
   },
@@ -91,7 +106,15 @@ const portfolioItems = [
     id: 9,
     badge: "Basement",
     title: "Basement Remodeling / Finishing",
-    description: "Our Remodeling Services Include: Custom layouts, fixture upgrades, accessibility solutions, tile and flooring installation, and full basement renovations.",
+    description: "",
+    back: "Our Remodeling Services Include:",
+    features: [
+      "Custom layouts",
+      "Fixture upgrades",
+      "Accessibility solutions",
+      "Tile and flooring installation",
+      "Full basement renovations",
+    ],
     image: "/images/Basement-Finishing.webp",
     href: "/services/basement-remodeling-finishing/",
   },
@@ -100,6 +123,14 @@ const portfolioItems = [
     badge: "Garage",
     title: "Garage Conversions & Remodeling",
     description: "Create a new home office, gym, or bedroom with our garage remodel contractors. We handle flooring, insulation, and finishes to give your garage new life.",
+    back: "Key Services We Provide:",
+    features: [
+      "Insulation upgrades",
+      "Durable flooring",
+      "Electrical updates",
+      "Wall finishing",
+      "Custom layouts",
+    ],
     image: "/images/garage-remodel.webp",
     href: "/services/garage-remodel-contractors/",
   },
@@ -108,6 +139,14 @@ const portfolioItems = [
     badge: "Open concept",
     title: "Living Room & Open Concept Remodeling",
     description: "Brighten your home with open concept remodeling. From wall removal to layout redesign, we create inviting spaces for family living and entertaining.",
+    back: "Key Services We Provide:",
+    features: [
+      "Wall removal",
+      "Layout redesign",
+      "Natural light flow",
+      "Finish upgrades",
+      "Family-friendly spaces",
+    ],
     image: "/images/open-concept.webp",
     href: "/services/open-concept-remodeling/",
   },
@@ -160,9 +199,17 @@ function ServiceCard({
             {item.title}
           </h3>
         </a>
-        <p className="text-base sm:text-lg text-white/90 leading-relaxed !m-0 flex-1">
-          {item.description}
-        </p>
+        <div className="text-base sm:text-lg text-white/90 leading-relaxed !m-0 flex-1 space-y-2">
+          {item.description ? <p className="!m-0">{item.description}</p> : null}
+          {"back" in item && item.back ? <p className="!m-0">{item.back}</p> : null}
+          {"features" in item && Array.isArray(item.features) ? (
+            <ul className="list-disc pl-5 space-y-1">
+              {item.features.map((feature) => (
+                <li key={feature}>{feature}</li>
+              ))}
+            </ul>
+          ) : null}
+        </div>
         <a
           href={item.href}
           className="group/learn inline-flex items-center gap-2 rounded-full bg-white px-4 py-2.5 text-base font-semibold text-primary hover:bg-white mt-1 w-fit transition-colors"

@@ -11,7 +11,7 @@ export function AreasGrid({ className = "" }: { className?: string }) {
     >
       {locations.map((loc) => {
         const href = loc.href === "#" ? "/areas-we-serve/" : loc.href;
-        const label = loc.name.replace(/,?\s*TX$/i, "");
+        const label = loc.name;
         const src =
           loc.heroImage || "/images/hero-custom-home-remodeling-paralax-image.jpg";
         const isAnchor = loc.href === "#";
@@ -20,7 +20,7 @@ export function AreasGrid({ className = "" }: { className?: string }) {
           <article className="group relative overflow-hidden rounded-2xl border border-border bg-card min-h-[14rem] sm:min-h-[16rem]">
             <Image
               src={src}
-              alt={`${label} remodeling and custom homes`}
+              alt={label}
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               fill
               className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -31,9 +31,6 @@ export function AreasGrid({ className = "" }: { className?: string }) {
             />
             <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5">
               <p className="text-white font-semibold text-lg !m-0">{label}</p>
-              <span className="text-white/80 text-sm">
-                {isAnchor ? "Home base" : "View local page"}
-              </span>
             </div>
           </article>
         );

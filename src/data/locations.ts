@@ -65,7 +65,7 @@ export const locations: Location[] = [
         heading: "Services We Provide",
         services: [
           {
-            label: "Custom home building , from lot selection and design to full construction",
+            label: "Custom home building, from lot selection and design to full construction",
             href: "/services/custom-home-builder/",
           },
           {
@@ -361,10 +361,12 @@ export const locations: Location[] = [
         ],
       },
       {
-        heading: "Achieving Success in Your Remodel",
+        heading: "Achieving success in Your Remodel",
         paragraphs: [
           "Starting a remodeling project can feel like a big step, but the right knowledge can simplify the process. Staying informed about remodeling trends in Cinco Ranch, TX, helps you make decisions that add value and suit your preferences.",
+          "Explore our specialties:",
           "Here's how to make your remodel a success:",
+          "These tips are a starting point for creating a home you'll love for years.",
         ],
         bullets: [
           "Set Clear Goals: Define the must-haves and priorities for your project to guide your decisions.",
@@ -450,7 +452,9 @@ export const locations: Location[] = [
         heading: "Your Roadmap to a Successful Remodeling Project",
         paragraphs: [
           "Planning a remodeling project in Rosenberg, TX, can feel overwhelming, but with the right tips and knowledge, you can handle it confidently. Our guide is designed to help you plan effectively and achieve the best results.",
+          "Here are some practical tips to get you started:",
           "These tips will help you start your project with confidence. We love sharing our knowledge to help homeowners. Whether you're doing it yourself or seeking professional help, these tips are just the beginning.",
+          "Ready to transform your home? Contact NWS Custom Homes and Remodeling in Rosenberg, TX, today.",
         ],
         bullets: [
           "Budget Wisely: Determine your budget and stick to it. This prevents unexpected costs and keeps your project on track.",

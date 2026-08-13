@@ -12,11 +12,12 @@ const linked = areas.filter((slug) => slug !== "richmond-tx");
 const areaHub = fs.readFileSync(path.join(root, "src/app/areas-we-serve/page.tsx"), "utf8");
 
 test("areas hub preserves captured source headings and exact intro copy", () => {
-  assert.match(areaHub, /<h1 className="sr-only">Areas We Serve<\/h1>/);
-  assert.match(areaHub, /<h2 className="sr-only">We’re Looking Forward to Work With You<\/h2>/);
-  assert.match(areaHub, /<h2 className="sr-only">Reach Out to Our Contractors<\/h2>/);
+  assert.match(areaHub, /headline="Areas We Serve"/);
   assert.match(areaHub, /We build new homes specifically to fit your needs\./);
   assert.match(areaHub, /We complete every project promptly, effectively, and with the utmost attention to detail\./);
+  assert.match(areaHub, /Mon - Fri: 8:00 AM - 6:00 PM/);
+  assert.match(areaHub, /Sat: 8:00 AM - 12:00 PM/);
+  assert.match(areaHub, /Sun: Closed/);
 });
 
 test("location data contains all nine area records and eight real routes", () => {

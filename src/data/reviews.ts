@@ -135,7 +135,7 @@ export type TestimonialCard = {
 
 export const nwsTestimonials: TestimonialCard[] = reviews.map((r) => ({
   name: r.name,
-  username: `${r.source} · ${r.date} · ${r.projectTag}`,
+  username: `${r.source} · ${r.date}`,
   body: `“${r.text}”`,
   initial: r.initial,
   avatar: r.avatar,

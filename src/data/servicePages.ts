@@ -45,6 +45,7 @@ export const servicePages: ServicePage[] = [
     h1: "Work With a Professional Custom Home Builder in Richmond, TX, and Fort Bend County",
     faqHeading: "Custom Home Building FAQ",
     intro: [
+      "We build new homes specifically to fit your needs.",
       "As a custom home builder in Richmond, TX and Fort Bend County, we design and build homes around how you live, from first consult to final walkthrough.",
     ],
     image: "/images/custom-home-richmond-tx.jpg",
@@ -338,10 +339,27 @@ export const servicePages: ServicePage[] = [
       },
       {
         heading: "Understanding Kitchen Remodeling Costs in Richmond, TX",
+        paragraphs: [
+          "Kitchen remodeling costs can vary depending on size, materials, and scope. Understanding these ranges helps you plan effectively and prioritize features that matter most.",
+          "A well-designed kitchen improves how you cook, gather, and live in your home. Delaying upgrades often leads to continued frustration with outdated layouts and inefficient storage.",
+        ],
         bullets: [
           "Basic Kitchen Updates ($15,000–$30,000): Cabinet refinishing, new countertops, minor improvements",
           "Mid-Range Remodel ($30,000–$60,000): New cabinetry, upgraded appliances, improved lighting",
           "High-End Kitchen Renovation ($60,000+): Full redesign with custom cabinetry and premium materials",
+          "Lighting Enhancements: Layered lighting that improves both function and atmosphere",
+        ],
+      },
+      {
+        heading: "Additional Upgrades",
+        paragraphs: [
+          "We work closely with you to align your goals with your budget, ensuring every investment adds value to your home.",
+        ],
+      },
+      {
+        heading: "Start Your Kitchen Renovation Project",
+        paragraphs: [
+          "If you're ready to upgrade your kitchen, now is the time to take the next step. Let's create a space that enhances your home and supports your everyday life.",
         ],
       },
     ],
@@ -411,6 +429,10 @@ export const servicePages: ServicePage[] = [
           {
             title: "1. Spa-Like Retreats for Everyday Luxury",
             items: [
+              "Large walk-in showers with frameless glass",
+              "Rainfall showerheads and built-in seating",
+              "Natural stone tiles and wood vanities",
+              "Heated floors and towel warmers",
               "One of the most popular design directions in modern bathroom remodeling is the spa-inspired look. Homeowners are turning their bathrooms into private sanctuaries that evoke relaxation and tranquility.",
               "A luxury bathroom remodel often includes large walk-in showers with frameless glass, rainfall showerheads, and built-in seating. Freestanding soaking tubs remain a favorite, especially in spaces designed for balance and serenity.",
               "To complete the spa aesthetic, many bathroom remodel contractors recommend incorporating natural elements, stone tiles, wood vanities, and soft, neutral color palettes. Adding features like heated floors, ambient lighting, and towel warmers further enhances the at-home spa experience.",
@@ -613,12 +635,23 @@ export const servicePages: ServicePage[] = [
       },
       {
         heading: "Let Us Revamp Your Spaces",
+        paragraphs: [
+          "Whether you've just purchased a house or want to refresh your existing space, our whole house remodeling services are designed to fit your goals. From layout changes to custom finishes, we help you create a home that works better for daily life.",
+          "Full home remodeling requires careful planning and coordination. Our process ensures everything stays organized and efficient.",
+          "We handle everything from kitchens and bathrooms to living rooms and beyond. Our team will guide you from concept to completion, helping you choose the right materials, layouts, and finishes.",
+        ],
         bullets: [
           "Layout Redesign: Open floor plans that improve flow and usability",
           "Kitchen Renovation: Modern layouts, custom cabinetry, and upgraded surfaces",
           "Bathroom Upgrades: Walk-in showers, vanities, and improved functionality",
           "Living Space Enhancements: Expanded rooms and better lighting",
           "Flooring and Finishes: Durable materials that unify the entire home",
+        ],
+      },
+      {
+        heading: "Core Upgrades",
+        paragraphs: [
+          "This structured approach helps avoid delays and keeps your project on track.",
         ],
       },
       {
@@ -962,8 +995,12 @@ export const servicePages: ServicePage[] = [
       {
         heading: "Custom Designs Built for Your Lifestyle",
         paragraphs: [
+          "Our team of basement remodel contractors works with you to plan every detail. From custom storage solutions to family entertainment rooms, we deliver spaces that enhance daily life.",
+          "Working with experienced basement finishing contractors guarantees your investment delivers results. We provide guidance, flexibility, and quality craftsmanship that sets us apart.",
           "Every family has unique needs, and every basement should reflect that. At NWS Custom Homes and Remodeling, we design and build spaces that fit your lifestyle while adding value to your home in Richmond, TX.",
-          "Whether you need an additional bedroom, a home office, or a space for entertainment, our basement remodeling services ensure every square foot is used wisely.",
+          "Our team works closely with you to create layouts that make sense for your family. Whether you need an additional bedroom, a home office, or a space for entertainment, our basement remodeling services ensure every square foot is used wisely.",
+          "Homeowners across Richmond, TX, choose NWS Custom Homes and Remodeling because we deliver more than just construction; we deliver solutions. Our dedication to quality ensures that your finished basement lasts.",
+          "Transform your basement into a functional, beautiful extension of your home. Contact us today to schedule a consultation and see how we can bring your vision to life.",
         ],
       },
     ],
@@ -1003,12 +1040,24 @@ export const servicePages: ServicePage[] = [
           "New space blends seamlessly with the rest of your home",
           "Avoid expensive additions or the stress of moving",
           "Increase property value while improving everyday living",
+          "Maximizes use of every home square footage",
         ],
       },
       {
         heading: "Your Trusted Partner for Lasting Home Upgrades",
         paragraphs: [
-          "For homeowners in Richmond, TX, NWS Custom Homes and Remodeling delivers projects that improve living spaces and provide lasting value. From flooring and insulation to electrical and finishing touches, we handle each step.",
+          "A garage remodel offers the chance to create rooms that improve daily living. By working with professional garage remodelers, you can turn unused square footage into a place that better fits how you live.",
+          "Garage remodelers and garage conversion companies provide flexibility to design spaces that reflect your lifestyle. From start to finish, the right garage remodel company turns ideas into finished rooms.",
+          "For homeowners in Richmond, TX, NWS Custom Homes and Remodeling delivers projects that improve living spaces and provide lasting value. A garage remodel is not just about adding a room. It is about making the whole house work better.",
+          "Since 2007, NWS Custom Homes and Remodeling has managed projects with care and precision. We take your vision for a garage remodel and transform it into reality. From flooring and insulation to electrical and finishing touches, we handle each step.",
+          "Choosing our team means you avoid juggling multiple companies or contractors. In Richmond, TX, we are known for garage remodels that not only look good but also feel natural as part of the home.",
+          "We believe your garage can be more than storage. It can be a living space that brings comfort, value, and convenience to your life. Contact NWS Custom Homes and Remodeling today.",
+        ],
+      },
+      {
+        heading: "Start Your Home Improvement Project",
+        paragraphs: [
+          "Families in Richmond, TX have trusted us to unlock the potential of their homes, and we are ready to do the same for you. Stop letting your garage go unused. Call NWS Custom Homes and Remodeling.",
         ],
       },
     ],
@@ -1052,8 +1101,13 @@ export const servicePages: ServicePage[] = [
       {
         heading: "Your Local Remodeling Partner for Modern Homes",
         paragraphs: [
+          "For families across Richmond, TX, open concept home remodeling has become the solution to outdated layouts. Our team ensures your project is handled with skill, from design planning to final touches.",
+          "A living room remodel or open concept home remodeling project does more than update a space. It reshapes the way you live and connect with family.",
+          "Living room remodel contractors take care of the details that matter. From structural changes like wall removal to aesthetic upgrades with flooring and finishes, every step adds value.",
+          "Choosing open concept home remodeling allows you to create spaces that feel larger, brighter, and better connected.",
           "In Richmond, TX, NWS Custom Homes and Remodeling has built a strong reputation for bringing new life to traditional houses. We specialize in projects that involve removing walls, updating living room layouts, and making spaces more inviting.",
           "Since 2007, we have been remodeling homes to match modern living standards while staying true to each homeowner's vision.",
+          "When you are ready to transform your home into a brighter, more connected space, NWS Custom Homes and Remodeling is the team to call.",
         ],
       },
     ],

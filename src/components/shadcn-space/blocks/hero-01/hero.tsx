@@ -51,7 +51,7 @@ function HeroSection({
     { text: "Rosenberg, TX" },
     { text: "Weston Lakes, TX" },
     { text: "Park Row, TX" },
-    { text: "West Houston, TX" },
+    { text: "West Side of Houston, TX" },
   ],
   locationIntervalMs = 2200,
   subhead = "Local team since 2007. Kitchens, baths, whole-home renovations, additions, and custom builds, planned and built with clear communication.",
@@ -59,8 +59,8 @@ function HeroSection({
   secondaryCta = { label: "View our work", href: "/remodeling-gallery/" },
   badge = "Serving Fort Bend since 2007",
   backgroundImage = "/images/hero-nws-cinematic.jpg",
-  rating = "5.0",
-  ratingLabel = "Google & Angi reviews",
+  rating = "",
+  ratingLabel = "",
 }: HeroSectionProps) {
   return (
     <section
@@ -187,6 +187,8 @@ function HeroSection({
             </ul>
           )}
 
+          {rating ? (
+            <>
           <div className="w-px h-7 bg-white/20 shrink-0" aria-hidden />
 
           <div className="flex flex-col items-start gap-0.5 pr-1 text-left">
@@ -206,6 +208,8 @@ function HeroSection({
               {ratingLabel}
             </p>
           </div>
+            </>
+          ) : null}
         </motion.div>
       </div>
     </section>

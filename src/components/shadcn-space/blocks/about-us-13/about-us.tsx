@@ -39,8 +39,6 @@ function CountUp({ value }: { value: string }) {
 /** NWS production stats - not Space demo agency metrics */
 const stats = [
   { value: "2007", label: "Serving since" },
-  { value: "35+", label: "Years combined experience" },
-  { value: "Full", label: "Service construction team" },
   { value: "5%", label: "Off when you mention the website" },
 ];
 

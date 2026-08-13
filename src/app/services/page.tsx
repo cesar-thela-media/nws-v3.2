@@ -18,14 +18,16 @@ export default function ServicesPage() {
       <ServicesCarouselHero />
       <div data-services-visual-grid>
         <Services10
-        label="Our Quality Services"
-        heading="Our Quality Services"
+        label="Services"
+        heading="Services"
         ctaText="Our wide range of services means we can build you a custom home from square one or remodel an existing one. We can help you find the right lot, plan out your dream home, or help you convert an existing structure into your dream home!"
         ctaLinkText="View All Our Services"
         services={serviceCards.map((service) => ({
           badge: service.title,
           title: service.title,
-          description: service.front || service.back,
+          description: [service.front, service.back, ...(service.features || [])]
+            .filter(Boolean)
+            .join(" "),
           image: service.icon,
           href: service.href,
         }))}

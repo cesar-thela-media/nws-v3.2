@@ -17,12 +17,11 @@ export const metadata: Metadata = {
 export default function AreasWeServePage() {
   return (
     <>
-      <h1 className="sr-only">Areas We Serve</h1>
       <Hero12
-        badgeLead="Areas"
-        badge="Fort Bend & west Houston"
-        headline="Areas we serve"
-        description="Local builds and remodels across Richmond and nearby communities, prompt, careful, and built to last."
+        badgeLead="Areas We Serve"
+        badge="Richmond, TX"
+        headline="Areas We Serve"
+        description="We complete every project promptly, effectively, and with the utmost attention to detail."
         backgroundImageSrc={
           process.env.NEXT_PUBLIC_AREAS_HERO_BG || site.areasHeroBg
         }
@@ -43,17 +42,18 @@ export default function AreasWeServePage() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10 max-w-2xl mx-auto">
-            <h2 className="section-title text-foreground">
-              Areas We Serve
-            </h2>
-            <h2 className="sr-only">We’re Looking Forward to Work With You</h2>
-            <h2 className="sr-only">Reach Out to Our Contractors</h2>
             <p className="text-muted-foreground">
               We build new homes specifically to fit your needs.
             </p>
             <p className="text-muted-foreground">
               We complete every project promptly, effectively, and with the utmost attention to detail.
             </p>
+            <div className="mt-6 text-sm text-muted-foreground space-y-1">
+              <p className="font-semibold text-foreground !m-0">Business Hours</p>
+              <p className="!m-0">Mon - Fri: 8:00 AM - 6:00 PM</p>
+              <p className="!m-0">Sat: 8:00 AM - 12:00 PM</p>
+              <p className="!m-0">Sun: Closed</p>
+            </div>
           </div>
           <AreasGrid />
         </div>

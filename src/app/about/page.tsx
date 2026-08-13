@@ -14,6 +14,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
+      <h2 className="sr-only">We're Looking Forward to Work With You</h2>
       <Hero13About />
       <AboutUs13 />
       <BentoGrid02 />

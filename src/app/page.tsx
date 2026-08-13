@@ -1,7 +1,6 @@
 import HeroSection from "@/components/shadcn-space/blocks/hero-01/hero";
 import AboutUs06 from "@/components/shadcn-space/blocks/about-us-06/about-us";
 import Portfolio from "@/components/shadcn-space/blocks/portfolio-06/portfolio";
-import HowWeWork from "@/components/shadcn-space/blocks/portfolio-08/portfolio";
 import CTA from "@/components/shadcn-space/blocks/cta-08/cta";
 import Testimonial from "@/components/shadcn-space/blocks/testimonial-07/testimonial";
 import Contact from "@/components/shadcn-space/blocks/contact-01";
@@ -34,8 +33,8 @@ export default function HomePage() {
         subhead="Discover what it truly means to live in a custom-built or beautifully remodeled home with NWS Custom Homes and Remodeling. As a trusted name in residential remodeling services, we bring your vision to life with attention to detail, personalized design, and high-quality craftsmanship. We’re here to make your house feel like home, one thoughtful renovation at a time."
         primaryCta={{ label: "Book Now", href: "tel:2812992309" }}
         secondaryCta={{ label: "Contact Us", href: "/contact/" }}
-        rating="5.0"
-        ratingLabel="Google & Angi reviews"
+        rating=""
+        ratingLabel=""
         backgroundImage="/images/hero-home-remodeled-richmond-tx.webp"
       />
 
@@ -44,11 +43,9 @@ export default function HomePage() {
       <Portfolio
         label="Let’s Build Your Dreams"
         heading="Our Quality Services"
-        description="When you’re ready to transform your space, working with the right remodeling contractor makes all the difference. At NWS Custom Homes and Remodeling, we’ve proudly served Richmond, TX, and surrounding areas since 2007, offering top-tier residential remodeling services tailored to your lifestyle and goals."
+        description="We offer a full range of residential remodeling services designed to match your vision and your budget. Whether you're building from the ground up or transforming an existing home, we provide: Our team can help you plan every detail, from selecting materials to optimizing layouts. We'll be by your side through every phase of the project, delivering results you'll love and a remodeling experience you'll actually enjoy."
         ctaLabel="View All Our Services"
       />
-
-      <HowWeWork />
 
       <CTA />
 

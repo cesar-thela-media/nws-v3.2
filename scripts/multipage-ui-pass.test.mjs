@@ -27,7 +27,6 @@ test("home How We Work gradient + FAQ accordion only (no help band)", () => {
   const home = read("src", "app", "page.tsx");
   const how = read("src", "components", "shadcn-space", "blocks", "portfolio-08", "portfolio.tsx");
   const faq = read("src", "components", "shadcn-space", "blocks", "faq-07", "faq.tsx");
-  assert.match(home, /portfolio-08|HowWeWork/);
   assert.match(home, /faq-07|Faq/);
   assert.match(how, /How we work/i);
   assert.match(how, /data-how-we-work-gradient/);
