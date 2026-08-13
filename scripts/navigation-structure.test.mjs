@@ -5,7 +5,10 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
-const navbar = fs.readFileSync(path.join(root, "src/components/shadcn-space/blocks/navbar-02/navbar.tsx"), "utf8");
+const navbar = [
+  fs.readFileSync(path.join(root, "src/components/shadcn-space/blocks/navbar-07/index.tsx"), "utf8"),
+  fs.readFileSync(path.join(root, "src/components/shadcn-space/blocks/navbar-07/navbar.tsx"), "utf8"),
+].join("\n");
 const footer = fs.readFileSync(path.join(root, "src/components/shadcn-space/blocks/footer-01/footer.tsx"), "utf8");
 const ia = fs.readFileSync(path.join(root, "src/data/informationArchitecture.ts"), "utf8");
 
@@ -21,8 +24,8 @@ test("mounted navbar consumes canonical service and area registries", () => {
   assert.match(navbar, /canonicalServiceAreaCatalog/);
   assert.match(navbar, /const serviceNavigationItems/);
   assert.match(navbar, /const areaNavigationItems/);
-  assert.match(navbar, /items: serviceNavigationItems/);
-  assert.match(navbar, /items: areaNavigationItems/);
+  assert.match(navbar, /chunkItems\(serviceNavigationItems/);
+  assert.match(navbar, /chunkItems\(areaNavigationItems/);
   assert.match(navbar, /href="\/contact\/"/);
   assert.match(navbar, /tel:2812992309/);
 });

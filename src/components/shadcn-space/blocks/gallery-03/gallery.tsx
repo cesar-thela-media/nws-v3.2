@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowRight, ChevronLeft, ChevronRight, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { RevealGroup, RevealItem } from "@/components/Reveal";
 
 export type Gallery03Item = {
   title: string;
@@ -120,8 +121,8 @@ export default function Gallery03({
 
   const HeadingTag = asHero ? "h1" : "h2";
   const sectionPad = compact
-    ? "py-6 sm:py-8"
-    : "py-10 sm:py-14";
+    ? "py-10 sm:py-12 md:py-14"
+    : "py-12 sm:py-16";
   const sectionShell = "w-full max-w-full overflow-x-clip";
 
   const lightbox =
@@ -212,12 +213,12 @@ export default function Gallery03({
         >
           <div
             className={cn(
-              "max-w-7xl mx-auto px-4 md:px-10 lg:px-16 xl:px-20 flex flex-col gap-8 sm:gap-10 min-w-0",
+              "max-w-[96rem] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-8 sm:gap-10 min-w-0",
               sectionPad,
             )}
           >
-            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
-              <div className="flex flex-col gap-3 max-w-2xl">
+            <RevealGroup className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
+              <RevealItem className="flex flex-col gap-3 max-w-2xl">
                 <div className="flex items-center gap-1.5">
                   <span className="m-1.5 size-1.5 rounded-full bg-white" />
                   <p className="text-base leading-6 text-white/90 font-medium !m-0">
@@ -230,23 +231,25 @@ export default function Gallery03({
                 <p className="text-base leading-6 text-white/85 !m-0">
                   {description}
                 </p>
-              </div>
-              <Button
-                className="w-fit h-12 px-6 rounded-[4px] text-sm font-semibold !bg-white !text-primary hover:!bg-white/90 shrink-0"
-                render={
-                  ctaHref.startsWith("tel:") || ctaHref.startsWith("http") ? (
-                    <a href={ctaHref} />
-                  ) : (
-                    <Link href={ctaHref} />
-                  )
-                }
-              >
-                {ctaLabel}
-                <ArrowRight className="size-4 ml-1" />
-              </Button>
-            </div>
+              </RevealItem>
+              <RevealItem>
+                <Button
+                  className="w-full sm:w-fit max-w-full h-12 px-6 rounded-[4px] text-sm font-semibold !bg-white !text-primary hover:!bg-white/90 shrink-0"
+                  render={
+                    ctaHref.startsWith("tel:") || ctaHref.startsWith("http") ? (
+                      <a href={ctaHref} />
+                    ) : (
+                      <Link href={ctaHref} />
+                    )
+                  }
+                >
+                  {ctaLabel}
+                  <ArrowRight className="size-4 ml-1" />
+                </Button>
+              </RevealItem>
+            </RevealGroup>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+            <div className="grid grid-cols-1 gap-6 sm:gap-8">
               {cards.map((item, i) => (
                 <motion.div
                   key={`${item.image}-${i}`}
@@ -262,7 +265,7 @@ export default function Gallery03({
                     className="block w-full text-left border-0 bg-transparent p-0 cursor-pointer rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
                     aria-label={`View ${item.title} full size`}
                   >
-                    <Card className="group relative overflow-hidden rounded-2xl border-none p-0 aspect-[16/10] shadow-md ring-1 ring-white/20">
+                    <Card className="group relative overflow-hidden rounded-2xl border-none p-0 aspect-[16/9] sm:aspect-[2/1] shadow-md ring-1 ring-white/20">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={item.image}
@@ -270,8 +273,8 @@ export default function Gallery03({
                         className="absolute inset-0 object-cover object-center transition-transform duration-500 group-hover:scale-105 h-full w-full"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent" />
-                      <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 z-10">
-                        <h3 className="text-lg sm:text-xl font-semibold text-white !m-0">
+                      <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-7 z-10">
+                        <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-white !m-0">
                           {item.title}
                         </h3>
                       </div>
@@ -297,7 +300,7 @@ export default function Gallery03({
             sectionPad,
           )}
         >
-          <div className="grid grid-cols-12 gap-5 sm:gap-6">
+          <div className="grid grid-cols-12 gap-6 sm:gap-8">
             <motion.div
               className="col-span-12 lg:col-span-6 flex flex-col min-w-0"
               variants={fadeUp}
@@ -306,8 +309,8 @@ export default function Gallery03({
               viewport={{ once: true }}
               custom={0}
             >
-              <div className="flex flex-col gap-5 sm:gap-6">
-                <div className="flex flex-col gap-3">
+              <RevealGroup className="flex flex-col gap-5 sm:gap-6">
+                <RevealItem className="flex flex-col gap-3">
                   <div className="flex items-center gap-1.5">
                     <span className="m-1.5 size-1.5 rounded-full bg-primary" />
                     <p className="text-base leading-6 text-primary font-medium !m-0">
@@ -318,25 +321,27 @@ export default function Gallery03({
                     <HeadingTag className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground !m-0">
                       {heading}
                     </HeadingTag>
-                    <p className="text-base leading-6 text-muted-foreground !m-0 max-w-lg">
+                    <p className="text-base leading-6 text-muted-foreground !m-0 max-w-xl text-pretty">
                       {description}
                     </p>
                   </div>
-                </div>
-                <Button
-                  className="w-fit h-12 px-6 rounded-[4px] text-sm font-semibold !text-white"
-                  render={
-                    ctaHref.startsWith("tel:") || ctaHref.startsWith("http") ? (
-                      <a href={ctaHref} />
-                    ) : (
-                      <Link href={ctaHref} />
-                    )
-                  }
-                >
-                  {ctaLabel}
-                  <ArrowRight className="size-4 ml-1" />
-                </Button>
-              </div>
+                </RevealItem>
+                <RevealItem>
+                  <Button
+                    className="w-full sm:w-fit max-w-full h-12 px-6 rounded-[4px] text-sm font-semibold !text-white"
+                    render={
+                      ctaHref.startsWith("tel:") || ctaHref.startsWith("http") ? (
+                        <a href={ctaHref} />
+                      ) : (
+                        <Link href={ctaHref} />
+                      )
+                    }
+                  >
+                    {ctaLabel}
+                    <ArrowRight className="size-4 ml-1" />
+                  </Button>
+                </RevealItem>
+              </RevealGroup>
             </motion.div>
 
             {cards.map((item, i) => (
@@ -359,7 +364,7 @@ export default function Gallery03({
                   className="block w-full h-full text-left border-0 bg-transparent p-0 cursor-pointer rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                   aria-label={`View ${item.title} full size`}
                 >
-                  <Card className="group relative overflow-hidden rounded-2xl border-none p-0 min-h-[14rem] sm:min-h-[16rem] h-full shadow-none ring-0">
+                  <Card className="group relative overflow-hidden rounded-2xl border-none p-0 min-h-[16rem] sm:min-h-[18rem] lg:min-h-[22rem] h-full shadow-none ring-0">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={item.image}

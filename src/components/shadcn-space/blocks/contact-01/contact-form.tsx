@@ -99,7 +99,7 @@ const ContactForm = () => {
       <Card className="ring-0 p-5 sm:p-7 md:p-8 gap-5 sm:gap-6 md:gap-8 border-0 rounded-2xl bg-white shadow-lg w-full max-w-full min-w-0">
         <CardHeader className="p-0 space-y-1">
           <CardTitle className="text-xl sm:text-2xl font-bold tracking-tight text-foreground !m-0">
-            Tell us about your project
+            We&apos;re Looking Forward to Work With You
           </CardTitle>
           <p className="text-sm text-muted-foreground !m-0">
             We typically respond within one business day.

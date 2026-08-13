@@ -12,6 +12,7 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel";
 import { cn } from "@/lib/utils";
+import { RevealGroup, RevealItem } from "@/components/Reveal";
 
 /** What we do, service cards (card-02 style UI + NWS copy/photos) */
 const portfolioItems = [
@@ -99,7 +100,7 @@ const portfolioItems = [
       "Mother-in-law suites",
       "Custom room designs",
     ],
-    image: "/images/home-addition-contractors.webp",
+    image: "/images/custom-homes-5.jpeg",
     href: "/services/room-additions-home-additions/",
   },
   {
@@ -115,7 +116,7 @@ const portfolioItems = [
       "Tile and flooring installation",
       "Full basement renovations",
     ],
-    image: "/images/Basement-Finishing.webp",
+    image: "/images/remodeling-4.jpeg",
     href: "/services/basement-remodeling-finishing/",
   },
   {
@@ -199,7 +200,7 @@ function ServiceCard({
             {item.title}
           </h3>
         </a>
-        <div className="text-base sm:text-lg text-white/90 leading-relaxed !m-0 flex-1 space-y-2">
+        <div className="text-base sm:text-lg !text-white leading-relaxed !m-0 flex-1 space-y-2 [&_p]:!text-white [&_li]:!text-white">
           {item.description ? <p className="!m-0">{item.description}</p> : null}
           {"back" in item && item.back ? <p className="!m-0">{item.back}</p> : null}
           {"features" in item && Array.isArray(item.features) ? (
@@ -212,10 +213,10 @@ function ServiceCard({
         </div>
         <a
           href={item.href}
-          className="group/learn inline-flex items-center gap-2 rounded-full bg-white px-4 py-2.5 text-base font-semibold text-primary hover:bg-white mt-1 w-fit transition-colors"
+          className="group/learn inline-flex items-center gap-2 rounded-full bg-white px-4 py-2.5 text-base font-semibold text-black hover:bg-white mt-1 w-fit transition-colors"
         >
-          <span className="relative after:absolute after:left-0 after:right-0 after:-bottom-0.5 after:h-0.5 after:origin-left after:scale-x-0 after:bg-primary after:transition-transform after:duration-300 group-hover/learn:after:scale-x-100">Learn more</span>
-          <ArrowRight className="size-4 text-white transition-transform duration-300 ease-out group-hover:translate-x-1.5" />
+          <span className="relative text-black after:absolute after:left-0 after:right-0 after:-bottom-0.5 after:h-0.5 after:origin-left after:scale-x-0 after:bg-primary after:transition-transform after:duration-300 group-hover/learn:after:scale-x-100">Learn more</span>
+          <ArrowRight className="size-4 text-black transition-colors duration-300 ease-out group-hover/learn:text-primary group-hover/learn:translate-x-1.5" />
         </a>
       </div>
     </Card>
@@ -267,28 +268,36 @@ const Portfolio = ({
     >
       <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
-          <div className="lg:col-span-5 flex flex-col gap-3">
-            <p className="text-sm sm:text-base font-semibold text-primary !m-0">
+          <RevealGroup className="lg:col-span-5 flex flex-col gap-3">
+            <RevealItem as="p" className="text-sm sm:text-base font-semibold text-primary !m-0">
               {label}
-            </p>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-[1.1] !m-0">
-              {heading}
-            </h2>
-          </div>
-          <div className="lg:col-span-1 lg:block hidden" />
-          <div className="flex flex-col items-start gap-6 lg:ml-auto lg:col-span-6">
-            <p className="text-white/70 text-base sm:text-lg leading-relaxed !m-0">
-              {description}
-            </p>
-            <Button
-              className="rounded-[4px] px-6 h-11 cursor-pointer !text-white"
-              variant="default"
-              render={<a href={ctaHref} />}
+            </RevealItem>
+            <RevealItem
+              as="h2"
+              className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-[1.1] !m-0"
             >
-              {ctaLabel}
-              <ChevronRight className="ml-1 h-4 w-4" />
-            </Button>
-          </div>
+              {heading}
+            </RevealItem>
+          </RevealGroup>
+          <div className="lg:col-span-1 lg:block hidden" />
+          <RevealGroup className="flex flex-col items-start gap-6 lg:ml-auto lg:col-span-6">
+            <RevealItem
+              as="p"
+              className="text-white/70 text-base sm:text-lg leading-relaxed !m-0"
+            >
+              {description}
+            </RevealItem>
+            <RevealItem>
+              <Button
+                className="rounded-[4px] px-6 h-11 cursor-pointer !text-white"
+                variant="default"
+                render={<a href={ctaHref} />}
+              >
+                {ctaLabel}
+                <ChevronRight className="ml-1 h-4 w-4" />
+              </Button>
+            </RevealItem>
+          </RevealGroup>
         </div>
       </div>
 

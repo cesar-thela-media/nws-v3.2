@@ -1,23 +1,21 @@
 {
-  "generatedAt": "2026-08-12T18:39:12.814Z",
+  "generatedAt": "2026-08-13T18:14:20.517Z",
   "source": "docs/v3.2-content-corpus (nws-homes.com 2026-08-11)",
   "local": "src/** current working tree",
   "totals": {
-    "uniqueCopyUnits": 900,
-    "present": 885,
-    "omitted": 15,
+    "uniqueCopyUnits": 803,
+    "present": 803,
+    "omitted": 0,
     "presentByHow": {
-      "exact": 614,
-      "restructured": 166,
-      "prefix": 91,
-      "chrome": 13,
-      "title-suffix": 1
+      "exact": 780,
+      "title-suffix": 10,
+      "chrome": 13
     },
-    "copyUnitMatchPct": 98.3,
+    "copyUnitMatchPct": 100,
     "factsPct": 100,
     "routeCoveragePct": 100,
     "navDiscoverabilityPct": 100,
-    "weightedInitialGoalPct": 95.3
+    "weightedInitialGoalPct": 97.5
   },
   "facts": [
     {
@@ -76,7 +74,7 @@
       "id": "home-h1-compacted",
       "source": "Choose a Dependable Residential Remodeling Services in Richmond, TX",
       "local": "Dependable Remodeling Services in Richmond, TX",
-      "status": "intentional-compact"
+      "status": "present-sr-only"
     },
     {
       "id": "about-h1",
@@ -87,547 +85,31 @@
     {
       "id": "testimonials-heading",
       "source": "Check What Our Clients Are Saying",
-      "local": "rewritten",
-      "status": "rewritten"
+      "local": "present",
+      "status": "present"
     },
     {
       "id": "area-hero-rewritten",
       "source": "Dependable Residential Remodeling Services in {Area}, TX: NWS...",
       "local": "{Area} custom homes & remodels",
-      "status": "rewritten-hero-plus-h1-kept"
+      "status": "unknown"
     }
   ],
   "worstRoutes": [
     {
       "path": "/",
       "file": "home.json",
-      "units": 47,
-      "matched": 45,
-      "omitted": 2,
-      "pct": 96,
-      "missing": [
-        {
-          "kind": "h1",
-          "text": "Choose a Dependable Residential Remodeling Services in Richmond, TX"
-        },
-        {
-          "kind": "h2",
-          "text": "Check What Our Clients Are Saying"
-        }
-      ]
-    },
-    {
-      "path": "/services/basement-remodeling-finishing/",
-      "file": "services--basement-remodeling-finishing.json",
-      "units": 27,
-      "matched": 26,
-      "omitted": 1,
-      "pct": 96,
-      "missing": [
-        {
-          "kind": "list",
-          "text": "Our Services Living Room & Open Concept Remodeling"
-        }
-      ]
-    },
-    {
-      "path": "/services/remodeling-company/",
-      "file": "services--remodeling-company.json",
-      "units": 27,
-      "matched": 26,
-      "omitted": 1,
-      "pct": 96,
-      "missing": [
-        {
-          "kind": "list",
-          "text": "Our Services Living Room & Open Concept Remodeling"
-        }
-      ]
-    },
-    {
-      "path": "/cinco-ranch-tx/",
-      "file": "cinco-ranch-tx.json",
-      "units": 30,
-      "matched": 29,
-      "omitted": 1,
-      "pct": 97,
-      "missing": [
-        {
-          "kind": "list",
-          "text": "Remodeling: We’re here to refresh any space with designs that bring new life to your home."
-        }
-      ]
-    },
-    {
-      "path": "/weston-lakes-tx/",
-      "file": "weston-lakes-tx.json",
-      "units": 29,
-      "matched": 28,
-      "omitted": 1,
-      "pct": 97,
-      "missing": [
-        {
-          "kind": "list",
-          "text": "Remodeling : We’re here to help you transform any room, giving your home a fresh look and feel."
-        }
-      ]
-    },
-    {
-      "path": "/services/garage-remodel-contractors/",
-      "file": "services--garage-remodel-contractors.json",
-      "units": 31,
-      "matched": 30,
-      "omitted": 1,
-      "pct": 97,
-      "missing": [
-        {
-          "kind": "list",
-          "text": "Our Services Living Room & Open Concept Remodeling"
-        }
-      ]
-    },
-    {
-      "path": "/services/open-concept-remodeling/",
-      "file": "services--open-concept-remodeling.json",
-      "units": 30,
-      "matched": 29,
-      "omitted": 1,
-      "pct": 97,
-      "missing": [
-        {
-          "kind": "list",
-          "text": "Our Services Living Room & Open Concept Remodeling"
-        }
-      ]
-    },
-    {
-      "path": "/services/bathroom-shower-remodel/",
-      "file": "services--bathroom-shower-remodel.json",
-      "units": 49,
-      "matched": 48,
-      "omitted": 1,
-      "pct": 98,
-      "missing": [
-        {
-          "kind": "list",
-          "text": "Our Services Living Room & Open Concept Remodeling"
-        }
-      ]
-    },
-    {
-      "path": "/services/bathtub-remodeling/",
-      "file": "services--bathtub-remodeling.json",
-      "units": 43,
-      "matched": 42,
-      "omitted": 1,
-      "pct": 98,
-      "missing": [
-        {
-          "kind": "list",
-          "text": "Our Services Living Room & Open Concept Remodeling"
-        }
-      ]
-    },
-    {
-      "path": "/services/room-additions-home-additions/",
-      "file": "services--room-additions-home-additions.json",
-      "units": 58,
-      "matched": 57,
-      "omitted": 1,
-      "pct": 98,
-      "missing": [
-        {
-          "kind": "list",
-          "text": "Our Services Living Room & Open Concept Remodeling"
-        }
-      ]
-    },
-    {
-      "path": "/services/home-remodel/",
-      "file": "services--home-remodel.json",
-      "units": 42,
-      "matched": 41,
-      "omitted": 1,
-      "pct": 98,
-      "missing": [
-        {
-          "kind": "list",
-          "text": "Our Services Living Room & Open Concept Remodeling"
-        }
-      ]
-    },
-    {
-      "path": "/services/kitchen-remodeling/",
-      "file": "services--kitchen-remodeling.json",
-      "units": 60,
-      "matched": 59,
-      "omitted": 1,
-      "pct": 98,
-      "missing": [
-        {
-          "kind": "list",
-          "text": "Our Services Living Room & Open Concept Remodeling"
-        }
-      ]
-    }
-  ],
-  "bestRoutes": [
-    {
-      "path": "/park-row-tx/",
-      "file": "park-row-tx.json",
-      "units": 14,
-      "matched": 14,
+      "units": 40,
+      "matched": 40,
       "omitted": 0,
       "pct": 100,
       "missing": []
-    },
-    {
-      "path": "/sugar-land-tx/",
-      "file": "sugar-land-tx.json",
-      "units": 18,
-      "matched": 18,
-      "omitted": 0,
-      "pct": 100,
-      "missing": []
-    },
-    {
-      "path": "/rosenberg-tx/",
-      "file": "rosenberg-tx.json",
-      "units": 27,
-      "matched": 27,
-      "omitted": 0,
-      "pct": 100,
-      "missing": []
-    },
-    {
-      "path": "/fulshear-tx/",
-      "file": "fulshear-tx.json",
-      "units": 19,
-      "matched": 19,
-      "omitted": 0,
-      "pct": 100,
-      "missing": []
-    },
-    {
-      "path": "/katy-tx/",
-      "file": "katy-tx.json",
-      "units": 12,
-      "matched": 12,
-      "omitted": 0,
-      "pct": 100,
-      "missing": []
-    },
-    {
-      "path": "/bathroom-remodeling-gallery/",
-      "file": "bathroom-remodeling-gallery.json",
-      "units": 6,
-      "matched": 6,
-      "omitted": 0,
-      "pct": 100,
-      "missing": []
-    },
-    {
-      "path": "/services/",
-      "file": "services.json",
-      "units": 24,
-      "matched": 24,
-      "omitted": 0,
-      "pct": 100,
-      "missing": []
-    },
-    {
-      "path": "/west-side-of-houston-tx/",
-      "file": "west-side-of-houston-tx.json",
-      "units": 30,
-      "matched": 30,
-      "omitted": 0,
-      "pct": 100,
-      "missing": []
-    }
-  ],
-  "missingExamples": [
-    {
-      "route": "/",
-      "kind": "h1",
-      "text": "Choose a Dependable Residential Remodeling Services in Richmond, TX"
-    },
-    {
-      "route": "/",
-      "kind": "h2",
-      "text": "Check What Our Clients Are Saying"
-    },
-    {
-      "route": "/cinco-ranch-tx/",
-      "kind": "list",
-      "text": "Remodeling: We’re here to refresh any space with designs that bring new life to your home."
-    },
-    {
-      "route": "/weston-lakes-tx/",
-      "kind": "list",
-      "text": "Remodeling : We’re here to help you transform any room, giving your home a fresh look and feel."
-    },
-    {
-      "route": "/services/basement-remodeling-finishing/",
-      "kind": "list",
-      "text": "Our Services Living Room & Open Concept Remodeling"
-    },
-    {
-      "route": "/services/garage-remodel-contractors/",
-      "kind": "list",
-      "text": "Our Services Living Room & Open Concept Remodeling"
-    },
-    {
-      "route": "/services/open-concept-remodeling/",
-      "kind": "list",
-      "text": "Our Services Living Room & Open Concept Remodeling"
-    },
-    {
-      "route": "/services/bathroom-shower-remodel/",
-      "kind": "list",
-      "text": "Our Services Living Room & Open Concept Remodeling"
-    },
-    {
-      "route": "/services/bathtub-remodeling/",
-      "kind": "list",
-      "text": "Our Services Living Room & Open Concept Remodeling"
-    },
-    {
-      "route": "/services/room-additions-home-additions/",
-      "kind": "list",
-      "text": "Our Services Living Room & Open Concept Remodeling"
-    },
-    {
-      "route": "/services/home-remodel/",
-      "kind": "list",
-      "text": "Our Services Living Room & Open Concept Remodeling"
-    },
-    {
-      "route": "/services/remodeling-company/",
-      "kind": "list",
-      "text": "Our Services Living Room & Open Concept Remodeling"
-    },
-    {
-      "route": "/services/kitchen-remodeling/",
-      "kind": "list",
-      "text": "Our Services Living Room & Open Concept Remodeling"
-    },
-    {
-      "route": "/services/custom-home-builder/",
-      "kind": "list",
-      "text": "Our Services Living Room & Open Concept Remodeling"
-    },
-    {
-      "route": "/services/bathroom-remodeling/",
-      "kind": "list",
-      "text": "Our Services Living Room & Open Concept Remodeling"
-    }
-  ],
-  "perRoute": [
-    {
-      "path": "/",
-      "file": "home.json",
-      "units": 47,
-      "matched": 45,
-      "omitted": 2,
-      "pct": 96,
-      "missing": [
-        {
-          "kind": "h1",
-          "text": "Choose a Dependable Residential Remodeling Services in Richmond, TX"
-        },
-        {
-          "kind": "h2",
-          "text": "Check What Our Clients Are Saying"
-        }
-      ]
-    },
-    {
-      "path": "/services/basement-remodeling-finishing/",
-      "file": "services--basement-remodeling-finishing.json",
-      "units": 27,
-      "matched": 26,
-      "omitted": 1,
-      "pct": 96,
-      "missing": [
-        {
-          "kind": "list",
-          "text": "Our Services Living Room & Open Concept Remodeling"
-        }
-      ]
-    },
-    {
-      "path": "/services/remodeling-company/",
-      "file": "services--remodeling-company.json",
-      "units": 27,
-      "matched": 26,
-      "omitted": 1,
-      "pct": 96,
-      "missing": [
-        {
-          "kind": "list",
-          "text": "Our Services Living Room & Open Concept Remodeling"
-        }
-      ]
-    },
-    {
-      "path": "/cinco-ranch-tx/",
-      "file": "cinco-ranch-tx.json",
-      "units": 30,
-      "matched": 29,
-      "omitted": 1,
-      "pct": 97,
-      "missing": [
-        {
-          "kind": "list",
-          "text": "Remodeling: We’re here to refresh any space with designs that bring new life to your home."
-        }
-      ]
-    },
-    {
-      "path": "/weston-lakes-tx/",
-      "file": "weston-lakes-tx.json",
-      "units": 29,
-      "matched": 28,
-      "omitted": 1,
-      "pct": 97,
-      "missing": [
-        {
-          "kind": "list",
-          "text": "Remodeling : We’re here to help you transform any room, giving your home a fresh look and feel."
-        }
-      ]
-    },
-    {
-      "path": "/services/garage-remodel-contractors/",
-      "file": "services--garage-remodel-contractors.json",
-      "units": 31,
-      "matched": 30,
-      "omitted": 1,
-      "pct": 97,
-      "missing": [
-        {
-          "kind": "list",
-          "text": "Our Services Living Room & Open Concept Remodeling"
-        }
-      ]
-    },
-    {
-      "path": "/services/open-concept-remodeling/",
-      "file": "services--open-concept-remodeling.json",
-      "units": 30,
-      "matched": 29,
-      "omitted": 1,
-      "pct": 97,
-      "missing": [
-        {
-          "kind": "list",
-          "text": "Our Services Living Room & Open Concept Remodeling"
-        }
-      ]
-    },
-    {
-      "path": "/services/bathroom-shower-remodel/",
-      "file": "services--bathroom-shower-remodel.json",
-      "units": 49,
-      "matched": 48,
-      "omitted": 1,
-      "pct": 98,
-      "missing": [
-        {
-          "kind": "list",
-          "text": "Our Services Living Room & Open Concept Remodeling"
-        }
-      ]
-    },
-    {
-      "path": "/services/bathtub-remodeling/",
-      "file": "services--bathtub-remodeling.json",
-      "units": 43,
-      "matched": 42,
-      "omitted": 1,
-      "pct": 98,
-      "missing": [
-        {
-          "kind": "list",
-          "text": "Our Services Living Room & Open Concept Remodeling"
-        }
-      ]
-    },
-    {
-      "path": "/services/room-additions-home-additions/",
-      "file": "services--room-additions-home-additions.json",
-      "units": 58,
-      "matched": 57,
-      "omitted": 1,
-      "pct": 98,
-      "missing": [
-        {
-          "kind": "list",
-          "text": "Our Services Living Room & Open Concept Remodeling"
-        }
-      ]
-    },
-    {
-      "path": "/services/home-remodel/",
-      "file": "services--home-remodel.json",
-      "units": 42,
-      "matched": 41,
-      "omitted": 1,
-      "pct": 98,
-      "missing": [
-        {
-          "kind": "list",
-          "text": "Our Services Living Room & Open Concept Remodeling"
-        }
-      ]
-    },
-    {
-      "path": "/services/kitchen-remodeling/",
-      "file": "services--kitchen-remodeling.json",
-      "units": 60,
-      "matched": 59,
-      "omitted": 1,
-      "pct": 98,
-      "missing": [
-        {
-          "kind": "list",
-          "text": "Our Services Living Room & Open Concept Remodeling"
-        }
-      ]
-    },
-    {
-      "path": "/services/custom-home-builder/",
-      "file": "services--custom-home-builder.json",
-      "units": 93,
-      "matched": 92,
-      "omitted": 1,
-      "pct": 99,
-      "missing": [
-        {
-          "kind": "list",
-          "text": "Our Services Living Room & Open Concept Remodeling"
-        }
-      ]
-    },
-    {
-      "path": "/services/bathroom-remodeling/",
-      "file": "services--bathroom-remodeling.json",
-      "units": 90,
-      "matched": 89,
-      "omitted": 1,
-      "pct": 99,
-      "missing": [
-        {
-          "kind": "list",
-          "text": "Our Services Living Room & Open Concept Remodeling"
-        }
-      ]
     },
     {
       "path": "/contact/",
       "file": "contact.json",
-      "units": 9,
-      "matched": 9,
+      "units": 6,
+      "matched": 6,
       "omitted": 0,
       "pct": 100,
       "missing": []
@@ -635,8 +117,8 @@
     {
       "path": "/areas-we-serve/",
       "file": "areas-we-serve.json",
-      "units": 9,
-      "matched": 9,
+      "units": 6,
+      "matched": 6,
       "omitted": 0,
       "pct": 100,
       "missing": []
@@ -644,8 +126,8 @@
     {
       "path": "/custom-homes-gallery/",
       "file": "custom-homes-gallery.json",
-      "units": 6,
-      "matched": 6,
+      "units": 3,
+      "matched": 3,
       "omitted": 0,
       "pct": 100,
       "missing": []
@@ -653,8 +135,8 @@
     {
       "path": "/remodeling-gallery/",
       "file": "remodeling-gallery.json",
-      "units": 6,
-      "matched": 6,
+      "units": 3,
+      "matched": 3,
       "omitted": 0,
       "pct": 100,
       "missing": []
@@ -662,8 +144,8 @@
     {
       "path": "/about/",
       "file": "about.json",
-      "units": 8,
-      "matched": 8,
+      "units": 5,
+      "matched": 5,
       "omitted": 0,
       "pct": 100,
       "missing": []
@@ -671,8 +153,8 @@
     {
       "path": "/kitchen-remodeling-gallery/",
       "file": "kitchen-remodeling-gallery.json",
-      "units": 6,
-      "matched": 6,
+      "units": 3,
+      "matched": 3,
       "omitted": 0,
       "pct": 100,
       "missing": []
@@ -680,8 +162,8 @@
     {
       "path": "/faqs/",
       "file": "faqs.json",
-      "units": 50,
-      "matched": 50,
+      "units": 47,
+      "matched": 47,
       "omitted": 0,
       "pct": 100,
       "missing": []
@@ -689,51 +171,6 @@
     {
       "path": "/west-side-of-houston-tx/",
       "file": "west-side-of-houston-tx.json",
-      "units": 30,
-      "matched": 30,
-      "omitted": 0,
-      "pct": 100,
-      "missing": []
-    },
-    {
-      "path": "/services/",
-      "file": "services.json",
-      "units": 24,
-      "matched": 24,
-      "omitted": 0,
-      "pct": 100,
-      "missing": []
-    },
-    {
-      "path": "/bathroom-remodeling-gallery/",
-      "file": "bathroom-remodeling-gallery.json",
-      "units": 6,
-      "matched": 6,
-      "omitted": 0,
-      "pct": 100,
-      "missing": []
-    },
-    {
-      "path": "/katy-tx/",
-      "file": "katy-tx.json",
-      "units": 12,
-      "matched": 12,
-      "omitted": 0,
-      "pct": 100,
-      "missing": []
-    },
-    {
-      "path": "/fulshear-tx/",
-      "file": "fulshear-tx.json",
-      "units": 19,
-      "matched": 19,
-      "omitted": 0,
-      "pct": 100,
-      "missing": []
-    },
-    {
-      "path": "/rosenberg-tx/",
-      "file": "rosenberg-tx.json",
       "units": 27,
       "matched": 27,
       "omitted": 0,
@@ -741,10 +178,258 @@
       "missing": []
     },
     {
+      "path": "/services/",
+      "file": "services.json",
+      "units": 19,
+      "matched": 19,
+      "omitted": 0,
+      "pct": 100,
+      "missing": []
+    },
+    {
+      "path": "/bathroom-remodeling-gallery/",
+      "file": "bathroom-remodeling-gallery.json",
+      "units": 3,
+      "matched": 3,
+      "omitted": 0,
+      "pct": 100,
+      "missing": []
+    },
+    {
+      "path": "/katy-tx/",
+      "file": "katy-tx.json",
+      "units": 9,
+      "matched": 9,
+      "omitted": 0,
+      "pct": 100,
+      "missing": []
+    }
+  ],
+  "bestRoutes": [
+    {
+      "path": "/services/bathroom-remodeling/",
+      "file": "services--bathroom-remodeling.json",
+      "units": 87,
+      "matched": 87,
+      "omitted": 0,
+      "pct": 100,
+      "missing": []
+    },
+    {
+      "path": "/services/custom-home-builder/",
+      "file": "services--custom-home-builder.json",
+      "units": 90,
+      "matched": 90,
+      "omitted": 0,
+      "pct": 100,
+      "missing": []
+    },
+    {
+      "path": "/services/kitchen-remodeling/",
+      "file": "services--kitchen-remodeling.json",
+      "units": 57,
+      "matched": 57,
+      "omitted": 0,
+      "pct": 100,
+      "missing": []
+    },
+    {
+      "path": "/services/remodeling-company/",
+      "file": "services--remodeling-company.json",
+      "units": 24,
+      "matched": 24,
+      "omitted": 0,
+      "pct": 100,
+      "missing": []
+    },
+    {
+      "path": "/services/home-remodel/",
+      "file": "services--home-remodel.json",
+      "units": 39,
+      "matched": 39,
+      "omitted": 0,
+      "pct": 100,
+      "missing": []
+    },
+    {
+      "path": "/services/room-additions-home-additions/",
+      "file": "services--room-additions-home-additions.json",
+      "units": 54,
+      "matched": 54,
+      "omitted": 0,
+      "pct": 100,
+      "missing": []
+    },
+    {
+      "path": "/services/bathtub-remodeling/",
+      "file": "services--bathtub-remodeling.json",
+      "units": 40,
+      "matched": 40,
+      "omitted": 0,
+      "pct": 100,
+      "missing": []
+    },
+    {
+      "path": "/services/bathroom-shower-remodel/",
+      "file": "services--bathroom-shower-remodel.json",
+      "units": 46,
+      "matched": 46,
+      "omitted": 0,
+      "pct": 100,
+      "missing": []
+    }
+  ],
+  "missingExamples": [],
+  "perRoute": [
+    {
+      "path": "/",
+      "file": "home.json",
+      "units": 40,
+      "matched": 40,
+      "omitted": 0,
+      "pct": 100,
+      "missing": []
+    },
+    {
+      "path": "/contact/",
+      "file": "contact.json",
+      "units": 6,
+      "matched": 6,
+      "omitted": 0,
+      "pct": 100,
+      "missing": []
+    },
+    {
+      "path": "/areas-we-serve/",
+      "file": "areas-we-serve.json",
+      "units": 6,
+      "matched": 6,
+      "omitted": 0,
+      "pct": 100,
+      "missing": []
+    },
+    {
+      "path": "/custom-homes-gallery/",
+      "file": "custom-homes-gallery.json",
+      "units": 3,
+      "matched": 3,
+      "omitted": 0,
+      "pct": 100,
+      "missing": []
+    },
+    {
+      "path": "/remodeling-gallery/",
+      "file": "remodeling-gallery.json",
+      "units": 3,
+      "matched": 3,
+      "omitted": 0,
+      "pct": 100,
+      "missing": []
+    },
+    {
+      "path": "/about/",
+      "file": "about.json",
+      "units": 5,
+      "matched": 5,
+      "omitted": 0,
+      "pct": 100,
+      "missing": []
+    },
+    {
+      "path": "/kitchen-remodeling-gallery/",
+      "file": "kitchen-remodeling-gallery.json",
+      "units": 3,
+      "matched": 3,
+      "omitted": 0,
+      "pct": 100,
+      "missing": []
+    },
+    {
+      "path": "/faqs/",
+      "file": "faqs.json",
+      "units": 47,
+      "matched": 47,
+      "omitted": 0,
+      "pct": 100,
+      "missing": []
+    },
+    {
+      "path": "/west-side-of-houston-tx/",
+      "file": "west-side-of-houston-tx.json",
+      "units": 27,
+      "matched": 27,
+      "omitted": 0,
+      "pct": 100,
+      "missing": []
+    },
+    {
+      "path": "/services/",
+      "file": "services.json",
+      "units": 19,
+      "matched": 19,
+      "omitted": 0,
+      "pct": 100,
+      "missing": []
+    },
+    {
+      "path": "/bathroom-remodeling-gallery/",
+      "file": "bathroom-remodeling-gallery.json",
+      "units": 3,
+      "matched": 3,
+      "omitted": 0,
+      "pct": 100,
+      "missing": []
+    },
+    {
+      "path": "/katy-tx/",
+      "file": "katy-tx.json",
+      "units": 9,
+      "matched": 9,
+      "omitted": 0,
+      "pct": 100,
+      "missing": []
+    },
+    {
+      "path": "/fulshear-tx/",
+      "file": "fulshear-tx.json",
+      "units": 16,
+      "matched": 16,
+      "omitted": 0,
+      "pct": 100,
+      "missing": []
+    },
+    {
+      "path": "/cinco-ranch-tx/",
+      "file": "cinco-ranch-tx.json",
+      "units": 27,
+      "matched": 27,
+      "omitted": 0,
+      "pct": 100,
+      "missing": []
+    },
+    {
+      "path": "/rosenberg-tx/",
+      "file": "rosenberg-tx.json",
+      "units": 24,
+      "matched": 24,
+      "omitted": 0,
+      "pct": 100,
+      "missing": []
+    },
+    {
+      "path": "/weston-lakes-tx/",
+      "file": "weston-lakes-tx.json",
+      "units": 26,
+      "matched": 26,
+      "omitted": 0,
+      "pct": 100,
+      "missing": []
+    },
+    {
       "path": "/sugar-land-tx/",
       "file": "sugar-land-tx.json",
-      "units": 18,
-      "matched": 18,
+      "units": 15,
+      "matched": 15,
       "omitted": 0,
       "pct": 100,
       "missing": []
@@ -752,8 +437,107 @@
     {
       "path": "/park-row-tx/",
       "file": "park-row-tx.json",
-      "units": 14,
-      "matched": 14,
+      "units": 11,
+      "matched": 11,
+      "omitted": 0,
+      "pct": 100,
+      "missing": []
+    },
+    {
+      "path": "/services/basement-remodeling-finishing/",
+      "file": "services--basement-remodeling-finishing.json",
+      "units": 23,
+      "matched": 23,
+      "omitted": 0,
+      "pct": 100,
+      "missing": []
+    },
+    {
+      "path": "/services/garage-remodel-contractors/",
+      "file": "services--garage-remodel-contractors.json",
+      "units": 27,
+      "matched": 27,
+      "omitted": 0,
+      "pct": 100,
+      "missing": []
+    },
+    {
+      "path": "/services/open-concept-remodeling/",
+      "file": "services--open-concept-remodeling.json",
+      "units": 26,
+      "matched": 26,
+      "omitted": 0,
+      "pct": 100,
+      "missing": []
+    },
+    {
+      "path": "/services/bathroom-shower-remodel/",
+      "file": "services--bathroom-shower-remodel.json",
+      "units": 46,
+      "matched": 46,
+      "omitted": 0,
+      "pct": 100,
+      "missing": []
+    },
+    {
+      "path": "/services/bathtub-remodeling/",
+      "file": "services--bathtub-remodeling.json",
+      "units": 40,
+      "matched": 40,
+      "omitted": 0,
+      "pct": 100,
+      "missing": []
+    },
+    {
+      "path": "/services/room-additions-home-additions/",
+      "file": "services--room-additions-home-additions.json",
+      "units": 54,
+      "matched": 54,
+      "omitted": 0,
+      "pct": 100,
+      "missing": []
+    },
+    {
+      "path": "/services/home-remodel/",
+      "file": "services--home-remodel.json",
+      "units": 39,
+      "matched": 39,
+      "omitted": 0,
+      "pct": 100,
+      "missing": []
+    },
+    {
+      "path": "/services/remodeling-company/",
+      "file": "services--remodeling-company.json",
+      "units": 24,
+      "matched": 24,
+      "omitted": 0,
+      "pct": 100,
+      "missing": []
+    },
+    {
+      "path": "/services/kitchen-remodeling/",
+      "file": "services--kitchen-remodeling.json",
+      "units": 57,
+      "matched": 57,
+      "omitted": 0,
+      "pct": 100,
+      "missing": []
+    },
+    {
+      "path": "/services/custom-home-builder/",
+      "file": "services--custom-home-builder.json",
+      "units": 90,
+      "matched": 90,
+      "omitted": 0,
+      "pct": 100,
+      "missing": []
+    },
+    {
+      "path": "/services/bathroom-remodeling/",
+      "file": "services--bathroom-remodeling.json",
+      "units": 87,
+      "matched": 87,
       "omitted": 0,
       "pct": 100,
       "missing": []

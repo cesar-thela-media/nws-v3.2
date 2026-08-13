@@ -3,11 +3,13 @@
 import { Button } from "@/components/ui/button";
 import { FullBleedBackground } from "@/components/FullBleedBackground";
 import AnimatedTextRoller from "@/components/shadcn-space/animated-text/animated-text-04";
+import { site } from "@/data/site";
 import { motion } from "motion/react";
 import { ArrowUpRight, Star } from "lucide-react";
 
 export type AvatarList = {
-  image: string;
+  image?: string;
+  initial?: string;
   alt?: string;
 };
 
@@ -59,8 +61,8 @@ function HeroSection({
   secondaryCta = { label: "View our work", href: "/remodeling-gallery/" },
   badge = "Serving Fort Bend since 2007",
   backgroundImage = "/images/hero-nws-cinematic.jpg",
-  rating = "",
-  ratingLabel = "",
+  rating = "5.0",
+  ratingLabel = "Google & Angi reviews",
 }: HeroSectionProps) {
   return (
     <section
@@ -68,7 +70,7 @@ function HeroSection({
       className={[
         "relative w-full max-w-none overflow-x-clip",
         /* Pull under sticky navbar so transparent chrome sits on the image */
-        "-mt-16 sm:-mt-[4.25rem]",
+        "-mt-20 sm:-mt-24",
         "flex items-center justify-center",
         "min-h-[min(100svh,720px)]",
         "sm:min-h-[min(88svh,780px)]",
@@ -106,22 +108,26 @@ function HeroSection({
             initial={{ opacity: 0, y: 32 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
-            className="text-[clamp(1.2rem,4.8vw,1.65rem)] sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-[1.08] font-bold tracking-tight text-white !m-0 max-w-5xl w-full min-w-0 px-1 sm:px-2 text-center break-words"
+            className="flex flex-col items-center gap-1 md:gap-2 font-bold tracking-tight text-white !m-0 max-w-6xl w-full min-w-0 px-1 sm:px-2 text-center"
           >
+            <span
+              data-hero-prefix
+              className="block w-full max-w-full text-balance md:whitespace-nowrap text-[clamp(1.05rem,min(6.6vw,calc((100vw-3rem)/13)),4.75rem)] leading-[1.08] tracking-tight"
+            >
+              {headline}
+            </span>
             {locations.length > 1 ? (
-              <AnimatedTextRoller
-                prefix={headline}
-                items={locations}
-                intervalMs={locationIntervalMs}
-                defaultColor="text-primary"
-                forceDefaultColor
-              />
+              <span className="block w-full max-w-full text-[clamp(1.05rem,min(6.6vw,calc((100vw-3rem)/13)),4.75rem)] leading-[1.08] tracking-tight">
+                <AnimatedTextRoller
+                  items={locations}
+                  intervalMs={locationIntervalMs}
+                  defaultColor="text-primary"
+                  forceDefaultColor
+                />
+              </span>
             ) : (
-              <span className="flex flex-col items-center gap-0">
-                <span className="block whitespace-nowrap">{headline}</span>
-                <span className="block text-primary whitespace-nowrap">
-                  {highlight}
-                </span>
+              <span className="block w-full max-w-full text-primary text-balance md:whitespace-nowrap text-[clamp(1.05rem,min(6.6vw,calc((100vw-3rem)/13)),4.75rem)] leading-[1.08] tracking-tight">
+                {highlight}
               </span>
             )}
           </motion.h1>
@@ -174,14 +180,24 @@ function HeroSection({
                   className="-ml-2 first:ml-0 ring-2 ring-black/40 rounded-full"
                   style={{ zIndex: avatarList.length - index }}
                 >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={avatar.image}
-                    alt={avatar.alt || "NWS client testimonial"}
-                    width={36}
-                    height={36}
-                    className="rounded-full object-cover size-8 sm:size-9"
-                  />
+                  {avatar.initial ? (
+                    <span
+                      data-reviewer-avatar="letter"
+                      className="flex size-8 sm:size-9 items-center justify-center rounded-full bg-[#1a73e8] text-white text-xs sm:text-sm font-semibold uppercase"
+                      aria-label={avatar.alt || "NWS client testimonial"}
+                    >
+                      {avatar.initial}
+                    </span>
+                  ) : (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={avatar.image}
+                      alt={avatar.alt || "NWS client testimonial"}
+                      width={36}
+                      height={36}
+                      className="rounded-full object-cover size-8 sm:size-9"
+                    />
+                  )}
                 </li>
               ))}
             </ul>
@@ -191,7 +207,12 @@ function HeroSection({
             <>
           <div className="w-px h-7 bg-white/20 shrink-0" aria-hidden />
 
-          <div className="flex flex-col items-start gap-0.5 pr-1 text-left">
+          <a
+            href={site.social.googleReview}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex flex-col items-start gap-0.5 pr-1 text-left no-underline hover:opacity-90"
+          >
             <div className="flex items-center gap-1" aria-label={`${rating} out of 5 stars`}>
               {Array.from({ length: 5 }).map((_, index) => (
                 <Star
@@ -207,7 +228,7 @@ function HeroSection({
             <p className="text-[11px] sm:text-xs font-normal text-white/70 !m-0 leading-none">
               {ratingLabel}
             </p>
-          </div>
+          </a>
             </>
           ) : null}
         </motion.div>

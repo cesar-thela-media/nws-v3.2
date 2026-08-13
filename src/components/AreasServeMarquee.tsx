@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { Marquee } from "@/components/shadcn-space/animations/marquee";
 import { locations } from "@/data/locations";
+import { RevealGroup, RevealItem } from "@/components/Reveal";
 
 const areas = locations.map((loc) => ({
   id: loc.slug,
@@ -13,7 +14,7 @@ const areas = locations.map((loc) => ({
   href: loc.href === "#" ? "/areas-we-serve/" : loc.href,
   image:
     loc.heroImage || "/images/hero-custom-home-remodeling-paralax-image.jpg",
-  blurb: loc.name,
+  blurb: loc.description.replace(/\s+/g, " ").split(".")[0] + ".",
 }));
 
 function AreaCard({
@@ -79,17 +80,23 @@ function AreaCard({
 export function AreasServeMarquee() {
   return (
     <section className="w-full py-12 sm:py-16 md:py-20 bg-background overflow-hidden">
-      <div className="px-4 sm:px-6 lg:px-8 xl:px-16 max-w-7xl mx-auto mb-8 sm:mb-10 flex flex-col gap-2">
-        <p className="text-sm sm:text-base font-semibold text-primary !m-0">
+      <RevealGroup className="px-4 sm:px-6 lg:px-8 xl:px-16 max-w-7xl mx-auto mb-8 sm:mb-10 flex flex-col gap-2">
+        <RevealItem as="p" className="text-sm sm:text-base font-semibold text-primary !m-0">
           Areas We Serve
-        </p>
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground !m-0">
+        </RevealItem>
+        <RevealItem
+          as="h2"
+          className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground !m-0"
+        >
           Areas We Serve
-        </h2>
-        <p className="text-muted-foreground text-base sm:text-lg max-w-2xl !m-0 mt-1">
+        </RevealItem>
+        <RevealItem
+          as="p"
+          className="text-muted-foreground text-base sm:text-lg max-w-2xl !m-0 mt-1"
+        >
           We complete every project promptly, effectively, and with the utmost attention to detail.
-        </p>
-      </div>
+        </RevealItem>
+      </RevealGroup>
 
       <Marquee
         pauseOnHover

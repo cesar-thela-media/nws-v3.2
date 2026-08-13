@@ -35,7 +35,7 @@ test("LocationPage renders complete area data without truncation", () => {
   assert.doesNotMatch(renderer, /slice\(0, 4\)/);
   assert.match(renderer, /section\.services\.map/);
   assert.match(renderer, /section\.bullets\.map/);
-  assert.match(renderer, /Complete Renovation Solutions for Your Property/);
+  assert.match(locations, /Complete Renovation Solutions for Your Property/);
 });
 
 test("area-specific source wording and CTA decisions are preserved", () => {

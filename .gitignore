@@ -27,11 +27,25 @@ scripts/responsive-overflow-audit.last.json
 .DS_Store
 *.pem
 
-# debug
+# debug / local server
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
+*.log
+production-*.log
+production-*.out.log
+production-*.err.log
+
+# local scrape / audit dumps at repo root
+/*.json
+!package.json
+!package-lock.json
+!tsconfig.json
+!components.json
+!vercel.json
+docs/*.tmp
+*.tmp
 
 # env files (keep .env.example as the documented template)
 .env

@@ -76,7 +76,10 @@ const AnimatedTextRoller = ({
       data-hero-two-line
     >
       {prefix ? (
-        <span className="block w-full max-w-5xl text-center text-white whitespace-normal text-balance break-words px-1 leading-[1.08]">
+        <span
+          data-hero-prefix
+          className="block w-full max-w-full text-center text-white text-balance md:whitespace-nowrap px-1 leading-[1.08] text-[clamp(1.35rem,6.2vw,3.25rem)]"
+        >
           {prefix}
         </span>
       ) : null}
@@ -106,7 +109,7 @@ const AnimatedTextRoller = ({
             <span
               key={`${item.text}-${i}`}
               className={cn(
-                "flex w-full max-w-full shrink-0 items-center justify-center px-1 overflow-hidden text-ellipsis whitespace-nowrap",
+                "flex w-full max-w-full shrink-0 items-center justify-center px-0 overflow-hidden text-ellipsis whitespace-nowrap text-[length:inherit] tracking-tight min-w-0",
                 forceDefaultColor
                   ? defaultColor
                   : (item.color ?? defaultColor),

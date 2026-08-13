@@ -1,12 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { locations } from "@/data/locations";
+import { Reveal } from "@/components/Reveal";
 
 /** Image cards linking to each location route (no plain chip list). */
 export function AreasGrid({ className = "" }: { className?: string }) {
   return (
     <div
-      className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 ${className}`}
+      className={`grid grid-cols-1 gap-6 sm:gap-8 ${className}`}
       data-areas-image-cards
     >
       {locations.map((loc) => {
@@ -17,11 +18,11 @@ export function AreasGrid({ className = "" }: { className?: string }) {
         const isAnchor = loc.href === "#";
 
         const card = (
-          <article className="group relative overflow-hidden rounded-2xl border border-border bg-card min-h-[14rem] sm:min-h-[16rem]">
+          <article className="group relative overflow-hidden rounded-2xl aspect-[16/9] sm:aspect-[2/1]">
             <Image
               src={src}
               alt={label}
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              sizes="100vw"
               fill
               className="object-cover transition-transform duration-500 group-hover:scale-105"
             />
@@ -29,8 +30,13 @@ export function AreasGrid({ className = "" }: { className?: string }) {
               className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"
               aria-hidden
             />
-            <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5">
-              <p className="text-white font-semibold text-lg !m-0">{label}</p>
+            <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-7">
+              <Reveal
+                as="p"
+                className="text-white font-semibold text-xl sm:text-2xl md:text-3xl !m-0"
+              >
+                {label}
+              </Reveal>
             </div>
           </article>
         );

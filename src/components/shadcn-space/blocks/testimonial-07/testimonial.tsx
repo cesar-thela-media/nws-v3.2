@@ -7,6 +7,7 @@ import { Separator } from "@/components/ui/separator";
 import { Marquee } from "@/components/shadcn-space/animations/marquee";
 import { useInView, motion } from "motion/react";
 import { nwsTestimonials, type TestimonialCard } from "@/data/reviews";
+import { ReviewerAvatar } from "@/components/ReviewerAvatar";
 
 const firstRow = nwsTestimonials.slice(0, 4);
 const secondRow = nwsTestimonials.slice(4, 8);
@@ -46,7 +47,7 @@ const ReviewCard = ({
   name,
   username,
   body,
-  avatar,
+  initial,
   projectImage,
   source,
 }: TestimonialCard) => {
@@ -66,14 +67,10 @@ const ReviewCard = ({
         <div className="p-5 flex flex-col gap-4">
           <div className="flex items-center justify-between gap-2">
             <div className="flex items-center gap-3 min-w-0">
-              {/* People photo avatar (stock portrait for UI) */}
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={avatar}
-                alt=""
-                width={44}
-                height={44}
-                className="size-11 shrink-0 rounded-full object-cover ring-2 ring-background shadow-sm"
+              <ReviewerAvatar
+                name={name}
+                initial={initial}
+                className="size-11 text-base ring-2 ring-background shadow-sm"
               />
               <div className="min-w-0">
                 <p className="text-base font-medium truncate !m-0">{name}</p>

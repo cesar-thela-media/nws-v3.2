@@ -5,8 +5,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { site } from "@/data/site";
 import { Phone } from "lucide-react";
-import { motion, useInView } from "motion/react";
 import { useRef } from "react";
+import { RevealGroup, RevealItem } from "@/components/Reveal";
 
 export type Hero12Props = {
   badgeLead?: string;
@@ -44,7 +44,6 @@ export default function HeroSection({
   secondaryCtaHref = "/contact/",
 }: Hero12Props) {
   const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
   const primaryHref = primaryCtaHref || `tel:${site.phone.officeTel}`;
   const primaryLabel = primaryCtaLabel || `Call ${site.phone.office}`;
   const bgSrc =
@@ -52,120 +51,122 @@ export default function HeroSection({
     imageSrc ||
     "/images/whole-home-remodeling-richmond-tx.jpg";
 
+  const copy = (
+    <RevealGroup className="flex flex-col gap-5 sm:gap-6 min-w-0">
+      <RevealItem className="flex max-w-full w-fit flex-wrap items-center gap-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-md px-2 py-1.5">
+        <Badge className="h-6 bg-primary text-xs font-semibold text-white border-0 shadow-sm leading-none hover:bg-primary shrink-0">
+          {badgeLead}
+        </Badge>
+        <span className="text-xs font-medium text-white tracking-tight pr-1 min-w-0">
+          {badge}
+        </span>
+      </RevealItem>
+
+      <RevealItem
+        as="h1"
+        className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-bold tracking-tight text-white !m-0 text-balance max-w-xl min-w-0"
+      >
+        {headline}
+      </RevealItem>
+
+      <RevealItem
+        as="p"
+        className="text-base sm:text-lg text-white/75 max-w-md !m-0"
+      >
+        {description}
+      </RevealItem>
+
+      <RevealItem className="flex flex-col min-[400px]:flex-row flex-wrap items-stretch min-[400px]:items-center gap-3 w-full min-w-0">
+        <Button
+          className="gap-2 !bg-primary !text-white hover:!bg-primary/90 px-5 sm:px-6 py-3.5 h-12 rounded-[4px] w-full min-[400px]:w-fit max-w-full min-w-0"
+          render={
+            primaryHref.startsWith("tel:") ||
+            primaryHref.startsWith("http") ? (
+              <a href={primaryHref} />
+            ) : (
+              <Link href={primaryHref} />
+            )
+          }
+        >
+          <Phone size={16} className="shrink-0" />
+          {primaryLabel}
+        </Button>
+        <Button
+          variant="outline"
+          data-dark-outline-cta
+          className="px-5 sm:px-6 py-3.5 h-12 rounded-[4px] w-full min-[400px]:w-fit max-w-full min-w-0 !border-white/70 !bg-transparent !text-white hover:!bg-white/15 hover:!text-white shadow-none"
+          render={<Link href={secondaryCtaHref} data-dark-outline-cta="" />}
+        >
+          {secondaryCtaLabel}
+        </Button>
+      </RevealItem>
+    </RevealGroup>
+  );
+
+  if (mapEmbedSrc) {
+    return (
+      <section
+        ref={sectionRef}
+        data-hero-12
+        data-hero-12-map-split
+        className="relative grid grid-cols-1 lg:grid-cols-2 min-h-[min(88svh,760px)] w-full max-w-full overflow-x-clip bg-[#0a0e10] text-white"
+      >
+        <div className="relative flex items-center">
+          <div
+            className="absolute inset-0 bg-cover bg-center opacity-45"
+            style={{ backgroundImage: `url(${bgSrc})` }}
+            aria-hidden
+          />
+          <div
+            className="absolute inset-0 bg-gradient-to-r from-black via-black/85 to-black/70"
+            aria-hidden
+          />
+          <div
+            className="absolute inset-0 bg-[color-mix(in_oklab,var(--primary)_12%,transparent)]"
+            aria-hidden
+          />
+          <div className="relative z-10 w-full max-w-xl xl:max-w-2xl ml-auto px-4 sm:px-8 lg:px-12 xl:px-16 pt-24 pb-12 sm:pt-28 sm:pb-16">
+            {copy}
+          </div>
+        </div>
+        <div className="relative min-h-[20rem] sm:min-h-[24rem] lg:min-h-full w-full">
+          <iframe
+            title={imageAlt || "Service area map"}
+            src={mapEmbedSrc}
+            className="absolute inset-0 h-full w-full border-0"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            allowFullScreen
+          />
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section
       ref={sectionRef}
       data-hero-12
-      className="relative overflow-x-clip bg-[#0a0e10] text-white sm:pt-8 w-full max-w-full"
+      className="relative overflow-x-clip bg-[#0a0e10] text-white min-h-[min(88svh,760px)] w-full max-w-full"
     >
       <div
-        className="absolute inset-0 bg-cover bg-center opacity-45"
+        className="absolute inset-0 bg-cover bg-center"
         style={{
           backgroundImage: `url(${bgSrc})`,
         }}
         aria-hidden
       />
       <div
-        className="absolute inset-0 bg-gradient-to-r from-black via-black/85 to-black/50"
+        className="absolute inset-0 bg-gradient-to-r from-black/88 via-black/55 to-black/15"
         aria-hidden
       />
       <div
-        className="absolute inset-0 bg-[color-mix(in_oklab,var(--primary)_12%,transparent)]"
+        className="absolute inset-0 bg-[linear-gradient(90deg,color-mix(in_oklab,var(--primary)_18%,transparent)_0%,transparent_58%)]"
         aria-hidden
       />
 
-      <div className="relative z-20 max-w-7xl mx-auto xl:px-16 lg:px-8 px-4 py-14 sm:py-20 lg:py-24 w-full min-w-0">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-8 items-center">
-          <div className="flex flex-col gap-5 sm:gap-6 pt-6 sm:pt-10 min-w-0">
-            <div className="flex max-w-full w-fit flex-wrap items-center gap-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-md px-2 py-1.5">
-              <Badge className="h-6 bg-primary text-xs font-semibold text-white border-0 shadow-sm leading-none hover:bg-primary shrink-0">
-                {badgeLead}
-              </Badge>
-              <span className="text-xs font-medium text-white tracking-tight pr-1 min-w-0">
-                {badge}
-              </span>
-            </div>
-
-            <motion.h1
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white !m-0 text-balance max-w-full"
-              initial="hidden"
-              animate={isInView ? "visible" : "hidden"}
-              variants={{
-                hidden: { opacity: 1 },
-                visible: {
-                  opacity: 1,
-                  transition: { staggerChildren: 0.01 },
-                },
-              }}
-            >
-              {headline.split("").map((char, index) => (
-                <motion.span
-                  key={`${char}-${index}`}
-                  variants={{
-                    hidden: { opacity: 0 },
-                    visible: { opacity: 1, transition: { duration: 0.15 } },
-                  }}
-                >
-                  {char}
-                </motion.span>
-              ))}
-            </motion.h1>
-
-            <p className="text-base sm:text-lg text-white/75 max-w-md !m-0">
-              {description}
-            </p>
-
-            <div className="flex flex-wrap items-center gap-3">
-              <Button
-                className="gap-2 !bg-primary !text-white hover:!bg-primary/90 px-6 py-3.5 h-12 rounded-[4px] w-fit"
-                render={
-                  primaryHref.startsWith("tel:") ||
-                  primaryHref.startsWith("http") ? (
-                    <a href={primaryHref} />
-                  ) : (
-                    <Link href={primaryHref} />
-                  )
-                }
-              >
-                <Phone size={16} className="shrink-0" />
-                {primaryLabel}
-              </Button>
-              <Button
-                variant="outline"
-                data-dark-outline-cta
-                className="px-6 py-3.5 h-12 rounded-[4px] w-fit !border-white/70 !bg-transparent !text-white hover:!bg-white/15 hover:!text-white shadow-none"
-                render={<Link href={secondaryCtaHref} data-dark-outline-cta="" />}
-              >
-                {secondaryCtaLabel}
-              </Button>
-            </div>
-          </div>
-
-          <div className="relative min-h-[16rem] sm:min-h-[22rem] lg:min-h-[28rem] rounded-2xl overflow-hidden border border-white/15 shadow-2xl bg-black/40">
-            {mapEmbedSrc ? (
-              <iframe
-                title={imageAlt || "Service area map"}
-                src={mapEmbedSrc}
-                className="absolute inset-0 h-full w-full border-0"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                allowFullScreen
-              />
-            ) : (
-              <>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={imageSrc}
-                  alt={imageAlt}
-                  width={845}
-                  height={641}
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-              </>
-            )}
-          </div>
-        </div>
+      <div className="relative z-20 max-w-7xl mx-auto xl:px-16 lg:px-8 px-4 pt-28 pb-16 sm:pt-32 sm:pb-20 lg:pt-36 lg:pb-24 w-full min-w-0">
+        <div className="max-w-xl xl:max-w-2xl">{copy}</div>
       </div>
     </section>
   );

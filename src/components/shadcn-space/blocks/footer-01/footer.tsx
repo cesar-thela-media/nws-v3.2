@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Logo from "@/assets/logo/logo";
+
 import { Separator } from "@/components/ui/separator";
 import { site } from "@/data/site";
 import { canonicalServiceCatalog } from "@/data/informationArchitecture";
@@ -72,7 +72,15 @@ const Footer = () => {
             <div className="col-span-1 min-w-0 sm:col-span-2 lg:col-span-4">
               <div className="flex flex-col gap-6">
                 <Link href="/" className="w-fit">
-                  <Logo onDark />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={site.logoOnDark}
+                    alt={site.name}
+                    width={160}
+                    height={44}
+                    className="h-11 w-auto max-h-11 object-contain object-left drop-shadow-[0_1px_3px_rgba(0,0,0,0.35)]"
+                    style={{ height: 44, maxHeight: 44, width: "auto" }}
+                  />
                 </Link>
                 <p className="text-base font-normal text-white/85 !m-0">
                   Custom homes & remodeling · Richmond, TX since 2007
@@ -137,20 +145,31 @@ const Footer = () => {
               </div>
             </div>
 
-            <div className="hidden lg:block lg:col-span-1" aria-hidden="true" />
-
             {footerSections.map(({ title, links }, index) => (
-              <div key={index} className="col-span-1 sm:col-span-2 lg:col-span-2">
+              <div
+                key={index}
+                className={
+                  title === "Services"
+                    ? "col-span-1 min-[400px]:col-span-2 sm:col-span-2 lg:col-span-4"
+                    : "col-span-1 sm:col-span-2 lg:col-span-2"
+                }
+              >
                 <div className="flex flex-col gap-4">
                   <p className="text-base font-semibold text-white !m-0">
                     {title}
                   </p>
-                  <ul className="flex flex-col gap-3">
+                  <ul
+                    className={
+                      title === "Services"
+                        ? "grid grid-cols-2 gap-x-6 gap-y-3"
+                        : "flex flex-col gap-3"
+                    }
+                  >
                     {links.map(({ title: linkTitle, href }) => (
                       <li key={linkTitle}>
-                            <Link
+                        <Link
                           href={href}
-                          className="text-base font-normal text-white/80 hover:text-white transition-colors"
+                          className="text-sm sm:text-base font-normal text-white/80 hover:text-white transition-colors break-words min-w-0 block"
                         >
                           {linkTitle}
                         </Link>
@@ -161,7 +180,7 @@ const Footer = () => {
               </div>
             ))}
 
-            <div className="col-span-full sm:col-span-2 lg:col-span-3">
+            <div className="col-span-full sm:col-span-2 lg:col-span-2">
               <div className="flex flex-col gap-4">
                 <p className="text-base font-semibold text-white !m-0">
                   Contact

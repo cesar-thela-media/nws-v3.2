@@ -36,6 +36,11 @@ const ContactInfo = () => {
         <p className="text-sm sm:text-base md:text-lg text-white/85 max-w-md !m-0 leading-relaxed text-pretty">
           Our friendly team is here to help. Questions or queries? Get in touch!
         </p>
+        <p className="text-sm sm:text-base text-white/80 max-w-md !m-0 leading-relaxed text-pretty">
+          Reach out to our dependable remodeling company in Richmond, TX. We
+          have over 35 years of combined experience. Call us today at (281)
+          299-2309.
+        </p>
       </motion.div>
 
       <motion.div

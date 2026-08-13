@@ -85,7 +85,7 @@ const CTA = ({ eyebrow, title, text, buttonLabel }: CTAProps) => {
                 {perks.map((perk) => (
                   <div key={perk} className="flex items-center gap-3">
                     <Check className="size-5 text-primary shrink-0" />
-                    <span className="text-base font-medium text-white whitespace-nowrap">
+                    <span className="text-sm sm:text-base font-medium text-white whitespace-normal sm:whitespace-nowrap">
                       {perk}
                     </span>
                   </div>

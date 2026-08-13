@@ -7,6 +7,13 @@ import Contact from "@/components/shadcn-space/blocks/contact-01";
 import Faq from "@/components/shadcn-space/blocks/faq-07/faq";
 import { metadataRules } from "@/data/informationArchitecture";
 import { AreasServeMarquee } from "@/components/AreasServeMarquee";
+import { reviews } from "@/data/reviews";
+import {
+  homeCtaText,
+  homeDiscover,
+  homeQualityClose,
+  homeQualityIntro,
+} from "@/data/homeCopy";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -15,26 +22,26 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
-  // People portraits for social proof (same set as review cards)
-  const avatarList = [
-    { image: "/images/avatars/avatar-1.jpg", alt: "NWS client testimonial" },
-    { image: "/images/avatars/avatar-2.jpg", alt: "NWS client testimonial" },
-    { image: "/images/avatars/avatar-4.jpg", alt: "NWS client testimonial" },
-    { image: "/images/avatars/avatar-5.jpg", alt: "NWS client testimonial" },
-  ];
+  const avatarList = reviews.slice(0, 4).map((review) => ({
+    initial: review.initial,
+    alt: `${review.name} review`,
+  }));
 
   return (
     <>
+      <h1 className="sr-only">
+        Choose a Dependable Residential Remodeling Services in Richmond, TX
+      </h1>
       <HeroSection
         avatarList={avatarList}
         badge="We build new homes specifically to fit your needs."
-        headline="Choose a Dependable Residential Remodeling Services in"
+        headline="Custom homes & remodels in"
         highlight="Richmond, TX"
-        subhead="Discover what it truly means to live in a custom-built or beautifully remodeled home with NWS Custom Homes and Remodeling. As a trusted name in residential remodeling services, we bring your vision to life with attention to detail, personalized design, and high-quality craftsmanship. We’re here to make your house feel like home, one thoughtful renovation at a time."
+        subhead={homeDiscover}
         primaryCta={{ label: "Book Now", href: "tel:2812992309" }}
         secondaryCta={{ label: "Contact Us", href: "/contact/" }}
-        rating=""
-        ratingLabel=""
+        rating="5.0"
+        ratingLabel="Google & Angi reviews"
         backgroundImage="/images/hero-home-remodeled-richmond-tx.webp"
       />
 
@@ -43,11 +50,15 @@ export default function HomePage() {
       <Portfolio
         label="Let’s Build Your Dreams"
         heading="Our Quality Services"
-        description="We offer a full range of residential remodeling services designed to match your vision and your budget. Whether you're building from the ground up or transforming an existing home, we provide: Our team can help you plan every detail, from selecting materials to optimizing layouts. We'll be by your side through every phase of the project, delivering results you'll love and a remodeling experience you'll actually enjoy."
+        description={`${homeQualityIntro} ${homeQualityClose}`}
         ctaLabel="View All Our Services"
       />
 
-      <CTA />
+      <CTA
+        eyebrow="Get in Touch"
+        title="Bring Your Dream Home to Life"
+        text={homeCtaText}
+      />
 
       <Testimonial />
 

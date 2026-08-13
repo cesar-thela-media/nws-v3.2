@@ -2,6 +2,8 @@ export type LocationService = {
   label: string;
   detail?: string;
   href: string;
+  /** Exact live-site list line when the scraper concatenated label + detail. */
+  sourceLine?: string;
 };
 
 export type Location = {
@@ -40,6 +42,8 @@ export const locations: Location[] = [
       "Our team of experts is dedicated to helping you create a beautiful and functional space for your family. Whether you're looking for a complete home remodel or a kitchen or bathroom renovation, we have the expertise to bring your vision to life.",
     ],
     formTitle: "We're Looking Forward to Work With You",
+    heroImage: "/images/custom-home-richmond-tx.jpg",
+    heroImageAlt: "Finished NWS custom home with sold sign in Richmond, TX",
   },
   {
     slug: "sugar-land-tx",
@@ -58,8 +62,8 @@ export const locations: Location[] = [
     formTitle: "Quality Services Tailored to Your Needs",
     formIntro:
       "Choose NWS Custom Homes and Remodeling as your trusted remodeling company in Sugar Land, TX. Contact us today to discuss your remodeling project and let us help you bring your home improvement dreams to life.",
-    heroImage: "/images/hero-custom-home-remodeling-paralax-image.jpg",
-    heroImageAlt: "NWS remodeling project serving Sugar Land, TX",
+    heroImage: "/images/bathroom-gallery-4.jpeg",
+    heroImageAlt: "NWS bathroom remodel serving Sugar Land, TX",
     sections: [
       {
         heading: "Services We Provide",
@@ -113,8 +117,8 @@ export const locations: Location[] = [
     formTitle: "Comprehensive Remodeling Services",
     formIntro:
       "Contact us today to discuss your custom home building or remodeling project in Katy, TX. Let us bring your vision to life and create a home that exceeds your expectations.",
-    heroImage: "/images/custom-homes-3.jpeg",
-    heroImageAlt: "NWS remodeling project serving Katy, TX",
+    heroImage: "/images/kitchen-gallery-1.jpeg",
+    heroImageAlt: "NWS kitchen remodel serving Katy, TX",
     sections: [
       {
         heading: "Our Services",
@@ -148,8 +152,8 @@ export const locations: Location[] = [
     formTitle: "Team Up With Us!",
     formIntro:
       "Reach out to us for an in-depth conversation about your refurbishment plans in Fulshear, TX. Entrust us with the responsibility of translating your visions into reality.",
-    heroImage: "/images/home-addition-contractors.webp",
-    heroImageAlt: "NWS remodeling project serving Fulshear, TX",
+    heroImage: "/images/kitchen-gallery-3.jpeg",
+    heroImageAlt: "NWS kitchen and living remodel serving Fulshear, TX",
     sections: [
       {
         heading: "Discover Top-Notch Remodeling Solutions",
@@ -223,7 +227,7 @@ export const locations: Location[] = [
     formIntro:
       "Ready to start your remodel in the West Side of Houston, TX? Fill out the form below to connect with NWS Custom Homes and Remodeling for local, reliable renovation services.",
     heroImage: "/images/remodeling-1.jpeg",
-    heroImageAlt: "NWS remodeling project serving the West Side of Houston, TX",
+    heroImageAlt: "NWS outdoor living remodel serving the West Side of Houston, TX",
     sections: [
       {
         heading: "Let's Build Something Great, Schedule Your Remodel Today!",
@@ -302,8 +306,8 @@ export const locations: Location[] = [
       "At NWS Custom Homes and Remodeling in Cinco Ranch, TX, we take pride in turning your ideas into reality. Our dedication to craftsmanship and personalized service has made us a go-to resource for homeowners for quality residential remodeling services. Whether it's a modern kitchen makeover, a spa-like bathroom remodel, or a full home renovation, we bring creativity and reliability to every project.",
       "Let our experienced team manage the details, ensuring your remodel is completed on time and meets the highest standards. Your dream home is just a call away.",
     ],
-    heroImage: "/images/custom-homes-4.jpeg",
-    heroImageAlt: "NWS remodeling project serving Cinco Ranch, TX",
+    heroImage: "/images/bathroom-gallery-2.jpeg",
+    heroImageAlt: "NWS shower remodel serving Cinco Ranch, TX",
     ctaLabel: "Discuss Your Remodeling Project Now",
     ctaHref: "/contact/",
     formTitle: "Plan Your Remodeling Service Today",
@@ -327,6 +331,8 @@ export const locations: Location[] = [
             detail:
               "We're here to refresh any space with designs that bring new life to your home.",
             href: "/services/remodeling-company/",
+            sourceLine:
+              "Remodeling: We're here to refresh any space with designs that bring new life to your home.",
           },
           {
             label: "Kitchen Remodeling",
@@ -395,8 +401,8 @@ export const locations: Location[] = [
     formTitle: "Ready to Upgrade Your Home?",
     formIntro:
       "Transform your living space with our remodeling services. Reach out to NWS Custom Homes and Remodeling and start your journey toward a beautiful, functional home today.",
-    heroImage: "/images/remodeling-3.jpeg",
-    heroImageAlt: "NWS remodeling project serving Rosenberg, TX",
+    heroImage: "/images/kitchen-gallery-4.jpeg",
+    heroImageAlt: "NWS kitchen remodel serving Rosenberg, TX",
     sections: [
       {
         heading: "Discover Our Remodeling Services",
@@ -483,8 +489,8 @@ export const locations: Location[] = [
     formTitle: "Schedule Your Local Remodeling Service",
     formIntro:
       "Get in touch with us in Weston Lakes, TX, for custom home and remodeling solutions. Fill out our form for more details and personalized service recommendations.",
-    heroImage: "/images/remodeling-2.jpeg",
-    heroImageAlt: "NWS remodeling project serving Weston Lakes, TX",
+    heroImage: "/images/whole-home-remodeling-richmond-tx.jpg",
+    heroImageAlt: "NWS whole-home remodel serving Weston Lakes, TX",
     sections: [
       {
         heading: "Explore Our Services and Revitalize Your Space",
@@ -499,10 +505,12 @@ export const locations: Location[] = [
             href: "/services/custom-home-builder/",
           },
           {
-            label: "Remodeling",
+            label: "Remodeling ",
             detail:
               "We're here to help you transform any room, giving your home a fresh look and feel.",
             href: "/services/remodeling-company/",
+            sourceLine:
+              "Remodeling : We're here to help you transform any room, giving your home a fresh look and feel.",
           },
           {
             label: "Kitchen Remodeling",
@@ -560,7 +568,6 @@ export const locations: Location[] = [
       "Quality home remodeling in Park Row, TX since 2007. Kitchen, bathroom, custom builds, and additions. Call (281) 299-2309 for your consultation.",
     h1: "Professional Home Remodeling Services in Park Row, TX",
     body: [
-      "Complete Renovation Solutions for Your Property",
       "Finding a trusted contractor in Park Row can feel overwhelming when you're planning a major renovation or building project. At NWS Custom Homes and Remodeling, we've been transforming homes across Park Row and the surrounding Richmond area since 2007. Our team understands the unique needs of Texas homeowners, from dealing with our humid climate that demands proper moisture control to creating outdoor living spaces that can withstand our intense summer heat.",
       "Whether you're planning a complete kitchen renovation, updating your bathroom, adding square footage with a home addition, or building a custom home from the ground up, our experienced team handles every phase of your project. We specialize in kitchen and bathroom remodeling, custom home construction, foundation work, roofing services, and whole-home renovations that help Park Row families create functional, beautiful living spaces.",
       "Our approach starts with understanding your vision and budget during a personalized consultation. From there, we handle project planning, architectural drawings, permit coordination, and construction management so you can focus on the exciting parts of your transformation. We maintain clear communication throughout the process and keep your property clean and organized during construction.",
@@ -574,7 +581,44 @@ export const locations: Location[] = [
       "Call us to discuss your project. Our team will help you create the functional, beautiful space your family deserves.",
     heroImage: "/images/Professional-Home-Remodeling-Services-in-Park-Row-TX.webp",
     heroImageAlt: "Professional home remodeling services in Park Row, TX",
-    sections: [],
+    sections: [
+      {
+        heading: "Complete Renovation Solutions for Your Property",
+        services: [
+          {
+            label: "Custom Home Building",
+            detail:
+              "from lot selection and design to full construction",
+            href: "/services/custom-home-builder/",
+          },
+          {
+            label: "Kitchen Remodeling",
+            detail: "to improve layout, functionality, and style",
+            href: "/services/kitchen-remodeling/",
+          },
+          {
+            label: "Bathroom Remodeling",
+            detail: "with upgraded features and finishes",
+            href: "/services/bathroom-remodeling/",
+          },
+          {
+            label: "Room Additions & Home Additions",
+            detail: "adding square footage with a home addition",
+            href: "/services/room-additions-home-additions/",
+          },
+          {
+            label: "Whole Home Remodeling",
+            detail: "for top-to-bottom transformations",
+            href: "/services/home-remodel/",
+          },
+          {
+            label: "Remodeling",
+            detail: "full remodeling services",
+            href: "/services/remodeling-company/",
+          },
+        ],
+      },
+    ],
   },
 ];
 

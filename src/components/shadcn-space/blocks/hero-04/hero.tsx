@@ -142,7 +142,7 @@ export default function HeroContent({
             </div>
           </div>
 
-          <div className="relative w-full min-h-[16rem] sm:min-h-[22rem] lg:min-h-[28rem] rounded-2xl overflow-hidden border border-border shadow-[var(--shadow-card)]">
+          <div className="relative w-full min-h-[16rem] sm:min-h-[22rem] lg:min-h-[28rem] overflow-hidden">
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               animate={
@@ -162,14 +162,6 @@ export default function HeroContent({
                 width={800}
                 height={960}
                 className="w-full h-full object-cover"
-              />
-              <div
-                className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent"
-                aria-hidden
-              />
-              <div
-                className="absolute inset-0 bg-[color-mix(in_oklab,var(--primary)_12%,transparent)] mix-blend-multiply pointer-events-none"
-                aria-hidden
               />
             </motion.div>
           </div>

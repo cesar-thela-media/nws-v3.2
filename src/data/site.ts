@@ -25,6 +25,7 @@ export const site = {
     sinceYear: canonicalSiteFacts.sinceYear,
     experience: canonicalSiteFacts.experienceClaim,
   },
+  headerBadge: "We build new homes specifically to fit your needs.",
   social: canonicalSocialLinks,
   metadata: metadataRules,
   /** Official brand mark (same asset as www.nws-homes.com) */

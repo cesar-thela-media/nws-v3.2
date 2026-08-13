@@ -6,12 +6,9 @@ import { MarkerHighlight } from "@/components/shadcn-space/animated-text/animate
 import { cn } from "@/lib/utils";
 import { motion, useInView, type Variants } from "motion/react";
 import { useRef } from "react";
+import { homeServiceList } from "@/data/homeCopy";
 
-const bullets = [
-  "Custom home building, from lot selection and design to full construction",
-  "Whole home remodeling for top-to-bottom transformations",
-  "Kitchen remodeling to improve layout, functionality, and style",
-];
+const bullets = [...homeServiceList];
 
 const ease = [0.21, 0.47, 0.32, 0.98] as const;
 
@@ -109,7 +106,7 @@ function AnimatedHeadline({
   return (
     <h2
       className="font-bold text-foreground text-4xl sm:text-5xl md:text-6xl lg:text-[3.5rem] leading-[1.15] max-w-4xl mx-auto text-center tracking-tight !m-0"
-      aria-label="Bring Your Dream Home to Life"
+      aria-label="Bring Your Dream Home to Life in Richmond"
     >
       <AnimatedLetters
         text={first}
@@ -118,6 +115,7 @@ function AnimatedHeadline({
         delayOffset={0.02}
         className="inline"
       />{" "}
+      <span className="inline">in </span>
       <MarkerHighlight
         highlight="Richmond"
         markerColor="#ff4500"
@@ -134,8 +132,10 @@ const AboutUs06 = () => {
   const ref = useRef<HTMLElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
-  const body =
-    "Whether you need a full home remodel, an updated kitchen layout, or an expanded living space, our team of seasoned professionals is ready to help. We bring years of experience as both house renovation contractors and home addition contractors, ensuring every project, from simple upgrades to complex remodels, is completed with care, precision, and efficiency.";
+  const bodyParagraphs = [
+    "When you're ready to transform your space, working with the right remodeling contractor makes all the difference. At NWS Custom Homes and Remodeling, we've proudly served Richmond, TX, and surrounding areas since 2007, offering top-tier residential remodeling services tailored to your lifestyle and goals.",
+    "Whether you need a full home remodel, an updated kitchen layout, or an expanded living space, our team of seasoned professionals is ready to help. We bring years of experience as both house renovation contractors and home addition contractors, ensuring every project, from simple upgrades to complex remodels, is completed with care, precision, and efficiency.",
+  ];
 
   // Snappy entrance - no long staggered waits on body / bullets
   const bodyStartDelay = 0.18;
@@ -160,14 +160,23 @@ const AboutUs06 = () => {
               </div>
 
               <div className="flex flex-col items-center justify-center gap-7 md:gap-8 w-full">
-                <motion.p
-                  className="text-muted-foreground text-lg sm:text-xl md:text-[1.35rem] leading-relaxed max-w-2xl mx-auto text-center !m-0"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : undefined}
-                  transition={{ duration: 0.35, delay: bodyStartDelay, ease }}
-                >
-                  {body}
-                </motion.p>
+                <div className="flex flex-col gap-4 max-w-2xl mx-auto">
+                  {bodyParagraphs.map((paragraph, index) => (
+                    <motion.p
+                      key={paragraph.slice(0, 32)}
+                      className="text-muted-foreground text-lg sm:text-xl md:text-[1.35rem] leading-relaxed text-center !m-0"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={isInView ? { opacity: 1, y: 0 } : undefined}
+                      transition={{
+                        duration: 0.35,
+                        delay: bodyStartDelay + index * 0.06,
+                        ease,
+                      }}
+                    >
+                      {paragraph}
+                    </motion.p>
+                  ))}
+                </div>
 
                 <ul className="text-base sm:text-lg text-muted-foreground max-w-xl space-y-3 text-left w-full sm:w-auto">
                   {bullets.map((item, bi) => (

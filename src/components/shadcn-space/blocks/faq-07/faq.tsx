@@ -11,6 +11,7 @@ import { cn } from "@/lib/utils";
 import { MinusIcon, PlusIcon } from "lucide-react";
 import { faqs as canonicalFaqs } from "@/data/faqs";
 import type { ReactNode } from "react";
+import { RevealGroup, RevealItem } from "@/components/Reveal";
 
 export type FaqItem = {
   question: string;
@@ -74,25 +75,33 @@ function Faq({
 
   return (
     <section className="bg-muted" data-faq-07>
-      <div className="max-w-7xl mx-auto px-4 lg:px-8 xl:px-20 py-10 lg:py-24 flex flex-col gap-8">
-        <div className="flex flex-col gap-4 items-center text-center lg:px-16">
-          <Badge
-            variant="outline"
-            className="h-auto py-1 px-3 border-0 bg-background outline outline-border w-fit flex items-center gap-1.5"
+      <div className="max-w-7xl mx-auto px-4 lg:px-8 xl:px-20 py-16 sm:py-20 lg:py-24 flex flex-col gap-10">
+        <RevealGroup className="flex flex-col gap-4 items-center text-center lg:px-16">
+          <RevealItem>
+            <Badge
+              variant="outline"
+              className="h-auto py-1 px-3 border-0 bg-background outline outline-border w-fit flex items-center gap-1.5"
+            >
+              <span className="size-2 rounded-full bg-primary shrink-0" />
+              FAQs
+            </Badge>
+          </RevealItem>
+          <RevealItem
+            as="h2"
+            className="text-3xl lg:text-5xl font-bold tracking-tight text-foreground"
           >
-            <span className="size-2 rounded-full bg-primary shrink-0" />
-            FAQs
-          </Badge>
-          <h2 className="text-3xl lg:text-5xl font-bold tracking-tight text-foreground">
             {heading}
-          </h2>
+          </RevealItem>
           {description ? (
-            <p className="text-base lg:text-lg text-muted-foreground max-w-lg">
+            <RevealItem
+              as="p"
+              className="text-base lg:text-lg text-muted-foreground max-w-lg"
+            >
               {description}
-            </p>
+            </RevealItem>
           ) : null}
-        </div>
-        <div className="bg-background border border-border rounded-3xl p-5 lg:p-8">
+        </RevealGroup>
+        <div className="bg-background border border-border rounded-3xl p-8 sm:p-10 lg:p-12">
           <Accordion defaultValue={["item-0"]} className="w-full flex flex-col">
             {faqs.map((faq, index) => (
               <AccordionItem

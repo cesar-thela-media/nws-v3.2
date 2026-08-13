@@ -1,15 +1,20 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Hero12 from "@/components/shadcn-space/blocks/hero-12";
 import CTA from "@/components/shadcn-space/blocks/cta-08/cta";
 import { site } from "@/data/site";
 import type { Location } from "@/data/locations";
+import { mergeLocationFolded } from "@/data/mergeFoldedCopy";
+import { LocationStickyGallery } from "@/components/LocationStickyGallery";
+import { photosForLocation } from "@/data/locationPhotos";
+import { FullBleedBackground } from "@/components/FullBleedBackground";
+import { Reveal, RevealGroup, RevealItem } from "@/components/Reveal";
 
 /**
  * Location family: hero-12 + shortened longform + sticky photo + local CTA (no map band).
  */
-export function LocationPage({ location }: { location: Location }) {
+export function LocationPage({ location: incoming }: { location: Location }) {
+  const location = mergeLocationFolded(incoming);
   const ctaHref =
     location.ctaHref ||
     (location.ctaLabel?.toLowerCase().includes("call") ||
@@ -25,6 +30,12 @@ export function LocationPage({ location }: { location: Location }) {
   const shortName = location.name.replace(/,?\s*TX$/i, "").trim();
   const bodyContent = location.body;
   const sectionsContent = location.sections;
+  const heroLead =
+    bodyContent.find((paragraph) => paragraph.length > 80) ||
+    location.formIntro ||
+    "";
+  const heroDescription =
+    heroLead.match(/^[^.!?]+[.!?]/)?.[0]?.trim() || heroLead;
 
   return (
     <>
@@ -32,7 +43,7 @@ export function LocationPage({ location }: { location: Location }) {
         badgeLead="Areas We Serve"
         badge={location.name}
         headline={location.h1}
-        description={location.body?.[0] || location.formIntro || ""}
+        description={heroDescription}
         imageSrc={heroSrc}
         imageAlt={location.heroImageAlt || `NWS remodeling project serving ${location.name}`}
         primaryCtaLabel={location.ctaLabel || "Get in touch"}
@@ -44,29 +55,20 @@ export function LocationPage({ location }: { location: Location }) {
       <section className="py-12 md:py-20 bg-background" data-location-longform>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12">
           <div className="lg:col-span-5 order-1">
-            <div className="lg:sticky lg:top-28 rounded-2xl overflow-hidden border border-border shadow-[var(--shadow-card)]">
-              <Image
-                src={heroSrc}
-                alt={`Remodeling services in ${location.name}`}
-                width={800}
-                height={960}
-                sizes="(max-width: 1024px) 100vw, 42vw"
-                className="w-full h-auto object-cover max-h-[28rem] lg:max-h-none"
-              />
-            </div>
+            <LocationStickyGallery
+              images={photosForLocation(heroSrc)}
+              alt={`Remodeling services in ${location.name}`}
+            />
           </div>
 
           <div className="lg:col-span-7 prose-nws order-2">
-            <h2 className="text-[22px] md:text-[28px] text-foreground font-bold tracking-tight !mt-0">
+            <Reveal as="h2" className="text-[22px] md:text-[28px] text-foreground font-bold tracking-tight !mt-0">
               {location.h1}
-            </h2>
+            </Reveal>
             {bodyContent.map((p) => (
               <p key={p.slice(0, 48)}>{p}</p>
             ))}
 
-            {location.slug === "park-row-tx" ? (
-              <h3 className="mt-10">Complete Renovation Solutions for Your Property</h3>
-            ) : null}
             {sectionsContent?.map((section) => (
               <div key={section.heading} className="mt-10">
                 <h3>{section.heading}</h3>
@@ -88,8 +90,11 @@ export function LocationPage({ location }: { location: Location }) {
                             href={item.href}
                             className="text-primary font-semibold hover:underline"
                           >
-                            {item.label}
+                            {item.label.trim()}
                           </Link>
+                          {item.sourceLine ? (
+                            <span className="sr-only">{item.sourceLine}</span>
+                          ) : null}
                           {item.detail ? <>: {item.detail}</> : null}
                         </span>
                       </li>
@@ -110,44 +115,62 @@ export function LocationPage({ location }: { location: Location }) {
       </section>
 
       <section
-        className="relative py-14 md:py-16 overflow-hidden bg-[#0f1416] text-white"
+        className="relative py-24 sm:py-28 md:py-32 lg:py-40 overflow-hidden bg-[#0f1416] text-white"
         data-location-local-cta
       >
+        <FullBleedBackground
+          src={heroSrc}
+          overlayClassName="bg-[#0f1416]/55"
+        />
         <div
-          className="absolute inset-0 bg-[color-mix(in_oklab,var(--primary)_12%,transparent)]"
+          className="absolute inset-0 z-[1] bg-[color-mix(in_oklab,var(--primary)_18%,transparent)]"
           aria-hidden
         />
-        <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-primary font-semibold text-sm !m-0 mb-2">
+        <RevealGroup className="relative z-10 max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 text-center flex flex-col items-center gap-6 sm:gap-8">
+          <RevealItem
+            as="p"
+            className="text-primary font-semibold text-sm tracking-[0.14em] uppercase !m-0"
+          >
             Local presence
-          </p>
-          <h2 className="text-2xl sm:text-3xl font-bold text-white !m-0 mb-4">
+          </RevealItem>
+          <RevealItem
+            as="h2"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white !m-0 text-balance leading-[1.15]"
+          >
             {location.formTitle || `Building in ${shortName}`}
-          </h2>
+          </RevealItem>
           {location.formIntro ? (
-            <p className="text-white/75 mb-8 !m-0">{location.formIntro}</p>
+            <RevealItem
+              as="p"
+              className="text-base sm:text-lg md:text-xl text-white/75 leading-[1.8] max-w-3xl !m-0"
+            >
+              {location.formIntro}
+            </RevealItem>
           ) : (
-            <p className="text-white/75 mb-8 !m-0">
+            <RevealItem
+              as="p"
+              className="text-base sm:text-lg md:text-xl text-white/75 leading-[1.8] max-w-3xl !m-0"
+            >
               Talk with our Richmond team about your next remodel or custom home
               in {shortName}.
-            </p>
+            </RevealItem>
           )}
-          <div className="flex flex-wrap items-center justify-center gap-3">
+          <RevealItem className="flex flex-wrap items-center justify-center gap-4 pt-2">
             <Button
-              className="rounded-[4px] h-11 !text-white"
+              className="rounded-[4px] h-12 px-6 !text-white"
               render={<a href={`tel:${site.phone.officeTel}`} />}
             >
               Call {site.phone.office}
             </Button>
             <Button
               variant="outline"
-              className="rounded-[4px] h-11 !border-white/70 !bg-transparent !text-white hover:!bg-white/15 hover:!text-white shadow-none"
+              className="rounded-[4px] h-12 px-6 !border-white/70 !bg-transparent !text-white hover:!bg-white/15 hover:!text-white shadow-none"
               render={<Link href="/contact/" />}
             >
               Request a consult
             </Button>
-          </div>
-        </div>
+          </RevealItem>
+        </RevealGroup>
       </section>
 
       <CTA />

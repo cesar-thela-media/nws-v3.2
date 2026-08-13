@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/carousel";
 import AutoScroll from "embla-carousel-auto-scroll";
 import { useMemo } from "react";
+import { RevealGroup, RevealItem } from "@/components/Reveal";
 
 export type Hero08Card = {
   src: string;
@@ -32,7 +33,7 @@ export type Hero08Props = {
 };
 
 /**
- * Gallery hero-08: centered header + large landscape marquee (full-bleed edges).
+ * Gallery hero-08: landscape marquee first, then title + CTAs.
  */
 export default function HeroSection({
   eyebrow = "Project gallery",
@@ -77,55 +78,12 @@ export default function HeroSection({
 
   return (
     <section
-      className="bg-background pt-14 sm:pt-16 w-full max-w-full overflow-x-clip"
+      className="bg-background pt-20 sm:pt-24 w-full max-w-full overflow-x-clip"
       data-hero-08
     >
-      {/* Centered header - full description, no mid-sentence cutoff */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 w-full min-w-0">
-        <div className="flex flex-col items-center text-center gap-3 max-w-3xl mx-auto py-5 sm:py-6 w-full min-w-0">
-          <span className="w-fit max-w-full px-3 py-0.5 text-sm font-medium text-primary bg-primary/10 rounded-lg">
-            {eyebrow}
-          </span>
-          <div className="flex flex-col gap-2 items-center w-full min-w-0">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground tracking-tight !m-0 text-balance max-w-full">
-              {heading}
-            </h1>
-            <p className="text-sm sm:text-base font-normal text-muted-foreground max-w-2xl !m-0 text-pretty">
-              {description}
-            </p>
-          </div>
-          <div className="flex flex-wrap items-center justify-center gap-3 pt-1 w-full">
-            <Button
-              className="relative text-sm font-semibold rounded-[4px] h-11 p-1 ps-5 pe-14 group transition-all duration-500 hover:ps-14 hover:pe-5 w-full min-[380px]:w-fit max-w-full overflow-hidden cursor-pointer !text-white"
-              render={<Link href={primaryCtaHref} />}
-            >
-              <span className="relative z-10 transition-all duration-500">
-                {primaryCtaLabel}
-              </span>
-              <div className="absolute right-1 w-9 h-9 bg-white text-primary rounded-[4px] flex items-center justify-center transition-all duration-500 group-hover:right-[calc(100%-40px)] group-hover:rotate-45">
-                <ArrowUpRight size={16} />
-              </div>
-            </Button>
-            <Button
-              variant="outline"
-              className="h-11 px-5 rounded-[4px] text-foreground cursor-pointer"
-              render={
-                secondaryHref.startsWith("tel:") ? (
-                  <a href={secondaryHref} />
-                ) : (
-                  <Link href={secondaryHref} />
-                )
-              }
-            >
-              {secondaryCtaLabel}
-            </Button>
-          </div>
-        </div>
-      </div>
-
-      {/* Full-bleed marquee - large cards, continuous edge-to-edge feed */}
+      {/* Full-bleed marquee sits above the title on every gallery page */}
       <div
-        className="relative pb-6 sm:pb-8 w-full overflow-hidden"
+        className="relative pt-2 sm:pt-4 pb-8 sm:pb-10 w-full overflow-hidden"
         data-hero-08-marquee
       >
         <Carousel
@@ -149,7 +107,7 @@ export default function HeroSection({
                 key={`${card.src}-${index}`}
                 className="group pl-3 sm:pl-4 basis-auto flex-none"
               >
-                <div className="relative w-[min(22rem,calc(100vw-3rem))] sm:w-[26rem] md:w-[28rem] lg:w-[32rem] aspect-[16/10] rounded-xl overflow-hidden border border-border shadow-md">
+                <div className="relative w-[min(28rem,calc(100vw-2rem))] sm:w-[34rem] md:w-[40rem] lg:w-[46rem] xl:w-[52rem] aspect-[16/10] rounded-xl overflow-hidden border border-border shadow-md">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={card.src}
@@ -161,7 +119,7 @@ export default function HeroSection({
                     aria-hidden
                   />
                   <div className="absolute inset-x-0 bottom-0 z-10 px-4 py-3.5 text-center">
-                    <p className="text-sm sm:text-base font-semibold tracking-tight text-white !m-0 leading-snug drop-shadow-sm line-clamp-2">
+                    <p className="text-base sm:text-lg font-semibold tracking-tight text-white !m-0 leading-snug drop-shadow-sm line-clamp-2">
                       {card.title}
                     </p>
                   </div>
@@ -170,6 +128,51 @@ export default function HeroSection({
             ))}
           </CarouselContent>
         </Carousel>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 w-full min-w-0">
+        <RevealGroup className="flex flex-col items-center text-center gap-3 max-w-3xl mx-auto pt-2 pb-10 sm:pb-12 w-full min-w-0">
+          <RevealItem
+            as="span"
+            className="w-fit max-w-full px-3 py-0.5 text-sm font-medium text-primary bg-primary/10 rounded-lg"
+          >
+            {eyebrow}
+          </RevealItem>
+          <RevealItem className="flex flex-col gap-2 items-center w-full min-w-0">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground tracking-tight !m-0 text-balance max-w-full">
+              {heading}
+            </h1>
+            <p className="text-sm sm:text-base font-normal text-muted-foreground max-w-2xl !m-0 text-pretty">
+              {description}
+            </p>
+          </RevealItem>
+          <RevealItem className="flex flex-col min-[400px]:flex-row flex-wrap items-stretch min-[400px]:items-center justify-center gap-3 pt-1 w-full min-w-0">
+            <Button
+              className="relative text-sm font-semibold rounded-[4px] h-11 p-1 ps-5 pe-14 group transition-all duration-500 hover:ps-14 hover:pe-5 w-full min-[400px]:w-fit max-w-full overflow-hidden cursor-pointer !text-white shrink min-w-0"
+              render={<Link href={primaryCtaHref} />}
+            >
+              <span className="relative z-10 transition-all duration-500">
+                {primaryCtaLabel}
+              </span>
+              <div className="absolute right-1 w-9 h-9 bg-white text-primary rounded-[4px] flex items-center justify-center transition-all duration-500 group-hover:right-[calc(100%-40px)] group-hover:rotate-45">
+                <ArrowUpRight size={16} />
+              </div>
+            </Button>
+            <Button
+              variant="outline"
+              className="h-11 px-5 rounded-[4px] text-foreground cursor-pointer w-full min-[400px]:w-auto"
+              render={
+                secondaryHref.startsWith("tel:") ? (
+                  <a href={secondaryHref} />
+                ) : (
+                  <Link href={secondaryHref} />
+                )
+              }
+            >
+              {secondaryCtaLabel}
+            </Button>
+          </RevealItem>
+        </RevealGroup>
       </div>
     </section>
   );

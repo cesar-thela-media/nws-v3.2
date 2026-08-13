@@ -70,7 +70,10 @@ test("bento-grid-02 uses Fort Bend NWS framing not SaaS workspace demo", () => {
 });
 
 test("navbar has no Contact nav item; Book Now still goes to /contact/", () => {
-  const nav = read("src/components/shadcn-space/blocks/navbar-02/navbar.tsx");
+  const nav = [
+    read("src/components/shadcn-space/blocks/navbar-07/index.tsx"),
+    read("src/components/shadcn-space/blocks/navbar-07/navbar.tsx"),
+  ].join("\n");
   assert.doesNotMatch(
     nav,
     /title:\s*"Contact"/,

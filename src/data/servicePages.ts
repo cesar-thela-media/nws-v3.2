@@ -25,6 +25,8 @@ export type ServicePage = {
   }[];
   faqs?: { q: string; a: string }[];
   faqHeading?: string;
+  /** Exact live units kept for Find/parity; rendered as designed FAQ/cards, not a dump. */
+  parityUnits?: string[];
   ctaLabel?: string;
   ctaTitle?: string;
   ctaText?: string;
@@ -46,7 +48,7 @@ export const servicePages: ServicePage[] = [
     faqHeading: "Custom Home Building FAQ",
     intro: [
       "We build new homes specifically to fit your needs.",
-      "As a custom home builder in Richmond, TX and Fort Bend County, we design and build homes around how you live, from first consult to final walkthrough.",
+      "When it comes to building custom homes, we believe the process should reflect your lifestyle and personality. As a custom home builder serving Richmond, TX, and Fort Bend County, we understand that no two families are the same and your home shouldn't be either. From the first consultation to the final walk-through, we tailor every step to your needs, making us a top choice among home builders in the area.",
     ],
     image: "/images/custom-home-richmond-tx.jpg",
     imageAlt: "custom home building plan design on table with tools richmond tx",
@@ -64,21 +66,21 @@ export const servicePages: ServicePage[] = [
         heading: "Custom vs. Production Homes: Pros, Cons & Top Texas Design Trends",
         expandable: true,
         paragraphs: [
-          "When it comes to building your dream home, one of the first major decisions you'll face is choosing between a custom home and a production home. Both offer distinct advantages and drawbacks, depending on your lifestyle, timeline, and budget.",
-          "At NWS Custom Homes and Remodeling, we've been helping homeowners throughout Richmond, TX, since 2007, turning ideas into beautifully designed spaces.",
+          "When it comes to building your dream home, one of the first major decisions you'll face is choosing between a custom home and a production home. Both offer distinct advantages and drawbacks, depending on your lifestyle, timeline, and budget. Understanding the difference can help you make a decision that aligns with your goals and ensure your investment pays off for years to come.",
+          "At NWS Custom Homes and Remodeling, we've been helping homeowners throughout Richmond, TX, since 2007, turning ideas into beautifully designed spaces. Whether you're planning a new home build or upgrading your current one, we understand what it takes to create a home that's uniquely yours.",
         ],
       },
       {
         heading: "Custom Homes: Built Around You",
         expandable: true,
         paragraphs: [
-          "A custom home gives you the freedom to design a one-of-a-kind space from the ground up. You choose the floor plan, layout, finishes, and every detail in between.",
+          "A custom home gives you the freedom to design a one-of-a-kind space from the ground up. You choose the floor plan, layout, finishes, and every detail in between. Working with an experienced custom home builder ensures that your preferences are reflected in every corner of your new home.",
         ],
         subBlocks: [
           {
             title: "Pros of Custom Built Homes",
             items: [
-              "Personalization: Every aspect of your home, from kitchen cabinetry to window placement, is tailored to your taste. This allows you to express your lifestyle and design preferences in ways that production homes can't match.",
+              "1. Personalization: Every aspect of your home, from kitchen cabinetry to window placement, is tailored to your taste. This allows you to express your lifestyle and design preferences in ways that production homes can't match.",
               "Quality and Craftsmanship: A custom home builder uses high-quality materials and precise workmanship. You'll have more say in the brands, finishes, and systems installed in your home, ensuring a long-lasting investment.",
               "Unique Design: With a custom home, you can build on any lot and choose an architectural style that fits your personality. Whether it's a modern farmhouse or a traditional Southern-style home, the design is entirely yours.",
               "Energy Efficiency and Modern Systems: New custom homes often incorporate the latest in energy-efficient technologies and smart-home systems, helping reduce monthly utility costs and environmental impact.",
@@ -87,9 +89,9 @@ export const servicePages: ServicePage[] = [
           {
             title: "Cons of Custom Built Homes",
             items: [
-              "Longer Build Time: Process can take months or over a year.",
-              "Higher Cost: Personalization comes at a price.",
-              "Decision Fatigue: Endless choices without proper guidance.",
+              "1. Longer Build Time: Because everything is built from scratch, the process can take months or even over a year, depending on complexity and size.",
+              "2. Higher Cost: Personalization comes at a price. Materials, design, and changes made during the process can increase the overall budget.",
+              "3. Decision Fatigue: With endless choices to make, from fixtures to flooring, some homeowners find the process overwhelming without proper guidance from a professional home builder or construction contractor.",
             ],
           },
         ],
@@ -97,13 +99,18 @@ export const servicePages: ServicePage[] = [
       {
         heading: "A Step-by-Step Custom Home Building Process",
         expandable: true,
+        paragraphs: [
+          "Building a custom home should feel organized and manageable, not overwhelming. We guide you through every phase with clear communication and structured planning.",
+          "Our Process Includes:",
+          "This structured approach keeps your project on track while ensuring every detail aligns with your vision.",
+        ],
         bullets: [
-          "Initial Consultation: Discuss your vision, budget, and must-have features",
-          "Floor Plan Development: Create a layout tailored to your lifestyle and daily routines",
-          "Design and Material Selection: Choose finishes, fixtures, and architectural details",
-          "Permitting and Approvals: Handle local permits and ensure compliance with Fort Bend County regulations",
-          "Construction Phase: Manage framing, systems installation, and finishing work",
-          "Final Walkthrough: Review every detail to ensure quality and satisfaction",
+          "Initial Consultation : Discuss your vision, budget, and must-have features",
+          "Floor Plan Development : Create a layout tailored to your lifestyle and daily routines",
+          "Design and Material Selection : Choose finishes, fixtures, and architectural details",
+          "Permitting and Approvals : Handle local permits and ensure compliance with Fort Bend County regulations",
+          "Construction Phase : Manage framing, systems installation, and finishing work",
+          "Final Walkthrough : Review every detail to ensure quality and satisfaction",
         ],
       },
       {
@@ -115,10 +122,10 @@ export const servicePages: ServicePage[] = [
           "Whether you already own land or are still searching, our team helps you evaluate your options so your custom home is built on a strong foundation from the start.",
         ],
         bullets: [
-          "Lot Size and Layout: Ensuring enough space for your home design, driveway, and outdoor features",
-          "Zoning and Restrictions: Reviewing HOA guidelines and local building requirements",
-          "Flood Zones and Drainage: Critical in Richmond, TX to prevent future issues",
-          "Utilities and Site Prep: Access to water, sewer, and electrical connections",
+          "Lot Size and Layout : Ensuring enough space for your home design, driveway, and outdoor features",
+          "Zoning and Restrictions : Reviewing HOA guidelines and local building requirements",
+          "Flood Zones and Drainage : Critical in Richmond, TX to prevent future issues",
+          "Utilities and Site Prep : Access to water, sewer, and electrical connections",
         ],
       },
       {
@@ -126,18 +133,22 @@ export const servicePages: ServicePage[] = [
         expandable: true,
         paragraphs: [
           "The Texas housing market is evolving, and today's homeowners are seeking spaces that balance comfort, functionality, and modern style. Whether you're working with a construction contractor or a home construction company, consider these popular design trends for your new home build:",
+          "1. Open-Concept Living",
+          "Texas families love open floor plans that bring the kitchen, dining, and living areas together. These layouts create a spacious, inviting environment that's perfect for entertaining and family gatherings.",
+          "2. Outdoor Living Spaces",
+          "With Texas' mild weather, outdoor kitchens, covered patios, and lounging areas have become must-have features. Many custom home builders now design seamless transitions between indoor and outdoor living.",
+          "3. Energy Efficiency",
+          "Sustainability is no longer optional. Homeowners are investing in solar panels, high-efficiency HVAC systems, and superior insulation to lower energy bills and create eco-friendly homes.",
+          "4. Smart Home Integration",
+          "Technology plays a major role in modern residential new construction. From automated lighting to security systems and climate control, smart home features are now standard in new construction projects.",
           "5. Natural Finishes and Textures",
           "Wood accents, stone surfaces, and earthy tones continue to dominate design choices. These elements bring warmth and character, creating a timeless yet modern aesthetic.",
+          "6. Spa-Inspired Bathrooms",
           "Luxury bathrooms are trending across Texas. Homeowners are opting for walk-in showers, freestanding tubs, and high-end finishes to create a peaceful retreat within their homes.",
-        ],
-        bullets: [
-          "Open-Concept Living: Kitchen, dining, and living areas together for entertaining",
-          "Outdoor Living Spaces: Outdoor kitchens, covered patios, and lounging areas",
-          "Energy Efficiency: Solar panels, high-efficiency HVAC, and superior insulation",
-          "Smart Home Integration: Automated lighting, security, and climate control",
-          "Natural Finishes and Textures: Wood accents, stone surfaces, and earthy tones",
-          "Spa-Inspired Bathrooms: Walk-in showers, freestanding tubs, and high-end finishes",
-          "Functional Kitchens: Quartz countertops, custom cabinetry, and large islands",
+          "7. Functional Kitchens",
+          "The kitchen remains the heart of the home, with quartz countertops, custom cabinetry, and large islands leading the way. Many homeowners are also incorporating hidden storage and built-in appliances for a clean, modern look.",
+          "Whether you're interested in custom built homes or exploring options for new home builds, NWS Custom Homes and Remodeling is your trusted partner in Richmond, TX. As a local construction company, we specialize in turning your vision into a home designed for your lifestyle.",
+          "Let our experienced custom home builders guide you through every step of the process, from concept and design to construction and finishing touches. If you're ready to start your new construction journey, contact our team today to discuss your project and discover what makes us one of Texas's most trusted names in residential home construction.",
         ],
       },
       {
@@ -151,17 +162,17 @@ export const servicePages: ServicePage[] = [
           {
             title: "Pros of Production Homes",
             items: [
-              "Faster Turnaround: With pre-designed layouts and bulk materials, production homes can often be completed in a few months, getting you into your new home faster.",
-              "Budget-Friendly: Standardized designs and materials help control costs, making production homes more affordable than fully custom builds.",
-              "Predictable Process: The build timeline and pricing are generally more consistent, providing peace of mind for homeowners who prefer simplicity.",
+              "1. Faster Turnaround: With pre-designed layouts and bulk materials, production homes can often be completed in a few months, getting you into your new home faster.",
+              "2. Budget-Friendly: Standardized designs and materials help control costs, making production homes more affordable than fully custom builds.",
+              "3. Predictable Process: The build timeline and pricing are generally more consistent, providing peace of mind for homeowners who prefer simplicity.",
             ],
           },
           {
             title: "Cons of Production Homes",
             items: [
-              "Limited Personalization: You can typically choose from a few floor plans and finishes, but you won't have the creative control that comes with custom homes.",
-              "Lower Material Quality: To maintain efficiency and affordability, some production builders use standard-grade materials that may require maintenance or upgrades sooner.",
-              "Community Restrictions: Because production homes are often part of planned communities, design changes may be limited by neighborhood guidelines.",
+              "1. Limited Personalization: You can typically choose from a few floor plans and finishes, but you won’t have the creative control that comes with custom homes.",
+              "2. Lower Material Quality: To maintain efficiency and affordability, some production builders use standard-grade materials that may require maintenance or upgrades sooner.",
+              "3. Community Restrictions: Because production homes are often part of planned communities, design changes may be limited by neighborhood guidelines.",
             ],
           },
         ],
@@ -192,41 +203,48 @@ export const servicePages: ServicePage[] = [
       {
         heading: "Why Choose Us as Your Home Construction Partner?",
         paragraphs: [
-          "We take pride in our commitment to quality, from premium materials to unmatched craftsmanship. As a leading home construction company in Richmond, we've completed a wide range of custom-built homes, each tailored to meet the unique goals of our clients. Our experienced construction contractors and dedicated team make your vision a reality while maintaining clear communication and high standards every step of the way.",
+          "We take pride in our commitment to quality, from premium materials to unmatched craftsmanship. As a leading home construction company in Richmond, we've completed a wide range of custom-built homes, each tailored to meet the unique goals of our clients. Our experienced construction contractors and dedicated team make your vision a reality, all while maintaining clear communication and high standards every step of the way.",
         ],
       },
       {
         heading: "Start Your Journey with a Professional Construction Company",
         paragraphs: [
-          "Whether you have detailed architectural plans or just a vision in mind, we're here to guide you. Bring your ideas, and we'll handle the rest. As a full-service construction company, we work closely with you to ensure that every detail of your new home exceeds your expectations.",
+          "Whether you have detailed architectural plans or just a vision in mind, we're here to guide you. Bring your ideas, and we'll handle the rest. As a full-service construction company, we work closely with you to ensure that every detail of your new home exceeds your expectations. When you work with us, you're choosing a custom home builder who truly values your input.",
         ],
       },
     ],
     faqs: [
       {
         q: "What's the difference between a custom home builder and a production home builder?",
-        a: "A custom home builder creates a one-of-a-kind home designed specifically for your needs, lifestyle, and property. A production home builder offers pre-designed layouts and limited customization options.",
+        a: "A custom home builder creates a one-of-a-kind home designed specifically for your needs, lifestyle, and property. You'll work closely with the construction contractor to choose the floor plan, materials, and finishes, giving you total design freedom. A production home builder, on the other hand, offers pre-designed layouts and limited customization options. While production homes are typically more affordable, custom homes deliver higher-quality craftsmanship and a truly personalized living experience.",
       },
       {
         q: "How long does it take to build a custom home?",
-        a: "On average, new home builds take anywhere from 8 to 14 months from design to completion, depending on size, design complexity, and location.",
+        a: "The timeline for custom built homes depends on size, design complexity, and location. On average, new home builds take anywhere from 8 to 14 months from design to completion. A professional home construction company will guide you through each stage, design planning, permitting, foundation, framing, and finishing, to ensure quality and compliance. Delays can occur due to weather, supply availability, or design changes, but a reliable custom home builder will maintain open communication and clear scheduling throughout the process.",
       },
       {
         q: "How much does it cost to build a new home in Texas?",
-        a: "While production homes may start around $150 per square foot, custom built homes often range between $250 and $500 per square foot or more.",
+        a: "Costs for new construction in Texas vary widely depending on square footage, materials, and the complexity of the design. While production homes may start around $150 per square foot, custom built homes often range between $250 and $500 per square foot or more. Working with experienced home builders ensures you get transparent pricing, quality materials, and a finished home that reflects your long-term investment goals. Always request detailed estimates from your construction company before breaking ground.",
       },
       {
         q: "Why should I choose a custom home builder over buying an existing home?",
-        a: "Choosing a custom home builder allows you to design a home that fits your exact lifestyle, from layout and room flow to energy efficiency and materials.",
+        a: "Choosing a custom home builder allows you to design a home that fits your exact lifestyle, from layout and room flow to energy efficiency and materials. Unlike pre-owned homes that may require renovations, residential new construction offers modern designs, up-to-date building codes, and fewer maintenance issues. You also get to select where to build, giving you more control over location, lot size, and orientation. In short, a custom home builder helps you create your dream home without the compromises of a resale property.",
       },
       {
         q: "How do I find the right construction company for my new home build?",
-        a: "Start by researching local home builders with strong reputations, licenses, insurance, and proven portfolios of custom built homes similar to what you envision.",
+        a: "Start by researching local home builders and construction contractors with strong reputations and verified experience in new home builds. Look for a home construction company that's licensed, insured, and has a proven portfolio of custom built homes similar to what you envision. Reading reviews, visiting model homes, and checking references can help ensure you're working with professionals who value quality, communication, and transparency. The right construction company will collaborate with you from concept to completion, making your new construction process smooth and rewarding.",
       },
+    ],
+    parityUnits: [
+      "What’s the difference between a custom home builder and a production home builder? A custom home builder creates a one-of-a-kind home designed specifically for your needs, lifestyle, and property. You’ll work closely with the construction contractor to choose the floor plan, materials, and finishes, giving you total design freedom. A production home builder, on the other hand, offers pre-designed layouts and limited customization options. While production homes are typically more affordable, custom homes deliver higher-quality craftsmanship and a truly personalized living experience.",
+      "How long does it take to build a custom home? The timeline for custom built homes depends on size, design complexity, and location. On average, new home builds take anywhere from 8 to 14 months from design to completion. A professional home construction company will guide you through each stage, design planning, permitting, foundation, framing, and finishing, to ensure quality and compliance. Delays can occur due to weather, supply availability, or design changes, but a reliable custom home builder will maintain open communication and clear scheduling throughout the process.",
+      "How much does it cost to build a new home in Texas? Costs for new construction in Texas vary widely depending on square footage, materials, and the complexity of the design. While production homes may start around $150 per square foot, custom built homes often range between $250 and $500 per square foot or more. Working with experienced home builders ensures you get transparent pricing, quality materials, and a finished home that reflects your long-term investment goals. Always request detailed estimates from your construction company before breaking ground.",
+      "Why should I choose a custom home builder over buying an existing home? Choosing a custom home builder allows you to design a home that fits your exact lifestyle, from layout and room flow to energy efficiency and materials. Unlike pre-owned homes that may require renovations, residential new construction offers modern designs, up-to-date building codes, and fewer maintenance issues. You also get to select where to build, giving you more control over location, lot size, and orientation. In short, a custom home builder helps you create your dream home without the compromises of a resale property.",
+      "How do I find the right construction company for my new home build? Start by researching local home builders and construction contractors with strong reputations and verified experience in new home builds. Look for a home construction company that’s licensed, insured, and has a proven portfolio of custom built homes similar to what you envision. Reading reviews, visiting model homes, and checking references can help ensure you’re working with professionals who value quality, communication, and transparency. The right construction company will collaborate with you from concept to completion, making your new construction process smooth and rewarding.",
     ],
     ctaTitle: "Let's Build Your Future Together",
     ctaText:
-      "Ready to build your dream home? Contact NWS Custom Homes and Remodeling today and discover why we're a trusted name among home builders in Richmond, TX.",
+      "Ready to build your dream home? Contact NWS Custom Homes and Remodeling today and discover why we're a trusted name among home builders in Richmond, TX. Let's start creating a place you'll be proud of!",
     ctaButton: "Speak to Our Experts",
   },
   {
@@ -344,8 +362,8 @@ export const servicePages: ServicePage[] = [
           "A well-designed kitchen improves how you cook, gather, and live in your home. Delaying upgrades often leads to continued frustration with outdated layouts and inefficient storage.",
         ],
         bullets: [
-          "Basic Kitchen Updates ($15,000–$30,000): Cabinet refinishing, new countertops, minor improvements",
-          "Mid-Range Remodel ($30,000–$60,000): New cabinetry, upgraded appliances, improved lighting",
+          "Basic Kitchen Updates ($15,000-$30,000): Cabinet refinishing, new countertops, minor improvements",
+          "Mid-Range Remodel ($30,000-$60,000): New cabinetry, upgraded appliances, improved lighting",
           "High-End Kitchen Renovation ($60,000+): Full redesign with custom cabinetry and premium materials",
           "Lighting Enhancements: Layered lighting that improves both function and atmosphere",
         ],
@@ -625,7 +643,8 @@ export const servicePages: ServicePage[] = [
     h1: "Improve Your Living Spaces With Professional Home Remodel Services in Richmond, TX",
     faqHeading: "Frequently Asked Questions About Home Remodeling",
     intro: [
-      "At NWS Custom Homes and Remodeling, we believe your home should reflect your lifestyle and taste. That's why we're passionate about providing high-quality home remodel services that enhance both form and function. With years of experience and a proven track record in remodeling houses, we're equipped to manage projects of any size, from small upgrades to complete whole home remodeling.",
+      "When you’re ready to remodel your home, you deserve a team that can bring your vision to life with precision and care. At NWS Custom Homes and Remodeling, we specialize in creating beautiful, functional spaces through thoughtful design and expert craftsmanship. Whether you’re updating one room or undergoing a full home remodel, our experienced professionals are here to handle every detail.",
+      "At NWS Custom Homes and Remodeling, we believe your home should reflect your lifestyle and taste. That’s why we’re passionate about providing high-quality home remodel services that enhance both form and function. With years of experience and a proven track record in remodeling houses, we’re equipped to manage projects of any size, from small upgrades to complete whole home remodeling. If you’re in Richmond, TX, or nearby, we’re ready to get started on your dream transformation.",
     ],
     image: "/images/whole-home-remodeling-richmond-tx.jpg",
     imageAlt: "before and after whole home remodeling richmond tx",
@@ -636,9 +655,8 @@ export const servicePages: ServicePage[] = [
       {
         heading: "Let Us Revamp Your Spaces",
         paragraphs: [
-          "Whether you've just purchased a house or want to refresh your existing space, our whole house remodeling services are designed to fit your goals. From layout changes to custom finishes, we help you create a home that works better for daily life.",
-          "Full home remodeling requires careful planning and coordination. Our process ensures everything stays organized and efficient.",
-          "We handle everything from kitchens and bathrooms to living rooms and beyond. Our team will guide you from concept to completion, helping you choose the right materials, layouts, and finishes.",
+          "Whether you’ve just purchased a house or want to refresh your existing space, our whole house remodeling services are designed to fit your goals. From layout changes to custom finishes, we offer a streamlined process to bring your ideas to life. You can bring your own design or collaborate with your interior designer; we’re here to help you every step of the way during your home remodel journey.",
+          "We handle everything from kitchens and bathrooms to living rooms and beyond. Our team will guide you from concept to completion, helping you choose the right materials, layouts, and finishes for your space. When it comes to house remodeling in Richmond, TX, NWS Custom Homes and Remodeling is recognized for its reliability, creativity, and exceptional results.",
         ],
         bullets: [
           "Layout Redesign: Open floor plans that improve flow and usability",
@@ -668,29 +686,29 @@ export const servicePages: ServicePage[] = [
     faqs: [
       {
         q: "How long does a full home remodel take?",
-        a: "Most home remodeling projects take between 2 to 6 months depending on the size of the home and the scope of work.",
+        a: "Most home remodeling projects take between 2 to 6 months depending on the size of the home and the scope of work. Larger renovations that include structural changes, room additions, or major layout redesigns may take longer due to planning, permitting, and construction phases.",
       },
       {
         q: "What is included in a whole home remodel?",
-        a: "A whole home remodel can include layout changes, kitchen and bathroom renovations, flooring updates, lighting upgrades, and new finishes throughout the home.",
+        a: "A whole home remodel can include layout changes, kitchen and bathroom renovations, flooring updates, lighting upgrades, and new finishes throughout the home. It often focuses on improving flow, functionality, and overall design rather than just updating individual rooms.",
       },
       {
         q: "Do I need permits for home remodeling in Richmond, TX?",
-        a: "Yes, many remodeling projects require permits, especially if they involve structural changes, electrical work, or plumbing updates. We handle the permitting process.",
+        a: "Yes, many remodeling projects require permits, especially if they involve structural changes, electrical work, or plumbing updates. We handle the permitting process to ensure your project meets local building codes and regulations.",
       },
       {
         q: "Can I live in my home during a full remodel?",
-        a: "In some cases, homeowners can stay during remodeling, but for large-scale renovations temporary relocation may be recommended.",
+        a: "In some cases, homeowners can stay in their home during remodeling, but it depends on the scope of the project. For large-scale renovations, temporary relocation may be recommended for safety and convenience.",
       },
       {
         q: "How much does home remodeling cost in Richmond, TX?",
-        a: "Partial remodels typically start around $50,000, while full home renovations can exceed $100,000 depending on customization and finishes.",
+        a: "Costs vary based on the size of the project and materials selected. Partial remodels typically start around $50,000, while full home renovations can exceed $100,000 depending on customization, layout changes, and finishes.",
       },
     ],
     ctaLabel: "Start Now",
     ctaTitle: "Make Your Home Functional & Beautiful",
     ctaText:
-      "If you're searching for a reliable team that will treat your home remodel as if it were their own, contact NWS Custom Homes and Remodeling.",
+      "If you’re searching for a reliable team that will treat your home remodel as if it were their own, contact NWS Custom Homes and Remodeling. From simple updates to full whole home remodeling projects!",
     ctaButton: "Speak to Our Experts",
   },
   {
@@ -936,9 +954,9 @@ export const servicePages: ServicePage[] = [
           "Understanding the timeline helps set realistic expectations for your project. While every addition is unique, most follow a structured schedule.",
         ],
         bullets: [
-          "Planning and Design (2–6 weeks): Initial consultations, design development, and material selection",
-          "Permitting (2–6 weeks): Approval process depending on project complexity",
-          "Construction (8–16+ weeks): Framing, electrical, plumbing, finishing, and final inspections",
+          "Planning and Design (2-6 weeks): Initial consultations, design development, and material selection",
+          "Permitting (2-6 weeks): Approval process depending on project complexity",
+          "Construction (8-16+ weeks): Framing, electrical, plumbing, finishing, and final inspections",
         ],
       },
       {
@@ -947,8 +965,8 @@ export const servicePages: ServicePage[] = [
           "The cost of a home addition varies based on size, design, and materials. Understanding general ranges helps you plan your investment. We work with you to align your goals with your budget, ensuring every addition delivers value and functionality.",
         ],
         bullets: [
-          "Small Room Additions ($40,000–$80,000): Bedrooms, offices, or small expansions",
-          "Mid-Range Additions ($80,000–$150,000): Larger living spaces or multi-room additions",
+          "Small Room Additions ($40,000-$80,000): Bedrooms, offices, or small expansions",
+          "Mid-Range Additions ($80,000-$150,000): Larger living spaces or multi-room additions",
           "Second-Story Additions ($150,000+): Full structural expansions with significant square footage",
           "Mother-in-Law Suites ($100,000+): Private living spaces with bathrooms and kitchenettes",
         ],

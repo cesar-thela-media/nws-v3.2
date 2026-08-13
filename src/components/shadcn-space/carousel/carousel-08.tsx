@@ -10,6 +10,7 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel";
 import { locations } from "@/data/locations";
+import { RevealGroup, RevealItem } from "@/components/Reveal";
 
 export interface CardItem {
   id: string;
@@ -139,19 +140,25 @@ const AppleCardCarousel = ({
       data-carousel-08
       data-carousel-orientation={orientation}
     >
-      <div className="px-4 sm:px-6 lg:px-8 xl:px-16 max-w-7xl mx-auto mb-8 sm:mb-10 flex flex-col items-center gap-2 text-center">
-        <p className="text-sm sm:text-base font-semibold text-primary !m-0">
+      <RevealGroup className="px-4 sm:px-6 lg:px-8 xl:px-16 max-w-7xl mx-auto mb-8 sm:mb-10 flex flex-col items-center gap-2 text-center">
+        <RevealItem as="p" className="text-sm sm:text-base font-semibold text-primary !m-0">
           {label}
-        </p>
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground !m-0 max-w-4xl">
+        </RevealItem>
+        <RevealItem
+          as="h1"
+          className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground !m-0 max-w-4xl"
+        >
           {heading}
-        </h1>
+        </RevealItem>
         {description ? (
-          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl !m-0 mt-1">
+          <RevealItem
+            as="p"
+            className="text-base sm:text-lg text-muted-foreground max-w-2xl !m-0 mt-1"
+          >
             {description}
-          </p>
+          </RevealItem>
         ) : null}
-      </div>
+      </RevealGroup>
 
       <Carousel
         setApi={setApi}

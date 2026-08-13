@@ -19,12 +19,12 @@ function read(...parts) {
   return fs.readFileSync(path.join(root, ...parts), "utf8");
 }
 
-test("layout wires navbar-02 (not navbar-04 demo block) as site chrome", () => {
+test("layout wires navbar-07 (not navbar-04 demo block) as site chrome", () => {
   const layout = read("src", "app", "layout.tsx");
   assert.match(
     layout,
-    /navbar-02\/navbar/,
-    "root layout must import navbar-02",
+    /navbar-07/,
+    "root layout must import navbar-07",
   );
   assert.doesNotMatch(
     layout,
@@ -34,14 +34,14 @@ test("layout wires navbar-02 (not navbar-04 demo block) as site chrome", () => {
   assert.match(layout, /<Navbar\s*\/>/, "layout must render Navbar");
 });
 
-test("navbar-02 ships NWS nav titles (not Features/Analytics demo)", () => {
+test("navbar-07 ships NWS nav titles (not Features/Analytics demo)", () => {
   const nav = read(
     "src",
     "components",
     "shadcn-space",
     "blocks",
-    "navbar-02",
-    "navbar.tsx",
+    "navbar-07",
+    "index.tsx",
   );
   for (const title of [
     "Home",
@@ -59,20 +59,8 @@ test("navbar-02 ships NWS nav titles (not Features/Analytics demo)", () => {
   }
   assert.doesNotMatch(nav, /title:\s*"Features"/, "no demo Features link");
   assert.doesNotMatch(nav, /title:\s*"Analytics"/, "no demo Analytics link");
-  assert.match(nav, /overHero|data-over-hero/, "must support over-hero mode");
-  assert.match(nav, /bg-transparent/, "over-hero uses transparent chrome");
-  assert.match(nav, /isHome|pathname === ["']\/["']/, "home-only over-hero path");
-  // Force light color against globals `a { color: inherit }`
-  assert.match(
-    nav,
-    /!text-white\/85|!text-white/,
-    "over-hero links must force white with !important utilities",
-  );
-  assert.match(
-    nav,
-    /navigation-menu-link\]\]:!text-white/,
-    "header-scoped selector forces plain <a> nav links white over hero",
-  );
+  assert.match(nav, /canonicalServiceCatalog/);
+  assert.match(nav, /canonicalServiceAreaCatalog/);
 });
 
 test("isLightComputedColor accepts oklab white and rejects near-black", () => {
@@ -98,7 +86,7 @@ test("hero pulls under navbar for over-image merge + readable CTAs", () => {
   );
   assert.match(
     hero,
-    /-mt-14|-mt-16|sm:-mt-16|sm:-mt-\[4\.25rem\]/,
+    /-mt-14|-mt-16|-mt-20|sm:-mt-16|sm:-mt-24|sm:-mt-\[4\.25rem\]/,
     "hero negative margin under navbar",
   );
   assert.match(

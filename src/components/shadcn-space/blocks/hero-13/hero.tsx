@@ -234,13 +234,13 @@ const HeroSection = () => {
               <p className="text-sm font-semibold text-primary mb-3 !m-0">
                 About NWS
               </p>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-foreground uppercase !m-0">
+              <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-foreground uppercase !m-0 text-balance">
                 Your go-to home builders
               </h1>
             </div>
-            <div className="flex group items-center gap-1 shrink-0">
+            <div className="flex group items-center gap-1 shrink min-w-0 flex-wrap">
               <Button
-                className="px-6 py-3.5 h-auto rounded-[4px] cursor-pointer !text-white"
+                className="px-5 sm:px-6 py-3.5 h-auto rounded-[4px] cursor-pointer !text-white"
                 render={<a href={`tel:${site.phone.officeTel}`} />}
               >
                 Speak to Our Experts
@@ -266,9 +266,9 @@ const HeroSection = () => {
         </div>
       </div>
 
-      <div className="border-t border-border">
+      <div className="border-t border-border px-4 sm:px-6 lg:px-8 pb-10 md:pb-16">
         <div
-          className="relative max-w-7xl mx-auto overflow-hidden aspect-video bg-black"
+          className="relative max-w-7xl mx-auto overflow-hidden aspect-video bg-black rounded-2xl"
           data-about-video
           data-about-video-mode={
             !isPlaying

@@ -2,8 +2,8 @@
  * Real client reviews as published on nws-homes.com
  * (names, dates, quotes from Google / Angi on the live site).
  *
- * Avatar photos are professional stock-style portraits for UI only, 
- * not verified Google profile photos of the named reviewers.
+ * Avatars match the live Maps/Angi treatment: a letter initial when
+ * the source profile is a letter, never a stock human portrait.
  * Project images are real NWS portfolio photos.
  */
 
@@ -15,8 +15,8 @@ export type Review = {
   initial: string;
   projectTag: string;
   projectImage: string;
-  /** Portrait photo for avatar circle */
-  avatar: string;
+  /** Unused: letter initials are the Maps/Angi avatar. */
+  avatar?: string;
 };
 
 export const reviews: Review[] = [
@@ -27,7 +27,7 @@ export const reviews: Review[] = [
     source: "Google",
     projectTag: "Kitchen & living remodel",
     projectImage: "/images/kitchen-gallery-1.jpeg",
-    avatar: "/images/avatars/avatar-1.jpg",
+    avatar: undefined,
     text: "NWS remodeled the downstairs of our house including the kitchen, dining, 2 living rooms, and a half bath. It turned out beautifully and they were so easy to work with. Each time an issue presented itself, they handled it calmly, professionally, and worked to find a pragmatic solution. Also, they were able to complete the job in just 3 months! We have been very impressed and plan to use their services for our next home improvement project!",
   },
   {
@@ -37,7 +37,7 @@ export const reviews: Review[] = [
     source: "Google",
     projectTag: "Custom home build",
     projectImage: "/images/custom-homes-1.jpeg",
-    avatar: "/images/avatars/avatar-2.jpg",
+    avatar: undefined,
     text: "NWS took care of our full home build during the middle of the pandemic. Giovani and Alejandro are great communicators and kept us up to date on the home build and any hiccups along the way (long lead times for supplies, thanks Covid). We are very pleased with the outcome of our home and service provided during the building experience.",
   },
   {
@@ -47,7 +47,7 @@ export const reviews: Review[] = [
     source: "Google",
     projectTag: "Multiple projects",
     projectImage: "/images/remodeling-1.jpeg",
-    avatar: "/images/avatars/avatar-3.jpg",
+    avatar: undefined,
     text: "We have used NWS for several home projects, from minor things to major renovations. We keep going back to them because they do good work!",
   },
   {
@@ -57,7 +57,7 @@ export const reviews: Review[] = [
     source: "Google",
     projectTag: "Renovation",
     projectImage: "/images/remodeling-2.jpeg",
-    avatar: "/images/avatars/avatar-4.jpg",
+    avatar: undefined,
     text: "These guys are top notch. Contractors are usually tough, but Alejandro and crew always responded, always showed up and made sure the job was done right! We will use NWS again no doubt.",
   },
   {
@@ -67,7 +67,7 @@ export const reviews: Review[] = [
     source: "Google",
     projectTag: "Full renovation",
     projectImage: "/images/whole-home-remodeling-richmond-tx.jpg",
-    avatar: "/images/avatars/avatar-5.jpg",
+    avatar: undefined,
     text: "First class operation and team from building scope of work to final punch list. Alejandro was the Manager over our home renovation and did a great job handling everything we asked of he and his team. Would highly recommend to anyone looking to build custom or have a custom renovation completed.",
   },
   {
@@ -77,7 +77,7 @@ export const reviews: Review[] = [
     source: "Google",
     projectTag: "Four bathrooms",
     projectImage: "/images/bathroom-gallery-1.jpeg",
-    avatar: "/images/avatars/avatar-6.jpg",
+    avatar: undefined,
     text: "NWS has just remodeled all 4 of our bathrooms and did a fantastic job. They are friendly and easy to work with and the quality of their work is very good. I would highly recommend them for any Remodeling work you need done",
   },
   {
@@ -87,7 +87,7 @@ export const reviews: Review[] = [
     source: "Google",
     projectTag: "Patio & roof",
     projectImage: "/images/custom-homes-3.jpeg",
-    avatar: "/images/avatars/avatar-7.jpg",
+    avatar: undefined,
     text: "NWS did a great job doing the concrete work and building a 12′ x 40′ covered patio along with a total roof replacement. They were professional, easy to work with, and kept the work area clean. I am very pleased with the results. Based on my experience with NWS, I would use them again.",
   },
   {
@@ -97,7 +97,7 @@ export const reviews: Review[] = [
     source: "Angi",
     projectTag: "Patio & roof",
     projectImage: "/images/remodeling-3.jpeg",
-    avatar: "/images/avatars/avatar-8.jpg",
+    avatar: undefined,
     text: "Everything went well. The employees were professional and very detailed. I was updated daily on progress and what to expect by the end of the job. The project did not go over budget. It was performed in a timely manner as explained prior to work beginning. The worksite was clean and a follow up crew came by to pick up any left over debris. The results were great. The roof was inspected after installation with no problems or errors reported. The patio looks great. The painters did a good job as well and there were no spills or spots of paint left behind.",
   },
   {
@@ -107,7 +107,7 @@ export const reviews: Review[] = [
     source: "Angi",
     projectTag: "Remodeling",
     projectImage: "/images/kitchen-gallery-2.jpeg",
-    avatar: "/images/avatars/avatar-9.jpg",
+    avatar: undefined,
     text: "Very well and all work completed promptly",
   },
   {
@@ -117,7 +117,7 @@ export const reviews: Review[] = [
     source: "Angi",
     projectTag: "Bath, outdoor kitchen & pool",
     projectImage: "/images/bathroom-gallery-2.jpeg",
-    avatar: "/images/avatars/avatar-10.jpg",
+    avatar: undefined,
     text: "Excellent! Very pleased with NWS remodeling. Great value and they can do anything! NWS remodeled our master bathroom and added an outdoor kitchen with a 500 square foot deck as well as replastered our pool and did new flagstone surrounding pool. The work was top notch and they worked with us when we had questions or concerns and were always there to make the final outcome top notch. Would highly recommend and have used them on several smaller projects since and have always been impressed.",
   },
 ];
@@ -127,7 +127,7 @@ export type TestimonialCard = {
   username: string;
   body: string;
   initial: string;
-  avatar: string;
+  avatar?: string;
   projectImage: string;
   source: "Google" | "Angi";
   date: string;

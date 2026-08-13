@@ -3,7 +3,7 @@ import type { CSSProperties } from "react";
 import { Geist, Manrope } from "next/font/google";
 import "./globals.css";
 import { AnnouncementBar } from "@/components/AnnouncementBar";
-import Navbar from "@/components/shadcn-space/blocks/navbar-02/navbar";
+import Navbar from "@/components/shadcn-space/blocks/navbar-07";
 import Footer from "@/components/shadcn-space/blocks/footer-01/footer";
 import { cn } from "@/lib/utils";
 
@@ -56,12 +56,12 @@ export default function RootLayout({
       <body
         className={cn(
           geist.className,
-          "min-h-screen antialiased bg-background text-foreground font-sans",
+          "min-h-screen antialiased bg-background text-foreground font-sans overflow-x-clip",
         )}
       >
         <AnnouncementBar />
         <Navbar />
-        <main className="min-h-[50vh]">{children}</main>
+        <main className="min-h-[50vh] w-full max-w-full overflow-x-clip">{children}</main>
         <Footer />
       </body>
     </html>

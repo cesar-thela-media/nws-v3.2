@@ -22,15 +22,13 @@ export function ServiceDetailHero({
   ctaHref?: string;
 }) {
   const photos = getServiceHeroPhotos(slug);
-  const shortDesc =
-    description && description.length > 160
-      ? description.slice(0, 157).trim() + "..."
-      : description ||
-        "See project photos matched to this service, then talk with our Richmond team.";
+  const heroDescription =
+    description ||
+    "See project photos matched to this service, then talk with our Richmond team.";
 
   return (
     <div
-      className="pt-14 sm:pt-16 border-b border-border"
+      className="pt-16 sm:pt-20 md:pt-24 border-b border-border"
       data-service-detail-hero
     >
       <Gallery03
@@ -38,7 +36,7 @@ export function ServiceDetailHero({
         compact
         eyebrow={eyebrow || "Service"}
         heading={heading}
-        description={shortDesc}
+        description={heroDescription}
         items={photos.items}
         ctaLabel={ctaLabel || `Call ${site.phone.office}`}
         ctaHref={ctaHref || `tel:${site.phone.officeTel}`}

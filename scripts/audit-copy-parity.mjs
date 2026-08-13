@@ -79,7 +79,7 @@ const BOILERPLATE = new Set(
     "mobile:",
     "hours",
     "business hours",
-  ].map((s) => s.toLowerCase())
+  ].map((s) => normalize(s))
 );
 
 function normalize(s) {
@@ -104,15 +104,133 @@ function compact(s) {
   return normalize(s).replace(/ /g, "");
 }
 
-function significantPhrases(text) {
-  const n = normalize(text);
-  const words = n.split(" ").filter((w) => w.length >= 4);
-  const phrases = [];
-  for (let i = 0; i < words.length - 5; i += 4) {
-    phrases.push(words.slice(i, i + 6).join(" "));
+function extractBracedRecord(fileText, slug) {
+  const needle = `slug: "${slug}"`;
+  const hit = fileText.indexOf(needle);
+  if (hit < 0) return "";
+  let start = hit;
+  while (start > 0 && fileText[start] !== "{") start -= 1;
+  let depth = 0;
+  for (let i = start; i < fileText.length; i += 1) {
+    if (fileText[i] === "{") depth += 1;
+    if (fileText[i] === "}") {
+      depth -= 1;
+      if (depth === 0) return fileText.slice(start, i + 1);
+    }
   }
-  if (n.length >= 40) phrases.unshift(n.slice(0, 50));
-  return phrases;
+  return fileText.slice(hit);
+}
+
+function readIfExists(relativePath) {
+  const full = path.join(root, relativePath);
+  return fs.existsSync(full) ? fs.readFileSync(full, "utf8") : "";
+}
+
+const SHARED_CHROME = [
+  "src/data/site.ts",
+  "src/data/informationArchitecture.ts",
+  "src/data/homeCopy.ts",
+  "src/app/layout.tsx",
+  "src/components/AnnouncementBar.tsx",
+  "src/components/shadcn-space/blocks/navbar-07/index.tsx",
+  "src/components/shadcn-space/blocks/navbar-07/navbar.tsx",
+  "src/components/shadcn-space/blocks/footer-01/footer.tsx",
+];
+
+function restoreHaystack(routePath) {
+  const file = readIfExists("src/data/corpusRestores.ts");
+  const escaped = routePath.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const match = file.match(
+    new RegExp(`"${escaped}":\\s*\\[([\\s\\S]*?)\\n\\s*\\]`, "m"),
+  );
+  return match ? match[0] : "";
+}
+
+function haystackForRoute(routeUrl) {
+  const routePath = routeUrl.replace("https://www.nws-homes.com", "") || "/";
+  const parts = [SHARED_CHROME.map(readIfExists).join("\n"), restoreHaystack(routePath)];
+
+  if (routePath === "/") {
+    parts.push(
+      readIfExists("src/app/page.tsx"),
+      readIfExists("src/data/reviews.ts"),
+      readIfExists("src/data/faqs.ts"),
+      readIfExists("src/components/shadcn-space/blocks/hero-01/hero.tsx"),
+      readIfExists("src/components/shadcn-space/blocks/about-us-06/about-us.tsx"),
+      readIfExists("src/components/shadcn-space/blocks/portfolio-06/portfolio.tsx"),
+      readIfExists("src/components/shadcn-space/blocks/cta-08/cta.tsx"),
+      readIfExists("src/components/shadcn-space/blocks/testimonial-07/testimonial.tsx"),
+      readIfExists("src/components/shadcn-space/blocks/contact-01/contact-info.tsx"),
+      readIfExists("src/components/shadcn-space/blocks/contact-01/index.tsx"),
+      readIfExists("src/components/shadcn-space/blocks/faq-07/faq.tsx"),
+      readIfExists("src/components/AreasServeMarquee.tsx"),
+    );
+  } else if (routePath === "/about/") {
+    parts.push(
+      readIfExists("src/app/about/page.tsx"),
+      readIfExists("src/components/shadcn-space/blocks/hero-13/hero.tsx"),
+      readIfExists("src/components/shadcn-space/blocks/about-us-13/about-us.tsx"),
+      readIfExists("src/components/shadcn-space/blocks/bento-grid-02/feature-cards-grid.tsx"),
+      readIfExists("src/components/shadcn-space/blocks/cta-08/cta.tsx"),
+    );
+  } else if (routePath === "/contact/") {
+    parts.push(
+      readIfExists("src/app/contact/page.tsx"),
+      readIfExists("src/components/shadcn-space/blocks/contact-01/contact-info.tsx"),
+      readIfExists("src/components/shadcn-space/blocks/contact-01/contact-form.tsx"),
+      readIfExists("src/components/shadcn-space/blocks/contact-01/index.tsx"),
+    );
+  } else if (routePath === "/faqs/") {
+    parts.push(
+      readIfExists("src/app/faqs/page.tsx"),
+      readIfExists("src/data/faqs.ts"),
+      readIfExists("src/components/shadcn-space/blocks/faq-07/faq.tsx"),
+    );
+  } else if (routePath === "/services/") {
+    parts.push(
+      readIfExists("src/app/services/page.tsx"),
+      readIfExists("src/data/services.ts"),
+      readIfExists("src/data/nws-blocks.ts"),
+      readIfExists("src/components/ServicesCarouselHero.tsx"),
+      readIfExists("src/components/shadcn-space/blocks/services-10/services.tsx"),
+    );
+  } else if (routePath === "/areas-we-serve/") {
+    parts.push(
+      readIfExists("src/app/areas-we-serve/page.tsx"),
+      readIfExists("src/data/locations.ts"),
+      readIfExists("src/components/AreasGrid.tsx"),
+    );
+  } else if (routePath.startsWith("/services/")) {
+    const slug = routePath.split("/").filter(Boolean)[1];
+    parts.push(
+      extractBracedRecord(readIfExists("src/data/servicePages.ts"), slug),
+      readIfExists("src/app/services/[slug]/page.tsx"),
+      readIfExists("src/components/ServiceDetailSections.tsx"),
+      readIfExists("src/components/ServiceDetailHero.tsx"),
+      readIfExists("src/components/ServiceSiblingNav.tsx"),
+      readIfExists("src/components/shadcn-space/blocks/faq-07/faq.tsx"),
+      readIfExists("src/components/shadcn-space/blocks/cta-08/cta.tsx"),
+    );
+  } else if (routePath.endsWith("-gallery/")) {
+    const slug = routePath.replace(/\//g, "");
+    parts.push(
+      extractBracedRecord(readIfExists("src/data/galleries.ts"), slug) ||
+        readIfExists("src/data/galleries.ts"),
+      readIfExists(`src/app/${slug}/page.tsx`),
+      readIfExists("src/components/GalleryPage.tsx"),
+    );
+  } else {
+    const slug = routePath.replace(/\//g, "");
+    parts.push(
+      extractBracedRecord(readIfExists("src/data/locations.ts"), slug),
+      readIfExists(`src/app/${slug}/page.tsx`),
+      readIfExists("src/components/LocationPage.tsx"),
+      readIfExists("src/components/shadcn-space/blocks/hero-12/hero.tsx"),
+      readIfExists("src/components/shadcn-space/blocks/cta-08/cta.tsx"),
+    );
+  }
+
+  return parts.join("\n");
 }
 
 function isBoilerplate(text) {
@@ -154,28 +272,15 @@ const CHROME_HEADINGS = new Set([
   "start your kitchen renovation project",
 ]);
 
-function foundInLocal(text) {
+function foundInRoute(text, routeNorm, routeCompact) {
   const n = normalize(text);
   if (!n) return false;
   if (CHROME_HEADINGS.has(n)) return "chrome";
-  if (localNorm.includes(n)) return "exact";
+  if (routeNorm.includes(n)) return "exact";
   const c = compact(text);
-  if (c.length >= 24 && localCompact.includes(c)) return "exact";
-  if (n.length > 50 && localNorm.includes(n.slice(0, 48))) return "prefix";
-  // title with/without brand suffix
+  if (c.length >= 24 && routeCompact.includes(c)) return "exact";
   const stripped = n.replace(/\s*nws custom homes and remodeling\s*$/, "").trim();
-  if (stripped.length >= 20 && localNorm.includes(stripped)) return "title-suffix";
-  // split list item: "label : detail" or "label , detail"
-  const phrases = significantPhrases(text);
-  if (phrases.length >= 2) {
-    const hits = phrases.filter((p) => p && localNorm.includes(p)).length;
-    if (hits / phrases.length >= 0.6) return "restructured";
-  }
-  const words = n.split(" ").filter((w) => w.length >= 5);
-  if (words.length >= 8) {
-    const hits = words.filter((w) => localNorm.includes(w)).length;
-    if (hits / words.length >= 0.85) return "restructured";
-  }
+  if (stripped.length >= 20 && routeNorm.includes(stripped)) return "title-suffix";
   return false;
 }
 
@@ -225,7 +330,13 @@ const presentByHow = {};
 
 for (const route of routes.routes) {
   const units = collectUnits(route);
-  const results = units.map((u) => ({ ...u, how: foundInLocal(u.text) }));
+  const haystack = haystackForRoute(route.url);
+  const routeNorm = normalize(haystack);
+  const routeCompact = compact(haystack);
+  const results = units.map((u) => ({
+    ...u,
+    how: foundInRoute(u.text, routeNorm, routeCompact),
+  }));
   const ok = results.filter((r) => r.how).length;
   const miss = results.filter((r) => !r.how);
   total += results.length;
@@ -253,7 +364,7 @@ for (const route of routes.routes) {
     pct: results.length ? Math.round((ok / results.length) * 100) : 100,
     missing: miss.map((r) => ({
       kind: r.kind,
-      text: r.text.length > 180 ? r.text.slice(0, 180) + "…" : r.text,
+      text: r.text,
     })),
   });
 }
@@ -307,7 +418,7 @@ const areaSlugs = [
 ];
 
 const navSrc =
-  fs.readFileSync(path.join(root, "src", "components", "shadcn-space", "blocks", "navbar-02", "navbar.tsx"), "utf8") +
+  fs.readFileSync(path.join(root, "src", "components", "shadcn-space", "blocks", "navbar-07", "index.tsx"), "utf8") +
   fs.readFileSync(path.join(root, "src", "components", "shadcn-space", "blocks", "hero-01", "header.tsx"), "utf8") +
   fs.readFileSync(path.join(root, "src", "data", "informationArchitecture.ts"), "utf8");
 
@@ -321,23 +432,25 @@ const knownDeviations = [
     id: "home-h1-compacted",
     source: "Choose a Dependable Residential Remodeling Services in Richmond, TX",
     local: "Dependable Remodeling Services in Richmond, TX",
-    status: foundInLocal("Dependable Remodeling Services in") ? "intentional-compact" : "missing",
+    status: localNorm.includes(normalize("Choose a Dependable Residential Remodeling Services in Richmond, TX"))
+      ? "present-sr-only"
+      : "missing",
   },
   {
     id: "about-h1",
     source: "Your Go-to Home Builders",
-    local: foundInLocal("Your Go-to Home Builders") ? "present" : "missing/rewritten",
-    status: foundInLocal("Your Go-to Home Builders") ? "present" : "missing",
+    local: localNorm.includes(normalize("Your Go-to Home Builders")) ? "present" : "missing/rewritten",
+    status: localNorm.includes(normalize("Your Go-to Home Builders")) ? "present" : "missing",
   },
   {
     id: "testimonials-heading",
     source: "Check What Our Clients Are Saying",
-    local: foundInLocal("Check What Our Clients Are Saying")
+    local: localNorm.includes(normalize("Check What Our Clients Are Saying"))
       ? "present"
-      : foundInLocal("What homeowners say about NWS")
+      : localNorm.includes(normalize("What homeowners say about NWS"))
         ? "rewritten"
         : "missing",
-    status: foundInLocal("Check What Our Clients Are Saying") ? "present" : "rewritten",
+    status: localNorm.includes(normalize("Check What Our Clients Are Saying")) ? "present" : "rewritten",
   },
   {
     id: "area-hero-rewritten",
