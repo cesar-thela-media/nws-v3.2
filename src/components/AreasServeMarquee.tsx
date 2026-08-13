@@ -13,7 +13,7 @@ const areas = locations.map((loc) => ({
   href: loc.href === "#" ? "/areas-we-serve/" : loc.href,
   image:
     loc.heroImage || "/images/hero-custom-home-remodeling-paralax-image.jpg",
-  blurb: "Custom homes & remodeling",
+  blurb: loc.name,
 }));
 
 function AreaCard({

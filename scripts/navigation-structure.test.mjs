@@ -33,6 +33,43 @@ test("canonical navigation includes every service and linked service area", () =
   assert.match(ia, /slug: "richmond-tx", label: "Richmond, TX", href: null/);
 });
 
+test("navbar lists every source area and service by exact client label with no invented taglines", () => {
+  const sourceAreas = [
+    "All Areas We Serve",
+    "Sugar Land, TX",
+    "Katy, TX",
+    "Fulshear, TX",
+    "West Side of Houston, TX",
+    "Cinco Ranch, TX",
+    "Rosenberg, TX",
+    "Weston Lakes, TX",
+    "Park Row, TX",
+  ];
+  const sourceServices = [
+    "Custom Home Building",
+    "Remodeling",
+    "Kitchen Remodeling",
+    "Bathroom Remodeling",
+    "Whole Home Remodeling",
+    "Shower Remodel",
+    "Bathtub Remodel",
+    "Room Additions & Home Additions",
+    "Basement Remodeling / Finishing",
+    "Garage Conversions & Remodeling",
+    "Living Room & Open Concept Remodeling",
+  ];
+  assert.match(navbar, /title: service\.label/);
+  assert.match(navbar, /title: area\.label/);
+  assert.match(navbar, /title: "All Areas We Serve"/);
+  for (const label of sourceAreas.slice(1)) assert.match(ia, new RegExp(`label: "${label.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"`));
+  for (const label of sourceServices) assert.match(ia, new RegExp(`label: "${label.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"`));
+  assert.doesNotMatch(navbar, /Local remodeling team/);
+  assert.doesNotMatch(navbar, /Builds & renovations/);
+  assert.doesNotMatch(navbar, /Richmond & Fort Bend County/);
+  assert.doesNotMatch(navbar, /description: "Custom homes & remodeling"/);
+  assert.doesNotMatch(navbar, /description: "NWS Custom Homes and Remodeling"/);
+});
+
 test("mounted footer consumes all canonical services and exact review CTA", () => {
   assert.match(footer, /canonicalServiceCatalog\.map/);
   assert.match(footer, /site\.social\.googleReview/);

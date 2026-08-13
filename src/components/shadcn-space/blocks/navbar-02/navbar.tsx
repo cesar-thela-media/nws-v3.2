@@ -28,11 +28,6 @@ import { cn } from "@/lib/utils";
 import {
   ArrowRight,
   ChevronDown,
-  Hammer,
-  Home,
-  Images,
-  CookingPot,
-  MapPin,
   TextAlignJustify,
   X,
 } from "lucide-react";
@@ -62,25 +57,19 @@ export type NavigationSection = {
 const serviceNavigationItems: NavigationItem[] = canonicalServiceCatalog.map(
   (service) => ({
     title: service.label,
-    description: "NWS Custom Homes and Remodeling",
-    icon: Hammer,
     href: service.href,
   }),
 );
 
 const areaNavigationItems: NavigationItem[] = [
   {
-    title: "Areas We Serve",
-    description: "Richmond & Fort Bend County",
-    icon: MapPin,
+    title: "All Areas We Serve",
     href: "/areas-we-serve/",
   },
   ...canonicalServiceAreaCatalog
     .filter((area) => area.href)
     .map((area) => ({
       title: area.label,
-      description: "Custom homes & remodeling",
-      icon: MapPin,
       href: area.href as string,
     })),
 ];
@@ -99,27 +88,19 @@ const navigationData: NavigationSection[] = [
     layout: "grid",
     items: [
       {
-        title: "Custom Homes",
-        description: "New construction projects",
-        icon: Home,
+        title: "Custom Homes Gallery",
         href: "/custom-homes-gallery/",
       },
       {
-        title: "Remodeling",
-        description: "Whole-home transformations",
-        icon: Hammer,
+        title: "Remodeling Gallery",
         href: "/remodeling-gallery/",
       },
       {
-        title: "Kitchens",
-        description: "Kitchen remodels",
-        icon: CookingPot,
+        title: "Kitchen Remodeling Gallery",
         href: "/kitchen-remodeling-gallery/",
       },
       {
-        title: "Bathrooms",
-        description: "Bath & shower projects",
-        icon: Images,
+        title: "Bathroom Remodeling Gallery",
         href: "/bathroom-remodeling-gallery/",
       },
     ],
@@ -251,22 +232,15 @@ const Navbar = () => {
                             <NavigationMenuLink
                               key={item.title}
                               href={item.href || "#"}
-                              className="flex items-center gap-3 rounded-lg hover:bg-muted/80 transition-all group mb-0 p-2 min-w-0"
+                              className="flex items-center gap-3 rounded-lg hover:bg-muted/80 transition-all group mb-0 px-3 py-2 min-w-0"
+                              data-nav-item={item.title}
                             >
-                              <div className="flex items-center justify-center p-3 rounded-lg bg-muted group-hover:bg-background transition-colors min-w-10 h-10">
-                                {item.icon ? <item.icon size={16} /> : null}
-                              </div>
-                              <div className="space-y-0.5">
-                                <div className="text-sm font-medium text-foreground mb-0 flex items-center gap-1">
-                                  <p className="!m-0">{item.title}</p>
-                                  <ArrowRight
-                                    size={12}
-                                    className="size-3 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200"
-                                  />
-                                </div>
-                                <p className="text-xs text-muted-foreground font-normal !m-0">
-                                  {item.description}
-                                </p>
+                              <div className="text-sm font-medium text-foreground mb-0 flex items-center gap-1 min-w-0">
+                                <p className="!m-0">{item.title}</p>
+                                <ArrowRight
+                                  size={12}
+                                  className="size-3 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 shrink-0"
+                                />
                               </div>
                             </NavigationMenuLink>
                           ))}
@@ -341,22 +315,13 @@ const Navbar = () => {
                                 <a
                                   key={item.title}
                                   href={item.href || "#"}
-                                  className="flex items-center gap-3 p-2 rounded-lg hover:bg-muted transition-colors"
+                                  className="flex items-center rounded-lg hover:bg-muted transition-colors px-3 py-2"
                                   onClick={() => setIsOpen(false)}
+                                  data-nav-item={item.title}
                                 >
-                                  <div className="flex items-center justify-center p-2 rounded-md bg-muted min-w-8 h-8">
-                                    {item.icon ? (
-                                      <item.icon size={16} />
-                                    ) : null}
-                                  </div>
-                                  <div className="flex flex-col">
-                                    <span className="text-sm font-medium">
-                                      {item.title}
-                                    </span>
-                                    <span className="text-xs text-muted-foreground">
-                                      {item.description}
-                                    </span>
-                                  </div>
+                                  <span className="text-sm font-medium">
+                                    {item.title}
+                                  </span>
                                 </a>
                               ))}
                             </div>
