@@ -29,7 +29,7 @@ export default function HomePage() {
       <HeroSection
         avatarList={avatarList}
         badge="We build new homes specifically to fit your needs."
-        headline="Dependable Remodeling Services in"
+        headline="Choose a Dependable Residential Remodeling Services in"
         highlight="Richmond, TX"
         subhead="Discover what it truly means to live in a custom-built or beautifully remodeled home with NWS Custom Homes and Remodeling. As a trusted name in residential remodeling services, we bring your vision to life with attention to detail, personalized design, and high-quality craftsmanship. We’re here to make your house feel like home, one thoughtful renovation at a time."
         primaryCta={{ label: "Book Now", href: "tel:2812992309" }}

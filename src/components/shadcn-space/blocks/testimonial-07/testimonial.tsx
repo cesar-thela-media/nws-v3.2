@@ -146,14 +146,13 @@ export default function Testimonial() {
                 variants={itemVariants}
                 className="text-center font-bold text-3xl sm:text-4xl lg:text-5xl tracking-tight !m-0 text-white"
               >
-                What homeowners say about NWS
+                Check What Our Clients Are Saying
               </motion.h2>
               <motion.p
                 variants={itemVariants}
                 className="text-center text-base sm:text-lg text-white/80 max-w-lg !m-0"
               >
-                Real Google &amp; Angi reviews, names, dates, and quotes as
-                published on nws-homes.com.
+                Don&apos;t Take Our Word For It
               </motion.p>
             </div>
           </div>

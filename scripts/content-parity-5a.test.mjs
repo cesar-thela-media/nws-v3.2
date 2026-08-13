@@ -20,7 +20,7 @@ const services = [
 test("home uses client metadata and approved source section labels", () => {
   assert.match(home, /Residential Remodeling Services Richmond, TX \| Contact Us Today!/);
   assert.match(home, /badge="We build new homes specifically to fit your needs\./);
-  assert.match(home, /Dependable Remodeling Services in/);
+  assert.match(home, /Choose a Dependable Residential Remodeling Services in/);
   assert.match(home, /label="Let’s Build Your Dreams"/);
   assert.match(home, /heading="Our Quality Services"/);
   assert.match(home, /<AreasServeMarquee \/>/);

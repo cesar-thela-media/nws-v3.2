@@ -29,13 +29,10 @@ export function LocationPage({ location }: { location: Location }) {
   return (
     <>
       <Hero12
-        badgeLead="Areas we serve"
-        badge={shortName}
-        headline={`${shortName} custom homes & remodels`}
-        description={
-          location.body?.[0] ||
-          `Local craftsmanship for ${shortName} and nearby Fort Bend communities since 2007.`
-        }
+        badgeLead="Areas We Serve"
+        badge={location.name}
+        headline={location.h1}
+        description={location.body?.[0] || location.formIntro || ""}
         imageSrc={heroSrc}
         imageAlt={location.heroImageAlt || `NWS remodeling project serving ${location.name}`}
         primaryCtaLabel={location.ctaLabel || "Get in touch"}

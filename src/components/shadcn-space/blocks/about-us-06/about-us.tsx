@@ -8,9 +8,9 @@ import { motion, useInView, type Variants } from "motion/react";
 import { useRef } from "react";
 
 const bullets = [
-  "Local knowledge of Fort Bend County homes and permitting",
-  "Custom builds and full remodels under one roof",
-  "Straightforward updates on schedule, materials, and budget",
+  "Custom home building, from lot selection and design to full construction",
+  "Whole home remodeling for top-to-bottom transformations",
+  "Kitchen remodeling to improve layout, functionality, and style",
 ];
 
 const ease = [0.21, 0.47, 0.32, 0.98] as const;
@@ -200,7 +200,7 @@ const AboutUs06 = () => {
                     className="px-8 h-12 md:h-14 text-base cursor-pointer !text-white hover:!text-white"
                     render={<a href="tel:2812992309" />}
                   >
-                    Speak with our team
+                    Speak to Our Experts
                   </Button>
                 </motion.div>
               </div>
