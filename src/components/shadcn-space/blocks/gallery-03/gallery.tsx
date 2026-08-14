@@ -213,7 +213,7 @@ export default function Gallery03({
         >
           <div
             className={cn(
-              "max-w-[96rem] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-8 sm:gap-10 min-w-0",
+              "max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-8 sm:gap-10 min-w-0",
               sectionPad,
             )}
           >
@@ -265,7 +265,7 @@ export default function Gallery03({
                     className="block w-full text-left border-0 bg-transparent p-0 cursor-pointer rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
                     aria-label={`View ${item.title} full size`}
                   >
-                    <Card className="group relative overflow-hidden rounded-2xl border-none p-0 aspect-[16/9] sm:aspect-[2/1] shadow-md ring-1 ring-white/20">
+                    <Card className="group relative overflow-hidden rounded-2xl border-none p-0 aspect-[16/10] shadow-md ring-1 ring-white/20">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={item.image}

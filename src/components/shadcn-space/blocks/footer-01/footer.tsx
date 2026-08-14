@@ -65,104 +65,105 @@ const Footer = () => {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="py-10 bg-primary text-white w-full max-w-full overflow-x-clip">
-      <div className="max-w-7xl xl:px-16 lg:px-8 px-4 mx-auto w-full min-w-0">
-        <div className="flex flex-col gap-6 sm:gap-12 min-w-0">
-          <div className="py-10 sm:py-12 grid grid-cols-1 min-[400px]:grid-cols-2 sm:grid-cols-4 lg:grid-cols-12 gap-x-6 sm:gap-x-8 gap-y-10 px-2 sm:px-6 xl:px-0">
-            <div className="col-span-1 min-w-0 sm:col-span-2 lg:col-span-4">
-              <div className="flex flex-col gap-6">
-                <Link href="/" className="w-fit">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={site.logoOnDark}
-                    alt={site.name}
-                    width={160}
-                    height={44}
-                    className="h-11 w-auto max-h-11 object-contain object-left drop-shadow-[0_1px_3px_rgba(0,0,0,0.35)]"
-                    style={{ height: 44, maxHeight: 44, width: "auto" }}
-                  />
-                </Link>
-                <p className="text-base font-normal text-white/85 !m-0">
-                  Custom homes & remodeling · Richmond, TX since 2007
-                </p>
-                <div
-                  className="flex flex-wrap items-center gap-x-4 gap-y-3"
-                  data-footer-socials
+    <footer className="bg-primary text-white w-full max-w-full overflow-x-clip">
+      <div className="max-w-7xl mx-auto w-full min-w-0 px-4 sm:px-6 lg:px-8 xl:px-16 py-16 sm:py-20">
+        <div className="flex flex-col gap-12 sm:gap-16 min-w-0">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-8">
+            <div className="flex flex-col gap-4 max-w-sm">
+              <Link href="/" className="w-fit">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={site.logoOnDark}
+                  alt={site.name}
+                  width={160}
+                  height={44}
+                  className="h-11 w-auto max-h-11 object-contain object-left drop-shadow-[0_1px_3px_rgba(0,0,0,0.35)]"
+                  style={{ height: 44, maxHeight: 44, width: "auto" }}
+                />
+              </Link>
+              <p className="text-base font-normal text-white/85 !m-0">
+                Custom homes & remodeling · Richmond, TX since 2007
+              </p>
+            </div>
+            <div className="flex flex-col gap-3" data-footer-socials>
+              <div className="flex items-center gap-5">
+                <a
+                  href={site.social.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/80 hover:text-white transition-colors"
+                  aria-label="Facebook"
                 >
-                  <a
-                    href={site.social.facebook}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-white/80 hover:text-white transition-colors"
-                    aria-label="Facebook"
-                  >
-                    <FacebookIcon />
-                  </a>
-                  <a
-                    href={site.social.instagram}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-white/80 hover:text-white transition-colors"
-                    aria-label="Instagram"
-                  >
-                    <InstagramIcon />
-                  </a>
-                  <a
-                    href={site.social.houzz}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm font-medium text-white/80 hover:text-white transition-colors"
-                  >
-                    Houzz
-                  </a>
-                  <a
-                    href={site.social.youtube}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-white/80 hover:text-white transition-colors"
-                    aria-label="YouTube"
-                  >
-                    <YouTubeIcon />
-                  </a>
-                  <a
-                    href={site.social.googleMaps}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-white/80 hover:text-white transition-colors"
-                    aria-label="Google Maps"
-                  >
-                    <MapsIcon />
-                  </a>
-                  <a
-                    href={site.social.googleReview}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm font-medium text-white/80 hover:text-white transition-colors"
-                  >
-                    Leave Us a Review!
-                  </a>
-                </div>
+                  <FacebookIcon />
+                </a>
+                <a
+                  href={site.social.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/80 hover:text-white transition-colors"
+                  aria-label="Instagram"
+                >
+                  <InstagramIcon />
+                </a>
+                <a
+                  href={site.social.youtube}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/80 hover:text-white transition-colors"
+                  aria-label="YouTube"
+                >
+                  <YouTubeIcon />
+                </a>
+                <a
+                  href={site.social.googleMaps}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/80 hover:text-white transition-colors"
+                  aria-label="Google Maps"
+                >
+                  <MapsIcon />
+                </a>
+              </div>
+              <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+                <a
+                  href={site.social.houzz}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm font-medium text-white/80 hover:text-white transition-colors"
+                >
+                  Houzz
+                </a>
+                <a
+                  href={site.social.googleReview}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm font-medium text-white/80 hover:text-white transition-colors"
+                >
+                  Leave Us a Review!
+                </a>
               </div>
             </div>
+          </div>
 
-            {footerSections.map(({ title, links }, index) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12">
+            {footerSections.map(({ title, links }) => (
               <div
-                key={index}
+                key={title}
                 className={
                   title === "Services"
-                    ? "col-span-1 min-[400px]:col-span-2 sm:col-span-2 lg:col-span-4"
-                    : "col-span-1 sm:col-span-2 lg:col-span-2"
+                    ? "sm:col-span-2 lg:col-span-6"
+                    : "lg:col-span-3"
                 }
               >
-                <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-5">
                   <p className="text-base font-semibold text-white !m-0">
                     {title}
                   </p>
                   <ul
                     className={
                       title === "Services"
-                        ? "grid grid-cols-2 gap-x-6 gap-y-3"
-                        : "flex flex-col gap-3"
+                        ? "grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-2.5"
+                        : "flex flex-col gap-2.5"
                     }
                   >
                     {links.map(({ title: linkTitle, href }) => (
@@ -180,12 +181,12 @@ const Footer = () => {
               </div>
             ))}
 
-            <div className="col-span-full sm:col-span-2 lg:col-span-2">
-              <div className="flex flex-col gap-4">
+            <div className="lg:col-span-3">
+              <div className="flex flex-col gap-5">
                 <p className="text-base font-semibold text-white !m-0">
                   Contact
                 </p>
-                <ul className="flex flex-col gap-3">
+                <ul className="flex flex-col gap-2.5">
                   <li>
                     <p className="text-base font-normal text-white/80 !m-0">
                       {site.location}
@@ -219,13 +220,16 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          <Separator
-            orientation="horizontal"
-            className="bg-white/25 data-[orientation=horizontal]:bg-white/25"
-          />
-          <p className="text-sm font-normal text-white/75 text-center !m-0">
-            ©{year}, NWS Custom Homes and Remodeling. All Rights Reserved.
-          </p>
+
+          <div className="flex flex-col gap-8">
+            <Separator
+              orientation="horizontal"
+              className="bg-white/25 data-[orientation=horizontal]:bg-white/25"
+            />
+            <p className="text-sm font-normal text-white/75 text-center !m-0">
+              ©{year}, NWS Custom Homes and Remodeling. All Rights Reserved.
+            </p>
+          </div>
         </div>
       </div>
     </footer>

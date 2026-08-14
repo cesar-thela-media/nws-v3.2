@@ -139,17 +139,31 @@ html {
   overflow-x: clip;
 }
 
+@keyframes nws-marquee-x {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(calc(-100% - var(--nws-mq-gap, 1rem)), 0, 0);
+  }
+}
+
+@keyframes nws-marquee-y {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(0, calc(-100% - var(--nws-mq-gap, 1rem)), 0);
+  }
+}
+
+.nws-mq:hover [data-nws-mq] {
+  animation-play-state: paused;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
-  }
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
   }
 }
 

@@ -83,34 +83,53 @@ const ContactForm = () => {
 
   if (submitted) {
     return (
-      <Card className="ring-0 p-5 sm:p-8 border-0 rounded-2xl bg-white shadow-lg w-full max-w-full">
-        <CardContent className="p-0">
-          <p className="text-lg font-medium text-foreground !m-0">
+      <Card className="ring-0 p-5 sm:p-7 border-0 rounded-2xl bg-white shadow-lg w-full max-w-full">
+        <CardContent className="p-0 flex flex-col gap-2">
+          <p className="text-sm font-semibold text-primary !m-0">
+            Start Your Project
+          </p>
+          <p className="text-lg font-bold text-foreground !m-0">
             Thanks, we received your message and will get back to you shortly.
+          </p>
+          <p className="text-sm text-muted-foreground !m-0">
+            We typically respond within one business day.
           </p>
         </CardContent>
       </Card>
     );
   }
 
+  const fieldClass =
+    "dark:bg-background h-10 shadow-xs w-full min-w-0";
+
   return (
     <div className="w-full max-w-full min-w-0">
-      {/* No slide-from-right on mobile - that animation left the card visually offset */}
-      <Card className="ring-0 p-5 sm:p-7 md:p-8 gap-5 sm:gap-6 md:gap-8 border-0 rounded-2xl bg-white shadow-lg w-full max-w-full min-w-0">
-        <CardHeader className="p-0 space-y-1">
+      <Card className="ring-0 p-5 sm:p-6 md:p-7 gap-4 border-0 rounded-2xl bg-white shadow-lg w-full max-w-full min-w-0">
+        <CardHeader className="p-0 space-y-2">
+          <p className="text-sm font-semibold text-primary !m-0">
+            Start Your Project
+          </p>
           <CardTitle className="text-xl sm:text-2xl font-bold tracking-tight text-foreground !m-0">
             We&apos;re Looking Forward to Work With You
           </CardTitle>
           <p className="text-sm text-muted-foreground !m-0">
             We typically respond within one business day.
           </p>
+          <p className="text-sm font-medium text-foreground bg-primary/10 border border-primary/20 rounded-lg px-3 py-2 !m-0">
+            Mention this website for a free consultation and 5% off your next
+            project.
+          </p>
         </CardHeader>
         <CardContent className="p-0">
-          <form onSubmit={handleSubmit} className="space-y-5" noValidate={false}>
-            <div role="status" aria-live="polite" className="min-h-5 text-sm text-red-700">{error}</div>
-            <div className="flex flex-col gap-5 sm:gap-6">
-              <div className="flex flex-col gap-4 sm:gap-5">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-3" noValidate={false}>
+            {error ? (
+              <div role="status" aria-live="polite" className="text-sm text-red-700">
+                {error}
+              </div>
+            ) : null}
+            <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <Label htmlFor="firstName" className="sr-only">First Name</Label>
                   <Input
                     id="firstName"
@@ -118,7 +137,7 @@ const ContactForm = () => {
                     placeholder="First name"
                     value={formData.firstName}
                     onChange={handleChange}
-                    className="dark:bg-background h-11 sm:h-10 shadow-xs w-full min-w-0"
+                    className={fieldClass}
                     required
                   />
                   <Label htmlFor="lastName" className="sr-only">Last Name</Label>
@@ -128,7 +147,7 @@ const ContactForm = () => {
                     placeholder="Last name"
                     value={formData.lastName}
                     onChange={handleChange}
-                    className="dark:bg-background h-11 sm:h-10 shadow-xs w-full min-w-0"
+                    className={fieldClass}
                     required
                   />
                 </div>
@@ -141,11 +160,11 @@ const ContactForm = () => {
                   type="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="dark:bg-background h-11 sm:h-10 shadow-xs w-full min-w-0"
+                  className={fieldClass}
                   required
                 />
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <Label htmlFor="phone" className="sr-only">Phone Number</Label>
                   <Input
                     id="phone"
@@ -154,7 +173,7 @@ const ContactForm = () => {
                     type="tel"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="dark:bg-background h-11 sm:h-10 shadow-xs w-full min-w-0"
+                    className={fieldClass}
                   />
                   <Label htmlFor="zip" className="sr-only">Zip Code</Label>
                   <Input
@@ -163,7 +182,7 @@ const ContactForm = () => {
                     placeholder="Zip code"
                     value={formData.zip}
                     onChange={handleChange}
-                    className="dark:bg-background h-11 sm:h-10 shadow-xs w-full min-w-0"
+                    className={fieldClass}
                   />
                 </div>
 
@@ -179,7 +198,7 @@ const ContactForm = () => {
                 >
                   <SelectTrigger
                     id="service"
-                    className="w-full min-w-0 h-11! sm:h-10! dark:bg-background shadow-xs"
+                    className="w-full min-w-0 h-10! dark:bg-background shadow-xs"
                   >
                     <SelectValue placeholder="Service of interest" />
                   </SelectTrigger>
@@ -226,7 +245,7 @@ const ContactForm = () => {
               <Button
                 type="submit"
                 size="lg"
-                className="h-11 w-full !bg-zinc-950 !text-white hover:!bg-zinc-900"
+                className="h-11 w-full !bg-primary !text-white hover:!bg-primary/90 font-semibold"
                 disabled={pending}
               >
                 Send message

@@ -155,13 +155,13 @@ export default function Testimonial() {
           </div>
           <motion.div
             variants={itemVariants}
-            className="relative w-full h-full max-h-[28rem] sm:max-h-96 flex flex-row items-center justify-center overflow-hidden gap-6"
+            className="relative w-full h-[28rem] sm:h-96 flex flex-row items-stretch justify-center overflow-hidden gap-5"
           >
-            <div className="flex flex-row items-center gap-5">
+            <div className="flex flex-row items-stretch justify-center gap-5 h-full w-full">
               <Marquee
                 pauseOnHover
                 vertical
-                className="[--duration:28s] p-0 [--gap:1.25rem]"
+                className="h-full min-h-0 [--duration:28s] p-0 [--gap:1.25rem]"
               >
                 {firstRow.map((review) => (
                   <ReviewCard key={review.name + review.date} {...review} />
@@ -171,7 +171,7 @@ export default function Testimonial() {
                 reverse
                 pauseOnHover
                 vertical
-                className="[--duration:28s] p-0 [--gap:1.25rem] hidden sm:flex"
+                className="h-full min-h-0 [--duration:28s] p-0 [--gap:1.25rem] hidden sm:flex"
               >
                 {secondRow.map((review) => (
                   <ReviewCard key={review.name + review.date} {...review} />
@@ -180,7 +180,7 @@ export default function Testimonial() {
               <Marquee
                 pauseOnHover
                 vertical
-                className="[--duration:28s] p-0 [--gap:1.25rem] hidden lg:flex"
+                className="h-full min-h-0 [--duration:28s] p-0 [--gap:1.25rem] hidden lg:flex"
               >
                 {thirdRow.map((review) => (
                   <ReviewCard

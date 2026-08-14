@@ -8,13 +8,18 @@ import { Marquee } from "@/components/shadcn-space/animations/marquee";
 import { locations } from "@/data/locations";
 import { RevealGroup, RevealItem } from "@/components/Reveal";
 
+function cardBlurb(text: string) {
+  const compact = text.replace(/\s+/g, " ").trim();
+  return compact.match(/^[^.!?]+[.!?]/)?.[0]?.trim() || compact;
+}
+
 const areas = locations.map((loc) => ({
   id: loc.slug,
   name: loc.name,
   href: loc.href === "#" ? "/areas-we-serve/" : loc.href,
   image:
     loc.heroImage || "/images/hero-custom-home-remodeling-paralax-image.jpg",
-  blurb: loc.description.replace(/\s+/g, " ").split(".")[0] + ".",
+  blurb: cardBlurb(loc.description),
 }));
 
 function AreaCard({
@@ -58,7 +63,7 @@ function AreaCard({
             {name}
           </h3>
         </Link>
-        <p className="text-sm sm:text-base text-muted-foreground !m-0">
+        <p className="text-sm sm:text-base text-muted-foreground !m-0 line-clamp-3">
           {blurb}
         </p>
         <Link

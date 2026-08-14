@@ -10,12 +10,11 @@ const Contact = () => {
       <div className="max-w-7xl xl:px-16 lg:px-8 px-4 sm:px-6 mx-auto w-full min-w-0">
         <h1 className="sr-only">Reach Out to Our Contractors</h1>
         {/* Mobile: form first (action), then details. Desktop: info | form. */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 sm:gap-10 md:gap-8 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
           <div className="w-full min-w-0 order-2 md:order-1 md:col-span-6">
             <ContactInfo />
           </div>
-          <div className="hidden md:block md:col-span-1 md:order-2" aria-hidden />
-          <div className="w-full min-w-0 order-1 md:order-3 md:col-span-5">
+          <div className="w-full min-w-0 order-1 md:order-2 md:col-span-6">
             <ContactForm />
           </div>
         </div>

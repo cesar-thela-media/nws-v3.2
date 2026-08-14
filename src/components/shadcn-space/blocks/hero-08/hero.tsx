@@ -78,12 +78,22 @@ export default function HeroSection({
 
   return (
     <section
-      className="bg-background pt-20 sm:pt-24 w-full max-w-full overflow-x-clip"
+      className="bg-background pt-2 sm:pt-3 w-full max-w-full overflow-x-clip"
       data-hero-08
     >
-      {/* Full-bleed marquee sits above the title on every gallery page */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 w-full min-w-0">
+        <div className="flex flex-col items-center text-center gap-2 max-w-3xl mx-auto pt-2 pb-5 sm:pb-6 w-full min-w-0">
+          <span className="w-fit max-w-full px-3 py-0.5 text-sm font-medium text-primary bg-primary/10 rounded-lg">
+            {eyebrow}
+          </span>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground tracking-tight !m-0 text-balance max-w-full">
+            {heading}
+          </h1>
+        </div>
+      </div>
+
       <div
-        className="relative pt-2 sm:pt-4 pb-8 sm:pb-10 w-full overflow-hidden"
+        className="relative pt-0 pb-8 sm:pb-10 w-full overflow-hidden"
         data-hero-08-marquee
       >
         <Carousel
@@ -95,6 +105,7 @@ export default function HeroSection({
           plugins={[
             AutoScroll({
               speed: 1.1,
+              playOnInit: true,
               stopOnInteraction: false,
               stopOnMouseEnter: true,
             }),
@@ -131,22 +142,14 @@ export default function HeroSection({
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 w-full min-w-0">
-        <RevealGroup className="flex flex-col items-center text-center gap-3 max-w-3xl mx-auto pt-2 pb-10 sm:pb-12 w-full min-w-0">
+        <RevealGroup className="flex flex-col items-center text-center gap-5 sm:gap-6 max-w-3xl mx-auto pt-6 sm:pt-8 pb-14 sm:pb-16 w-full min-w-0">
           <RevealItem
-            as="span"
-            className="w-fit max-w-full px-3 py-0.5 text-sm font-medium text-primary bg-primary/10 rounded-lg"
+            as="p"
+            className="text-sm sm:text-base font-normal text-muted-foreground max-w-2xl !m-0 text-pretty"
           >
-            {eyebrow}
+            {description}
           </RevealItem>
-          <RevealItem className="flex flex-col gap-2 items-center w-full min-w-0">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground tracking-tight !m-0 text-balance max-w-full">
-              {heading}
-            </h1>
-            <p className="text-sm sm:text-base font-normal text-muted-foreground max-w-2xl !m-0 text-pretty">
-              {description}
-            </p>
-          </RevealItem>
-          <RevealItem className="flex flex-col min-[400px]:flex-row flex-wrap items-stretch min-[400px]:items-center justify-center gap-3 pt-1 w-full min-w-0">
+          <RevealItem className="flex flex-col min-[400px]:flex-row flex-wrap items-stretch min-[400px]:items-center justify-center gap-3 pt-2 w-full min-w-0">
             <Button
               className="relative text-sm font-semibold rounded-[4px] h-11 p-1 ps-5 pe-14 group transition-all duration-500 hover:ps-14 hover:pe-5 w-full min-[400px]:w-fit max-w-full overflow-hidden cursor-pointer !text-white shrink min-w-0"
               render={<Link href={primaryCtaHref} />}

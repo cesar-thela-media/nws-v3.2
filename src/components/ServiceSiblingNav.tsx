@@ -13,7 +13,7 @@ export function ServiceSiblingNav() {
 
   return (
     <nav
-      className="mt-12 sm:mt-14 rounded-2xl border border-border/60 bg-white p-8 sm:p-10 lg:p-12 shadow-sm"
+      className="mt-16 sm:mt-20 lg:mt-24 rounded-2xl border border-border/60 bg-white p-8 sm:p-10 lg:p-12 shadow-sm"
       aria-label="Our Services"
       data-service-sibling-nav
     >
@@ -24,16 +24,19 @@ export function ServiceSiblingNav() {
       >
         Our Services
       </Reveal>
-      <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <ul className="flex flex-wrap gap-4">
         {canonicalServiceCatalog.map((service) => {
           const active =
             pathname === service.href || pathname === service.href.replace(/\/$/, "");
           return (
-            <li key={service.slug}>
+            <li
+              key={service.slug}
+              className="flex-[1_1_16rem] min-w-[min(100%,16rem)]"
+            >
               <Link
                 href={service.href}
                 className={cn(
-                  "group flex items-center justify-between gap-3 rounded-xl border px-5 py-5 transition-colors",
+                  "group flex h-full items-center justify-between gap-3 rounded-xl border px-5 py-5 transition-colors",
                   active
                     ? "border-primary bg-primary !text-white"
                     : "border-border bg-muted/40 !text-foreground hover:border-primary/40 hover:bg-primary/5",

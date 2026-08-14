@@ -24,13 +24,13 @@ const bySlug: Record<string, ServiceHeroPhotoSet> = {
       {
         title: "Living spaces",
         description: "Open plans with lasting finishes.",
-        image: "/images/custom-homes-3.jpeg",
+        image: "/images/1-Addition-after.jpeg",
         alt: "Custom home living area",
       },
       {
         title: "Kitchens that work",
         description: "Layouts planned with the whole home.",
-        image: "/images/custom-homes-5.jpeg",
+        image: "/images/kitchen-gallery-1.jpeg",
         alt: "Custom home kitchen",
       },
       {
@@ -50,16 +50,16 @@ const bySlug: Record<string, ServiceHeroPhotoSet> = {
         alt: "Home remodeling project",
       },
       {
-        title: "Before the finish",
+        title: "Covered outdoor kitchen",
         description: "Clear phases from demo to punch list.",
         image: "/images/remodeling-2.jpeg",
-        alt: "Remodeling progress",
+        alt: "Covered outdoor kitchen remodel",
       },
       {
-        title: "Interior refresh",
+        title: "Outdoor kitchen pavilion",
         description: "Rooms that feel new without a full rebuild.",
         image: "/images/remodeling-3.jpeg",
-        alt: "Interior remodel",
+        alt: "Outdoor kitchen pavilion",
       },
       {
         title: "Exterior upgrades",

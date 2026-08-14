@@ -108,16 +108,16 @@ function HeroSection({
             initial={{ opacity: 0, y: 32 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
-            className="flex flex-col items-center gap-1 md:gap-2 font-bold tracking-tight text-white !m-0 max-w-6xl w-full min-w-0 px-1 sm:px-2 text-center"
+            className="flex flex-col items-center justify-center gap-1 md:gap-2 font-bold tracking-tight text-white !m-0 max-w-6xl w-full min-w-0 px-1 sm:px-2 text-center"
           >
             <span
               data-hero-prefix
-              className="block w-full max-w-full text-balance md:whitespace-nowrap text-[clamp(1.05rem,min(6.6vw,calc((100vw-3rem)/13)),4.75rem)] leading-[1.08] tracking-tight"
+              className="mx-auto block w-full text-center whitespace-nowrap text-[clamp(1.1rem,min(4.6vw,calc((100vw-3rem)/26)),3.5rem)] leading-[1.1] tracking-tight"
             >
               {headline}
             </span>
             {locations.length > 1 ? (
-              <span className="block w-full max-w-full text-[clamp(1.05rem,min(6.6vw,calc((100vw-3rem)/13)),4.75rem)] leading-[1.08] tracking-tight">
+              <span className="mx-auto block w-full text-center text-[clamp(1.1rem,min(4.6vw,calc((100vw-3rem)/26)),3.5rem)] leading-[1.1] tracking-tight">
                 <AnimatedTextRoller
                   items={locations}
                   intervalMs={locationIntervalMs}
@@ -126,7 +126,7 @@ function HeroSection({
                 />
               </span>
             ) : (
-              <span className="block w-full max-w-full text-primary text-balance md:whitespace-nowrap text-[clamp(1.05rem,min(6.6vw,calc((100vw-3rem)/13)),4.75rem)] leading-[1.08] tracking-tight">
+              <span className="mx-auto block w-full text-center whitespace-nowrap text-primary text-[clamp(1.1rem,min(4.6vw,calc((100vw-3rem)/26)),3.5rem)] leading-[1.1] tracking-tight">
                 {highlight}
               </span>
             )}

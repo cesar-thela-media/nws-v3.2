@@ -78,31 +78,26 @@ const AnimatedTextRoller = ({
       {prefix ? (
         <span
           data-hero-prefix
-          className="block w-full max-w-full text-center text-white text-balance md:whitespace-nowrap px-1 leading-[1.08] text-[clamp(1.35rem,6.2vw,3.25rem)]"
+          className="mx-auto block w-full text-center whitespace-nowrap text-white px-1 leading-[1.1] text-[clamp(1.1rem,min(4.6vw,calc((100vw-3rem)/26)),3.5rem)]"
         >
           {prefix}
         </span>
       ) : null}
 
       <span
-        className="relative mx-auto block w-full max-w-full overflow-hidden text-center isolate"
+        className="relative mx-auto block w-full max-w-full overflow-hidden text-center"
         data-hero-location-line
         style={{
           height: `${LINE_EM}em`,
-          // Hard clip + paint isolation kills descender/ascender bleed (e.g. G)
-          clipPath: "inset(0 0 0 0)",
-          contain: "strict",
         }}
         aria-live="polite"
         aria-atomic="true"
       >
         <span
-          className={cn(
-            "flex flex-col items-center will-change-transform w-full max-w-full",
-            animate && "transition-transform duration-700 ease-in-out",
-          )}
+          className="flex flex-col items-center will-change-transform w-full max-w-full"
           style={{
             transform: `translate3d(0, calc(-${index} * ${LINE_EM}em), 0)`,
+            transition: animate ? "transform 700ms ease-in-out" : "none",
           }}
         >
           {loopItems.map((item, i) => (

@@ -66,13 +66,17 @@ const Navbar = ({ navigationLinks, MegaMenuPanel }: NavbarProps) => {
         setActiveDropdown(null);
     }, [pathname]);
 
-    const handleMouseEnter = (title: string) => {
+    const clearDropdownTimer = () => {
         if (dropdownTimeoutRef.current) clearTimeout(dropdownTimeoutRef.current);
+    };
+
+    const handleMouseEnter = (title: string) => {
+        clearDropdownTimer();
         setActiveDropdown(title);
     };
 
     const handleMouseLeave = () => {
-        dropdownTimeoutRef.current = setTimeout(() => setActiveDropdown(null), 150);
+        dropdownTimeoutRef.current = setTimeout(() => setActiveDropdown(null), 280);
     };
 
     return (
@@ -86,7 +90,11 @@ const Navbar = ({ navigationLinks, MegaMenuPanel }: NavbarProps) => {
                     "[&_a[data-slot=navigation-menu-link]]:!text-white/90 [&_a[data-slot=navigation-menu-link]]:hover:!text-white",
             )}
         >
-            <div className="relative max-w-7xl mx-auto w-full min-w-0 px-4 py-3 sm:px-6 sm:py-4">
+            <div
+                className="relative max-w-7xl mx-auto w-full min-w-0 px-4 py-3 sm:px-6 sm:py-4"
+                onMouseEnter={clearDropdownTimer}
+                onMouseLeave={handleMouseLeave}
+            >
                 <nav
                     className={cn(
                         "w-full flex items-center h-14 sm:h-16 justify-between gap-2 sm:gap-3.5 lg:gap-4 xl:gap-6 transition-all duration-500 min-w-0",
@@ -108,7 +116,6 @@ const Navbar = ({ navigationLinks, MegaMenuPanel }: NavbarProps) => {
                                     onMouseEnter={() =>
                                         link.hasDropdown && handleMouseEnter(link.title)
                                     }
-                                    onMouseLeave={() => link.hasDropdown && handleMouseLeave()}
                                 >
                                     <NavigationMenuLink
                                         href={link.href}
@@ -278,19 +285,28 @@ const Navbar = ({ navigationLinks, MegaMenuPanel }: NavbarProps) => {
 
             {navigationLinks
                 .filter((l) => l.hasDropdown)
-                .map((link) => (
+                .map((link) => {
+                    const isVisible = activeDropdown === link.title;
+                    return (
                     <div
                         key={link.title}
-                        className="absolute left-4 right-4 sm:left-6 sm:right-6 top-full z-50 pt-2"
-                        onMouseEnter={() => handleMouseEnter(link.title)}
-                        onMouseLeave={handleMouseLeave}
+                        className={cn(
+                            "absolute left-4 right-4 sm:left-6 sm:right-6 top-full z-50 pt-3",
+                            isVisible
+                                ? "pointer-events-auto"
+                                : "pointer-events-none invisible",
+                        )}
+                        onMouseEnter={() => {
+                            if (isVisible) handleMouseEnter(link.title);
+                        }}
                     >
                         <MegaMenuPanel
                             link={link}
-                            isVisible={activeDropdown === link.title}
+                            isVisible={isVisible}
                         />
                     </div>
-                ))}
+                    );
+                })}
             </div>
         </header>
     );

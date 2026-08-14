@@ -7,7 +7,7 @@ import { Reveal } from "@/components/Reveal";
 export function AreasGrid({ className = "" }: { className?: string }) {
   return (
     <div
-      className={`grid grid-cols-1 gap-6 sm:gap-8 ${className}`}
+      className={`grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 ${className}`}
       data-areas-image-cards
     >
       {locations.map((loc) => {
@@ -18,11 +18,11 @@ export function AreasGrid({ className = "" }: { className?: string }) {
         const isAnchor = loc.href === "#";
 
         const card = (
-          <article className="group relative overflow-hidden rounded-2xl aspect-[16/9] sm:aspect-[2/1]">
+          <article className="group relative overflow-hidden rounded-2xl aspect-[16/10]">
             <Image
               src={src}
               alt={label}
-              sizes="100vw"
+              sizes="(max-width: 640px) 100vw, 50vw"
               fill
               className="object-cover transition-transform duration-500 group-hover:scale-105"
             />
@@ -30,10 +30,10 @@ export function AreasGrid({ className = "" }: { className?: string }) {
               className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"
               aria-hidden
             />
-            <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-7">
+            <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5">
               <Reveal
                 as="p"
-                className="text-white font-semibold text-xl sm:text-2xl md:text-3xl !m-0"
+                className="text-white font-semibold text-lg sm:text-xl md:text-2xl !m-0"
               >
                 {label}
               </Reveal>
