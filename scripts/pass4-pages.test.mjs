@@ -86,8 +86,18 @@ test("Bento three cards: orange face, white text, equal aspect image, fade seam"
 
 test("Services hub uses carousel-08 + visual grid + FAQ/CTA", () => {
   const page = read("src", "app", "services", "page.tsx");
+  const stack = read(
+    "src",
+    "components",
+    "shadcn-space",
+    "blocks",
+    "portfolio-08",
+    "portfolio.tsx",
+  );
   assert.match(page, /ServicesCarouselHero|carousel-08/);
-  assert.match(page, /data-services-visual-grid|Services10/);
+  assert.match(page, /Portfolio08|portfolio-08|servicesHubPortfolioItems/);
+  assert.doesNotMatch(page, /Services10/);
+  assert.match(stack, /data-services-visual-grid/);
   assert.match(page, /faq-07|Faq/);
   assert.match(page, /cta-08|CTA/);
 });

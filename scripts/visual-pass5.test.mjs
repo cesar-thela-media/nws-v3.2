@@ -70,7 +70,7 @@ test("Services hub and detail use carousel-08 + cta-08; hub uses Faq", () => {
   assert.match(hub, /ServicesCarouselHero|carousel-08/);
   assert.match(hub, /cta-08|CTA/);
   assert.match(hub, /faq-07|Faq/);
-  assert.match(hub, /data-services-visual-grid/);
+  assert.match(hub, /Portfolio08|portfolio-08|servicesHubPortfolioItems/);
   assert.match(detail, /ServiceDetailHero|gallery-03|Gallery03/);
   assert.match(detail, /cta-08|CTA/);
   assert.match(detail, /data-service-body-card|bg-white/);

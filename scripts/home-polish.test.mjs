@@ -113,7 +113,7 @@ test("What we do cards are orange (not plain white face only)", () => {
   );
 });
 
-test("How we work allows full mobile image framing", () => {
+test("portfolio-08 sticky cards use official image frame", () => {
   const p = read(
     "src",
     "components",
@@ -123,9 +123,10 @@ test("How we work allows full mobile image framing", () => {
     "portfolio.tsx",
   );
   assert.ok(
-    p.includes("aspect-[16/10]") || p.includes("aspect-[16/9]"),
-    "mobile aspect for full photo",
+    p.includes("h-70") && p.includes("md:h-full"),
+    "official sticky image frame",
   );
+  assert.ok(p.includes("sticky"), "stacked cards stay sticky");
   assert.ok(
     !p.includes("h-[min(32rem,70svh)]"),
     "old clipped sticky height must be gone",

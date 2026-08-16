@@ -20,7 +20,9 @@ const labels = ["Custom Home Building", "Remodeling", "Kitchen Remodeling", "Bat
 test("services index uses source heading/intro and canonical service cards", () => {
   assert.match(servicesPage, /Our Quality Services/);
   assert.match(servicesPage, /Our wide range of services means we can build you a custom home/);
-  assert.match(servicesPage, /services=\{serviceCards\.map/);
+  assert.match(servicesPage, /Portfolio08|portfolio-08/);
+  assert.match(servicesPage, /servicesHubPortfolioItems/);
+  assert.doesNotMatch(servicesPage, /Services10/);
   assert.match(servicesBlock, /services = nwsServices10/);
 });
 

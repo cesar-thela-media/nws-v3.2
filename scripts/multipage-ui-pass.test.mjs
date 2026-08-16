@@ -23,14 +23,18 @@ test("blocks carousel-08, hero-08, gallery-03, gallery-01 exist", () => {
   );
 });
 
-test("home How We Work gradient + FAQ accordion only (no help band)", () => {
+test("home FAQ accordion only (no help band); portfolio-08 is the services stack", () => {
   const home = read("src", "app", "page.tsx");
-  const how = read("src", "components", "shadcn-space", "blocks", "portfolio-08", "portfolio.tsx");
+  const stack = read("src", "components", "shadcn-space", "blocks", "portfolio-08", "portfolio.tsx");
   const faq = read("src", "components", "shadcn-space", "blocks", "faq-07", "faq.tsx");
   assert.match(home, /faq-07|Faq/);
-  assert.match(how, /How we work/i);
-  assert.match(how, /data-how-we-work-gradient/);
-  assert.match(how, /bg-gradient/);
+  assert.match(home, /portfolio-06/);
+  assert.doesNotMatch(home, /portfolio-08|How we work/i);
+  assert.match(stack, /Our Quality Services/);
+  assert.match(stack, /data-services-visual-grid/);
+  assert.match(stack, /sticky/);
+  assert.doesNotMatch(stack, /How we work/i);
+  assert.doesNotMatch(stack, /data-how-we-work-gradient/);
   assert.match(faq, /data-faq-07|Accordion/);
   assert.doesNotMatch(faq, /data-faq-help-band|data-faq-help-image|Our team is ready to help/);
 });
@@ -59,10 +63,14 @@ test("Services hub+detail: carousel-08 hub, gallery-03 detail hero, faq-07 + cta
   const detailHero = read("src", "components", "ServiceDetailHero.tsx");
   const photos = read("src", "data", "serviceHeroPhotos.ts");
   const carousel = read("src", "components", "shadcn-space", "carousel", "carousel-08.tsx");
+  const stack = read("src", "components", "shadcn-space", "blocks", "portfolio-08", "portfolio.tsx");
   assert.match(hub, /ServicesCarouselHero|carousel-08/);
   assert.match(hub, /faq-07|Faq/);
   assert.match(hub, /cta-08|CTA/);
-  assert.match(hub, /data-services-visual-grid/);
+  assert.match(hub, /Portfolio08|portfolio-08/);
+  assert.match(hub, /servicesHubPortfolioItems/);
+  assert.doesNotMatch(hub, /Services10/);
+  assert.match(stack, /data-services-visual-grid/);
   // Detail uses gallery-03 with per-slug photos - not the hub carousel
   assert.match(detail, /ServiceDetailHero|gallery-03|Gallery03/);
   assert.doesNotMatch(detail, /ServicesCarouselHero/);
